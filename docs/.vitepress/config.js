@@ -8,7 +8,7 @@ export default {
     description: "个人后端知识体系地图",
     head: [
         // 配置网站的图标（显示在浏览器的 tab 上）
-        ["link", {rel: "icon", href: `${base}favicon.ico`}],
+        ["link", {rel: "icon", href: `${base}favicon.png`}],
     ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
