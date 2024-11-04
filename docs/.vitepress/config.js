@@ -5,7 +5,7 @@ export default {
     base,
     // 站点级选项
     title: "代码港湾",
-    description: "个人后端知识体系地图",
+    description: "个人技术知识体系矩阵",
     head: [
         // 配置网站的图标（显示在浏览器的 tab 上）
         ["link", {rel: "icon", href: `${base}favicon.png`}],

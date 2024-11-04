@@ -3,29 +3,29 @@ layout: home
 
 hero:
   name: "代码港湾"
-  text: awesome-front-end-world.
-  tagline: 个人后端知识体系地图
+  text: awesome-tech-world.
+  tagline: 个人技术知识体系矩阵
   image:
     src: /01petard.jpg
     alt: 01petard
   actions:
     - theme: brand
-      text: 开发
+      text: 个人知识图谱
       link: /开发/index
     - theme: brand
-      text: 前端
-      link: /前端/index
-    - theme: brand
-      text: 软件
+      text: 软件使用心得
       link: /软件/index
     - theme: brand
-      text: 硬件
+      text: 硬件领域探索
       link: /硬件/index
+    - theme: brand
+      text: 终焉之后日谈
+      link: /杂谈/index
     - theme: alt
       text: 关于我
       link: /about  
     - theme: alt
-      text: View on GitHub
+      text: 我的GitHub
       link: https://github.com/01Petard
 ---
 

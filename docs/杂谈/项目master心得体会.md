@@ -13,6 +13,8 @@ cover: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9lPZ-n2E0T41tD3W9s
 top_img: https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/30818e4a6953433ca27a6d55f1c70eaf~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp
 ---
 
+> 实习项目的组长所感。
+
 一、项目流程及注意事项
 ①.需求
 1、该阶段scrum master提前跟产品对接需求（1.提前了解内容，提供建议和帮助2.了解人员分配情况），如需人员调配，及时跟项目经理沟通，在需求评审前确认好团队成员（至少一天，团队成员提前需要了解需求）详情可参照https://confluence.leke.cn/pages/viewpage.action?pageId=92237327
