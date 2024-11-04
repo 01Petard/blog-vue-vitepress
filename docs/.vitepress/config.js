@@ -37,7 +37,7 @@ export default {
                 text: '开发',
                 items: [
                     {text: '开发', link: '/开发/index'},
-                    {text: 'My Java Guide', link: '/开发/My Java Guide/index'},
+                    {text: 'Java Guide', link: '/开发/My Java Guide/index'},
                     {text: '框架', link: '/开发/框架/index用'},
                     {text: '前端', link: '/开发/前端/index'},
                 ]
@@ -139,7 +139,6 @@ export default {
                                 {text: "Linux常用命令.md", link: "/软件/Linux/Linux常用命令.md"},
                                 {text: "zsh与bash的切换.md", link: "/软件/Linux/zsh与bash的切换.md"},
                                 {text: "安装oh my zsh主题.md", link: "/软件/Linux/安装oh my zsh主题.md"},
-                                {text: "CentOS my zsh主题.md", link: "/软件/Linux/CentOS my zsh主题.md"},
                                 {text: "CentOS7安装ohmyzsh.md", link: "/软件/Linux/CentOS7安装ohmyzsh.md"},
                                 {text: "在ARM架构的Mac上运行exe程序.md", link: "/软件/Linux/在ARM架构的Mac上运行exe程序.md"},
                                 {text: "切换jdk版本的方法（环境变量法）.md", link: "/软件/Linux/切换jdk版本的方法（环境变量法）.md"},
@@ -169,7 +168,7 @@ export default {
                             ]
                         },
                         {
-                            text: "Python",
+                            text: "Python相关",
                             collapsed: true,
                             items: [
                                 {text: "人工智能十大算法", link: "/软件/Python/人工智能十大算法"},
@@ -198,23 +197,11 @@ export default {
                 {
                     text: "硬件",
                     items: [
-                        {text: "人工智能十大算法", link: "/Python/人工智能十大算法"},
-                        {text: "conda创建虚拟环境，安装Pytorch", link: "/Python/conda创建虚拟环境，安装Pytorch"},
-                        {text: "解决Anaconda安装后命令行前出现 (base)", link: "/Python/解决Anaconda安装后命令行前出现 (base)"},
-                        {
-                            text: "jupyter相关",
-                            collapsed: false,
-                            items: [
-                                {text: "jupyter 常用操作和命令", link: "/Python/jupyter常用操作和命令"},
-                                {text: "jupyter 增加、删除内核", link: "/Python/jupyter增加、删除内核"},
-                                {text: "jupyter 快捷键", link: "/Python/jupyter notebook快捷键"},
-                                {text: "jupyter 更换主题", link: "/Python/jupyter更换主题"},
-                            ]
-                        },
-                        {text: "Pytorch下载配置，Anaconda创建虚拟环境", link: "/Python/Pytorch下载配置，Anaconda创建虚拟环境"},
-                        {text: "torch常用命令", link: "/Python/torch常用命令"},
-                        {text: "YOLOv5的使用", link: "/Python/YOLOv5的使用"},
-                        {text: "图像处理模块封装函数", link: "/Python/图像处理模块封装函数"},
+                        {text: "路由器刷入OpenWrt系统搞机过程", link: "/硬件/路由器刷入OpenWrt系统搞机过程"},
+                        {text: "MRK3399KJ之折腾CasaOS", link: "/硬件/MRK3399KJ之折腾CasaOS"},
+                        {text: "MRK3399KJ开发板折腾记录", link: "/硬件/mrk3399开发板折腾记录"},
+                        {text: "树莓派折腾记录", link: "/硬件/树莓派折腾记录"},
+                        {text: "树莓派安装系统及初始配置", link: "/硬件/树莓派安装系统及初始配置"},
                     ]
                 }
             ],
