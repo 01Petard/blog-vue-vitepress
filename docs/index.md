@@ -2,19 +2,31 @@
 layout: home
 
 hero:
-  name: 是柠新呀的博客
+  name: "代码港湾"
   text: awesome-front-end-world.
-  tagline: 前端 知识体系地图
+  tagline: 个人后端知识体系地图
   image:
-    src: /logo.jpg
-    alt: logo
+    src: /01petard.jpg
+    alt: 01petard
   actions:
     - theme: brand
-      text: Get Started
-      link: /bigFrontEnd/html/
+      text: 开发
+      link: /开发/index
+    - theme: brand
+      text: 前端
+      link: /前端/index
+    - theme: brand
+      text: 软件
+      link: /软件/index
+    - theme: brand
+      text: 硬件
+      link: /硬件/index
+    - theme: alt
+      text: 关于我
+      link: /about  
     - theme: alt
       text: View on GitHub
-      link: https://github.com/xuxing409/blog-demo
+      link: https://github.com/01Petard
 ---
 
 <style>
