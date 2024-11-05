@@ -102,7 +102,7 @@ Java支持数据类型分为两类： 基本数据类型和引用数据类型。
 
 深拷贝创建的新对象与原对象完全独立，任何一个对象的修改都不会影响另一个。而修改浅拷贝对象中引用类型的字段会影响到原对象，因为它们共享相同的引用。
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1783397053004488705/image-20210303201307397_mianshiya.png" alt="image-20210303201307397.png" style="zoom: 75%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411051953319.png" alt="image-20210303201307397.png" style="zoom: 75%;" />
 
 # 网络通信协议名词解释
 

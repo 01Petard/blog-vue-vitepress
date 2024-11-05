@@ -113,6 +113,7 @@ export default {
                                 {text: 'CSS知识重点划注', link: '/开发/前端/CSS知识重点划注'},
                                 {text: '几个免版权图片网站', link: '/开发/前端/几个免版权图片网站'},
                                 {text: 'Vue的事件修饰符', link: '/开发/前端/Vue的事件修饰符'},
+                                {text: 'electron', link: '/开发/前端/electron'},
                             ]
                         },
                     ]
@@ -128,6 +129,7 @@ export default {
                         {text: "curl命令的用法", link: "/软件/curl命令的用法"},
                         {text: "Hexo常用命令", link: "/软件/Hexo常用命令"},
                         {text: "基于YOLOv8模型的抽烟行为检测系统", link: "/软件/基于YOLOv8模型的抽烟行为检测系统"},
+                        {text: "ffmpeg使用命令", link: "/软件/ffmpeg使用命令"},
                         {text: "JetBrains全家桶破解", link: "/软件/JetBrains全家桶破解"},
                         {text: "关于bing国内重定向解决方案", link: "/软件/关于bing国内重定向解决方案"},
                         {text: "哔哩哔哩成分鉴定器（个人魔改版）", link: "/软件/哔哩哔哩成分鉴定器（个人魔改版）"},
