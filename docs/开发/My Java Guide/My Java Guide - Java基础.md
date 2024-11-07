@@ -2118,31 +2118,31 @@ Timer 可以实现延时任务，也可以实现周期性任务。
 因为使用线程池进行任务调度，所以不会因某个任务的异常终止而导致其他任务停止。并且它提供了更灵活的 API，可以更精细地控制任务的执行周期和策略。
 
 ```java
-    public static void main(String[] args) {
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+public static void main(String[] args) {
+    ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
-        // 延迟3秒后执行任务
-        executor.schedule(
-                () -> System.out.println("Task running... "),
-                3,
-                TimeUnit.SECONDS);
-        
-        // 初始延迟1秒后开始执行任务，之后每2秒执行一次
-        executor.scheduleAtFixedRate(
-                () -> System.out.println("Task executed at " + System.currentTimeMillis()),  // Runnable
-                1,    // initialDelay
-                2,    // period
-                TimeUnit.SECONDS);
+    // 延迟3秒后执行任务
+    executor.schedule(
+        () -> System.out.println("Task running... "),
+        3,
+        TimeUnit.SECONDS);
 
-        // 模拟长时间运行，实际应用中应该有一个条件来决定何时关闭线程池
-        try {
-            Thread.sleep(10000); // 让主线程等待10秒
-            // 关闭线程池
-            executor.shutdown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    // 初始延迟1秒后开始执行任务，之后每2秒执行一次
+    executor.scheduleAtFixedRate(
+        () -> System.out.println("Task executed at " + System.currentTimeMillis()),  // Runnable
+        1,    // initialDelay
+        2,    // period
+        TimeUnit.SECONDS);
+
+    // 模拟长时间运行，实际应用中应该有一个条件来决定何时关闭线程池
+    try {
+        Thread.sleep(10000); // 让主线程等待10秒
+        // 关闭线程池
+        executor.shutdown();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
     }
+}
 ```
 
 ## 例：超时关闭不付款的订单
@@ -2477,11 +2477,11 @@ Java 线程在运行的生命周期中的指定时刻只可能处于下面 6 种
 - **`CyclicBarrier`**：可以让一组线程互相等待，直到到达某个公共屏障点
 - **`Semaphore`**：信号量，可以控制对特定资源的访问线程数
 - **`volatile`**：Java 中的关键字，确保变量的可见性，防止指令重排
-- **`AtomicInteger`**，可以用于实现线程安全的计数器或其他共享变量。
+- **`AtomicInteger`**：可以用于实现线程安全的计数器或其他共享变量。
 
 补充 Object 中的方法说明：
 
-- **Object 和 synchronized **——wait()、notify()、notifyAll()：使线程进入等待状态，释放锁。唤醒单个等待线程。唤醒所有等待线程。
+- **Object 和 synchronized**——wait()、notify()、notifyAll()：使线程进入等待状态，释放锁。唤醒单个等待线程。唤醒所有等待线程。
 - **Lock 和 Condition**——await()、signal()：使持有ReentranLock锁的线程等待。唤醒持有ReentranLock锁的线程。
 - **BlockingQueue**——put()、take()：将元素放入阻塞队列。从队列中获取取元素
 
@@ -2808,19 +2808,27 @@ workQueue - 当没有空闲核心线程时，新来任务会加入到此队列�
 
 - **`FixedThreadPool`**：固定线程数量的线程池，可控制线程最大并发数，超出的线程会在队列中等待，**允许的请求队列长度为Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM**
 
-  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131641783.png" alt="image-20240513164118730" style="zoom: 80%;float:left;"/>
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131641783.png" alt="image-20240513164118730" style="zoom: 80%;"/>
+
+  
 
 - **`SingleThreadExecutor`**：单线程化的线程池，保证所有任务按照指定顺序执行，**允许的请求队列长度为Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM**
 
-  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131641155.png" alt="image-20240513164133123" style="zoom: 80%;float:left;"/>
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131641155.png" alt="image-20240513164133123" style="zoom: 80%;"/>
+
+  
 
 - **`CachedThreadPool`**：可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程，**允许的创建线程数量为Integer.MAX_VALUE，可能会创建大量的线程，从而导致OOM**
 
-  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131646303.png" alt="image-20240513164601273" style="zoom: 80%;float:left;"/>
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131646303.png" alt="image-20240513164601273" style="zoom: 80%;"/>
+
+  
 
 - **`ScheduledThreadPool`**：可以执行延迟任务的线程池，支持定时及周期性任务执行
 
-  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131641651.png" alt="image-20240513164158611" style="zoom: 80%;float:left;"/>
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202405131641651.png" alt="image-20240513164158611" style="zoom: 80%;"/>
+
+  
 
 - **`WorkStealingPool`**：基于任务窃取算法的线程池。线程池中的每个线程维护一个双端队列（deque），线程可以从自己的队列中取任务执行。如果线程的任务队列为空，它可以从其他线程的队列中"窃取"任务来执行，达到负载均衡的效果。适合大量小任务并行执行，特别是递归算法或大任务分解成小任务的场景。
 
@@ -2888,7 +2896,7 @@ public void execute(Runnable command) {
 
 ## 底层原理：线程池的动态调整是如何保证线程安全的？
 
-**1. 使用 `volatile` 修饰 核心线程数 和 最大线程数 **
+**1. 使用 `volatile` 修饰 核心线程数 和 最大线程数**
 
 核心线程数`corePoolSize` 和最大线程数 `maximumPoolSize` 都是用 `volatile` 修饰的，保证了当这些字段被修改时，其他线程能够看到最新的值，而且不会发生指令重排序，确保了多线程环境下的可见性和有序性。
 

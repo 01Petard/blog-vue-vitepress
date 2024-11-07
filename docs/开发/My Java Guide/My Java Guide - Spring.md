@@ -332,7 +332,7 @@ Bean不一定是线程安全的。
 
 **循环依赖**：有多个类被Spring管理，它们在实例化时互相持有对方，最终形成闭环。
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/VagJkJyh_658dafbb-f354-41e0-97e9-896759a20c94_mianshiya.png" alt="img" style="zoom:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071640490.png" alt="img" style="zoom:100%;" />
 
 示例代码：
 
@@ -403,7 +403,7 @@ Spring为单例搞的三个 map，也就是三级依赖：
 
 步骤 2 中如果查询发现 Bean 还未创建，就直接返回 null，返回 null 之后，说明这个 Bean 还未创建，这个时候会标记这个 Bean 正在创建中，然后再调用 `createBean` 来创建 Bean，而实际创建是调用方法 `doCreateBean`。doCreateBean 这个方法就会执行上面我们说的三步骤：实例化、属性注入初始化。在实例化 Bean 之后，**会往 三级缓存（singletonFactories）塞入一个工厂，而调用这个工厂的 `getObject` 方法，就能得到这个 Bean**。
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1815995005551374337/SU9AOSuc_image-20240911195840657_mianshiya.png" alt="image-20240911195840657.png" style="zoom:85%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071641321.png" alt="image-20240911195840657.png" style="zoom:85%;" />
 
 # IOC
 

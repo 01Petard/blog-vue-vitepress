@@ -159,7 +159,7 @@ Raft算法将节点分为三种状态：**跟随者（Follower）、候选人（
 
 说到这就可以停下了，然后等面试官发问，正常情况下他会选一个点进行深入探讨，这时候我们只能见招拆招了。
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/QZcneqlN_dc72f0b0-c32d-4902-82f8-b72a968f7eee_mianshiya.png" alt="img" style="zoom:100%;float:left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071757171.png" alt="img" style="zoom:100%;" />
 
 ## 细节：动态代理 / RPC的实现原理
 
@@ -177,13 +177,13 @@ RPC 会给接口生成一个代理类，我们调用这个接口实际调用的�
 
 动态代理中，最常见的技术就是 Spring AOP 了，涉及的有 JDK 动态代理和 cglib。
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/0lDq7g3W_e6a5195e-0fcd-4229-820f-8013c3bcb341_mianshiya.png" alt="img" style="zoom:100%;float:left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071757686.png" alt="img" style="zoom:100%;" />
 
 ## 细节：序列化
 
 **序列化原因：**网络传输的数据是“扁平”的，最终需要转化成“扁平”的二进制数据在网络中传输。
 
-**序列化方案：**有很多序列化选择，一般需要**综合考虑通用性、性能、可读性和兼容性**。
+**序列化方案：**有很多序列化选择，一般需要综合考虑通用性、性能、可读性和兼容性。
 
 **序列化方案对比：**
 
@@ -208,11 +208,11 @@ RPC 会给接口生成一个代理类，我们调用这个接口实际调用的�
 
 例如Dubbo 协议：
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/mYyU0BI5_7c3ca8fb-65c9-45ac-aae6-7739ff58ee52_mianshiya.png" alt="img" style="zoom:120%;float:left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071758085.png" alt="img" style="zoom:120%;" />
 
 ## 细节：网络传输
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/LuV0WzRQ_bc1e2b9d-2d0c-442f-aa06-6b94f0ed64cf_mianshiya.png" alt="img" style="zoom:90%;float:left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071758623.png" alt="img" style="zoom:90%;" />
 
 一般而言用的都是 **IO 多路复用**，因为大部分 RPC 调用场景都是高并发调用，IO 复用可以利用较少的线程 hold 住很多请求。
 
@@ -715,14 +715,14 @@ public class SlidingWindowLimiter {
 
 为了确保分布式事务的ACID，有以下常见的分布式事务解决方案：
 
-**1. 两阶段提交（Two-Phase Commit, 2PC）** **【XA 协议、Atomikos、Bitronix】**
+**1. 两阶段提交（Two-Phase Commit, 2PC）【XA 协议、Atomikos、Bitronix】**
 
 最传统的分布式事务协议之一。包括准备阶段和提交阶段，其中协调者与参与者进行交互以决定是否提交或回滚事务。
 
 1. **准备阶段**：协调者询问所有参与者是否准备好提交事务。
 2. **提交阶段**：如果所有参与者都同意，则协调者命令所有参与者提交；如果任何一个参与者不同意，则协调者命令所有参与者回滚。
 
-**2. 三阶段提交（Three-Phase Commit, 3PC） ** **【SAGA、TCC（Try-Confirm-Cancel）、最终一致性】**
+**2. 三阶段提交（Three-Phase Commit, 3PC）【SAGA、TCC（Try-Confirm-Cancel）、最终一致性】**
 
 3PC是在2PC的基础上增加了预表决阶段，以减少阻塞情况的发生。
 
@@ -730,7 +730,7 @@ public class SlidingWindowLimiter {
 2. **准备阶段**：参与者回复预表决结果。
 3. **提交阶段**：根据参与者回复的结果，协调者发送提交或回滚指令。
 
-**3. 单边提交（One-Sided Commit） ** **【AP系统、DDD架构】**
+**3. 单边提交（One-Sided Commit）【AP系统、DDD架构】**
 
 在这种方案中，参与者独立决定是否提交事务，而不需要等待协调者的指示。
 
