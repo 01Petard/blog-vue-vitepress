@@ -67,6 +67,7 @@ export default {
             {text: 'SSO单点登录的实现原理', link: '/开发/SSO单点登录的实现原理'},
             {text: '批量导出zip压缩包和Excel表格', link: '/开发/批量导出zip压缩包和Excel表格'},
             {text: '阿里云OSS && 内容安全 Java实现参考代码', link: '/开发/阿里云OSS && 内容安全 Java实现参考代码'},
+            {text: '抖音评论区设计', link: '/开发/抖音评论区设计'},
             {
               text: 'My Java Guide',
               collapsed: false,
