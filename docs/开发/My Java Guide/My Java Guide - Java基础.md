@@ -1802,7 +1802,7 @@ AQS（Abstract Queued Synchronizer），是Java中的一个抽象类，提供了
 
 - 在AQS中维护了一个使用了volatile修饰的**state**属性来表示资源的状态，0表示无锁，1表示有锁，修改state时使用CAS操作保证原子性，确保只能有一个线程修改成功，修改失败的线程将会进入队列中等待。如果队列中的有一个线程修改成功了state为1，则当前线程就相等于获取了资源。
 
-  <img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/9cDBEmbJ_image_mianshiya.png" alt="image.png" style="zoom:50%;" />
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071516652.png" alt="image.png" style="zoom:50%;" />
 
 - AQS内部维护了一个 FIFO 的等待队列，类似于 Monitor 的 EntryList，用于管理等待获取同步状态的线程。每个节点（Node）代表一个等待的线程，节点之间通过 next 和 prev 指针链接。
 
@@ -1856,7 +1856,7 @@ ReentrantLock相对于synchronized它具备以下特点：
 - 假如修改状态失败，则会进入双向队列中等待，`head`指向双向队列头部，`tail`指向双向队列尾部
 - 当`exclusiveOwnerThread`为null的时候，则会唤醒在双向队列中等待的线程
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/VWa8SBRY_image_mianshiya.png" alt="image.png" style="zoom:75%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071516567.png" alt="image.png" style="zoom:75%;" />
 
 ## synchronized 与 AQS 的区别
 
@@ -1887,7 +1887,7 @@ ReentrantLock相对于synchronized它具备以下特点：
 | **锁的对象**             | 锁的是对象，锁信息保存在对象头中 | int类型的state标识来标识锁的状态            |
 | **锁升级**               | 底层有锁升级过程                 | 没有锁升级过程                              |
 
-<img src="https://p0.meituan.net/travelcube/412d294ff5535bbcddc0d979b2a339e6102264.png" alt="img" style="zoom: 80%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071516196.png" alt="img" style="zoom: 80%;" />
 
 # <div align="center">----------------并发工具类----------------</div>
 
@@ -1969,7 +1969,7 @@ new Thread(task).start();
 
 如果计数器减一的值等于 0，说明最后一个线程也到达了屏障，于是如果有 barrierAction 就执行 barrierAction ，然后调用 condition.signalAll 唤醒之前等待的线程，并且重置计数器，然后开启下一代，所以它可以循环使用。
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/gpCZG7AX_5c937bfd-20f3-4e6a-a9d3-9c1395553168_mianshiya.png" alt="img" style="zoom:75%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071517936.png" alt="img" style="zoom:75%;" />
 
 ## Semaphore 的使用场景
 
@@ -2728,7 +2728,7 @@ public class MyThreadPoolDemo3 {
 }
 ```
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/GnON4IVI_image_mianshiya.png" alt="image.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411071519543.png" alt="image.png" style="zoom:50%;" />
 
 ## 任务拒绝策略
 

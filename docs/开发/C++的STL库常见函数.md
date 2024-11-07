@@ -19,7 +19,6 @@ keywords:
 description: STL库包含了几种常见的数据结构，涵盖了大部分常用函数（附带源码）
 cover: https://pic2.zhimg.com/v2-b2e6cea8a7edd4a9580d7c9e272e4698_720w.jpg?source=172ae18b
 top_img: https://262235.xyz/usr/uploads/2021/08/3919360386.jpg
-
 ---
 
 **vector（动态数组）**
