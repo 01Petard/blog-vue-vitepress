@@ -68,6 +68,7 @@ export default {
             {text: '批量导出zip压缩包和Excel表格', link: '/开发/批量导出zip压缩包和Excel表格'},
             {text: '阿里云OSS && 内容安全 Java实现参考代码', link: '/开发/阿里云OSS && 内容安全 Java实现参考代码'},
             {text: '抖音评论区设计', link: '/开发/抖音评论区设计'},
+            {text: '搭建K8S集群环境', link: '/开发/搭建K8S集群环境'},
             {
               text: 'My Java Guide',
               collapsed: false,
