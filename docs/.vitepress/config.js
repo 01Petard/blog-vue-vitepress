@@ -73,14 +73,14 @@ export default {
               text: 'My Java Guide',
               collapsed: false,
               items: [
+                {text: "My Java Guide - 计算机基础", link: "/开发/My Java Guide/My Java Guide - 计算机基础"},
                 {text: "My Java Guide - Java基础", link: "/开发/My Java Guide/My Java Guide - Java基础"},
                 {text: "My Java Guide - JVM", link: "/开发/My Java Guide/My Java Guide - JVM"},
+                {text: "My Java Guide - 数据库", link: "/开发/My Java Guide/My Java Guide - 数据库"},
+                {text: "My Java Guide - 缓存", link: "/开发/My Java Guide/My Java Guide - 缓存"},
                 {text: "My Java Guide - Spring", link: "/开发/My Java Guide/My Java Guide - Spring"},
                 {text: "My Java Guide - 分布式", link: "/开发/My Java Guide/My Java Guide - 分布式"},
-                {text: "My Java Guide - 数据库", link: "/开发/My Java Guide/My Java Guide - 数据库"},
                 {text: "My Java Guide - 算法", link: "/开发/My Java Guide/My Java Guide - 算法"},
-                {text: "My Java Guide - 缓存", link: "/开发/My Java Guide/My Java Guide - 缓存"},
-                {text: "My Java Guide - 计算机基础", link: "/开发/My Java Guide/My Java Guide - 计算机基础"},
                 {text: "My Java Guide - 项目", link: "/开发/My Java Guide/My Java Guide - 项目"},
               ]
             },
