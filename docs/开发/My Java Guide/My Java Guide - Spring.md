@@ -237,7 +237,7 @@ public class Main {
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beanshttp://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
     <bean id="orders" class="com.company.spring5.bean.Orders" init-method="initMethod" destroy-method="destroyMethod">
@@ -1256,7 +1256,7 @@ MapperStatement对象的结构：
 
   1. 全局配置文件
 
-  ```xml
+  ```
   <settings>
       <setting name="cacheEnabled" value="true/>
   </settings>
@@ -1264,8 +1264,8 @@ MapperStatement对象的结构：
 
   2. 映射文件
 
-  ```xml
-  使用<cache/>标签让mapper.xml映射文件生效二级缓存
+  ```
+  使用“<cache/>”标签让mapper.xml映射文件生效二级缓存
   ```
 
 ## Mybatis一二级缓存的脏数据问题
