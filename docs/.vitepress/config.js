@@ -140,35 +140,36 @@ export default {
               text: "Linux",
               collapsed: false,
               items: [
-                {text: "Linux常用命令.md", link: "/软件/Linux/Linux常用命令.md"},
-                {text: "zsh与bash的切换.md", link: "/软件/Linux/zsh与bash的切换.md"},
-                {text: "安装oh my zsh主题.md", link: "/软件/Linux/安装oh my zsh主题.md"},
-                {text: "CentOS7安装ohmyzsh.md", link: "/软件/Linux/CentOS7安装ohmyzsh.md"},
-                {text: "在ARM架构的Mac上运行exe程序.md", link: "/软件/Linux/在ARM架构的Mac上运行exe程序.md"},
-                {text: "切换jdk版本的方法（环境变量法）.md", link: "/软件/Linux/切换jdk版本的方法（环境变量法）.md"},
-                {text: "切换jdk版本的方法（jenv法）.md", link: "/软件/Linux/切换jdk版本的方法（jenv法）.md"},
-                {text: "option和shift特殊符号.md", link: "/软件/Linux/option和shift特殊符号.md"},
-                {text: "Unix系统下的Shell命令.md", link: "/软件/Linux/Unix系统下的Shell命令.md"},
-                {text: "Mac调整docker Shell命令.md", link: "/软件/Linux/Mac调整docker Shell命令.md"},
-                {text: "Mac调整docker栏目.md", link: "/软件/Linux/Mac调整docker栏目.md"},
-                {text: "Mac查看固态使用情况.md", link: "/软件/Linux/Mac查看固态使用情况.md"},
-                {text: "Mac删除OBS的虚拟摄像头.md", link: "/软件/Linux/Mac删除OBS的虚拟摄像头.md"},
-                {text: "Mac上PD17虚拟机终端启动命令.md", link: "/软件/Linux/Mac上PD17虚拟机终端启动命令.md"},
-                {text: "Homebrew常用命令.md", link: "/软件/Linux/Homebrew常用命令.md"},
-                {text: "bash与zsh的切换.md", link: "/软件/Linux/bash与zsh的切换.md"}
+                {text: "Linux常用命令", link: "/软件/Linux/Linux常用命令"},
+                {text: "zsh与bash的切换", link: "/软件/Linux/zsh与bash的切换"},
+                {text: "安装oh my zsh主题", link: "/软件/Linux/安装oh my zsh主题"},
+                {text: "CentOS7安装ohmyzsh", link: "/软件/Linux/CentOS7安装ohmyzsh"},
+                {text: "在ARM架构的Mac上运行exe程序", link: "/软件/Linux/在ARM架构的Mac上运行exe程序"},
+                {text: "切换jdk版本的方法（环境变量法）", link: "/软件/Linux/切换jdk版本的方法（环境变量法）"},
+                {text: "切换jdk版本的方法（jenv法）", link: "/软件/Linux/切换jdk版本的方法（jenv法）"},
+                {text: "option和shift特殊符号", link: "/软件/Linux/option和shift特殊符号"},
+                {text: "Unix系统下的Shell命令", link: "/软件/Linux/Unix系统下的Shell命令"},
+                {text: "Mac调整docker Shell命令", link: "/软件/Linux/Mac调整docker Shell命令"},
+                {text: "Mac调整docker栏目", link: "/软件/Linux/Mac调整docker栏目"},
+                {text: "Mac查看固态使用情况", link: "/软件/Linux/Mac查看固态使用情况"},
+                {text: "Mac删除OBS的虚拟摄像头", link: "/软件/Linux/Mac删除OBS的虚拟摄像头"},
+                {text: "Mac上PD17虚拟机终端启动命令", link: "/软件/Linux/Mac上PD17虚拟机终端启动命令"},
+                {text: "Homebrew常用命令", link: "/软件/Linux/Homebrew常用命令"},
+                {text: "bash与zsh的切换", link: "/软件/Linux/bash与zsh的切换"},
+                {text: "命令行系统信息工具", link: "/软件/命令行系统信息工具"},
               ]
             },
             {
               text: "Windows",
               collapsed: false,
               items: [
-                {text: "windows终端美化.md", link: "/软件/Windows/windows终端美化.md"},
-                {text: "VMware固定虚拟机ip.md", link: "/软件/Windows/VMware固定虚拟机ip.md"},
-                {text: "更改固态硬盘磁盘为GPT格式.md", link: "/软件/Windows/更改固态硬盘磁盘为GPT格式.md"},
-                {text: "win批量硬盘磁盘为GPT格式.md", link: "/软件/Windows/win批量硬盘磁盘为GPT格式.md"},
-                {text: "win批量删除特定格式开头的文件.md", link: "/软件/Windows/win批量删除特定格式开头的文件.md"},
-                {text: "Windows上解决端口占用.md", link: "/软件/Windows/Windows上解决端口占用.md"},
-                {text: "winWindows11安装卸载安卓软件.md", link: "/软件/Windows/winWindows11安装卸载安卓软件.md"}
+                {text: "windows终端美化", link: "/软件/Windows/windows终端美化"},
+                {text: "VMware固定虚拟机ip", link: "/软件/Windows/VMware固定虚拟机ip"},
+                {text: "更改固态硬盘磁盘为GPT格式", link: "/软件/Windows/更改固态硬盘磁盘为GPT格式"},
+                {text: "win批量硬盘磁盘为GPT格式", link: "/软件/Windows/win批量硬盘磁盘为GPT格式"},
+                {text: "win批量删除特定格式开头的文件", link: "/软件/Windows/win批量删除特定格式开头的文件"},
+                {text: "Windows上解决端口占用", link: "/软件/Windows/Windows上解决端口占用"},
+                {text: "winWindows11安装卸载安卓软件", link: "/软件/Windows/winWindows11安装卸载安卓软件"},
               ]
             },
             {
@@ -254,7 +255,7 @@ export default {
                 {text: "2023年2月记录", link: "/杂谈/后日谈/2023年2月记录"},
                 {text: "2023年1月记录", link: "/杂谈/后日谈/2023年1月记录"},
                 {text: "2022年12月记录", link: "/杂谈/后日谈/2022年12月记录"},
-                {text: "2022年11月记录", link: "/杂谈/后日谈/2022年11月记录"}
+                {text: "2022年11月记录", link: "/杂谈/后日谈/2022年11月记录"},
               ]
 
             },
