@@ -1,7 +1,7 @@
 ---
 title: My Java Guide - Spring
 date: 2024-10-15 00:23:00
-updated: 2024-10-15 00:23:00
+updated: 2024-11-10 22:16:00
 categories: 
 - 学习
 tags: 
@@ -1031,15 +1031,35 @@ Spring 事务管理具有以下特点：
 
 ## 传播行为（Propagation）
 
-传播行为定义了当一个方法被另一个事务性的方法调用时，应该如何处理事务。常见的传播行为包括：
+事务的传播行为说白了就是多个方法都有进行写操作时，对于事物的控制，作为事物的传播级别，在Spring中体现为一个叫 `Propagation` 的类中。
 
-- **`PROPAGATION_REQUIRED`**：如果有事务活动，就加入当前事务；如果没有，就创建一个新的事务。
-- `PROPAGATION_SUPPORTS`：如果有事务活动，就加入当前事务；如果没有，就以非事务方式运行。
-- `PROPAGATION_MANDATORY`：必须在现有的事务上下文中执行；如果没有事务，则抛出异常。
-- `PROPAGATION_REQUIRES_NEW`：总是创建一个新的事务，无论当前是否存在事务。
-- `PROPAGATION_NOT_SUPPORTED`：以非事务方式运行，并挂起任何存在的事务。
-- `PROPAGATION_NEVER`：以非事务方式运行，如果存在事务，则抛出异常。
-- `PROPAGATION_NESTED`：如果存在事务，则在嵌套事务内执行；如果没有，则行为类似于 `PROPAGATION_REQUIRED`。
+`Propagation` 类定义了当一个方法被另一个事务性的方法调用时，应该如何处理事务。常见的传播行为包括：
+
+- `REQUIRED`：如果有事务活动，就加入当前事务；如果没有，就创建一个新的事务。
+
+  > 最简单的事物传播机制，将方法中所有执行的过程全部作为一个事物，要么成功，要么失败，一次只占用一个数据库连接。
+
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411092123712.png" alt="image-20241109212341682" style="zoom:67%;" />
+
+- `REQUIRES_NEW`：总是创建一个新的事务，无论当前是否存在事务。
+
+  > 每次执行方法，都会新开一个数据库连接，每次方法的执行都是独立的，不受任何影响。（可以预见的性能很差）
+
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411092125052.png" alt="image-20241109212529011" style="zoom:67%;" />
+
+- `NESTED`：如果存在事务，则在嵌套事务内执行；如果没有，则行为类似于 `PROPAGATION_REQUIRED`。
+
+  > 此模式下会利用数据库的**存档点机制**，即使事务运行过程中失败了，也会回滚到之前的存档点。
+
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411092121831.png" alt="image-20241109212153782" style="zoom:67%;" />
+
+- `SUPPORTS`：如果有事务活动，就加入当前事务；如果没有，就以非事务方式运行。
+
+- `NOT_SUPPORTED`：以非事务方式运行，并挂起任何存在的事务。
+
+- `MANDATORY`：必须在现有的事务上下文中执行；如果没有事务，则抛出异常。
+
+- `NEVER`：以非事务方式运行，如果存在事务，则抛出异常。
 
 ## 隔离级别（Isolation Level）
 
