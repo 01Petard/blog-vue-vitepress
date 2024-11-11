@@ -116,6 +116,7 @@ export default {
                 {text: '几个免版权图片网站', link: '/开发/前端/几个免版权图片网站'},
                 {text: 'Vue的事件修饰符', link: '/开发/前端/Vue的事件修饰符'},
                 {text: 'electron', link: '/开发/前端/electron'},
+                {text: 'ElementUI实战教程', link: '/开发/前端/ElementUI实战教程'},
               ]
             },
           ]
