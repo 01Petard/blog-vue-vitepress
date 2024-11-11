@@ -1,20 +1,14 @@
 ---
-sidebar:
- title: ElementUI实战教程
- step: 1
 title: ElementUI实战教程
-description: 介绍快速入门Electron
-isTimeLine: true
 date: 2024-11-11 22:17:00
 updated:
-categories: 
-- 学习
-tags: 
-- ElementUI
+categories:
+  - 学习
+tags:
+  - ElementUI
 keywords:
-- 图片
-- 免版权
-description: 适合找素材的图片网站
+  - ElementUI
+description: 学习ElementUI
 cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411112221879.png
 top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411112221375.png
 ---
