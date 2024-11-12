@@ -2819,12 +2819,12 @@ Kubernetes，它是 **Google **开源的神器，它介于**应用服务**和**�
 
 # Kubernetes 解决的问题
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201630124.jpeg" alt="容器化技术与传统虚拟机的区别" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201630124.jpeg" alt="容器化技术与传统虚拟机的区别" style="zoom:40%;" />
 
 随着**应用服务变多**，需求也千奇百怪。有的应用服务不希望被外网访问到，有的部署的时候要求内存得大于 xxGB 才能正常跑。
 你每次都需要登录到各个服务器上，执行**手动**操作更新。不仅容易出错，还贼**浪费时间**。那么问题就来了，有没有一个办法，可以解决上面的问题？当然有，**没有什么是加一个中间层不能解决的，如果有，那就再加一层**。这次要加的中间层，叫 **Kubernetes**。
 
-<img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/icMUEqOiagpkjfBjJIFsy8zmliazZGEHibibux495Hxcfx6ZAnFYGWU7T7PtoUpbCAu28aTA0UsFkPb0NuU2j73ccfQ/640?wx_fmt=jpeg&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="Kubernetes的位置" style="zoom:60%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411121034373.webp" alt="Kubernetes的位置" style="zoom:75%;" />
 
 # 为什么要用 Kubernetes ？
 
@@ -2871,13 +2871,13 @@ Kubernetes 是一个开源的容器编排系统，它用于自动化部署、扩
 
 总之，Kubernetes 和 Docker 之间是互补而非竞争的关系。它们共同构成了现代云原生应用开发和部署的重要基石。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410202001894.jpeg" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410202001894.jpeg" style="zoom:40%;" />
 
 # Kubernetes 架构原理
 
 为了实现上面的功能，Kubernetes 会将我们的服务器划为两部分，一部分叫**控制平面**（control plane，以前叫master），另一部分叫**工作节点**，也就是 **Node**。简单来说它们的关系就是老板和打工人， 用现在流行的说法就是训练师和帕鲁。控制平面负责控制和管理各个 Node，而 Node 则负责实际运行各个应用服务。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201649210.jpeg" alt="k8s控制平面和Node的关系" style="zoom: 35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201649210.jpeg" alt="k8s控制平面和Node的关系" style="zoom: 40%;" />
 
 我们依次看下这两者的内部架构。
 
@@ -2890,7 +2890,7 @@ Kubernetes 是一个开源的容器编排系统，它用于自动化部署、扩
 
 以上就是控制平面内部的组件。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201649489.jpeg" alt="k8s控制平面组件" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201649489.jpeg" alt="k8s控制平面组件" style="zoom:40%;" />
 
 我们接下来再看看 Node 里有哪些组件。
 
@@ -2898,38 +2898,38 @@ Kubernetes 是一个开源的容器编排系统，它用于自动化部署、扩
 
 Node 是实际的工作节点，它既可以是**裸机服务器**，也可以是**虚拟机**。它会负责实际运行各个应用服务。多个应用服务**共享**一台 Node 上的内存和 CPU 等计算资源。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201650945.jpeg" alt="Node可以是裸机服务器或虚拟机" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201650945.jpeg" alt="Node可以是裸机服务器或虚拟机" style="zoom:40%;" />
 
 在文章开头，我们聊到了部署多个应用服务的场景。以前我们需要上传代码到服务器，而用了 k8s 之后，我们只需要将服务代码打包成**Container Image**(容器镜像)，就能一行命令将它部署。
 
 如果你不了解容器镜像的含义，你可以简单理解为它其实就是将**应用代码**和依赖的**系统环境**打了个压缩包，在任意一台机器上解压这个压缩包，就能正常运行服务。为了下载和部署镜像，Node 中会有一个 **Container runtime** 组件。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201651819.jpeg" alt="将容器镜像粗略理解为压缩包" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201651819.jpeg" alt="将容器镜像粗略理解为压缩包" style="zoom:40%;" />
 
 每个应用服务都可以认为是一个 **Container**（容器）, 并且大多数时候，我们还会为应用服务搭配一个日志收集器 Container 或监控收集器 Container，多个 Container 共同组成一个一个 **Pod**，它运行在 Node 上。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201651862.jpeg" alt="一个pod内有多个容器" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201651862.jpeg" alt="一个pod内有多个容器" style="zoom:40%;" />
 
 k8s 可以将 pod 从某个 Node 调度到另一个 Node，还能以 pod 为单位去做重启和动态扩缩容的操作。
 所以说 **Pod 是 k8s 中最小的调度单位**。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201654832.jpeg" alt="Node调度Pod" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201654832.jpeg" alt="Node调度Pod" style="zoom:40%;" />
 
 另外，前面提到控制平面会用 **Controller Manager** （通过API Server）控制 Node 创建和关闭服务，那 Node 也得有个组件能接收到这个命令才能去做这些动作，这个组件叫 **kubelet**，它主要负责管理和监控 Pod。最后，Node 中还有个 **Kube Proxy** ，它负责 Node 的网络通信功能，有了它，外部请求就能被转发到 Pod 内。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201655585.jpeg" alt="控制平面和Node的组件" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201655585.jpeg" alt="控制平面和Node的组件" style="zoom:40%;" />
 
 # Cluster
 
 **控制平面和Node** 共同构成了一个 **Cluster**，也就是**集群**。在公司里，我们一般会构建多个集群, 比如测试环境用一个集群，生产环境用另外一个集群。同时，为了将集群内部的服务暴露给外部用户使用，我们一般还会部署一个入口控制器，比如 **Ingress 控制器（比如Nginx）**，它可以提供一个入口让外部用户访问集群内部服务。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201655859.jpeg" alt="生产和测试环境" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201655859.jpeg" alt="生产和测试环境" style="zoom:40%;" />
 
 # kubectl
 
 上面提到说我们可以使用 k8s 提供的 API 去创建服务，但问题就来了，这是需要我们自己写代码去调用这些 API 吗？答案是不需要，k8s 为我们准备了一个命令行工具 **kubectl**，我们只需要执行命令，它内部就会调用 k8s 的 API。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201658446.jpeg" alt="kubectl调用k8s的API" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201658446.jpeg" alt="kubectl调用k8s的API" style="zoom:40%;" />
 
 接下来我们以部署服务为例子，看下 k8s 是怎么工作的。
 
@@ -2939,7 +2939,7 @@ k8s 可以将 pod 从某个 Node 调度到另一个 Node，还能以 pod 为单�
 
 至此服务完成创建。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201700985.jpeg" alt="部署应用服务" style="zoom:35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201700985.jpeg" alt="部署应用服务" style="zoom:40%;" />
 
 整个过程下来，我们只需要写一遍 yaml 文件，和执行一次 kubectl 命令，比以前省心太多了！部署完服务后，我们来看下服务是怎么被调用的。
 
@@ -2947,7 +2947,7 @@ k8s 可以将 pod 从某个 Node 调度到另一个 Node，还能以 pod 为单�
 
 以前外部用户小明，直接在浏览器上发送 http 请求，就能打到我们服务器上的 Nginx，然后转发到部署的服务内。用了 k8s 之后，外部请求会先到达 Kubernetes 集群的 Ingress 控制器，然后请求会被转发到 Kubernetes 内部的某个 Node 的 **Kube Proxy** 上，再找到对应的 pod，然后才是转发到内部**容器服务**中，处理结果原路返回，到这就完成了一次服务调用。
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201700166.jpeg" alt="用户调用k8s内应用服务的流程" style="zoom: 35%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410201700166.jpeg" alt="用户调用k8s内应用服务的流程" style="zoom: 40%;" />
 
 到这里我们就大概了解了 k8s 的工作原理啦，它本质上就是应用服务和服务器之间的**中间层**，通过暴露一系列 API 能力让我们简化服务的部署运维流程。
 
