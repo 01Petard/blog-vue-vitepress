@@ -1,5 +1,5 @@
 ---
-title: 解决Anaconda安装后命令行前出现 (base)
+title: 解决Anaconda安装后命令行前出现(base)
 date: 2022-03-25 13:53:15
 updated:
 categories: 

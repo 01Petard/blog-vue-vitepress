@@ -2,7 +2,7 @@
 sidebar:
  title: 🔥一文带你快速入门Electron开发
  step: 1
-title: 🔥一文带你快速入门Electron开发
+title: Electron开发学习
 description: 介绍快速入门Electron
 isTimeLine: true
 date: 2024-08-10

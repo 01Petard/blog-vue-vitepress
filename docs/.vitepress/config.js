@@ -37,8 +37,8 @@ export default {
         text: '开发',
         items: [
           {text: '开发', link: '/开发/index'},
-          {text: 'Java Guide', link: '/开发/My Java Guide/index'},
-          {text: '框架', link: '/开发/框架/index用'},
+          {text: 'Guide', link: '/开发/My Java Guide/index'},
+          {text: '框架', link: '/开发/框架/index'},
           {text: '前端', link: '/开发/前端/index'},
         ]
       },
@@ -46,7 +46,9 @@ export default {
         text: '软件',
         items: [
           {text: 'Linux', link: '/软件/Linux/index'},
+          {text: 'MacOS', link: '/软件/MacOS/index'},
           {text: 'Windows', link: '/软件/Windows/index'},
+          {text: 'Python', link: '/软件/Python/index'},
         ]
       },
       {text: '硬件', link: '/硬件/index'},
@@ -59,16 +61,16 @@ export default {
         {
           text: '开发',
           items: [
-            {text: 'JDBC和JAVA类型对比', link: '/开发/JDBC和JAVA类型对比'},
-            {text: '对Java中多态的理解', link: '/开发/对Java中多态的理解'},
-            {text: 'ThreadLocal原理和使用', link: '/开发/ThreadLocal原理和使用'},
-            {text: 'C++的STL库常见函数', link: '/开发/C++的STL库常见函数'},
-            {text: 'MYDB操作手册', link: '/开发/MYDB操作手册'},
-            {text: 'SSO单点登录的实现原理', link: '/开发/SSO单点登录的实现原理'},
-            {text: '批量导出zip压缩包和Excel表格', link: '/开发/批量导出zip压缩包和Excel表格'},
-            {text: '阿里云OSS && 内容安全 Java实现参考代码', link: '/开发/阿里云OSS && 内容安全 Java实现参考代码'},
-            {text: '抖音评论区设计', link: '/开发/抖音评论区设计'},
             {text: '搭建K8S集群环境', link: '/开发/搭建K8S集群环境'},
+            {text: '抖音评论区设计', link: '/开发/抖音评论区设计'},
+            {text: 'MYDB操作手册', link: '/开发/MYDB操作手册'},
+            {text: '批量导出zip压缩包和Excel表格', link: '/开发/批量导出zip压缩包和Excel表格'},
+            {text: '阿里云OSS和内容安全Java实现参考代码', link: '/开发/阿里云OSS和内容安全Java实现参考代码'},
+            {text: 'SSO单点登录的实现原理', link: '/开发/SSO单点登录的实现原理'},
+            {text: 'ThreadLocal原理和使用', link: '/开发/ThreadLocal原理和使用'},
+            {text: '对Java中多态的理解', link: '/开发/对Java中多态的理解'},
+            {text: 'JDBC和JAVA类型对比', link: '/开发/JDBC和JAVA类型对比'},
+            {text: 'C++的STL库常见函数', link: '/开发/C++的STL库常见函数'},
             {
               text: 'My Java Guide',
               collapsed: false,
@@ -97,12 +99,12 @@ export default {
                 {text: "MySql数据库命令", link: "/开发/框架/MySql数据库命令"},
                 {text: "Netty与NIO的前世今生", link: "/开发/框架/Netty与NIO的前世今生"},
                 {text: "Nginx的配置和使用命令", link: "/开发/框架/Nginx的配置和使用命令"},
-                {text: "Quarkus云原生时代的Java框架", link: "/开发/框架/Quarkus云原生时代的Java框架"},
+                {text: "Quarkus——云原生时代的Java框架", link: "/开发/框架/Quarkus云原生时代的Java框架"},
                 {text: "RabbitMQ快速上手", link: "/开发/框架/RabbitMQ快速上手"},
                 {text: "Redis在SpringBoot的配置", link: "/开发/框架/Redis在SpringBoot的配置"},
                 {text: "Redis基本数据类型常用命令", link: "/开发/框架/Redis基本数据类型常用命令"},
                 {text: "RocketMQ原理", link: "/开发/框架/RocketMQ原理"},
-                {text: "SpringMVC注解和配置 + fastjson的简单使用", link: "/开发/框架/SpringMVC注解和配置 + fastjson的简单使用"},
+                {text: "SpringMVC注解和配置 + fastjson的简单使用", link: "/开发/框架/SpringMVC注解和配置+fastjson的简单使用"},
                 {text: "thymeleaf的th-href带参数转跳", link: "/开发/框架/thymeleaf的th-href带参数转跳"},
                 {text: "Tomcat启动关闭命令", link: "/开发/框架/Tomcat启动关闭命令"},
               ]
@@ -111,12 +113,12 @@ export default {
               text: "前端",
               collapsed: false,
               items: [
-                {text: 'HTML标签重点划注', link: '/开发/前端/HTML标签重点划注'},
-                {text: 'CSS知识重点划注', link: '/开发/前端/CSS知识重点划注'},
-                {text: '几个免版权图片网站', link: '/开发/前端/几个免版权图片网站'},
-                {text: 'Vue的事件修饰符', link: '/开发/前端/Vue的事件修饰符'},
-                {text: 'electron', link: '/开发/前端/electron'},
                 {text: 'ElementUI实战教程', link: '/开发/前端/ElementUI实战教程'},
+                {text: 'Electron开发学习', link: '/开发/前端/electron'},
+                {text: 'Vue的事件修饰符', link: '/开发/前端/Vue的事件修饰符'},
+                {text: '几个免版权图片网站', link: '/开发/前端/几个免版权图片网站'},
+                {text: 'CSS知识重点划注', link: '/开发/前端/CSS知识重点划注'},
+                {text: 'HTML标签重点划注', link: '/开发/前端/HTML标签重点划注'},
               ]
             },
           ]
@@ -141,23 +143,28 @@ export default {
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "命令行系统信息工具", link: "/软件/Linux/命令行系统信息工具"},
+                {text: "Unix系统下的常用命令", link: "/软件/Linux/Unix系统下的常用命令"},
                 {text: "Linux常用命令", link: "/软件/Linux/Linux常用命令"},
+                {text: "CentOS7安装oh-my-zsh", link: "/软件/Linux/CentOS7安装oh-my-zsh"},
                 {text: "zsh与bash的切换", link: "/软件/Linux/zsh与bash的切换"},
-                {text: "安装oh my zsh主题", link: "/软件/Linux/安装oh my zsh主题"},
-                {text: "CentOS7安装ohmyzsh", link: "/软件/Linux/CentOS7安装ohmyzsh"},
-                {text: "在ARM架构的Mac上运行exe程序", link: "/软件/Linux/在ARM架构的Mac上运行exe程序"},
+              ]
+            },
+            {
+              text: "MacOS",
+              collapsed: false,
+              items: [
+                {text: "Homebrew常用命令", link: "/软件/MacOS/Homebrew常用命令"},
+                {text: "Mac安装oh-my-zsh主题", link: "/软件/MacOS/Mac安装oh-my-zsh主题"},
+                {text: "zsh与bash的切换", link: "/软件/Linux/zsh与bash的切换"},
+                {text: "Mac调整docker栏", link: "/软件/MacOS/Mac调整docker栏"},
+                {text: "Mac查看固态使用情况", link: "/软件/MacOS/Mac查看固态使用情况"},
+                {text: "Mac删除OBS的虚拟摄像头", link: "/软件/MacOS/Mac删除OBS的虚拟摄像头"},
+                {text: "Mac上PD17虚拟机终端启动命令", link: "/软件/MacOS/Mac上PD17虚拟机终端启动命令"},
+                {text: "option和shift特殊符号", link: "/软件/MacOS/option和shift特殊符号"},
+                {text: "在ARM架构的Mac上运行exe程序", link: "/软件/MacOS/在ARM架构的Mac上运行exe程序"},
                 {text: "切换jdk版本的方法（环境变量法）", link: "/软件/Linux/切换jdk版本的方法（环境变量法）"},
                 {text: "切换jdk版本的方法（jenv法）", link: "/软件/Linux/切换jdk版本的方法（jenv法）"},
-                {text: "option和shift特殊符号", link: "/软件/Linux/option和shift特殊符号"},
-                {text: "Unix系统下的Shell命令", link: "/软件/Linux/Unix系统下的Shell命令"},
-                {text: "Mac调整docker Shell命令", link: "/软件/Linux/Mac调整docker Shell命令"},
-                {text: "Mac调整docker栏目", link: "/软件/Linux/Mac调整docker栏目"},
-                {text: "Mac查看固态使用情况", link: "/软件/Linux/Mac查看固态使用情况"},
-                {text: "Mac删除OBS的虚拟摄像头", link: "/软件/Linux/Mac删除OBS的虚拟摄像头"},
-                {text: "Mac上PD17虚拟机终端启动命令", link: "/软件/Linux/Mac上PD17虚拟机终端启动命令"},
-                {text: "Homebrew常用命令", link: "/软件/Linux/Homebrew常用命令"},
-                {text: "bash与zsh的切换", link: "/软件/Linux/bash与zsh的切换"},
-                {text: "命令行系统信息工具", link: "/软件/命令行系统信息工具"},
               ]
             },
             {
@@ -167,7 +174,6 @@ export default {
                 {text: "windows终端美化", link: "/软件/Windows/windows终端美化"},
                 {text: "VMware固定虚拟机ip", link: "/软件/Windows/VMware固定虚拟机ip"},
                 {text: "更改固态硬盘磁盘为GPT格式", link: "/软件/Windows/更改固态硬盘磁盘为GPT格式"},
-                {text: "win批量硬盘磁盘为GPT格式", link: "/软件/Windows/win批量硬盘磁盘为GPT格式"},
                 {text: "win批量删除特定格式开头的文件", link: "/软件/Windows/win批量删除特定格式开头的文件"},
                 {text: "Windows上解决端口占用", link: "/软件/Windows/Windows上解决端口占用"},
                 {text: "winWindows11安装卸载安卓软件", link: "/软件/Windows/winWindows11安装卸载安卓软件"},
@@ -175,11 +181,11 @@ export default {
             },
             {
               text: "Python相关",
-              collapsed: true,
+              collapsed: false,
               items: [
                 {text: "人工智能十大算法", link: "/软件/Python/人工智能十大算法"},
                 {text: "conda创建虚拟环境，安装Pytorch", link: "/软件/Python/conda创建虚拟环境，安装Pytorch"},
-                {text: "解决Anaconda安装后命令行前出现 (base)", link: "/软件/Python/解决Anaconda安装后命令行前出现 (base)"},
+                {text: "解决Anaconda安装后命令行前出现(base)", link: "/软件/Python/解决Anaconda安装后命令行前出现(base)"},
                 {
                   text: "jupyter相关",
                   collapsed: false,

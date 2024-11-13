@@ -1,5 +1,5 @@
 ---
-title: CentOS7安装ohmyzsh
+title: CentOS7安装oh-my-zsh
 date: 2022-11-08 20:44:15
 updated:
 categories: 

@@ -1,5 +1,5 @@
 ---
-title: 安装oh my zsh主题
+title: Mac安装oh-my-zsh主题
 date: 2022-03-07 22:42:15
 updated:
 categories: 

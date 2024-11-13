@@ -15,7 +15,7 @@ cover: /img/basic_knowledge_logo.png
 top_img: /img/Java-tutorials-by-GeeksForGeeks.png
 ---
 
-#<div align="center">------------------操作系统------------------</div>
+# <div align="center">------------------操作系统------------------</div>
 
 # 用户态和内核态<a id="UserMode"></a><a id="KernelMode"></a>
 
