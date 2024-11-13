@@ -4,7 +4,7 @@
 
 1. [Homebrew常用命令](../MacOS/Homebrew常用命令.md)
 2. [Mac安装oh-my-zsh主题](../MacOS/Mac安装oh-my-zsh主题.md)
-3. [zsh与bash的切换](./zsh与bash的切换.md)
+3. [zsh与bash的切换](../Linux/zsh与bash的切换.md)
 4. [Mac调整docker栏](./Mac调整docker栏.md)
 5. [Mac查看固态使用情况](../MacOS/Mac查看固态使用情况.md)
 6. [Mac删除OBS的虚拟摄像头](../MacOS/Mac删除OBS的虚拟摄像头.md)

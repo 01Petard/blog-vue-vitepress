@@ -211,7 +211,7 @@ export default {
           items: [
             {text: "路由器刷入OpenWrt系统搞机过程", link: "/硬件/路由器刷入OpenWrt系统搞机过程"},
             {text: "MRK3399KJ之折腾CasaOS", link: "/硬件/MRK3399KJ之折腾CasaOS"},
-            {text: "MRK3399KJ开发板折腾记录", link: "/硬件/mrk3399开发板折腾记录"},
+            {text: "MRK3399KJ开发板折腾记录", link: "/硬件/MRK3399KJ开发板折腾记录"},
             {text: "树莓派折腾记录", link: "/硬件/树莓派折腾记录"},
             {text: "树莓派安装系统及初始配置", link: "/硬件/树莓派安装系统及初始配置"},
           ]

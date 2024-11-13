@@ -8,7 +8,7 @@
 4. jupyter相关
    1. [jupyter 常用操作和命令](./jupyter常用操作和命令.md)
    2. [jupyter 增加、删除内核](./jupyter增加、删除内核.md)
-   3. [jupyter 快捷键](./jupyter快捷键.md)
+   3. <a href="jupyter notebook快捷键">jupyter notebook快捷键</a>
    4. [jupyter 更换主题](./jupyter更换主题.md)
 5. [Pytorch下载配置，Anaconda创建虚拟环境](./Pytorch下载配置，Anaconda创建虚拟环境.md)
 6. [torch常用命令](./torch常用命令.md)

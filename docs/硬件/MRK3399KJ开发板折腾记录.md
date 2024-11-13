@@ -1,5 +1,5 @@
 ---
-title: mrk3399开发板折腾记录
+title: MRK3399KJ开发板折腾记录
 date: 2024-10-13 00:41:00
 updated: 2024-10-13 00:41:00
 categories: 
