@@ -146,7 +146,7 @@ export default {
               items: [
                 {text: "命令行系统信息工具", link: "/软件/Linux/命令行系统信息工具"},
                 {text: "在服务器上部署hexo博客指南", link: "/软件/Linux/在服务器上部署hexo博客指南"},
-                {text: "Unix系统下的常用命令", link: "/软件/Linux/Unix系统下的常用命令"},
+                {text: "Unix系统下的Shell命令", link: "/软件/Linux/Unix系统下的Shell命令"},
                 {text: "Linux常用命令", link: "/软件/Linux/Linux常用命令"},
                 {text: "CentOS7安装oh-my-zsh", link: "/软件/Linux/CentOS7安装oh-my-zsh"},
                 {text: "zsh与bash的切换", link: "/软件/Linux/zsh与bash的切换"},
