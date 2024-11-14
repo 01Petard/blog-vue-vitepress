@@ -180,6 +180,206 @@ Java支持数据类型分为两类： 基本数据类型和引用数据类型。
 
 - 许多 Java 框架（如 Hibernate, Spring AOP）使用字节码增强技术，通过修改类的字节码来实现功能增强。常用工具包括 ASM、Javassist、CGLIB 等。
 
+# CGLib代理
+
+CGLib 广泛用于AOP（面向切面编程）、动态代理等场景。CGLib通过继承的方式在运行时动态生成子类，以实现对目标对象的方法拦截和增强。下面是一些使用CGLib的基本步骤和示例代码。
+
+CGLib是一个非常强大的工具，适用于需要在运行时动态生成类和方法的场景。通过以下步骤，可以轻松地在你的项目中使用CGLib来实现方法拦截和增强。
+
+## 注意事项
+
+- **性能**：虽然CGLib在大多数情况下性能较好，但在高并发场景下，仍然需要注意性能开销。
+- **最终类和方法**：CGLib不能为`final`类或`final`方法生成代理，因为它们不能被继承。
+- **私有方法**：CGLib也不能拦截私有方法，因为子类无法访问父类的私有方法。
+
+## 1. 引入依赖
+
+首先，你需要在你的项目中引入CGLib的依赖。如果你使用Maven，可以在`pom.xml`文件中添加如下依赖：
+
+```xml
+<dependency>
+    <groupId>cglib</groupId>
+    <artifactId>cglib</artifactId>
+    <version>3.3.0</version>
+</dependency>
+```
+
+## 2. 定义目标类
+
+假设我们有一个简单的类，我们希望在它的方法调用前后添加一些额外的逻辑。
+
+```java
+public class MyService {
+    public void doSomething() {
+        System.out.println("Doing something...");
+    }
+}
+```
+
+## 3. 创建MethodInterceptor
+
+CGLib的核心接口是`MethodInterceptor`，它允许我们在方法调用时进行拦截。
+
+```java
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
+import java.lang.reflect.Method;
+
+public class MyMethodInterceptor implements MethodInterceptor {
+    @Override
+    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+        System.out.println("Before method: " + method.getName());
+        
+        // 调用原始方法
+        Object result = proxy.invokeSuper(obj, args);
+        
+        System.out.println("After method: " + method.getName());
+        
+        return result;
+    }
+}
+```
+
+## 4. 创建代理对象
+
+使用CGLib的`Enhancer`类来创建目标类的子类，并将`MethodInterceptor`设置为回调。
+
+```java
+import net.sf.cglib.proxy.Enhancer;
+
+public class CglibExample {
+    public static void main(String[] args) {
+        // 创建Enhancer对象
+        Enhancer enhancer = new Enhancer();
+        
+        // 设置目标类
+        enhancer.setSuperclass(MyService.class);
+        
+        // 设置回调方法
+        enhancer.setCallback(new MyMethodInterceptor());
+        
+        // 创建代理对象
+        MyService myService = (MyService) enhancer.create();
+        
+        // 调用方法
+        myService.doSomething();
+    }
+}
+```
+
+## 5. 运行结果
+
+运行上述代码后，输出将会是：
+
+```java
+Before method: doSomething
+Doing something...
+After method: doSomething
+```
+
+# JDK 代理
+
+## 注意事项
+
+- **接口限制**：JDK 动态代理只能为实现了接口的类生成代理对象，如果类没有实现任何接口，则无法使用 JDK 动态代理。
+- **性能**：JDK 动态代理的性能相对较高，但在高并发场景下，仍然需要注意性能开销。
+- **灵活性**：JDK 动态代理基于接口，因此在设计时需要考虑接口的使用。
+
+Java 自带的动态代理机制主要通过 `java.lang.reflect.Proxy` 类和 `java.lang.reflect.InvocationHandler` 接口来实现。这种代理方式主要用于接口的代理，即只能为实现了某个接口的类生成代理对象。下面是一个详细的示例，展示如何使用 JDK 自带的动态代理。
+
+JDK 自带的动态代理机制是一种简单且强大的工具，适用于需要在运行时动态生成代理对象的场景。通过以下步骤，可以轻松地在你的项目中使用 JDK 动态代理来实现方法拦截和增强。
+
+## 1. 定义接口和目标类
+
+首先，定义一个接口，这个接口将由目标类和代理类共同实现。
+
+```java
+public interface MyService {
+    void doSomething();
+}
+```
+
+实现上述接口的目标类。
+
+```java
+public class MyServiceImpl implements MyService {
+    @Override
+    public void doSomething() {
+        System.out.println("Doing something...");
+    }
+}
+```
+
+## 2. 创建InvocationHandler
+
+实现 `InvocationHandler` 接口，这个接口的 `invoke` 方法将在代理对象的方法被调用时执行。
+
+```java
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+public class MyInvocationHandler implements InvocationHandler {
+    private final MyService target;
+
+    public MyInvocationHandler(MyService target) {
+        this.target = target;
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("Before method: " + method.getName());
+        
+        // 调用目标对象的方法
+        Object result = method.invoke(target, args);
+        
+        System.out.println("After method: " + method.getName());
+        
+        return result;
+    }
+}
+```
+
+## 3. 创建代理对象
+
+使用 `Proxy.newProxyInstance` 方法创建代理对象。
+
+```java
+import java.lang.reflect.Proxy;
+
+public class JdkProxyExample {
+    public static void main(String[] args) {
+        // 创建目标对象
+        MyService target = new MyServiceImpl();
+        
+        // 创建InvocationHandler
+        MyInvocationHandler handler = new MyInvocationHandler(target);
+        
+        // 创建代理对象
+        MyService proxy = (MyService) Proxy.newProxyInstance(
+            target.getClass().getClassLoader(), // 类加载器
+            target.getClass().getInterfaces(),  // 目标类实现的接口
+            handler                            // InvocationHandler
+        );
+        
+        // 调用代理对象的方法
+        proxy.doSomething();
+    }
+}
+```
+
+## 4. 运行结果
+
+运行上述代码后，输出将会是：
+
+深色版本
+
+```java
+Before method: doSomething
+Doing something...
+After method: doSomething
+```
+
 # <div align="center">------------------设计模式------------------</div>
 
 # 为什么要用设计模式？
