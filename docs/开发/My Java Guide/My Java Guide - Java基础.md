@@ -25,11 +25,11 @@ Java支持数据类型分为两类： 基本数据类型和引用数据类型。
 - 字符型：char
 - 布尔型：boolean
 
-<img src="https://cdn.xiaolincoding.com//picgo/1715930632378-7f03a5ae-3364-41d4-88a8-428997d543dd.png" alt="img" style="zoom: 100%;float:left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411141442490.png" alt="image-20241114144227432" style="zoom: 75%;" />
 
 8种基本数据类型的默认值、位数、取值范围，如下表所示：
 
-<img src="https://cdn.xiaolincoding.com//picgo/1715930589177-73932d2c-b0c0-4f58-a5c1-ab514b1a389c.png" alt="img" style="zoom:80%;" />
+<img src="https://cdn.xiaolincoding.com//picgo/1715930589177-73932d2c-b0c0-4f58-a5c1-ab514b1a389c.png" alt="img" style="zoom:75%;" />
 
 # String、StringBuffer 和 StringBuilder 的区别
 

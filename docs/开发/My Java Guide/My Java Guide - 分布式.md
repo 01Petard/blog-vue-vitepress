@@ -2771,7 +2771,7 @@ Netty中的Future和Promise是用于处理异步操作的结果和状态的。
 
 抽象类只能单继承，接口可以有多个实现。
 
-# <div align="center">------------容器化技术和CI/CD------------</div>
+# <div align="center">-----------------容器化技术----------------</div>
 
 # Docker 的基本概念和工作原理
 
@@ -2853,7 +2853,7 @@ docker build -t my_custom_image:latest .
 3. **Docker Compose：** 使用 Docker Compose 来编排多个服务，可以为每个服务定义网络，并对网络进行配置。
 4. **共享网络命名空间：** 通过创建共享网络命名空间的方式，使多个容器共享网络设置。
 
-## 如何实现资源限制？ 
+# 如何实现资源限制？ 
 
 1. 为了限制容器使用的 CPU 数量，可以使用 `--cpu-shares` 或 `--cpus` 参数。
    - `--cpu-shares`：使用相对权重方式分配 CPU 资源。
@@ -2867,9 +2867,11 @@ docker build -t my_custom_image:latest .
 docker run --cpus=1 --memory=512m [container_name]
 ```
 
-# Jenkins
 
-## 自动发布的好处
+
+# <div align="center">----------------自动化服务器---------------</div>
+
+# 自动发布的好处
 
 **CI/CD**：持续集成(CI）、持续交付(CD)
 
@@ -2885,7 +2887,7 @@ docker run --cpus=1 --memory=512m [container_name]
 
 **自动发布真正的好处**：并不是单单**节省了多服务器的部署时间**，**免去人工编译、部署时可能发生的人为失误**，从而节省无意间浪费的成本。
 
-## Jenkins介绍
+# Jenkins介绍
 
 Jenkins是一个自动发布部署软件的系统，可以简单地将Jenkins理解为一个网站系统，在管理网站上，用户可以编排自动发布任务，可以实现代码下载-代码编译-文件发送-执行远程命令等场景，当条件触发时，Jenkins就会自动按预设任务进行编译部署。
 
@@ -2893,15 +2895,15 @@ Jenkins是一个自动发布部署软件的系统，可以简单地将Jenkins理
 
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411141353929.png" alt="image-20241114135335847" style="zoom: 60%;" />
 
-## Jenkins安装
+# Jenkins安装
 
 使用[1Panel](https://1panel.cn/)一键安装
 
-## Jenkins发布流程配置
+# Jenkins发布流程配置
 
 TODO
 
-## 如何使用 Jenkins 与 Docker 集成？ 
+# *如何使用 Jenkins 与 Docker 集成？* 
 
 1. 安装必要的插件：在 Jenkins 中，安装 Docker plugin 和 Pipeline plugin 等必要插件。
 2. 配置 Jenkins：配置环境，确保 Jenkins 可以访问 Docker 命令。
