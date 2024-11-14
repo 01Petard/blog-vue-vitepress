@@ -45,6 +45,7 @@ export default {
       {
         text: '软件',
         items: [
+          {text: '软件', link: '/软件/index'},
           {text: 'Linux', link: '/软件/Linux/index'},
           {text: 'MacOS', link: '/软件/MacOS/index'},
           {text: 'Windows', link: '/软件/Windows/index'},
@@ -144,6 +145,7 @@ export default {
               collapsed: false,
               items: [
                 {text: "命令行系统信息工具", link: "/软件/Linux/命令行系统信息工具"},
+                {text: "在服务器上部署hexo博客指南", link: "/软件/Linux/在服务器上部署hexo博客指南"},
                 {text: "Unix系统下的常用命令", link: "/软件/Linux/Unix系统下的常用命令"},
                 {text: "Linux常用命令", link: "/软件/Linux/Linux常用命令"},
                 {text: "CentOS7安装oh-my-zsh", link: "/软件/Linux/CentOS7安装oh-my-zsh"},
@@ -180,7 +182,7 @@ export default {
               ]
             },
             {
-              text: "Python相关",
+              text: "Python",
               collapsed: false,
               items: [
                 {text: "人工智能十大算法", link: "/软件/Python/人工智能十大算法"},
