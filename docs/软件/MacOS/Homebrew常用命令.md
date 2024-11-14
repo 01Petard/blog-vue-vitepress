@@ -13,23 +13,29 @@ cover: http://n.sinaimg.cn/sinakd202126s/506/w840h466/20210206/2eff-kirmaiu51187
 top_img: https://i.ytimg.com/vi/N-SDrN4G4lE/maxresdefault.jpg
 ---
 
-### 安装：
+### 安装Homebrew
 
 ```shell
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-### 卸载：
+### 卸载Homebrew
 
 ```shell
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 ```
 
-### 常用命令：
+### 常用Homebrew命令
 
 安装软件：`brew install xxx`
+
 卸载软件：`brew uninstall xxx`
+
 搜索软件：`brew search xxx`
+
 更新软件：`brew upgrade xxx`
+
 查看列表：`brew list`
+
 更新brew：`brew update`
+
