@@ -157,6 +157,7 @@ export default {
               collapsed: false,
               items: [
                 {text: "Homebrew常用命令", link: "/软件/MacOS/Homebrew常用命令"},
+                {text: "安装sdkman", link: "/软件/MacOS/安装sdkman"},
                 {text: "Mac安装oh-my-zsh主题", link: "/软件/MacOS/Mac安装oh-my-zsh主题"},
                 {text: "zsh与bash的切换", link: "/软件/Linux/zsh与bash的切换"},
                 {text: "Mac调整docker栏", link: "/软件/MacOS/Mac调整docker栏"},

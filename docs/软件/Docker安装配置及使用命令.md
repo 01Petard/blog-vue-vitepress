@@ -474,11 +474,11 @@ docker run \
 --privileged=true \
 --name mysql8 \
 --restart=always \
--v /mydata/mysql8/conf:/etc/mysql/conf.d \
--v /mydata/mysql8/data:/var/lib/mysql \
--v /mydata/mysql8/log:/var/log/mysql \
+-v ~/mydata/mysql8/conf:/etc/mysql/conf.d \
+-v ~/mydata/mysql8/data:/var/lib/mysql \
+-v ~/mydata/mysql8/log:/var/log/mysql \
 -e MYSQL_ROOT_PASSWORD=root \
--d mysql:8.0.32
+-d mysql:latest
 ```
 
 
