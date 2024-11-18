@@ -144,6 +144,7 @@ export default {
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "用Shell命令提取路径信息", link: "/软件/Linux/用Shell命令提取路径信息"},
                 {text: "命令行系统信息工具", link: "/软件/Linux/命令行系统信息工具"},
                 {text: "在服务器上部署hexo博客指南", link: "/软件/Linux/在服务器上部署hexo博客指南"},
                 {text: "Unix系统下的Shell命令", link: "/软件/Linux/Unix系统下的Shell命令"},
