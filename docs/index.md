@@ -30,7 +30,9 @@ hero:
     - theme: alt
       text: 我的Bilibili
       link: https://space.bilibili.com/12764212
+
 ---
+
 <style>:root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
@@ -51,10 +53,13 @@ hero:
   }
 }
 </style>
+
 # 欢迎来到我的博客！
+
 感谢大家一直以来的支持和关注！这个博客是基于 [VitePress](https://vitejs.cn/vitepress/) 构建的，旨在提供更高效的内容创作和管理体验。尽管我的旧博客曾承载了许多宝贵的学习记录与分享，但为了追求更好的技术体验，我决定将其迁移至新的平台。
 
 # 为什么选择迁移？
+
 随着时间的推移，我希望能在博客上进行更高效的内容创作和管理。虽然 [Hexo](https://hexo.io/zh-cn/) 是一个非常优秀的静态博客框架，提供了快速生成页面和丰富的主题支持，但在持续使用中，我遇到了以下一些问题：
 
 1. 构建速度：随着博客文章的增多，Hexo 的构建速度变慢，尤其是在多次修改和发布时，这影响了我的开发体验
@@ -64,9 +69,9 @@ hero:
 因此，我选择将博客迁移到 VitePress，一个以 Vue 3 为基础的现代文档生成器，不仅能更高效地管理内容，还能提升整体性能和可扩展性。
 
 # 访问我的旧博客
+
 如果你喜欢我的技术分享，或者希望了解更新、更丰富的内容，欢迎访问我的新博客：
 
 旧博客：[花火の红玉宫](https://01petard.github.io/)
 
 国内访问：[代码港湾](http://www.huangzexiao.top/)
-
