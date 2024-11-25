@@ -172,11 +172,9 @@ alter table 表名 drop primary key;
 alter table 表名 drop constraint 约束名 (on 表名)；
 ```
 
-复合主/外键内部是有顺序的，请注意！顺序由创建时决定![image-20220127172122931](https://tva1.sinaimg.cn/large/e6c9d24egy1gznt0ihzehj2142070dgb.jpg)
+复合主/外键内部是有顺序的，请注意！顺序由创建时决定
 
-![image-20220127172640923](https://tva1.sinaimg.cn/large/e6c9d24egy1gznt0f7tr3j212g05ujs8.jpg)
-
-单键可以和复合主键的单键相连，但是不建议这么做![image-20220127171218341](https://tva1.sinaimg.cn/large/e6c9d24egy1gznt15c5g2j213i05udgn.jpg)
+单键可以和复合主键的单键相连，但是不建议这么做
 
 删除表
 

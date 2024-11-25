@@ -59,7 +59,7 @@ public class IntBufferDemo {
 
 运行后可以看到
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002262.png" alt="file" style="zoom:90%;float: left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002262.png" alt="file" style="zoom:90%;" />
 
 ### 2.Buffer的基本原理
 
@@ -122,15 +122,16 @@ public class BufferDemo {
 ```
 
 完成的输出结果为：
+
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002536.png" alt="file" style="zoom:80%;" />
 
 运行的结果我们可以看到，下面对以上结果进行图解，四个属性分别如图所示
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002496.png" alt="file" style="zoom:100%;float: left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002496.png" alt="file" style="zoom:100%;" />
 
 我们可以从通道中读取一些数据到缓冲区中，注意从通道读取数据，相当于往缓冲区中写入数据。如果读取4个自己的数据，则此时position的值为4，即下一个将要被写入的字节索引为4，而limit仍然是10，如下图所示：
 
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002423.png" alt="file" style="zoom:100%;float: left;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002423.png" alt="file" style="zoom:100%;" />
 
 下一步把读取的数据写入到输出通道中，相当于从缓冲区中读取数据，在此之前，必去调用flip()方法，该方法将会完成两件事情：
 1.将limit设置为当前的position值
@@ -138,10 +139,13 @@ public class BufferDemo {
 由于position被设置为0，所以可以保证在下一步输出是读取到的是缓冲区中的第一个字节，而limit被设置为当前的position，可以保证读取的数据正好是之前写入到缓冲区中的数据， 如下图所示：
 
 ![file](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002870.png)
+
 现在调用get()方法从缓冲区中读取数据写入到输出通道，这会导致position的增加而limit保持不变，但position不会超过limit的值，所以在读取我们之前写入到缓冲区中的4个自己之后，position和limit的值都为4，如下图所示：
+
 ![file](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002577.png)
 
 在从缓冲区读取数据完毕后，limit的值仍然保持在我们调用flip()方法的值，调用clear()方法能够把所有的状态变化为初始化的值，如下图所示：
+
 ![file](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002598.png)
 
 ### 3.缓冲区的分配
@@ -202,6 +206,7 @@ public class BufferSlice {
 ```
 
 在该示例中，分配了一个容量大小为10的缓冲区，并在其中放入数据0-9，而在该缓冲区基础上又创建一个子缓冲区，并改变子缓冲区的内容，从最后输出的结果来看，只有子缓冲区“可见的”那部分数据发生了变化，并且说明子缓冲区与原缓冲区时数据共享的，输出结果如下所示：
+
 ![file](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151002993.png)
 
 ### 5.只读缓冲区
@@ -303,7 +308,7 @@ public class MappedBuffer {
 
 ## 1.2选择器 Selector
 
-传统的Server/Client模式基于TPR(Thread Request),服务器会为每个客户请求建立一个线程，由该线程单独负责处理一个客户请求。这种模式带来的一个问题就是线程数量的剧增，大量的线程会增大服务器的开销。大多数的实现为了避免这个问题，都采用了线程池模型，并设置线程池线程的最大数量，这又带来了新的问题，如果线程池中有200个线程，而有200个用户都在进行大文件下载，会导致第201用户的请求无法及时处理，即便第201个用户想请求一个几kb大小的页面，传统的Server/Client模式如下图所示
+传统的Server/Client模式基于TPR(Thread Request),服务器会为每个客户请求建立一个线程，由该线程单独负责处理一个客户请求。这种模式带来的一个问题就是线程数量的剧增，大量的线程会增大服务器的开销。大多数的实现为了避免这个问题，都采用了线程池模型，并设置线程池线程的最大数量，这又带来了新的问题，如果线程池中有200个线程，而有200个用户都在进行大文件下载，会导致第201用户的请求无法及时处理，即便第201个用户想请求一个几kb大小的页面，传统的Server/Client模式如下图所示：
 
 ![file](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202408151003919.png)
 
@@ -343,3 +348,5 @@ I/O 速度非常慢，而在 Java 1.4 中推出了 NIO，这是一个面向块�
 一步中产生或者消费一个数据库，按块处理要比按字节处理数据快的多。
 
 ## 1.3 通道Channel
+
+todo
