@@ -225,6 +225,7 @@ export default {
         {
           text: "杂谈",
           items: [
+            {text: "软件工程圣经《人月神话》到底讲了什么", link: "/杂谈/软件工程圣经《人月神话》到底讲了什么"},
             {text: "项目master心得体会", link: "/杂谈/项目master心得体会"},
             {text: "分享一下我Mac使用的软件", link: "/杂谈/分享一下我Mac使用的软件"},
             {text: "Stable Diffusion信息备忘录", link: "/杂谈/Stable Diffusion信息备忘录"},
