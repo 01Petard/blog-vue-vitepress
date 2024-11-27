@@ -10,7 +10,8 @@ echo "========================================"
 
 # 提交文件
 echo "提交文件"
-git commit -am "doc: 1、备份文章；"
+git add .
+git commit -m "doc: 1、备份文章；"
 echo "========================================"
 
 echo "博客已重新部署，详情点击： http://www.huangzexiao.top"
