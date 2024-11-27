@@ -808,11 +808,18 @@ public enum PointsSuitScenesEnum {
         this.sceneId = sceneId;
     }
 
+    public String getSceneName() {
+        return sceneName;
+    }
+
+    public int getSceneId() {
+        return sceneId;
+    }
+
     public void printInfo() {
         System.out.println("sceneName: " + sceneName);
         System.out.println("sceneId: " + sceneId);
     }
-
 }
 ```
 
@@ -837,11 +844,7 @@ public class BookTestPointsReslove implements IPointsStrategy {
 
     @Override
     public void operaPoints(String userId, int points, int operateType) {
-        if (operateType == 1) {
-            System.out.println("书籍测试加分:userId=" + userId + " points=" + points);
-        } else if (operateType == 0) {
-            System.out.println("书籍测试减分:userId=" + userId + " points=" + points);
-        }
+        PointsUtils.handlePoints(userId, points, operateType, getPointsSuitScene());
     }
 }
 
@@ -855,10 +858,16 @@ public class LevelFightPointsReslove implements IPointsStrategy {
 
     @Override
     public void operaPoints(String userId, int points, int operateType) {
+        PointsUtils.handlePoints(userId, points, operateType, getPointsSuitScene());
+    }
+}
+// 积分工具类
+public class PointsUtils {
+    public static void handlePoints(String userId, int points, int operateType, String operationName) {
         if (operateType == 1) {
-            System.out.println("阅读闯关加分:userId=" + userId + " points=" + points);
+            System.out.println(operationName + "加分:userId=" + userId + " points=" + points);
         } else if (operateType == 0) {
-            System.out.println("阅读闯关扣分:userId=" + userId + " points=" + points);
+            System.out.println(operationName + "减分:userId=" + userId + " points=" + points);
         }
     }
 }
@@ -883,14 +892,16 @@ public class PointsStrategyConfig {
     public LevelFightPointsReslove scene2PointsStrategy() {
         return new LevelFightPointsReslove();
     }
-
 }
+```
 
+```java
 // 业务接口
 public interface IPointsService {
-
     void addPoints(Long userId, int points, PointsSuitScenesEnum scene);
+    void subtractPoints(Long userId, int points, PointsSuitScenesEnum scene);
 }
+
 // 业务实现类
 @Service
 public class PointsService implements IPointsService, ApplicationContextAware {
@@ -924,7 +935,6 @@ public class PointsService implements IPointsService, ApplicationContextAware {
         strategy.operaPoints(userId.toString(), points, 0);
     }
 }
-
 ```
 
 ```java
@@ -1313,11 +1323,11 @@ public class Client {
 }
 ```
 
-#<div align="center">---------------------集合---------------------</div>
+# <div align="center">---------------------集合---------------------</div>
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1816450440005341186/pLwh6DJV_image_mianshiya.png" alt="面试鸭" style="zoom:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411251953636.png" alt="面试鸭" style="zoom:100%;" />
 
-<img src="https://pic.code-nav.cn/mianshiya/question_picture/1816764875009871873/wbcoHSLn_image_mianshiya.png" alt="image.png" style="zoom:120%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411251953166.png" alt="image.png" style="zoom:120%;" />
 
 # Collection 家族
 
