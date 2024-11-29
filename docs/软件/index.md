@@ -2,7 +2,9 @@
 
 ## 目录
 
-1. [Git的配置和使用命令](./Git的配置和使用命令.md)
+1. [Ollama常用命令](./Ollama常用命令.md)
+2. [本地局域网部署及使用Ollama大模型](./本地局域网部署及使用Ollama大模型.md)
+3. [Git的配置和使用命令](./Git的配置和使用命令.md)
 2. [Docker安装配置及使用命令](./Docker安装配置及使用命令.md)
 3. [nodejs相关命令](./nodejs相关命令.md)
 4. [curl命令的用法](./curl命令的用法.md)

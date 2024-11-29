@@ -12,21 +12,11 @@ Ollama 是一个轻量级的本地大语言模型平台，支持命令行操作�
 
 #### **拉取模型**
 
-下载指定模型到本地：
-
 ```bash
 ollama pull <model_name>
 ```
 
-示例：
-
-```bash
-ollama pull llama2
-```
-
 #### **列出本地模型**
-
-查看已下载到本地的模型：
 
 ```bash
 ollama list
@@ -34,16 +24,8 @@ ollama list
 
 #### **删除模型**
 
-移除本地的模型文件：
-
 ```bash
 ollama delete <model_name>
-```
-
-示例：
-
-```bash
-ollama delete llama2
 ```
 
 ------
@@ -61,14 +43,6 @@ ollama chat <model_name>
 进入交互模式后，输入提示语以与模型对话。
 
 #### **一次性对话**
-
-向模型提供一个提示并立即得到响应：
-
-```bash
-ollama prompt <model_name> "<prompt>"
-```
-
-示例：
 
 ```bash
 ollama prompt llama2 "What is the capital of France?"
@@ -160,29 +134,17 @@ ollama config reset
 
 #### **检查版本**
 
-查看当前安装的 Ollama 版本：
-
 ```bash
 ollama version
 ```
 
 #### **获取帮助**
 
-查看 Ollama 的命令行帮助信息：
-
 ```bash
 ollama help
 ```
 
 #### **命令帮助**
-
-查看某个命令的具体用法：
-
-```bash
-ollama <command> --help
-```
-
-示例：
 
 ```bash
 ollama pull --help
@@ -205,24 +167,12 @@ ollama chat <model_name> --stream
 调整模型的系统级提示信息：
 
 ```bash
-ollama chat <model_name> --system "<system_message>"
-```
-
-示例：
-
-```bash
 ollama chat llama2 --system "You are an assistant focused on medical topics."
 ```
 
 #### **从文件输入提示**
 
 直接从文件中加载提示语：
-
-```bash
-ollama prompt <model_name> --file <file_path>
-```
-
-示例：
 
 ```bash
 ollama prompt llama2 --file input.txt
