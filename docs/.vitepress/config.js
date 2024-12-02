@@ -7,11 +7,11 @@ export default {
   description: "个人技术知识体系矩阵",
   head: [
     // 网站的图标（显示在浏览器的 tab 上）
-    ["link", {rel: "icon", href: `${base}favicon.png`}],
+    ["link", {rel: "icon", href: `../public/favicon.png`}],
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: 'assets/favicon.png',
+    logo: '../public/favicon.png',
     // 开启本地搜索
     search: {
       provider: "local"
