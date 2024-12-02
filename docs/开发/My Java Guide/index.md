@@ -1,5 +1,7 @@
 # My Java Guide
 
+这是一个Java学习笔记，几乎包含了面试中的所有八股内容，All Java is here！
+
 ## 目录
 
 1. <a href="./My Java Guide - 计算机基础">My Java Guide - 计算机基础</a>

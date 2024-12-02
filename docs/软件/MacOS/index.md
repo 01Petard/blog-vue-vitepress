@@ -1,5 +1,7 @@
 # MacOS
 
+关于MacOS这个系统的所有内容，我都放在这里了。
+
 ## 目录
 
 1. [Homebrew常用命令](../MacOS/Homebrew常用命令.md)
