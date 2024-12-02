@@ -1,6 +1,6 @@
 ---
-title: stable diffusion结合NovelAI的模型生成动漫人物图片
-date: 2022-010-10 14:13:15
+title: Stable Diffusion WebUI的部署和使用
+date: 2022-10-10 14:13:15
 updated:
 categories: 
 - 软件

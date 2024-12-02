@@ -1,5 +1,5 @@
 ---
-title: 听说你喜欢搞BIM
+title: 对BIM行业的二次开发的思考
 date: 2022-07-20 15:48:15
 updated:
 categories: 

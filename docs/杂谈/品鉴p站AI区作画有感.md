@@ -1,5 +1,5 @@
 ---
-title: AI作画杀疯了
+title: 品鉴p站AI区作画有感
 date: 2022-10-16 16:42:15
 updated: 
 categories: 
@@ -18,6 +18,8 @@ top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/novelai_vedio_cu
 坐标：
 
 > [最愛巨乳 - pixiv](https://www.pixiv.net/users/43641095)
+
+现在的感想就是：AI作画杀疯了！
 
 一个礼拜前，我看到这位哥们刚上传几张，结果现在就一页了，这巨乳真就各样不带重的，想有啥就有啥
 
