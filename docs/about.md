@@ -20,7 +20,8 @@ comments: false
 Name: 伪音花火 / 01Petard
 Address: Zhejiang, Hangzhou
 Github: https://github.com/01Petard
-Blog: https://01petard.github.io
+Blog: https://01petard.github.io/blog-vue-vitepress/
+Blog(Legacy): https://01petard.github.io/
 Hobbies: Bangumis, Doujin, Surfing Online, Digital Devices
 ```
 
