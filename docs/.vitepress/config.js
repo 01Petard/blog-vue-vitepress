@@ -227,6 +227,7 @@ export default {
         {
           text: "杂谈",
           items: [
+            {text: "关于yt-dlp", link: "/杂谈/关于yt-dlp"},
             {text: "设计模式的荼毒体现在哪？", link: "/杂谈/设计模式的荼毒体现在哪"},
             {text: "对于大模型绘制UML图的调研", link: "/杂谈/对于大模型绘制UML图的调研"},
             {text: "2024年常见Ollama大模型对比", link: "/杂谈/2024年常见Ollama大模型对比"},
