@@ -30,6 +30,19 @@ hero:
     - theme: alt
       text: 我的Bilibili
       link: https://space.bilibili.com/12764212
+features:
+  - title: 光速构建，无限知识
+    details: 如闪电般的加载速度，快速访问到丰富的知识宝库。多端设备都能享受流畅的阅读体验。
+    icon:
+      src: /public/闪电.png
+  - title: 简约不简单，高效传播智慧
+    details: 功能直观，轻松创建专业的博客和文档。专注于内容创作，快速发布高质量的文章。
+    icon:
+      src: /public/安全高效.png
+  - title: 代码与文字的交响，编织未来
+    details: 完美展示了前端工具链的最佳实践，从HMR到TS支持，每一个特性都是为了提升文档开发体验。
+    icon:
+      src: /public/拥抱未来.png
 
 ---
 
@@ -54,6 +67,14 @@ hero:
 }
 </style>
 
+<div style="margin-top: 30px;"></div>
+
+----
+<div style="text-align:center;font-size: x-large">
+
+\-- **放在开头说的话** --
+</div>
+
 # 欢迎来到我的博客！
 
 感谢大家一直以来的支持和关注！这个博客是基于 [VitePress](https://vitejs.cn/vitepress/) 构建的，旨在提供更高效的内容创作和管理体验。尽管我的旧博客曾承载了许多宝贵的学习记录与分享，但为了追求更好的技术体验，我决定将其迁移至新的平台。
@@ -75,3 +96,8 @@ hero:
 旧博客：[花火の红玉宫](https://01petard.github.io/)
 
 国内访问：[代码港湾](http://www.huangzexiao.top/)
+
+---
+<div class="tip custom-block" style="max-width:1152px;margin:20px auto">
+本站以分享经验、知识还有我的个人爱好为为目的，搬运和分享以供学习和研究使用，版权归作者所有，如果无意之中侵犯了您的版权，请通过邮箱私信与我取得联系，我将在第一时间删除！另外， 本站内的文章仅供学习交流之用，不参与商业用途。如有抄袭还请自重！
+</div>
