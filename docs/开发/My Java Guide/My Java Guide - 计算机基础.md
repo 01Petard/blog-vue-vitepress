@@ -263,7 +263,7 @@ top_img: /img/Java-tutorials-by-GeeksForGeeks.png
 
 需要注意的是，我们并不能将 TCP/IP 四层模型 和 OSI 七层模型完全精确地匹配起来，不过可以简单将两者对应起来，如下图所示：
 
-<img src="https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png" alt="TCP/IP 四层模型" style="zoom:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412171634463.png" alt="TCP/IP 四层模型" style="zoom:100%;" />
 
 # 协议
 
@@ -271,7 +271,7 @@ top_img: /img/Java-tutorials-by-GeeksForGeeks.png
 
 **1. 应用层有哪些常见的协议？**
 
-<img src="https://oss.javaguide.cn/github/javaguide/cs-basics/network/application-layer-protocol.png" alt="应用层常见协议" style="zoom:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412171635020.png" alt="应用层常见协议" style="zoom:100%;" />
 
 - **HTTP（Hypertext Transfer Protocol，超文本传输协议）**：基于 TCP 协议，是一种用于传输超文本和多媒体内容的协议，主要是为 Web 浏览器与 Web 服务器之间的通信而设计的。当我们使用浏览器浏览网页的时候，我们网页就是通过 HTTP 请求进行加载的。
 - **SMTP（Simple Mail Transfer Protocol，简单邮件发送协议）**：基于 TCP 协议，是一种用于发送电子邮件的协议。注意 ：SMTP 协议只负责邮件的发送，而不是接收。要从邮件服务器接收邮件，需要使用 POP3 或 IMAP 协议。
@@ -284,14 +284,14 @@ top_img: /img/Java-tutorials-by-GeeksForGeeks.png
 
 **2. 传输层有哪些常见的协议？**
 
-<img src="https://oss.javaguide.cn/github/javaguide/cs-basics/network/transport-layer-protocol.png" alt="传输层常见协议" style="zoom:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412171635385.png" alt="传输层常见协议" style="zoom:100%;" />
 
 - **TCP（Transmission Control Protocol，传输控制协议 ）**：提供 **面向连接** 的，**可靠** 的数据传输服务。
 - **UDP（User Datagram Protocol，用户数据协议）**：提供 **无连接** 的，**尽最大努力** 的数据传输服务（不保证数据传输的可靠性），简单高效。
 
 **3. 网络层有哪些常见的协议？**
 
-<img src="https://javaguide.cn/assets/nerwork-layer-protocol-VpGZIByy.png" alt="网络层常见协议" style="zoom:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412171635205.png" alt="网络层常见协议" style="zoom:100%;" />
 
 - **IP（Internet Protocol，网际协议）**：TCP/IP 协议中最重要的协议之一，属于网络层的协议，主要作用是定义数据包的格式、对数据包进行路由和寻址，以便它们可以跨网络传播并到达正确的目的地。目前 IP 协议主要分为两种，一种是过去的 IPv4，另一种是较新的 IPv6，目前这两种协议都在使用，但后者已经被提议来取代前者。
 - **ARP（Address Resolution Protocol，地址解析协议）**：ARP 协议解决的是网络层地址和链路层地址之间的转换问题。因为一个 IP 数据报在物理上传输的过程中，总是需要知道下一跳（物理上的下一个目的地）该去往何处，但 IP 地址属于逻辑地址，而 MAC 地址才是物理地址，ARP 协议解决了 IP 地址转 MAC 地址的一些问题。
@@ -312,7 +312,7 @@ top_img: /img/Java-tutorials-by-GeeksForGeeks.png
 7. **是否提供广播或多播服务**：TCP 只支持点对点通信，UDP 支持一对一、一对多、多对一、多对多；
 8. ……
 
-我把上面总结的内容通过表格形式展示出来了！确定不点个赞嘛？
+以下是我总结的：
 
 |                        | TCP            | UDP        |
 | ---------------------- | -------------- | ---------- |
@@ -331,7 +331,7 @@ top_img: /img/Java-tutorials-by-GeeksForGeeks.png
 
 ## HTTP 和 HTTPS 的区别
 
-<img src="https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-vs-https.png" alt="HTTP 和 HTTPS 对比" style="zoom:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412171635932.png" alt="HTTP 和 HTTPS 对比" style="zoom:100%;" />
 
 - **端口号**：HTTP 默认是 80，HTTPS 默认是 443。
 - **URL 前缀**：HTTP 的 URL 前缀是 `http://`，HTTPS 的 URL 前缀是 `https://`。
@@ -624,7 +624,7 @@ JWT 通常用于身份验证和授权。在用户登录成功后，服务器会�
 7. **浏览器解析响应**：浏览器收到 HTTP 响应报文后，解析响应体中的 HTML 代码，渲染网页的结构和样式，同时根据 HTML 中的其他资源的 URL（如图片、CSS、JS 等），再次发起 HTTP 请求，获取这些资源的内容，直到网页完全加载显示。
 8. **中断连接**：浏览器在不需要和服务器通信时，可以主动关闭 TCP 连接，或者等待服务器的关闭请求。
 
-<img src="https://oss.javaguide.cn/github/javaguide/url%E8%BE%93%E5%85%A5%E5%88%B0%E5%B1%95%E7%A4%BA%E5%87%BA%E6%9D%A5%E7%9A%84%E8%BF%87%E7%A8%8B.jpg" alt="img" style="zoom:60%;" />
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412171636936.jpeg" alt="img" style="zoom:60%;" />
 
 ## HTTP 协议中 GET 和 POST 的区别
 
