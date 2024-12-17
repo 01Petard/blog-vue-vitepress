@@ -1,6 +1,8 @@
 // .vitepress/config.js
+import { defineConfig } from 'vitepress';
+
 const base = "/blog-vue-vitepress/";
-export default {
+export default defineConfig({
   base,
   lang: 'zh-cn',
   title: "代码港湾",
@@ -18,7 +20,7 @@ export default {
     },
     // 修改侧边栏导航的标题
     outline: {
-      level: [1, 2, 3, 4],
+      level: [1, 2],
       label: "目录导航"
     },
     // 文档页脚的文字
@@ -287,4 +289,4 @@ export default {
       {icon: 'github', link: 'https://github.com/01Petard'}
     ],
   }
-};
+});

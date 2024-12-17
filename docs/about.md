@@ -5,32 +5,73 @@ type: "about"
 comments: false
 ---
 
-<div style="color:red;font-weight:bold;">
-	<p style="">
-  	I wish you to become your own sun , no need to rely on who’s light.
-  </p>
-  <p>
-    —— 愿你成为自己的太阳，无需凭借谁的光芒。
-  </p>
-</div>
+
+<style>
+    /* 定义背景闪耀动画 */
+    @keyframes shine {
+      0% { background-position: 0 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0 50%; }
+    }
+
+    /* 闪耀背景效果，仅限该 div */
+    .shiny-div {
+      font-weight: bold; /* 加粗字体 */
+      padding: 20px; /* 增加内边距 */
+      text-align: center; /* 居中对齐 */
+      /*background-image: linear-gradient(120deg, #dd206f, #ea8011, #1c7526, #2b77b5, #51259c);*/
+      background-image: linear-gradient(
+				120deg,
+			  #bd34fe, /* 紫色 */
+			  #47caff, /* 蓝色 */
+			  #2dd4bf, /* 青绿 */
+			  #facc15, /* 金色 */
+			  #ff4d4d, /* 红色 */
+			  #bd34fe /* 回到紫色 */
+			);
+      background-size: 300% 300%;
+      -webkit-background-clip: text; /* 使用背景裁剪文字 */
+      background-clip: text;
+      color: transparent; /* 让文字透明显示背景 */
+      animation: shine 5s infinite linear; /* 应用动画 */
+      font-size: 1.2rem;
+    }
+
+    /* 单独设置中文部分的颜色 */
+    .shiny-div p:nth-child(2) {
+      /*color: #ff4d4d; !* 深红色 *!*/
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+
+  <div class="shiny-div">
+    <p>
+      Wish you to become your own sun, no need to rely on who’s light.
+    </p>
+    <p>
+      —— 愿你成为自己的太阳，无需凭借谁的光芒。
+    </p>
+  </div>
 
 ## 👲 基本信息
 
 ```yaml
-Name: 伪音花火 / 01Petard
-Address: Zhejiang, Hangzhou
-Github: https://github.com/01Petard
-Blog: https://01petard.github.io/blog-vue-vitepress/
-Blog(Legacy): https://01petard.github.io/
-Hobbies: Bangumis, Doujin, Surfing Online, Digital Devices
+👤 Name: 伪音花火 / 01Petard
+🏠 Address: Zhejiang, Hangzhou
+📮 Email: 1520394133@qq.com
+🐱 Github: https://github.com/01Petard
+💻 Blog: https://01petard.github.io/blog-vue-vitepress/
+💻 Blog(Legacy): https://01petard.github.io/
+❤️ Hobbies: Bangumis, Doujin, Surfing Online, Digital Devices
 ```
 
 ## 🔨 技术栈
 
-- 后端学习的还挺多的，但感觉自己还是个菜鸟（Java要死了，那我转Go？）
-- 暴学前端，目前Vue3基本入门了，自我感觉良好（学多了感觉JavaScript也看顺眼了）
-- 还了解一点Python，懂点Flask框架，会运用简单的AI模型（语法还行，主要是语法糖的问题）
-- 懂点开发板相关的硬件，对硬件开发了解不多，但是热衷于捣鼓软路由、NAS相关的东西
+- 后端学习的还挺多的，感觉自己可以自己行了👍（Java要死了，那我转Go？）
+- 暴学前端，目前Vue3基本ok了，自我感觉良好（学多了感觉JavaScript也看顺眼了）
+- 了解 a little of Python，懂点Flask框架，会运用简单的AI模型（对 Ollama 这玩意儿比较看好）
+- 懂点开发板相关的硬件，对硬件开发了解不多，但是热衷于捣鼓“软路由”、“NAS”相关的东西
 - ……
 
 ## 💘 关于本站

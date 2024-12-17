@@ -34,23 +34,35 @@ features:
   - title: 光速构建，无限知识
     details: 如闪电般的加载速度，快速访问到丰富的知识宝库。多端设备都能享受流畅的阅读体验。
     icon:
-      src: /public/闪电.png
+      src: /闪电.png
   - title: 简约不简单，高效传播智慧
     details: 功能直观，轻松创建专业的博客和文档。专注于内容创作，快速发布高质量的文章。
     icon:
-      src: /public/安全高效.png
+      src: /安全高效.png
   - title: 代码与文字的交响，编织未来
     details: 完美展示了前端工具链的最佳实践，从HMR到TS支持，每一个特性都是为了提升文档开发体验。
     icon:
-      src: /public/拥抱未来.png
+      src: /拥抱未来.png
 
 ---
 
 <style>:root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+	--vp-home-hero-name-background: -webkit-linear-gradient(
+	  120deg,
+	  #bd34fe, /* 紫色 */
+	  #47caff, /* 蓝色 */
+	  #2dd4bf, /* 青绿 */
+	  #facc15, /* 金色 */
+	  #ff4d4d, /* 红色 */
+	  #bd34fe  /* 紫色 */
+	);
 
-  --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  --vp-home-hero-image-background-image: linear-gradient(
+		-45deg, 
+		#bd34fe 50%, 
+		#47caff 50%
+	);
   --vp-home-hero-image-filter: blur(44px);
 }
 
