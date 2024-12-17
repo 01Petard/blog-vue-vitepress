@@ -13,7 +13,7 @@ export default defineConfig({
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: '../public/favicon.png',
+    logo: 'https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412172202944.png',
     // 开启本地搜索
     search: {
       provider: "local"
