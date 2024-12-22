@@ -2,16 +2,14 @@
 title: 关于我
 date: 2022-08-02 16:08:07
 type: "about"
-comments: false
 ---
 
 
 <style>
     /* 定义背景闪耀动画 */
     @keyframes shine {
-      0% { background-position: 0 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0 50%; }
+      0% { background-position: 100% 50%; } /* 从右边开始 */
+      100% { background-position: -100% 50%; } /* 到左边结束 */ /* 负值确保动画结束位置与起始位置视觉上一致 */
     }
 
     /* 闪耀背景效果，仅限该 div */
@@ -27,13 +25,19 @@ comments: false
 			  #2dd4bf, /* 青绿 */
 			  #facc15, /* 金色 */
 			  #ff4d4d, /* 红色 */
-			  #bd34fe /* 回到紫色 */
+			  #fa1593, /* 嫣色 */
+			  #bd34fe, /* 紫色 */
+			  #2dd4bf, /* 青绿 */
+			  #47caff, /* 蓝色 */
+			  #facc15, /* 金色 */
+			  #ff4d4d, /* 红色 */
+			  #fa1593 /* 嫣色 */
 			);
       background-size: 300% 300%;
       -webkit-background-clip: text; /* 使用背景裁剪文字 */
       background-clip: text;
       color: transparent; /* 让文字透明显示背景 */
-      animation: shine 5s infinite linear; /* 应用动画 */
+      animation: shine 30s infinite linear; /* 应用动画 */
       font-size: 1.2rem;
     }
 
