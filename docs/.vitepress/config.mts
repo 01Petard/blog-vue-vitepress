@@ -218,6 +218,7 @@ export default defineConfig({
         {
           text: "硬件",
           items: [
+            {text: "x86工控机改造为NAS折腾系统记录", link: "/硬件/x86工控机改造为NAS折腾系统记录"},
             {text: "瑞莎E20C软路由折腾记录", link: "/硬件/瑞莎E20C软路由折腾记录"},
             {text: "路由器刷入OpenWrt系统搞机过程", link: "/硬件/路由器刷入OpenWrt系统搞机过程"},
             {text: "MRK3399KJ之折腾CasaOS", link: "/硬件/MRK3399KJ之折腾CasaOS"},
