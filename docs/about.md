@@ -51,7 +51,7 @@ type: "about"
 
   <div class="shiny-div">
     <p>
-      Wish you to become your own sun, no need to rely on who’s light.
+      Wish you to become your own sun, no need to rely on who's light.
     </p>
     <p>
       —— 愿你成为自己的太阳，无需凭借谁的光芒。
