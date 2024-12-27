@@ -19,20 +19,20 @@ type: "about"
       text-align: center; /* 居中对齐 */
       /*background-image: linear-gradient(120deg, #dd206f, #ea8011, #1c7526, #2b77b5, #51259c);*/
       background-image: linear-gradient(
-				120deg,
-			  #bd34fe, /* 紫色 */
-			  #47caff, /* 蓝色 */
-			  #2dd4bf, /* 青绿 */
-			  #facc15, /* 金色 */
-			  #ff4d4d, /* 红色 */
-			  #fa1593, /* 嫣色 */
-			  #bd34fe, /* 紫色 */
-			  #2dd4bf, /* 青绿 */
-			  #47caff, /* 蓝色 */
-			  #facc15, /* 金色 */
-			  #ff4d4d, /* 红色 */
-			  #fa1593 /* 嫣色 */
-			);
+    			120deg,
+    		  #bd34fe, /* 紫色 */
+    		  #47caff, /* 蓝色 */
+    		  #2dd4bf, /* 青绿 */
+    		  #facc15, /* 金色 */
+    		  #ff4d4d, /* 红色 */
+    		  #fa1593, /* 嫣色 */
+    		  #bd34fe, /* 紫色 */
+    		  #2dd4bf, /* 青绿 */
+    		  #47caff, /* 蓝色 */
+    		  #facc15, /* 金色 */
+    		  #ff4d4d, /* 红色 */
+    		  #fa1593 /* 嫣色 */
+    		);
       background-size: 300% 300%;
       -webkit-background-clip: text; /* 使用背景裁剪文字 */
       background-clip: text;
@@ -40,7 +40,7 @@ type: "about"
       animation: shine 30s infinite linear; /* 应用动画 */
       font-size: 1.2rem;
     }
-
+    
     /* 单独设置中文部分的颜色 */
     .shiny-div p:nth-child(2) {
       /*color: #ff4d4d; !* 深红色 *!*/
@@ -69,6 +69,10 @@ type: "about"
 💻 Blog(Legacy): https://01petard.github.io/
 ❤️ Hobbies: Bangumis, Doujin, Surfing Online, Digital Devices
 ```
+
+## ☁️ 博文词云(util 2024-11)
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412271807089.png" alt="image-20241227180740799" style="zoom:50%;" />
 
 ## 🔨 技术栈
 
