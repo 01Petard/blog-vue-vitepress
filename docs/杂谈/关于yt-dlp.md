@@ -16,10 +16,7 @@ yt-dlp --cookies cookies.txt -o '~/Desktop/%(title)s.%(ext)s' 'https://www.bilib
 git rm --cached -r ..idea\
 ```
 
-
-
-
-
 # EasyConnect
 
-代理服务器：`https://sslvpn. zjut. edu. cn/`
+代理服务器：`https://sslvpn.zjut.edu.cn/`
+
