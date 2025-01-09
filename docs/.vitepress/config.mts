@@ -65,6 +65,8 @@ export default defineConfig({
         {
           text: '开发',
           items: [
+            {text: '日志记录最佳实践', link: '/开发/日志记录最佳实践'},
+            {text: 'Nginx配置文件说明', link: '/开发/Nginx配置文件说明'},
             {text: '搭建K8S集群环境', link: '/开发/搭建K8S集群环境'},
             {text: '抖音评论区设计', link: '/开发/抖音评论区设计'},
             {text: 'MYDB操作手册', link: '/开发/MYDB操作手册'},
