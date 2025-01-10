@@ -235,6 +235,7 @@ export default defineConfig({
         {
           text: "杂谈",
           items: [
+            {text: "16形人格测试+政治倾向测试", link: "/杂谈/16形人格测试+政治倾向测试"},
             {text: "关于yt-dlp", link: "/杂谈/关于yt-dlp"},
             {text: "设计模式的荼毒体现在哪？", link: "/杂谈/设计模式的荼毒体现在哪"},
             {text: "对于大模型绘制UML图的调研", link: "/杂谈/对于大模型绘制UML图的调研"},
