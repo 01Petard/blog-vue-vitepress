@@ -236,7 +236,7 @@ export default defineConfig({
           text: "杂谈",
           items: [
             // {text: "16形人格测试+政治倾向测试", link: "/杂谈/16形人格测试+政治倾向测试"},
-            {text: "关于yt-dlp", link: "/杂谈/关于yt-dlp"},
+            {text: "开发信息备忘录", link: "/杂谈/开发信息备忘录"},
             {text: "设计模式的荼毒体现在哪？", link: "/杂谈/设计模式的荼毒体现在哪"},
             {text: "对于大模型绘制UML图的调研", link: "/杂谈/对于大模型绘制UML图的调研"},
             {text: "2024年常见Ollama大模型对比", link: "/杂谈/2024年常见Ollama大模型对比"},
