@@ -11,8 +11,8 @@ keywords:
 - Java
 - 数据库
 description: Java, all in one！
-cover: /img/database_logo.png
-top_img: /img/Java-tutorials-by-GeeksForGeeks.png
+cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121550778.png
+top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121546411.png
 ---
 
 # <div align="center">-------------------数据库-------------------</div>

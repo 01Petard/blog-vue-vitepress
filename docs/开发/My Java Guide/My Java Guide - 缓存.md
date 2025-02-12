@@ -11,8 +11,8 @@ keywords:
 - Java
 - 缓存
 description: Java, all in one！
-cover: /img/cache_logo.png
-top_img: /img/Java-tutorials-by-GeeksForGeeks.png
+cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121552630.png
+top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121546411.png
 ---
 
 > 友情链接：[缓存预热和大流量冲击的应对策略](#huancunyure)

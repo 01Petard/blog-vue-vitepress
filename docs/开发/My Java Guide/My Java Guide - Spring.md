@@ -11,8 +11,8 @@ keywords:
 - Java
 - Spring
 description: Java, all in one！
-cover: /img/spring_logo.png
-top_img: /img/Java-tutorials-by-GeeksForGeeks.png
+cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121555425.png
+top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121546411.png
 ---
 
 # <div align="center">------------------Spring------------------</div>

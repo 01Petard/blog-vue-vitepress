@@ -11,8 +11,8 @@ keywords:
 - Java
 - JVM
 description: Java, all in one！
-cover: /img/Java Virtual Machine.jfif
-top_img: /img/Java-tutorials-by-GeeksForGeeks.png
+cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121554708.png
+top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121546411.png
 ---
 
 # <div align="center">---------------------**JVM**---------------------</div>

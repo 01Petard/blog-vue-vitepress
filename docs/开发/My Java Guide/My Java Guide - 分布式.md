@@ -11,8 +11,8 @@ keywords:
 - Java
 - 分布式
 description: Java, all in one！
-cover: /img/distributed_cluster_logo.png
-top_img: /img/Java-tutorials-by-GeeksForGeeks.png
+cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121549766.png
+top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121546411.png
 ---
 
 # <div align="center">----------------分布式理论----------------</div>
