@@ -1,7 +1,7 @@
 ---
 title: Git的配置和使用命令
 date: 2022-04-26 16:22:15
-updated: 2024-10-21 22:55:00
+updated: 2025-02-12 15:40:00
 categories: 
 - 学习
 tags: 
@@ -92,7 +92,7 @@ Git 支持两类钩子：**客户端钩子**和**服务器端钩子**。
 
 > https://git-scm.com/downloads
 
-## 2. 配置基本信息
+## 2. 配置git信息
 
 ```shell
 git config --global user.name "01Petard"
@@ -123,13 +123,19 @@ git config --list
 
 ## 3. 配置ssh key
 
+**RSA 类型密钥**
+
 ```shell
-ssh-keygen -t rsa -C "1520394133@qq.com"
+ssh-keygen -t rsa -b 4096 -C "1520394133@qq.com"
 ```
 
-我创建过了就不创建了，之后需要创建一个访问这个密钥的密码，需要牢记。
+**Ed25519 类型的密钥**
 
-这个密钥之后要放在github里的，所以这个文件不要误删了。
+```shell
+ssh-keygen -t ed25519 -b 4096 -C "1520394133@qq.com"
+```
+
+之后需要创建一个访问这个密钥的密码，如果不想每次提交都输密码就按回车，这个密钥之后要放在代码仓库里
 
 ![image-20220820145759035](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/image-20220820145759035.png)
 
@@ -139,27 +145,39 @@ ssh-keygen -t rsa -C "1520394133@qq.com"
 cat ~/.ssh/id_rsa.pub
 ```
 
-![image-20220820150025037](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/image-20220820150025037.png)
+**重要的来了**：本地创建多个ssh key，如果想既连github的项目，也想连公司的gitlab的项目，可以照着下面这样做
 
-*补充一下，如果后期觉得push总是要输密码太麻烦，可以修改密码为空
+```shell
+ssh-keygen -t ed25519 -b 4096 -C "1520394133@qq.com" -f ~/.ssh/id_rsa_github
+```
 
-![image-20220820164020850](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/image-20220820164020850.png)
+```shell
+ssh-keygen -t ed25519 -b 4096 -C "employee@company.com" -f ~/.ssh/id_rsa_gitlab
+```
 
-## 4. 将ssh key添加到github上
+```shell
+touch ~/.ssh/config
+```
 
-### 4.1 点击Settings
+```
+# GitHub Configuration
+Host github
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github_rsa
 
-![img](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/webp)
+# GitLab Configuration
+Host gitlab
+  HostName 10.0.0.177
+  User git
+  IdentityFile ~/.ssh/id_rsa
+```
 
-### 4.2 点击New SSH key
+## 4. 将ssh key添加到仓库中
 
-![img](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/webp-20220820172054065)
+[点击Settings] -> [点击New SSH key] -> [添加key]
 
-### 4.3 添加key
-
-<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/webp-20220820172058826" alt="img" style="zoom:67%;" />
-
-### 4.5 验证链接
+验证链接
 
 ```shell
 ssh -T git@github.com
