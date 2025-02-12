@@ -106,6 +106,14 @@ node -v
 npm -v
 ```
 
+## 安装pnpm
+
+> pnpm需要node18及以上版本
+
+```shell
+npm install pnpm -g
+```
+
 ## 安装hexo
 
 安装hexo
