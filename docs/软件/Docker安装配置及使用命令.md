@@ -22,13 +22,9 @@ top: 998
 >
 > Mysql账户：root，密码：root
 
-> 服务器的ip和密码：
->
-> IP：47.120.0.222
->
-> 用户：root
->
-> 密码：H开头的最长密码
+## （AD）安装orbstack
+
+> orbstack是一个在MacOS上新起的Docker方案，它采用了与docker-linux不同的上下文，安装使用linux虚拟机非常方便
 
 ## 安装CentOS
 
@@ -177,6 +173,12 @@ docker pull [image]:[version]
 
 ```shell
 docker images
+```
+
+查看镜像详细信息
+
+```shell
+docker inspect [IMAGE_ID]
 ```
 
 本地加载镜像压缩包
@@ -526,6 +528,24 @@ docker exec -it mysql mysql -uroot -proot
 ```shell
 grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
 flush privileges;
+```
+
+## 部署Mysql（通用）
+
+```shell
+docker pull mysql
+```
+
+```shell
+docker volume create data_mysql
+```
+
+```shell
+docker run --name mysql \
+-v data_mysql:/var/lib/mysql \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=root \
+-d mysql
 ```
 
 ## 部署Redis
@@ -1507,12 +1527,6 @@ docker run --rm -it -p 8501:8501 xijinping615/xi-jinping-tts
 
 然后在浏览器中打开：`http://192.168.113.132:8501/`
 
-
-
-
-
-
-
 ## 部署zookeeper、kafka
 
 拉取`zookeeper`镜像
@@ -1551,19 +1565,19 @@ docker run -d --name kafka \
 
 拉取镜像
 
-```
+```shell
 docker pull mongo
 ```
 
 创建容器
 
-```
+```shell
 docker run -di --name mongo-service --restart=always -p 27017:27017 -v ~/data/mongodata:/data mongo
 ```
 
 yml配置
 
-```xml
+```yaml
 server:
   port: 9998
 spring:
@@ -1573,8 +1587,3 @@ spring:
       port: 27017
       database: leadnews-history
 ```
-
-nacos依赖
-
-
-
