@@ -153,6 +153,32 @@ taskkill /F /PID '进程号'
    sudo systemctl restart docker
    ```
 
+   Docker终极配置
+
+   ```shell
+   {  
+     "builder": {    
+     "gc": {      
+       "defaultKeepStorage": "20GB",      
+       "enabled": true    
+       }  
+     },  
+     "experimental": false,  
+     "registry-mirrors": [    
+       "https://docker.hpcloud.cloud",    
+       "https://docker.m.daocloud.io",    
+       "https://docker.unsee.tech",    
+       "https://docker.1panel.live",    
+       "http://mirrors.ustc.edu.cn",    
+       "https://docker.chenby.cn",    
+       "http://mirror.azure.cn",    
+       "https://dockerpull.org",    
+       "https://dockerhub.icu",    
+       "https://hub.rat.dev"  
+     ]
+   }
+   ```
+
 6. Docker中文文档
 
    > [docker 中文文档]([docker 中文文档 | 简果网 (simapple.com)](https://www.simapple.com/docker-chinese-manual))
