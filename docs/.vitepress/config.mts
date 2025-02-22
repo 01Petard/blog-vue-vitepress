@@ -136,6 +136,7 @@ export default defineConfig({
         {
           text: "软件",
           items: [
+            {text: "ps和grep命令的用法", link: "/软件/ps和grep命令的用法"},
             {text: "Ollama常用命令", link: "/软件/Ollama常用命令"},
             {text: "本地局域网部署及使用Ollama大模型", link: "/软件/本地局域网部署及使用Ollama大模型"},
             {text: "Git的配置和使用命令", link: "/软件/Git的配置和使用命令"},
