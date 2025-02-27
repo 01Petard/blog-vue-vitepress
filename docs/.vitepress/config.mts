@@ -154,6 +154,7 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "Ubuntu项目部署通用流程", link: "/软件/Linux/Ubuntu项目部署通用流程"},
                 {text: "用Shell命令提取路径信息", link: "/软件/Linux/用Shell命令提取路径信息"},
                 {text: "命令行系统信息工具", link: "/软件/Linux/命令行系统信息工具"},
                 {text: "在服务器上部署hexo博客指南", link: "/软件/Linux/在服务器上部署hexo博客指南"},
