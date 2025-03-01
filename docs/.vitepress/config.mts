@@ -1,6 +1,8 @@
-// .vitepress/config.js
-// @ts-ignore
 import { defineConfig } from 'vitepress';
+import markdownItTaskList from "markdown-it-task-lists"
+import timeline from "vitepress-markdown-timeline"
+import container from "markdown-it-container"
+import attrs from "markdown-it-attrs"
 
 const base = "/blog-vue-vitepress/";
 export default defineConfig({
@@ -12,6 +14,19 @@ export default defineConfig({
     // 网站的图标（显示在浏览器的 tab 上）
     ["link", {rel: "icon", href: `../img/favicon.ico`}],
   ],
+  markdown: {
+    lineNumbers: true, // 显示代码行号
+    config: (md) => {
+      md.use(markdownItTaskList)        // ✅ 任务列表
+      md.use(timeline)                  // ✅ 时间轴
+      md.use(container, "tip")  // ✅ 自定义容器（如提示框）
+      md.use(attrs)                     // ✅ 让 Markdown 支持 HTML 属性
+    },
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark'
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: 'https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412172202944.png',
@@ -59,7 +74,6 @@ export default defineConfig({
       {text: '杂谈', link: '/杂谈/index'},
       {text: '关于我', link: '/about'},
     ],
-
     sidebar: {
       '/开发/': [
         {
@@ -299,5 +313,10 @@ export default defineConfig({
     socialLinks: [
       {icon: 'github', link: 'https://github.com/01Petard'}
     ],
+    //页脚
+    footer: {
+      message: '所有文章版权皆归博主所有，仅供学习参考。',
+      copyright: 'Copyright © 2025-present 01Petard',
+    },
   }
 });
