@@ -163,21 +163,21 @@ ps -ef | grep mysql-server
 
 本地用户作为项目SQL使用
 
-```mysql
+```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'm5Jwk.JR*Uxpbt^9f8jp';
 ```
 
-```mysql
+```sql
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
 ```
 
-```mysql
+```sql
 FLUSH PRIVILEGES;
 ```
 
 ### 验证本地用户能否登录
 
-```mysql
+```sql
 mysql -u root -p
 m5Jwk.JR*Uxpbt^9f8jp
 ```
@@ -194,15 +194,15 @@ sudo mysqld_safe --skip-grant-tables &
 sudo mysql
 ```
 
-```mysql
+```sql
 CREATE USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'm5Jwk.JR*Uxpbt^9f8jp';
 ```
 
-```mysql
+```sql
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 ```
 
-```mysql
+```sql
 FLUSH PRIVILEGES;
 ```
 
@@ -471,14 +471,14 @@ cd /var/www
 
 将开发数据库中的数据表导出，选择需要保留的数据表，清空其余表
 
-```mysql
+```sql
 SELECT CONCAT('TRUNCATE TABLE ', table_name, ';')
 FROM information_schema.tables
 WHERE table_schema = 'yanfen_data'
   AND table_name NOT IN ('user', 'role', 'user_role', 'resource');
 ```
 
-```mysql
+```sql
 TRUNCATE TABLE agv_block_resume;
 TRUNCATE TABLE agv_circle;
 TRUNCATE TABLE agv_enter_out;
