@@ -23,6 +23,9 @@ importers:
       vitepress-markdown-timeline:
         specifier: ^1.2.2
         version: 1.2.2
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13
     devDependencies:
       '@algolia/client-search':
         specifier: ^5.20.3
