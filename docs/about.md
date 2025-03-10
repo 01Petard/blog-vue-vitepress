@@ -52,13 +52,13 @@ type: "about"
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: -30px;
+    background-color: #1A1A1D;
   }
 
   /* 让 iframe 具有流光溢彩的边框动画 */
   iframe {
-    width: 450px;
-    height: 300px;
+    width: 500px;
+    height: 265px;
     border: none;
     /*border-image-source: linear-gradient(*/
     /*			120deg,*/
