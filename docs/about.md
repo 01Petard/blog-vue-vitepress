@@ -48,49 +48,11 @@ type: "about"
     font-weight: bold;
   }
 
-  .iframe-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1A1A1D;
-  }
-
-  /* 让 iframe 具有流光溢彩的边框动画 */
-  iframe {
-    width: 500px;
-    height: 265px;
-    border: none;
-    /*border-image-source: linear-gradient(*/
-    /*			120deg,*/
-    /*		  #bd34fe, !* 紫色 *!*/
-    /*		  #47caff, !* 蓝色 *!*/
-    /*		  #2dd4bf, !* 青绿 *!*/
-    /*		  #facc15, !* 金色 *!*/
-    /*		  #ff4d4d, !* 红色 *!*/
-    /*		  #fa1593, !* 嫣色 *!*/
-    /*		  #bd34fe, !* 紫色 *!*/
-    /*		  #2dd4bf, !* 青绿 *!*/
-    /*		  #47caff, !* 蓝色 *!*/
-    /*		  #facc15, !* 金色 *!*/
-    /*		  #ff4d4d, !* 红色 *!*/
-    /*		  #fa1593 !* 嫣色 *!*/
-    /*);*/
-    /*border-image-slice: 10;*/
-    /*border-image-width: 5px;*/
-    /*border-image-outset: 0;*/
-    /*animation: borderMove 10s linear infinite;*/
-  }
-
-
-
 </style>
 
 <div class="shiny-div">
-  <div class="iframe-container">
-    <iframe src="hello-world.html"></iframe>
-  </div>
   <p>
-    Wish you to become your own sun, no need to rely on who's light.
+    Wish you to become your own sun, no need to rely on whose light.
   </p>
   <p>
     —— 愿你成为自己的太阳，无需凭借谁的光芒。

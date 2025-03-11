@@ -168,6 +168,7 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "解决MySQL和Redis远程连接问题", link: "/软件/Linux/解决MySQL和Redis远程连接问题"},
                 {text: "Ubuntu项目部署通用流程", link: "/软件/Linux/Ubuntu项目部署通用流程"},
                 {text: "用Shell命令提取路径信息", link: "/软件/Linux/用Shell命令提取路径信息"},
                 {text: "命令行系统信息工具", link: "/软件/Linux/命令行系统信息工具"},
