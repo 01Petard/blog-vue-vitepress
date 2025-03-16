@@ -1,5 +1,7 @@
 # 使用Go开发后端
 
+项目地址：https://github.com/01Petard/gin_demo
+
 ## 安装Go
 
 官网：https://go.dev/dl/
