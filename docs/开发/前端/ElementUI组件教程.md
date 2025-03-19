@@ -1,5 +1,5 @@
 ---
-title: ElementUI实战教程
+title: ElementUI组件教程
 date: 2024-11-11 22:17:00
 updated:
 categories:
@@ -15,9 +15,7 @@ top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202411112221375.
 
 
 
-# Element UI 实战教程
-
-- 记录：泽校
+# Element UI 组件教程
 
 - 作者B站：[编程不良人](https://space.bilibili.com/352224540)
 - 资料：http://www.baizhiedu.xin

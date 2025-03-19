@@ -1,12 +1,11 @@
 import { defineConfig } from 'vitepress';
-import markdownItTaskList from "markdown-it-task-lists"
-import timeline from "vitepress-markdown-timeline"
-import container from "markdown-it-container"
-import attrs from "markdown-it-attrs"
+import markdownItTaskList from "markdown-it-task-lists";
+import timeline from "vitepress-markdown-timeline";
+import container from "markdown-it-container";
+import attrs from "markdown-it-attrs";
 
-const base = "/blog-vue-vitepress/";
 export default defineConfig({
-  base,
+  base: "/blog-vue-vitepress/",
   lang: 'zh-cn',
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
@@ -19,7 +18,7 @@ export default defineConfig({
     config: (md) => {
       md.use(markdownItTaskList)        // ✅ 任务列表
       md.use(timeline)                  // ✅ 时间轴
-      md.use(container, "tip")  // ✅ 自定义容器（如提示框）
+      md.use(container, "tip")   // ✅ 自定义容器（如提示框）
       md.use(attrs)                     // ✅ 让 Markdown 支持 HTML 属性
     },
     theme: {
@@ -136,7 +135,8 @@ export default defineConfig({
               text: "前端",
               collapsed: false,
               items: [
-                {text: 'ElementUI实战教程', link: '/开发/前端/ElementUI实战教程'},
+                {text: '学习Vue3有感', link: '/开发/前端/学习Vue3有感'},
+                {text: 'ElementUI组件教程', link: '/开发/前端/ElementUI组件教程'},
                 {text: 'Electron开发学习', link: '/开发/前端/electron'},
                 {text: 'Vue的事件修饰符', link: '/开发/前端/Vue的事件修饰符'},
                 {text: '几个免版权图片网站', link: '/开发/前端/几个免版权图片网站'},
