@@ -1,5 +1,5 @@
 ---
-title: Juint5断言的代码使用
+title: Junit5断言的代码使用
 date: 2024-07-02 11:08:00
 updated: 2024-08-10 18:48:00
 categories: 
@@ -10,7 +10,7 @@ tags:
 keywords:
 - Juint
 - 断言
-description: Juint5断言的代码使用
+description: Junit5断言的代码使用
 cover: https://media.licdn.com/dms/image/D4D12AQETC9Kq3s452A/article-cover_image-shrink_720_1280/0/1675287063027?e=2147483647&v=beta&t=iHwyGvQNKHlxJhLcooHzt6Ofgep20A6xJ94LoMLxNpY
 top_img: https://miro.medium.com/v2/resize:fit:982/0*2E4rp0xfGhVJx94Q.png
 ---

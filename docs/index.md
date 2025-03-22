@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 个人知识图谱
-      link: /开发/index
+      link: /开发/后端/index
     - theme: brand
       text: 软件使用心得
       link: /软件/index

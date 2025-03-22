@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress';
+import {defineConfig} from 'vitepress';
 import markdownItTaskList from "markdown-it-task-lists";
 import timeline from "vitepress-markdown-timeline";
 import container from "markdown-it-container";
@@ -53,10 +53,9 @@ export default defineConfig({
       {
         text: '开发',
         items: [
-          {text: '开发', link: '/开发/index'},
-          {text: 'Guide', link: '/开发/My Java Guide/index'},
-          {text: '框架', link: '/开发/框架/index'},
+          {text: '后端', link: '/开发/后端/index'},
           {text: '前端', link: '/开发/前端/index'},
+          {text: 'Guide', link: '/开发/My Java Guide/index'},
         ]
       },
       {
@@ -78,57 +77,43 @@ export default defineConfig({
         {
           text: '开发',
           items: [
-            {text: 'Go的前后端开发快速上手指南', link: '/开发/Go的前后端开发快速上手指南'},
-            {text: '一对多的数据交互方案设计', link: '/开发/一对多的数据交互方案设计'},
-            {text: '最佳实践-参数校验', link: '/开发/最佳实践-参数校验'},
-            {text: '最佳实践-日志记录', link: '/开发/最佳实践-日志记录'},
-            {text: 'Nginx配置文件说明', link: '/开发/Nginx配置文件说明'},
-            {text: '搭建K8S集群环境', link: '/开发/搭建K8S集群环境'},
-            {text: '抖音评论区设计', link: '/开发/抖音评论区设计'},
-            {text: 'MYDB操作手册', link: '/开发/MYDB操作手册'},
-            {text: '批量导出zip压缩包和Excel表格', link: '/开发/批量导出zip压缩包和Excel表格'},
-            {text: '阿里云OSS和内容安全Java实现参考代码', link: '/开发/阿里云OSS和内容安全Java实现参考代码'},
-            {text: 'SSO单点登录的实现原理', link: '/开发/SSO单点登录的实现原理'},
-            {text: 'ThreadLocal原理和使用', link: '/开发/ThreadLocal原理和使用'},
-            {text: '对Java中多态的理解', link: '/开发/对Java中多态的理解'},
-            {text: 'JDBC和JAVA类型对比', link: '/开发/JDBC和JAVA类型对比'},
-            {text: 'C++的STL库常见函数', link: '/开发/C++的STL库常见函数'},
             {
-              text: 'My Java Guide',
+              text: "后端",
               collapsed: false,
               items: [
-                {text: "My Java Guide - 计算机基础", link: "/开发/My Java Guide/My Java Guide - 计算机基础"},
-                {text: "My Java Guide - Java基础", link: "/开发/My Java Guide/My Java Guide - Java基础"},
-                {text: "My Java Guide - JVM", link: "/开发/My Java Guide/My Java Guide - JVM"},
-                {text: "My Java Guide - 数据库", link: "/开发/My Java Guide/My Java Guide - 数据库"},
-                {text: "My Java Guide - 缓存", link: "/开发/My Java Guide/My Java Guide - 缓存"},
-                {text: "My Java Guide - Spring", link: "/开发/My Java Guide/My Java Guide - Spring"},
-                {text: "My Java Guide - 分布式", link: "/开发/My Java Guide/My Java Guide - 分布式"},
-                {text: "My Java Guide - 算法", link: "/开发/My Java Guide/My Java Guide - 算法"},
-                {text: "My Java Guide - 项目", link: "/开发/My Java Guide/My Java Guide - 项目"},
-              ]
-            },
-            {
-              text: "框架",
-              collapsed: false,
-              items: [
-                {text: "Juint5断言的代码使用", link: "/开发/框架/Juint5断言的代码使用"},
-                {text: "Kafka原理", link: "/开发/框架/Kafka原理"},
-                {text: "kafka配置属性说明", link: "/开发/框架/kafka配置属性说明"},
-                {text: "MongoDB和MySQL的常用语法对比", link: "/开发/框架/MongoDB和MySQL的常用语法对比"},
-                {text: "MybatisPlus依赖和配置文件", link: "/开发/框架/MybatisPlus依赖和配置文件"},
-                {text: "Mybatis注解开发使用举例", link: "/开发/框架/Mybatis注解开发使用举例"},
-                {text: "MySql数据库命令", link: "/开发/框架/MySql数据库命令"},
-                {text: "Netty与NIO的前世今生", link: "/开发/框架/Netty与NIO的前世今生"},
-                {text: "Nginx的配置和使用命令", link: "/开发/框架/Nginx的配置和使用命令"},
-                {text: "Quarkus——云原生时代的Java框架", link: "/开发/框架/Quarkus云原生时代的Java框架"},
-                {text: "RabbitMQ快速上手", link: "/开发/框架/RabbitMQ快速上手"},
-                {text: "Redis在SpringBoot的配置", link: "/开发/框架/Redis在SpringBoot的配置"},
-                {text: "Redis基本数据类型常用命令", link: "/开发/框架/Redis基本数据类型常用命令"},
-                {text: "RocketMQ原理", link: "/开发/框架/RocketMQ原理"},
-                {text: "SpringMVC注解和配置 + fastjson的简单使用", link: "/开发/框架/SpringMVC注解和配置+fastjson的简单使用"},
-                {text: "thymeleaf的th-href带参数转跳", link: "/开发/框架/thymeleaf的th-href带参数转跳"},
-                {text: "Tomcat启动关闭命令", link: "/开发/框架/Tomcat启动关闭命令"},
+                {text: '使用Arthas分析接口的响应速度', link: '/开发/后端/使用Arthas分析接口的响应速度'},
+                {text: 'Go的前后端开发快速上手指南', link: '/开发/后端/Go的前后端开发快速上手指南'},
+                {text: '一对多的数据交互方案设计', link: '/开发/后端/一对多的数据交互方案设计'},
+                {text: '最佳实践-参数校验', link: '/开发/后端/最佳实践-参数校验'},
+                {text: '最佳实践-日志记录', link: '/开发/后端/最佳实践-日志记录'},
+                {text: 'Nginx配置文件说明', link: '/开发/后端/Nginx配置文件说明'},
+                {text: '搭建K8S集群环境', link: '/开发/后端/搭建K8S集群环境'},
+                {text: '抖音评论区设计', link: '/开发/后端/抖音评论区设计'},
+                {text: 'MYDB操作手册', link: '/开发/后端/MYDB操作手册'},
+                {text: '批量导出zip压缩包和Excel表格', link: '/开发/后端/批量导出zip压缩包和Excel表格'},
+                {text: '阿里云OSS和内容安全Java实现参考代码', link: '/开发/后端/阿里云OSS和内容安全Java实现参考代码'},
+                {text: 'SSO单点登录的实现原理', link: '/开发/后端/SSO单点登录的实现原理'},
+                {text: 'ThreadLocal原理和使用', link: '/开发/后端/ThreadLocal原理和使用'},
+                {text: '对Java中多态的理解', link: '/开发/后端/对Java中多态的理解'},
+                {text: 'JDBC和JAVA类型对比', link: '/开发/后端/JDBC和JAVA类型对比'},
+                {text: 'C++的STL库常见函数', link: '/开发/后端/C++的STL库常见函数'},
+                {text: "Junit5断言的代码使用", link: "/开发/后端/Junit5断言的代码使用"},
+                {text: "Kafka原理", link: "/开发/后端/Kafka原理"},
+                {text: "kafka配置属性说明", link: "/开发/后端/kafka配置属性说明"},
+                {text: "MongoDB和MySQL的常用语法对比", link: "/开发/后端/MongoDB和MySQL的常用语法对比"},
+                {text: "MybatisPlus依赖和配置文件", link: "/开发/后端/MybatisPlus依赖和配置文件"},
+                {text: "Mybatis注解开发使用举例", link: "/开发/后端/Mybatis注解开发使用举例"},
+                {text: "MySql数据库命令", link: "/开发/后端/MySql数据库命令"},
+                {text: "Netty与NIO的前世今生", link: "/开发/后端/Netty与NIO的前世今生"},
+                {text: "Nginx的配置和使用命令", link: "/开发/后端/Nginx的配置和使用命令"},
+                {text: "Quarkus——云原生时代的Java框架", link: "/开发/后端/Quarkus云原生时代的Java框架"},
+                {text: "RabbitMQ快速上手", link: "/开发/后端/RabbitMQ快速上手"},
+                {text: "Redis在SpringBoot的配置", link: "/开发/后端/Redis在SpringBoot的配置"},
+                {text: "Redis基本数据类型常用命令", link: "/开发/后端/Redis基本数据类型常用命令"},
+                {text: "RocketMQ原理", link: "/开发/后端/RocketMQ原理"},
+                {text: "SpringMVC注解和配置 + fastjson的简单使用", link: "/开发/后端/SpringMVC注解和配置+fastjson的简单使用"},
+                {text: "thymeleaf的th-href带参数转跳", link: "/开发/后端/thymeleaf的th-href带参数转跳"},
+                {text: "Tomcat启动关闭命令", link: "/开发/后端/Tomcat启动关闭命令"},
               ]
             },
             {
@@ -142,6 +127,21 @@ export default defineConfig({
                 {text: '几个免版权图片网站', link: '/开发/前端/几个免版权图片网站'},
                 {text: 'CSS知识重点划注', link: '/开发/前端/CSS知识重点划注'},
                 {text: 'HTML标签重点划注', link: '/开发/前端/HTML标签重点划注'},
+              ]
+            },
+            {
+              text: 'My Java Guide',
+              collapsed: false,
+              items: [
+                {text: "My Java Guide - 计算机基础", link: "/开发/My Java Guide/My Java Guide - 计算机基础"},
+                {text: "My Java Guide - Java基础", link: "/开发/My Java Guide/My Java Guide - Java基础"},
+                {text: "My Java Guide - JVM", link: "/开发/My Java Guide/My Java Guide - JVM"},
+                {text: "My Java Guide - 数据库", link: "/开发/My Java Guide/My Java Guide - 数据库"},
+                {text: "My Java Guide - 缓存", link: "/开发/My Java Guide/My Java Guide - 缓存"},
+                {text: "My Java Guide - Spring", link: "/开发/My Java Guide/My Java Guide - Spring"},
+                {text: "My Java Guide - 分布式", link: "/开发/My Java Guide/My Java Guide - 分布式"},
+                {text: "My Java Guide - 算法", link: "/开发/My Java Guide/My Java Guide - 算法"},
+                {text: "My Java Guide - 项目", link: "/开发/My Java Guide/My Java Guide - 项目"},
               ]
             },
           ]
