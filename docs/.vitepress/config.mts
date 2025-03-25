@@ -5,7 +5,7 @@ import container from "markdown-it-container";
 import attrs from "markdown-it-attrs";
 
 export default defineConfig({
-  base: ".",
+  base: "/blog-vue-vitepress/",
   lang: 'zh-cn',
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
