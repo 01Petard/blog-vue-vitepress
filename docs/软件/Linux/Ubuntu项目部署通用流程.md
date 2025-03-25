@@ -455,6 +455,46 @@ server {
 }
 ```
 
+### 用于简单页面的nginx配置
+
+```nginx
+# 监听 80 端口，指向 /var/www/star-trail/dist/
+server {
+    listen 80;
+    server_name localhost;  # 可以替换为实际域名或保留 localhost
+
+    location / {
+        root /var/www/star-trail/dist/;
+        index index.html index.htm;
+        try_files $uri $uri/ /index.html;  # 支持单页应用（SPA）路由
+    }
+
+    # 其他配置（如错误页面）可保留或自定义
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+}
+
+# 监听 180 端口，指向 /var/www/blog/dist/
+server {
+    listen 180;
+    server_name localhost;  # 可以替换为实际域名或保留 localhost
+
+    location / {
+        root /var/www/blog/dist/;
+        index index.html index.htm;
+        try_files $uri $uri/ /index.html;  # 支持单页应用（SPA）路由
+    }
+
+    # 其他配置（如错误页面）可保留或自定义
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+}
+```
+
 ## 部署项目
 
 创建项目部署目录
