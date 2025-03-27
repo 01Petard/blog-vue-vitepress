@@ -418,7 +418,7 @@ docker run -d --restart=always --name=portainer -p 9:9000 -v /var/run/docker.soc
 
 Portainer的默认账号和密码是：admin/admin，第一次进入需要创建用户，同时会提示你修改密码
 
-## 部署Mysql 5.7
+## 部署MySQL 5.7
 
 下载mysql5.7镜像文件
 
@@ -494,7 +494,7 @@ grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option
 flush privileges;
 ```
 
-## 部署Mysql 8
+## 部署MySQL 8
 
 ```shell
 docker run \
@@ -556,7 +556,7 @@ grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option
 flush privileges;
 ```
 
-## 部署Mysql（通用）
+## 部署MySQL（通用）
 
 ```shell
 docker pull mysql
@@ -572,6 +572,28 @@ docker run --name mysql \
 -p 3306:3306 \
 -e MYSQL_ROOT_PASSWORD=root \
 -d mysql
+```
+
+## 部署PGVector
+
+> PGVector是一款基于PostgreSQL的扩展插件，虽然在连接作为数据库时与PostgreSQL、MySQL看起来一样，但它和PostgreSQL其实并不是同一个东西，在开发时所采用的ORM框架也不同，因此可以将其单独作为一种数据库列出来。
+
+```
+docker run -d \
+  --name vector_db \
+  -e POSTGRES_USER=root \
+  -e POSTGRES_PASSWORD=kjiolluy711 \
+  -e POSTGRES_DB=ai-rag-knowledge \
+  -e PGPASSWORD=kjiolluy711 \
+  -v $(pwd)/pgvector/sql/init.sql:/docker-entrypoint-initdb.d/init.sql \
+  --log-opt max-size=10m \
+  --log-opt max-file=3 \
+  -p 15432:5432 \
+  --health-cmd="pg_isready -U root -d ai-rag-knowledge" \
+  --health-interval=2s \
+  --health-timeout=20s \
+  --health-retries=10 \
+  registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
 ```
 
 ## 部署Redis
