@@ -6,23 +6,35 @@ Ollama 是一个轻量级的本地大语言模型平台，支持命令行操作�
 
 [Ollama的Github地址](https://github.com/ollama/ollama/)
 
-------
+## **1. 模型管理**
 
-### **1. 模型管理**
+### 配置环境
 
-#### **拉取模型**
+**Ollama的文件目录**
+
+`OLLAMA_HOME`：D:\Ollama
+
+**Ollama的模型下载目录（有效缓解C盘压力）**
+
+`OLLAMA_MODELS`：D:\Ollama_models
+
+**Ollama的服务端口**
+
+`OLLAMA_HOST`：0.0.0.0:11434
+
+### **拉取模型**
 
 ```bash
 ollama pull <model_name>
 ```
 
-#### **列出本地模型**
+### **列出本地模型**
 
 ```bash
 ollama list
 ```
 
-#### **删除模型**
+### **删除模型**
 
 ```bash
 ollama delete <model_name>
@@ -30,9 +42,9 @@ ollama delete <model_name>
 
 ------
 
-### **2. 模型交互**
+## **2. 模型交互**
 
-#### **与模型对话**
+### **与模型对话**
 
 直接与本地模型交互，提供一个提示并得到响应：
 
@@ -42,13 +54,13 @@ ollama chat <model_name>
 
 进入交互模式后，输入提示语以与模型对话。
 
-#### **一次性对话**
+### **一次性对话**
 
 ```bash
 ollama prompt llama2 "What is the capital of France?"
 ```
 
-#### **指定上下文交互**
+### **指定上下文交互**
 
 通过文件或之前的对话设置上下文：
 
@@ -64,9 +76,9 @@ ollama chat --context ./my_context.txt llama2
 
 ------
 
-### **3. 服务模式**
+## **3. 服务模式**
 
-#### **启动服务**
+### **启动服务**
 
 将 Ollama 作为 HTTP API 运行：
 
@@ -76,7 +88,7 @@ ollama serve
 
 默认会在 `http://127.0.0.1:11434` 上监听。
 
-#### **指定监听端口和地址**
+### **指定监听端口和地址**
 
 ```bash
 ollama serve --port <port> --host <host>
@@ -88,7 +100,7 @@ ollama serve --port <port> --host <host>
 ollama serve --port 8080 --host 0.0.0.0
 ```
 
-#### 指定运行的模型
+### 指定运行的模型
 
 ```bash
 ollama serve --model llama3.2
@@ -96,9 +108,9 @@ ollama serve --model llama3.2
 
 ------
 
-### **4. 配置相关**
+## **4. 配置相关**
 
-#### **查看配置**
+### **查看配置**
 
 列出当前的 Ollama 配置信息：
 
@@ -106,7 +118,7 @@ ollama serve --model llama3.2
 ollama config
 ```
 
-#### **设置配置**
+### **设置配置**
 
 修改或设置 Ollama 配置，例如切换运行模式：
 
@@ -120,7 +132,7 @@ ollama config set <key> <value>
 ollama config set mode fast
 ```
 
-#### **重置配置**
+### **重置配置**
 
 重置 Ollama 配置为默认值：
 
@@ -130,21 +142,21 @@ ollama config reset
 
 ------
 
-### **5. 调试和帮助**
+## **5. 调试和帮助**
 
-#### **检查版本**
+### **检查版本**
 
 ```bash
 ollama version
 ```
 
-#### **获取帮助**
+### **获取帮助**
 
 ```bash
 ollama help
 ```
 
-#### **命令帮助**
+### **命令帮助**
 
 ```bash
 ollama pull --help
@@ -152,9 +164,9 @@ ollama pull --help
 
 ------
 
-### **6. 进阶操作**
+## **6. 进阶操作**
 
-#### **流式输出**
+### **流式输出**
 
 在交互时启用流式输出：
 
@@ -162,7 +174,7 @@ ollama pull --help
 ollama chat <model_name> --stream
 ```
 
-#### **设置自定义系统消息**
+### **设置自定义系统消息**
 
 调整模型的系统级提示信息：
 
@@ -170,7 +182,7 @@ ollama chat <model_name> --stream
 ollama chat llama2 --system "You are an assistant focused on medical topics."
 ```
 
-#### **从文件输入提示**
+### **从文件输入提示**
 
 直接从文件中加载提示语：
 
@@ -180,7 +192,7 @@ ollama prompt llama2 --file input.txt
 
 ------
 
-### **7. 示例命令汇总**
+## **7. 示例命令汇总**
 
 | 功能             | 命令示例                                              |
 | ---------------- | ----------------------------------------------------- |

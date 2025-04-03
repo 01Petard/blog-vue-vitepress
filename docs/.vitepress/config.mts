@@ -81,6 +81,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: '类ChatGPT模型的请求与返回参数详解', link: '/开发/后端/类ChatGPT模型的请求与返回参数详解'},
                 {text: '使用Arthas分析接口的响应速度', link: '/开发/后端/使用Arthas分析接口的响应速度'},
                 {text: 'Go的前后端开发快速上手指南', link: '/开发/后端/Go的前后端开发快速上手指南'},
                 {text: '一对多的数据交互方案设计', link: '/开发/后端/一对多的数据交互方案设计'},
