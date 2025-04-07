@@ -18,11 +18,11 @@ top_img: https://www.docker.com/wp-content/uploads/2023/06/meta-image-what-is-a-
 top: 998
 ---
 
-> 虚拟机用户：root，密码：1234
->
-> Mysql账户：root，密码：root
+# 自用的docker-compose文件
 
-## （AD）安装orbstack
+[docker-compose.yml](./docker-compose.yml)
+
+## （Mac强烈推荐）安装orbstack
 
 > orbstack是一个在MacOS上新起的Docker方案，它采用了与docker-linux不同的上下文，安装使用linux虚拟机非常方便
 
