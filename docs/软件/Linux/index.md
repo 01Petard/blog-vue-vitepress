@@ -4,6 +4,7 @@ Linux对于开发者来说，是一个重要的平台。但真正关于Linux的�
 
 ## 目录
 
+1. [Jira和Confluence安装和配置记录](./Jira和Confluence安装和配置记录.md)
 1. [简易的GitLab CICD教程](./简易的GitLab%20CICD教程.md)
 2. [解决MySQL和Redis远程连接问题](./解决MySQL和Redis远程连接问题.md)
 3. [Ubuntu项目部署通用流程](./Ubuntu项目部署通用流程.md)

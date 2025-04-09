@@ -35,7 +35,7 @@ export default defineConfig({
     },
     // 修改侧边栏导航的标题
     outline: {
-      level: [1, 2],
+      level: [1, 2, 3, 4],
       label: "目录导航"
     },
     // 文档页脚的文字
@@ -171,6 +171,7 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "Jira和Confluence安装和配置记录", link: "/软件/Linux/Jira和Confluence安装和配置记录"},
                 {text: "简易的GitLab CICD教程", link: "/软件/Linux/简易的GitLab CICD教程"},
                 {text: "解决MySQL和Redis远程连接问题", link: "/软件/Linux/解决MySQL和Redis远程连接问题"},
                 {text: "Ubuntu项目部署通用流程", link: "/软件/Linux/Ubuntu项目部署通用流程"},
