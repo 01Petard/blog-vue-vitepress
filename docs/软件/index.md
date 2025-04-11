@@ -4,7 +4,7 @@
 
 ## 目录
 
-1. [ps和grep命令的用法](./ps和grep命令的用法.md)
+1. [使用Idea的fileTemplates作为开发文件模板](./使用Idea的fileTemplates作为开发文件模板.md)
 2. [Ollama常用命令](./Ollama常用命令.md)
 3. [本地局域网部署及使用Ollama大模型](./本地局域网部署及使用Ollama大模型.md)
 4. [Git的配置和使用命令](./Git的配置和使用命令.md)

@@ -81,6 +81,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: 'record的使用说明', link: '/开发/后端/record的使用说明'},
                 {text: '如何保证redis中的数据都是热点数据', link: '/开发/后端/如何保证redis中的数据都是热点数据'},
                 {text: '类ChatGPT模型的请求与返回参数详解', link: '/开发/后端/类ChatGPT模型的请求与返回参数详解'},
                 {text: '使用Arthas分析接口的响应速度', link: '/开发/后端/使用Arthas分析接口的响应速度'},
@@ -153,7 +154,7 @@ export default defineConfig({
         {
           text: "软件",
           items: [
-            {text: "ps和grep命令的用法", link: "/软件/ps和grep命令的用法"},
+            {text: "使用Idea的fileTemplates作为开发文件模板", link: "/软件/使用Idea的fileTemplates作为开发文件模板"},
             {text: "Ollama常用命令", link: "/软件/Ollama常用命令"},
             {text: "本地局域网部署及使用Ollama大模型", link: "/软件/本地局域网部署及使用Ollama大模型"},
             {text: "Git的配置和使用命令", link: "/软件/Git的配置和使用命令"},
@@ -174,6 +175,7 @@ export default defineConfig({
                 {text: "Jira和Confluence安装和配置记录", link: "/软件/Linux/Jira和Confluence安装和配置记录"},
                 {text: "简易的GitLab CICD教程", link: "/软件/Linux/简易的GitLab CICD教程"},
                 {text: "解决MySQL和Redis远程连接问题", link: "/软件/Linux/解决MySQL和Redis远程连接问题"},
+                {text: "ps和grep命令的用法", link: "/软件/Linux/ps和grep命令的用法"},
                 {text: "Ubuntu项目部署通用流程", link: "/软件/Linux/Ubuntu项目部署通用流程"},
                 {text: "用Shell命令提取路径信息", link: "/软件/Linux/用Shell命令提取路径信息"},
                 {text: "命令行系统信息工具", link: "/软件/Linux/命令行系统信息工具"},
