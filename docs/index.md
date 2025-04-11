@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "代码港湾"
+  name: "既是技术驿站，\n同为代码港湾。"
   text: awesome-tech-world.
   tagline: 个人技术知识体系矩阵
   image:
@@ -10,7 +10,7 @@ hero:
     alt: it's me
   actions:
     - theme: brand
-      text: 个人知识图谱
+      text: 开发知识图谱
       link: /开发/后端/index
     - theme: brand
       text: 软件使用心得
