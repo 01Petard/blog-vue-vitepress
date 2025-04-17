@@ -81,6 +81,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: 'MyBatis-Plus动态拼接简化SQL操作', link: '/开发/后端/MyBatis-Plus动态拼接简化SQL操作'},
                 {text: 'record的使用说明', link: '/开发/后端/record的使用说明'},
                 {text: '如何保证redis中的数据都是热点数据', link: '/开发/后端/如何保证redis中的数据都是热点数据'},
                 {text: '类ChatGPT模型的请求与返回参数详解', link: '/开发/后端/类ChatGPT模型的请求与返回参数详解'},
