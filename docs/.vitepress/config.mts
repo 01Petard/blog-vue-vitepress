@@ -81,6 +81,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: 'JSR303数据校验指南', link: '/开发/后端/JSR303数据校验指南'},
                 {text: 'MyBatis-Plus动态拼接简化SQL操作', link: '/开发/后端/MyBatis-Plus动态拼接简化SQL操作'},
                 {text: 'record的使用说明', link: '/开发/后端/record的使用说明'},
                 {text: '如何保证redis中的数据都是热点数据', link: '/开发/后端/如何保证redis中的数据都是热点数据'},
@@ -155,6 +156,7 @@ export default defineConfig({
         {
           text: "软件",
           items: [
+            {text: "数字孪生技术和预算调研", link: "/软件/数字孪生技术和预算调研"},
             {text: "使用Idea的fileTemplates作为开发文件模板", link: "/软件/使用Idea的fileTemplates作为开发文件模板"},
             {text: "Ollama常用命令", link: "/软件/Ollama常用命令"},
             {text: "本地局域网部署及使用Ollama大模型", link: "/软件/本地局域网部署及使用Ollama大模型"},
