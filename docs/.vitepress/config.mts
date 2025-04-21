@@ -211,6 +211,7 @@ export default defineConfig({
               text: "Windows",
               collapsed: false,
               items: [
+                {text: "windows上用nginx", link: "/软件/Windows/windows上用nginx"},
                 {text: "windows终端美化", link: "/软件/Windows/windows终端美化"},
                 {text: "VMware固定虚拟机ip", link: "/软件/Windows/VMware固定虚拟机ip"},
                 {text: "更改固态硬盘磁盘为GPT格式", link: "/软件/Windows/更改固态硬盘磁盘为GPT格式"},
