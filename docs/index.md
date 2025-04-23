@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "既是技术驿站，\n同为代码港湾。"
-  text: awesome-tech-world.
+  name: "A station for tech,\nA harbor for code,"
+  text: Awesome-tech-world.
   tagline: 个人技术知识体系矩阵
   image:
     src: /01petard.jpg
@@ -46,37 +46,82 @@ features:
 
 ---
 
-<style>:root {
-  --vp-home-hero-name-color: transparent;
-	--vp-home-hero-name-background: -webkit-linear-gradient(
-	  120deg,
-	  #bd34fe, /* 紫色 */
-	  #47caff, /* 蓝色 */
-	  #2dd4bf, /* 青绿 */
-	  #facc15, /* 金色 */
-	  #ff4d4d, /* 红色 */
-	  #bd34fe  /* 紫色 */
-	);
+<style>
+/* 定义根样式 */
+:root {
+  /* 定义基础颜色 */
+  --vp-color-purple: #bd34fe;
+  --vp-color-blue: #47caff;
+  --vp-color-cyan: #2dd4bf;
+  --vp-color-gold: #facc15;
+  --vp-color-red: #ff4d4d;
 
-  --vp-home-hero-image-background-image: linear-gradient(
-		-45deg, 
-		#bd34fe 50%, 
-		#47caff 50%
-	);
+  /* 定义渐变角度 */
+  --vp-gradient-angle: 120deg;
+  --vp-image-gradient-angle: -45deg;
+
+  /* 定义主题渐变效果 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: 
+    -webkit-linear-gradient(
+      var(--vp-gradient-angle),
+      var(--vp-color-purple),
+      var(--vp-color-blue),
+      var(--vp-color-cyan),
+      var(--vp-color-gold),
+      var(--vp-color-red),
+      var(--vp-color-purple)  /* 循环渐变 */
+    );
+
+  /* 定义副标题渐变效果 */
+  --vp-home-hero-text-background: 
+    -webkit-linear-gradient(
+      var(--vp-gradient-angle),
+      var(--vp-color-purple),
+      var(--vp-color-blue),
+      var(--vp-color-cyan),
+      var(--vp-color-gold)
+    );
+
+  /* 定义背景图片效果 */
+  --vp-home-hero-image-background-image: 
+    linear-gradient(
+      var(--vp-image-gradient-angle),
+      var(--vp-color-purple) 50%,
+      var(--vp-color-blue) 50%
+    );
+  
+  /* 定义初始模糊度 */
   --vp-home-hero-image-filter: blur(44px);
 }
 
+/* 文本渐变效果 */
+.VPHero .name {
+  background: var(--vp-home-hero-name-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* 浏览器兼容性处理 */
+  -webkit-text-fill-color: transparent;
+}
+.VPHero .text {
+  background: var(--vp-home-hero-text-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* 浏览器兼容性处理 */
+  -webkit-text-fill-color: transparent;
+}
+
+/* 响应式调整 */
 @media (min-width: 640px) {
-  :root {
-    --vp-home-hero-image-filter: blur(56px);
-  }
+  :root { --vp-home-hero-image-filter: blur(56px); }
 }
 
 @media (min-width: 960px) {
-  :root {
-    --vp-home-hero-image-filter: blur(68px);
-  }
+  :root { --vp-home-hero-image-filter: blur(68px); }
 }
+
 </style>
 
 <div style="margin-top: 30px;"></div>
