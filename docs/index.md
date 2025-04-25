@@ -3,32 +3,32 @@ layout: home
 
 hero:
   name: "A station for tech,\nA harbor for code,"
-  text: Awesome-tech-world.
-  tagline: 个人技术知识体系矩阵
+  text: A realm for innovation
+  tagline: "个人技术知识体系矩阵\nPersonal Technical Knowledge System Matrix"
   image:
     src: /01petard.jpg
     alt: it's me
   actions:
     - theme: brand
-      text: 开发知识图谱
+      text: 💻 开发知识图谱
       link: /开发/后端/index
     - theme: brand
-      text: 软件使用心得
+      text: 💿 OS 指令册
       link: /软件/index
     - theme: brand
-      text: 硬件领域探索
+      text: ⚙️ 硬件工坊
       link: /硬件/index
     - theme: brand
-      text: 终焉之后日谈
+      text: 🧠 思绪花园
       link: /杂谈/index
     - theme: alt
-      text: 关于我
-      link: /about  
-    - theme: alt
-      text: 我的GitHub
+      text: 👨‍💻 关于我
+      link: /about
+    - theme: sponsor
+      text: 🚪 我的GitHub
       link: https://github.com/01Petard
-    - theme: alt
-      text: 我的Bilibili
+    - theme: sponsor
+      text: ⛩ 我的Bilibili
       link: https://space.bilibili.com/12764212
 features:
   - title: 光速构建，无限知识
@@ -50,11 +50,60 @@ features:
 /* 定义根样式 */
 :root {
   /* 定义基础颜色 */
+
+  /* 主题色二：AI智能 */
+  --vp-color-pink: #F5639B;
+  --vp-color-pink-red: #E86BBE;
+  --vp-color-purple-white: #DD6BE2;
+  --vp-color-purple-grey: #B674F0;
+  --vp-color-purple-lite: #9D78FC;
+  --vp-color-purple-blue: #8E81FA;
+  --vp-color-blue-white: #7597FC;
+  --vp-color-blue-sky: #65A6FD;
+  --vp-color-blue-lite: #58B1FF;
+
+  /* 主题色一：五彩 */
+  /* 原始颜色 */
   --vp-color-purple: #bd34fe;
   --vp-color-blue: #47caff;
   --vp-color-cyan: #2dd4bf;
   --vp-color-gold: #facc15;
   --vp-color-red: #ff4d4d;
+  
+  /* 紫色 → 蓝色 的中间色 */
+  --vp-color-purple-blue-1: #a53bfe;
+  --vp-color-purple-blue-2: #8c43fd;
+  --vp-color-purple-blue-3: #744cfc;
+  --vp-color-purple-blue-4: #5b55fb;
+  --vp-color-purple-blue-5: #435eFA;
+  
+  /* 蓝色 → 青色 的中间色 */
+  --vp-color-blue-cyan-1: #3a93f7;
+  --vp-color-blue-cyan-2: #2eA0ee;
+  --vp-color-blue-cyan-3: #28B1e5;
+  --vp-color-blue-cyan-4: #22C2d8;
+  --vp-color-blue-cyan-5: #1ed3cB;
+  
+  /* 青色 → 金色 的中间色 */
+  --vp-color-cyan-gold-1: #50e8b9;
+  --vp-color-cyan-gold-2: #8df2a3;
+  --vp-color-cyan-gold-3: #c2ff8e;
+  --vp-color-cyan-gold-4: #f5e869;
+  --vp-color-cyan-gold-5: #facc15;
+  
+  /* 金色 → 红色 的中间色 */
+  --vp-color-gold-red-1: #ff9a15;
+  --vp-color-gold-red-2: #ff7f15;
+  --vp-color-gold-red-3: #ff6915;
+  --vp-color-gold-red-4: #ff5415;
+  --vp-color-gold-red-5: #ff3f15;
+  
+  /* 红色 → 紫色 的中间色（环形闭合） */
+  --vp-color-red-purple-1: #ff346e;
+  --vp-color-red-purple-2: #e8348d;
+  --vp-color-red-purple-3: #d134ac;
+  --vp-color-red-purple-4: #ba34ca;
+  --vp-color-red-purple-5: #a334e9;
 
   /* 定义渐变角度 */
   --vp-gradient-angle: 120deg;
@@ -65,30 +114,87 @@ features:
   --vp-home-hero-name-background: 
     -webkit-linear-gradient(
       var(--vp-gradient-angle),
-      var(--vp-color-purple),
-      var(--vp-color-blue),
-      var(--vp-color-cyan),
-      var(--vp-color-gold),
-      var(--vp-color-red),
-      var(--vp-color-purple)  /* 循环渐变 */
+
+      /*!* 主题二：AI智能 *!*/
+      /*var(--vp-color-pink),*/
+      /*var(--vp-color-pink-red),*/
+      /*var(--vp-color-purple-white),*/
+      /*var(--vp-color-purple-grey),*/
+      /*var(--vp-color-purple-lite),*/
+      /*var(--vp-color-purple-blue),*/
+      /*var(--vp-color-blue-white),*/
+      /*var(--vp-color-blue-sky),*/
+      /*var(--vp-color-blue-lite)*/
+
+      /* 主题一：五彩 */
+      var(--vp-color-purple-blue-1),
+      var(--vp-color-purple-blue-2),
+      var(--vp-color-purple-blue-3),
+      var(--vp-color-purple-blue-4),
+      var(--vp-color-purple-blue-5),
+      var(--vp-color-blue-cyan-1),
+      var(--vp-color-blue-cyan-2),
+      var(--vp-color-blue-cyan-3),
+      var(--vp-color-blue-cyan-4),
+      var(--vp-color-blue-cyan-5),
+      var(--vp-color-cyan-gold-1),
+      var(--vp-color-cyan-gold-2),
+      var(--vp-color-cyan-gold-3),
+      var(--vp-color-cyan-gold-4),
+      var(--vp-color-cyan-gold-5),
+      var(--vp-color-gold-red-1),
+      var(--vp-color-gold-red-2),
+      var(--vp-color-gold-red-3),
+      var(--vp-color-gold-red-4),
+      var(--vp-color-gold-red-5),
+      var(--vp-color-red-purple-1),
+      var(--vp-color-red-purple-2),
+      var(--vp-color-red-purple-3),
+      var(--vp-color-red-purple-4),
+      var(--vp-color-red-purple-5)
+
     );
 
   /* 定义副标题渐变效果 */
   --vp-home-hero-text-background: 
     -webkit-linear-gradient(
       var(--vp-gradient-angle),
-      var(--vp-color-purple),
-      var(--vp-color-blue),
-      var(--vp-color-cyan),
-      var(--vp-color-gold)
+
+      /*!* 主题二：AI智能 *!*/
+      /*var(--vp-color-pink-red),*/
+      /*var(--vp-color-purple-white),*/
+      /*var(--vp-color-purple-grey),*/
+      /*var(--vp-color-purple-lite),*/
+      /*var(--vp-color-purple-blue),*/
+      /*var(--vp-color-blue-white),*/
+      /*var(--vp-color-blue-sky),*/
+      /*var(--vp-color-blue-lite)*/
+
+      /* 主题一：五彩 */
+      var(--vp-color-purple-blue-1),
+      var(--vp-color-purple-blue-2),
+      var(--vp-color-purple-blue-3),
+      var(--vp-color-purple-blue-4),
+      var(--vp-color-purple-blue-5),
+      var(--vp-color-blue-cyan-1),
+      var(--vp-color-blue-cyan-2),
+      var(--vp-color-blue-cyan-3),
+      var(--vp-color-blue-cyan-4),
+      var(--vp-color-blue-cyan-5),
+      var(--vp-color-cyan-gold-1),
+      var(--vp-color-cyan-gold-2),
+      var(--vp-color-cyan-gold-3),
+      var(--vp-color-cyan-gold-4),
+      var(--vp-color-cyan-gold-5),
+      var(--vp-color-gold-red-1)
     );
 
   /* 定义背景图片效果 */
   --vp-home-hero-image-background-image: 
     linear-gradient(
       var(--vp-image-gradient-angle),
-      var(--vp-color-purple) 50%,
-      var(--vp-color-blue) 50%
+      var(--vp-color-pink-red) 50%,
+      var(--vp-color-blue-lite) 50%
     );
   
   /* 定义初始模糊度 */
