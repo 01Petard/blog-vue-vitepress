@@ -2,6 +2,13 @@
 
 作为在软件工程扎根了将近10年的人，我对软件的使用也相当广泛，包括各种工具、命令和脚本等。所以我将这些内容进行整理，以供所有人参考。
 
+## 子目录链接
+
+1. [Linux](Linux/index.md)
+2. [MacOS](MacOS/index.md)
+3. [Windows](Windows/index.md)
+4. [Python](Python/index.md)
+
 ## 目录
 
 1. [数字孪生技术和预算调研](./数字孪生技术和预算调研.md)

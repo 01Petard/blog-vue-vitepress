@@ -53,6 +53,7 @@ export default defineConfig({
       {
         text: '开发',
         items: [
+          {text: '目录', link: '/开发/index'},
           {text: '后端', link: '/开发/后端/index'},
           {text: '前端', link: '/开发/前端/index'},
           {text: 'Guide', link: '/开发/My Java Guide/index'},
@@ -61,7 +62,7 @@ export default defineConfig({
       {
         text: '软件',
         items: [
-          {text: '软件', link: '/软件/index'},
+          {text: '目录', link: '/软件/index'},
           {text: 'Linux', link: '/软件/Linux/index'},
           {text: 'MacOS', link: '/软件/MacOS/index'},
           {text: 'Windows', link: '/软件/Windows/index'},
