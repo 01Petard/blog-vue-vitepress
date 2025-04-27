@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "A station for tech,\nA harbor for code,"
-  text: A realm for innovation
+  name: "A Station for Tech,\nA Harbor for Code,\nA Space for Innov."
+  text: 
   tagline: "个人技术知识体系矩阵\nPersonal Technical Knowledge System Matrix"
   image:
     src: /01petard.jpg
@@ -116,42 +116,42 @@ features:
       var(--vp-gradient-angle),
 
       /*!* 主题二：AI智能 *!*/
-      /*var(--vp-color-pink),*/
-      /*var(--vp-color-pink-red),*/
-      /*var(--vp-color-purple-white),*/
-      /*var(--vp-color-purple-grey),*/
-      /*var(--vp-color-purple-lite),*/
-      /*var(--vp-color-purple-blue),*/
-      /*var(--vp-color-blue-white),*/
-      /*var(--vp-color-blue-sky),*/
-      /*var(--vp-color-blue-lite)*/
+      var(--vp-color-pink),
+      var(--vp-color-pink-red),
+      var(--vp-color-purple-white),
+      var(--vp-color-purple-grey),
+      var(--vp-color-purple-lite),
+      var(--vp-color-purple-blue),
+      var(--vp-color-blue-white),
+      var(--vp-color-blue-sky),
+      var(--vp-color-blue-lite)
 
       /* 主题一：五彩 */
-      var(--vp-color-purple-blue-1),
-      var(--vp-color-purple-blue-2),
-      var(--vp-color-purple-blue-3),
-      var(--vp-color-purple-blue-4),
-      var(--vp-color-purple-blue-5),
-      var(--vp-color-blue-cyan-1),
-      var(--vp-color-blue-cyan-2),
-      var(--vp-color-blue-cyan-3),
-      var(--vp-color-blue-cyan-4),
-      var(--vp-color-blue-cyan-5),
-      var(--vp-color-cyan-gold-1),
-      var(--vp-color-cyan-gold-2),
-      var(--vp-color-cyan-gold-3),
-      var(--vp-color-cyan-gold-4),
-      var(--vp-color-cyan-gold-5),
-      var(--vp-color-gold-red-1),
-      var(--vp-color-gold-red-2),
-      var(--vp-color-gold-red-3),
-      var(--vp-color-gold-red-4),
-      var(--vp-color-gold-red-5),
-      var(--vp-color-red-purple-1),
-      var(--vp-color-red-purple-2),
-      var(--vp-color-red-purple-3),
-      var(--vp-color-red-purple-4),
-      var(--vp-color-red-purple-5)
+      /*var(--vp-color-purple-blue-1),*/
+      /*var(--vp-color-purple-blue-2),*/
+      /*var(--vp-color-purple-blue-3),*/
+      /*var(--vp-color-purple-blue-4),*/
+      /*var(--vp-color-purple-blue-5),*/
+      /*var(--vp-color-blue-cyan-1),*/
+      /*var(--vp-color-blue-cyan-2),*/
+      /*var(--vp-color-blue-cyan-3),*/
+      /*var(--vp-color-blue-cyan-4),*/
+      /*var(--vp-color-blue-cyan-5),*/
+      /*var(--vp-color-cyan-gold-1),*/
+      /*var(--vp-color-cyan-gold-2),*/
+      /*var(--vp-color-cyan-gold-3),*/
+      /*var(--vp-color-cyan-gold-4),*/
+      /*var(--vp-color-cyan-gold-5),*/
+      /*var(--vp-color-gold-red-1),*/
+      /*var(--vp-color-gold-red-2),*/
+      /*var(--vp-color-gold-red-3),*/
+      /*var(--vp-color-gold-red-4),*/
+      /*var(--vp-color-gold-red-5),*/
+      /*var(--vp-color-red-purple-1),*/
+      /*var(--vp-color-red-purple-2),*/
+      /*var(--vp-color-red-purple-3),*/
+      /*var(--vp-color-red-purple-4),*/
+      /*var(--vp-color-red-purple-5)*/
 
     );
 
