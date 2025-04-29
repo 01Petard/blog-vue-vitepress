@@ -82,6 +82,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: '常被忽视的“外键约束”和“唯一约束”', link: '/开发/后端/常被忽视的“外键约束”和“唯一约束”'},
                 {text: 'JSR303数据校验指南', link: '/开发/后端/JSR303数据校验指南'},
                 {text: 'MyBatis-Plus动态拼接简化SQL操作', link: '/开发/后端/MyBatis-Plus动态拼接简化SQL操作'},
                 {text: 'record的使用说明', link: '/开发/后端/record的使用说明'},
