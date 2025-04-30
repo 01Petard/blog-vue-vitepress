@@ -177,7 +177,6 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
-                {text: "Caddy——实现全自动HTTPS加密", link: "/软件/Linux/Caddy——实现全自动HTTPS加密"},
                 {text: "Jira和Confluence安装和配置记录", link: "/软件/Linux/Jira和Confluence安装和配置记录"},
                 {text: "简易的GitLab CICD教程", link: "/软件/Linux/简易的GitLab CICD教程"},
                 {text: "解决MySQL和Redis远程连接问题", link: "/软件/Linux/解决MySQL和Redis远程连接问题"},
