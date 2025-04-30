@@ -5,7 +5,10 @@ import container from "markdown-it-container";
 import attrs from "markdown-it-attrs";
 
 export default defineConfig({
-  base: "/x-dev/",
+  base: "/blog-vue-vitepress/",
+  build: {
+    outDir: 'docs/.vitepress/dist'   //构建产物输出目录
+  },
   lang: 'zh-cn',
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
