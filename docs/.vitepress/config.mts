@@ -161,6 +161,7 @@ export default defineConfig({
         {
           text: "软件",
           items: [
+            {text: "容器化一键部署指南", link: "/软件/容器化一键部署指南"},
             {text: "数字孪生技术和预算调研", link: "/软件/数字孪生技术和预算调研"},
             {text: "使用Idea的fileTemplates作为开发文件模板", link: "/软件/使用Idea的fileTemplates作为开发文件模板"},
             {text: "Ollama常用命令", link: "/软件/Ollama常用命令"},
