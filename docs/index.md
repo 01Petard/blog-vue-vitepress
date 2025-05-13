@@ -52,6 +52,10 @@ features:
   /* 定义基础颜色 */
 
   /* 主题色二：AI智能 */
+  --vp-color-yellow: #F0927B;
+  --vp-color-orange-yellow: #E89484;
+  --vp-color-orange: #EC8080;
+  --vp-color-pink-orange: #ea6c7c;
   --vp-color-pink: #F5639B;
   --vp-color-pink-red: #E86BBE;
   --vp-color-purple-white: #DD6BE2;
@@ -116,6 +120,10 @@ features:
       var(--vp-gradient-angle),
 
       /*!* 主题二：AI智能 *!*/
+      var(--vp-color-yellow),
+      var(--vp-color-orange-yellow),
+      var(--vp-color-orange),
+      var(--vp-color-pink-orange),
       var(--vp-color-pink),
       var(--vp-color-pink-red),
       var(--vp-color-purple-white),
