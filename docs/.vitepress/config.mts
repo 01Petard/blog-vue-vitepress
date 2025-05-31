@@ -85,6 +85,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: '高并发系统发现Redis热点数据几种实现方式', link: '/开发/后端/高并发系统发现Redis热点数据几种实现方式'},
                 {text: '常被忽视的“外键约束”和“唯一约束”', link: '/开发/后端/常被忽视的“外键约束”和“唯一约束”'},
                 {text: 'JSR303数据校验指南', link: '/开发/后端/JSR303数据校验指南'},
                 {text: 'MyBatis-Plus动态拼接简化SQL操作', link: '/开发/后端/MyBatis-Plus动态拼接简化SQL操作'},
