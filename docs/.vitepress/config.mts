@@ -204,6 +204,7 @@ export default defineConfig({
               text: "MacOS",
               collapsed: false,
               items: [
+                {text: "一机双身份：Mac 同时配置 GitHub 和 GitLab 的 SSH 密钥与 Git 身份隔离指南", link: "/软件/MacOS/一机双身份：Mac 同时配置 GitHub 和 GitLab 的 SSH 密钥与 Git 身份隔离指南"},
                 {text: "Homebrew常用命令", link: "/软件/MacOS/Homebrew常用命令"},
                 {text: "安装sdkman", link: "/软件/MacOS/安装sdkman"},
                 {text: "Mac安装oh-my-zsh主题", link: "/软件/MacOS/Mac安装oh-my-zsh主题"},

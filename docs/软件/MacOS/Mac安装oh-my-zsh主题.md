@@ -22,13 +22,13 @@ oh my zsh除了自带的两个主题外我个人还比较喜欢两个
 
 - sobole 
 
-  ![74af970abbf731048fef10bb85c0b92b.png](https://img-blog.csdnimg.cn/img_convert/74af970abbf731048fef10bb85c0b92b.png)
+  ![74af970abbf731048fef10bb85c0b92b.png](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506032029096.png)
 
 - jovial
 
-  ![48ada5d75ea2044b132b85bc106b2ae3.png](https://img-blog.csdnimg.cn/img_convert/48ada5d75ea2044b132b85bc106b2ae3.png)
+  ![48ada5d75ea2044b132b85bc106b2ae3.png](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506032029621.png)
 
-![screenshot](https://i0.hdslb.com/bfs/album/d96c49f36aadd0c4a7709312c42c11dbff04e71e.png)
+  ![screenshot](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506032029694.png)
 
 sobole安装地址：
 
