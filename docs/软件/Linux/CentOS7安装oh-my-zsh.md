@@ -92,7 +92,7 @@ plugins=(
 source ~/.zshrc
 ```
 
-## 5、修改主题
+## 5、修改主题 
 
 ```shell
 vim ~/.zshrc
@@ -104,19 +104,21 @@ vim ~/.zshrc
 ZSH_THEME="maran"
 ```
 
+> 更多可以[看这里](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506051846405.png)，都是官方默认的，改一下配置就行了  
+
 除了自带的两个主题外我个人还比较喜欢两个
 
 分别是sobole和jovial
 
 - sobole 
 
-  ![74af970abbf731048fef10bb85c0b92b.png](https://img-blog.csdnimg.cn/img_convert/74af970abbf731048fef10bb85c0b92b.png)
+  ![74af970abbf731048fef10bb85c0b92b.png](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506051846403.png)
 
 - jovial
 
-  ![48ada5d75ea2044b132b85bc106b2ae3.png](https://img-blog.csdnimg.cn/img_convert/48ada5d75ea2044b132b85bc106b2ae3.png)
+  ![48ada5d75ea2044b132b85bc106b2ae3.png](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506051846481.png)
 
-![screenshot](https://i0.hdslb.com/bfs/album/d96c49f36aadd0c4a7709312c42c11dbff04e71e.png)
+  ![screenshot](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506051846405.png)
 
 sobole安装地址：
 
