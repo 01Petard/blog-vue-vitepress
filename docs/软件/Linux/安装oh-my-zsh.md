@@ -1,5 +1,5 @@
 ---
-title: CentOS7安装oh-my-zsh
+title: 安装oh-my-zsh
 date: 2022-11-08 20:44:15
 updated:
 categories: 
@@ -104,9 +104,18 @@ vim ~/.zshrc
 ZSH_THEME="maran"
 ```
 
-> 更多可以[看这里](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506051846405.png)，都是官方默认的，改一下配置就行了  
+> 更多可以[看这里](https://github.com/ohmyzsh/ohmyzsh/wiki/themes)，都是官方默认的，改一下配置就行了  
 
-除了自带的两个主题外我个人还比较喜欢两个
+如果不想费时费力去选的话，直接让zsh把主题都打印出来吧
+
+```shell
+for theme in $(ls $ZSH/themes | sed 's/\.zsh-theme$//'); do
+  echo "\n================== $theme =================="
+  ZSH_THEME="$theme" zsh -i -c 'echo $PROMPT'
+done
+```
+
+除了自带的主题外我个人还比较喜欢两个
 
 分别是sobole和jovial
 

@@ -1635,3 +1635,47 @@ spring:
          port: 27017
          database: leadnews-history
 ```
+
+## 部署OpenLDAP
+
+镜像仓库：https://hub.docker.com/r/osixia/openldap/tags
+
+下面👇这个命令可能有点老了，但还是记录一下吧，如果追求新鲜就pull最新版吧
+
+参考视频：https://www.bilibili.com/video/BV1UK411c7we/
+
+```shell
+docker run -p 389:389 -p 636:636 \
+  --name my-openldap-container \
+  --env LDAP_TLS_VERIFY_CLIENT="never" \
+  --env LDAP_ORGANISATION="Aishangwei" \
+  --env LDAP_DOMAIN="xiodi.cn" \
+  --env LDAP_ADMIN_PASSWORD="Xiodi.cn123" \
+  -v /data/ldap/data:/var/lib/ldap \
+  -v /data/ldap/conf:/etc/ldap/slapd.d \
+  --detach osixia/openldap:1.3.0
+```
+
+下载[Apache Directory Studio](https://directory.apache.org/studio/download/)，什么系统就点哪个html页面去下载
+
+这里具体讲下mac版的问题，可能会遇到如下错误：
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112136300.png" alt="img" style="zoom: 50%;" />
+
+如果遇到这个问题，可以参考这篇[博客](https://blog.csdn.net/green1893/article/details/123045425)，具体做法就是安装x86版的jdk：
+
+```shell
+arch -x86_64 brew install oracle-jdk
+```
+
+安装末尾遇到了一些错误，但是并没有影响系统jdk版本，而且Apache Directory Studio也顺利启动了，于是就不追究了。
+
+![image-20250611213732254](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112137327.png)
+
+然后就是部署docker容器了，之后用Apache Directory Studio连接就行了
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112139897.png" alt="image-20250611213918869" style="zoom: 50%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112139106.png" alt="image-20250611213931043" style="zoom:50%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112139196.png" alt="image-20250611213902146" style="zoom:40%;" />

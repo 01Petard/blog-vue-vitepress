@@ -85,6 +85,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: 'JMeter快速上手指南', link: '/开发/后端/JMeter快速上手指南'},
                 {text: '高并发系统发现Redis热点数据几种实现方式', link: '/开发/后端/高并发系统发现Redis热点数据几种实现方式'},
                 {text: '常被忽视的“外键约束”和“唯一约束”', link: '/开发/后端/常被忽视的“外键约束”和“唯一约束”'},
                 {text: 'JSR303数据校验指南', link: '/开发/后端/JSR303数据校验指南'},
@@ -196,7 +197,7 @@ export default defineConfig({
                 {text: "在服务器上部署hexo博客指南", link: "/软件/Linux/在服务器上部署hexo博客指南"},
                 {text: "Unix系统下的Shell命令", link: "/软件/Linux/Unix系统下的Shell命令"},
                 {text: "Linux常用命令", link: "/软件/Linux/Linux常用命令"},
-                {text: "CentOS7安装oh-my-zsh", link: "/软件/Linux/CentOS7安装oh-my-zsh"},
+                {text: "安装oh-my-zsh", link: "/软件/Linux/安装oh-my-zsh"},
                 {text: "zsh与bash的切换", link: "/软件/Linux/zsh与bash的切换"},
               ]
             },
@@ -236,6 +237,7 @@ export default defineConfig({
               text: "Python",
               collapsed: false,
               items: [
+                {text: "uv简单上手指南", link: "/软件/Python/uv简单上手指南"},
                 {text: "人工智能十大算法", link: "/软件/Python/人工智能十大算法"},
                 {text: "conda创建虚拟环境，安装Pytorch", link: "/软件/Python/conda创建虚拟环境，安装Pytorch"},
                 {text: "解决Anaconda安装后命令行前出现(base)", link: "/软件/Python/解决Anaconda安装后命令行前出现(base)"},
