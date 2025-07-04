@@ -85,6 +85,8 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: '字符串校验中isBlank、isEmpty、isNull怎么用', link: '/开发/后端/字符串校验中isBlank、isEmpty、isNull怎么用'},
+                {text: '商城系统经典问题分析', link: '/开发/后端/商城系统经典问题分析'},
                 {text: 'JMeter快速上手指南', link: '/开发/后端/JMeter快速上手指南'},
                 {text: '高并发系统发现Redis热点数据几种实现方式', link: '/开发/后端/高并发系统发现Redis热点数据几种实现方式'},
                 {text: '常被忽视的“外键约束”和“唯一约束”', link: '/开发/后端/常被忽视的“外键约束”和“唯一约束”'},
