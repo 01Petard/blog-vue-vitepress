@@ -85,6 +85,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: '使用ANSI编码控制终端日志颜色', link: '/开发/后端/使用ANSI编码控制终端日志颜色'},
                 {text: '字符串校验中isBlank、isEmpty、isNull怎么用', link: '/开发/后端/字符串校验中isBlank、isEmpty、isNull怎么用'},
                 {text: '商城系统经典问题分析', link: '/开发/后端/商城系统经典问题分析'},
                 {text: 'JMeter快速上手指南', link: '/开发/后端/JMeter快速上手指南'},
