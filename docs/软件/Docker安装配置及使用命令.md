@@ -699,9 +699,9 @@ Redis持久化的RDB和AOF对比
 | 系统资源占用   | 高，大量CPU和内存消耗                        | 低，主要占用磁盘IO资源，且重写时会占用大量CPU资源和内存资源 |
 | 使用场景       | 可以容忍数分钟的数据丢失，追求更快的启动速度 | 对数据安全性要求较高                                        |
 
-### 配置Redis主从关系
+### 配置Redis主从集群
 
-#### 1、用Docker部署好三台Redis
+**1、用Docker部署好三台Redis**
 
 主机redis，ip地址：192.168.113.132:6379
 
@@ -711,7 +711,7 @@ Redis持久化的RDB和AOF对比
 
 ![image-20230907171409814](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/image-20230907171409814.png)
 
-#### 2 在从机上配置主机ip
+**2 在从机上配置主机ip**
 
 进入redis2容器内部，配置主机ip
 
@@ -745,7 +745,7 @@ slaveof 192.168.113.132 6379
 replicaof 192.168.113.132 6379
 ````
 
-#### 3、在主机上查看主从配置结果
+**3、在主机上查看主从配置结果**
 
 
 ```shell
@@ -756,9 +756,9 @@ info replication
 
 至此，Redis主从配置就好了！比单独部署更方便！
 
-#### 4、 主从数据同步原理
+**4、 主从数据同步原理**
 
-##### 全量同步的流程
+全量同步的流程：
 
 - slave节点请求增量同步
 - master节点判断replid，发现不一致，拒绝增量同步
@@ -767,13 +767,22 @@ info replication
 - master将RDB期间的命令记录在repl_baklog，并持续将log中的命令发送给slave
 - slave执行接收到的命令，保持与master之间的同步
 
-##### 增量同步的流程
+增量同步的流程：
 
 master节点和slave节点中维护了一个环形数组（前文提到的repl_baklog）和一个指针为offset。
 
 slave来申请增量同步，带着replid和offset，然后master根据获取offset之后的数据，将其发送给slave，slave进行同步。
 
 - 此时会出现一个问题，当slave下限太久时，master中存储的数据已经超过了这个repl_baklog的上线，因此就需要重新进行全量同步。
+
+## 部署Redisearch
+
+> Redis-search是一款可以存储向量化数据的内存型数据库，基于Redis而来
+
+```shell
+docker run -p 6379:6379 --name redis-vector --restart=unless-stopped \
+-d redislabs/redisearch
+```
 
 ## 部署nacos
 
