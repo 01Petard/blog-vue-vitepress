@@ -189,6 +189,7 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "使用Caddy作为反向代理的坑", link: "/软件/Linux/使用Caddy作为反向代理的坑"},
                 {text: "使用Docker安装OpenLDAP", link: "/软件/Linux/使用Docker安装OpenLDAP"},
                 {text: "Caddy——实现全自动HTTPS加密", link: "/软件/Linux/Caddy——实现全自动HTTPS加密"},
                 {text: "Jira和Confluence安装和配置记录", link: "/软件/Linux/Jira和Confluence安装和配置记录"},
