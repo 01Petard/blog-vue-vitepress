@@ -190,6 +190,7 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "Atlassian家族软件部署安装指南", link: "/软件/Linux/Atlassian家族软件部署安装指南"},
                 {text: "使用Caddy作为反向代理的坑", link: "/软件/Linux/使用Caddy作为反向代理的坑"},
                 {text: "使用Docker安装OpenLDAP", link: "/软件/Linux/使用Docker安装OpenLDAP"},
                 {text: "Caddy——实现全自动HTTPS加密", link: "/软件/Linux/Caddy——实现全自动HTTPS加密"},
