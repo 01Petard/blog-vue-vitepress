@@ -1,4 +1,4 @@
-> 所有文件下载目录：https://drive.google.com/drive/folders/18yQ4lqRZv1gHR6-bCyJjgLJMW1Ogch_W
+> 所有文件下载目录：[Jira和Confluence安装包](https://drive.google.com/drive/folders/18yQ4lqRZv1gHR6-bCyJjgLJMW1Ogch_W?usp=sharing)
 
 # Atlassian家族软件部署安装指南
 
