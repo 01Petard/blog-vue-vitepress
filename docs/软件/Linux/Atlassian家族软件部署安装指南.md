@@ -8,7 +8,7 @@
 
 ### PostgreSQL
 
-> **卸载旧版本PostgreSQL**
+> **卸载旧版本PostgreSQL（以15为例）**
 >
 > 1. 停止服务
 >
@@ -47,7 +47,7 @@
 >    sudo delgroup postgres
 >    ```
 >
-> 4. 然后就可以安装 PostgreSQL 14
+> 4. 然后就可以安装其他版本的 PostgreSQL
 
 **Docker部署**
 
