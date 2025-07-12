@@ -791,6 +791,243 @@ public static double calculateCompressionRate(int originalSize, int encodedSize)
 
 # 排序算法
 
+## 极速版
+
+```java
+public class TestJava {
+
+    public static void main(String[] args) {
+        int[] line = new int[]{0, -1, 2, 6, 9, -3, -5, 8, 6};
+
+//        BubbleSort(line);
+        CocktailSort(line);
+//        SelectSort(line);
+//        InsertSort(line);
+//        ShellSort(line);
+//        QuickSort(line, 0, line.length - 1);
+//        HeapSort(line);
+        for (int i : line) {
+            System.out.println(i);
+        }
+
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
+    // 交换类排序：冒泡排序、鸡尾酒排序、快速排序
+
+    /**
+     * 冒泡排序
+     * 最简单、双重循环、稳定排序
+     * @param R
+     */
+    private static void BubbleSort(int[] R) {
+        int len = R.length;
+        for (int i = 0; i < len - 1; i++) {
+            boolean flag = true;
+
+            for (int j = 0; j < len - 1; j++) {
+                if (R[j] > R[j + 1]) {
+                    swap(R, j, j + 1);
+                    flag = false;
+                }
+            }
+            if (flag) {
+                break;
+            }
+        }
+
+    }
+
+    /**
+     * 冒泡排序的双向优化版
+     * @param R
+     */
+    public static void CocktailSort(int[] R) {
+        int left = 0;
+        int right = R.length - 1;
+        boolean swapped = true;
+
+        while (left < right && swapped) {
+            swapped = false;
+
+            // 从左到右冒泡（正向）
+            for (int i = left; i < right; i++) {
+                if (R[i] > R[i + 1]) {
+                    swap(R, i, i + 1);
+                    swapped = true;
+                }
+            }
+            right--; // 最大值已归位
+
+            // 从右到左冒泡（反向）
+            for (int i = right; i > left; i--) {
+                if (R[i - 1] > R[i]) {
+                    swap(R, i - 1, i);
+                    swapped = true;
+                }
+            }
+            left++; // 最小值已归位
+        }
+    }
+
+    /**
+     * 快速排序
+     * 分治法 + 交换，性能优，不稳定
+     * @param R
+     * @param left
+     * @param right
+     */
+    public static void QuickSort(int[] R, int left, int right) {
+        if (left >= right) return;
+
+        int pivot = R[left]; // 基准值
+        int i = left, j = right;
+
+        while (i < j) {
+            while (i < j && R[j] >= pivot) j--; // 从右找比 pivot 小的
+            while (i < j && R[i] <= pivot) i++; // 从左找比 pivot 大的
+            if (i < j) {
+                swap(R, i, j);
+            }
+        }
+
+        // 把基准值放到中间
+        swap(R, left, i);
+
+        // 递归排序左右部分
+        QuickSort(R, left, i - 1);
+        QuickSort(R, i + 1, right);
+    }
+
+
+    // 插入类排序：插入排序、希尔排序
+
+    /**
+     * 插入排序
+     * 简单、稳定，适合小数据量
+     * @param R
+     */
+    private static void InsertSort(int[] R) {
+        int len = R.length;
+        for (int i = 1; i < len; i++) {
+            int ele = R[i];
+            int j = i - 1;
+            while (j >= 0 && R[j] > ele) {
+                R[j + 1] = R[j];
+                j--;
+            }
+            R[j + 1] = ele;
+        }
+    }
+
+    /**
+     * 希尔排序
+     * 插入排序的间隔优化版，不稳定
+     * @param R
+     */
+    public static void ShellSort(int[] R) {
+        int len = R.length;
+        for (int gap = len / 2; gap > 0; gap = gap / 2) { // gap 代表每次子序列的间隔
+            // 内部进行直接插入排序
+            for (int i = gap; i < len; i++) {
+                int j = i;
+                int element = R[i];
+                // 下面这一步将数组里的元素分组了
+                while (j - gap >= 0 && R[j - gap] > element) {
+                    R[j] = R[j - gap];
+                    j = j - gap;
+                }
+                R[j] = element;
+            }
+        }
+    }
+
+
+    // 选择类排序：选择排序、堆排序
+
+    /**
+     * 选择排序
+     * 简单、不稳定
+     * @param R
+     */
+    private static void SelectSort(int[] R) {
+        int len = R.length;
+
+        for (int i = 0; i < len - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < len; j++) {
+                if (R[j] < R[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            swap(R, i, minIndex);
+        }
+
+    }
+
+    /**
+     * 堆排序
+     * 用堆结构选最大/最小，原地排序，不稳定
+     * @param R
+     */
+    public static void HeapSort(int[] R) {
+        int len = R.length;
+
+        // 1. 建堆（从最后一个非叶子节点开始下沉）从第一个非叶子节点开始调整,左右孩子节点中较大的交换到父节点中
+        for (int i = len / 2 - 1; i >= 0; i--) {
+            heapify(R, len, i);
+        }
+
+        // 2. 不断将堆顶元素（最大值）移到数组末尾。排序，将最大的节点放在堆尾，然后从根节点重新调整
+        for (int i = len - 1; i > 0; i--) {
+            swap(R, 0, i); // 堆顶元素交换到最后
+            heapify(R, i, 0); // 剩下的元素继续堆化
+        }
+    }
+
+    private static void heapify(int[] R, int heapSize, int i) {
+        int parent = i;
+        int left = 2 * i + 1;  // 左孩子
+        int right = 2 * i + 2; // 右孩子
+
+        if (left < heapSize && R[parent] < R[left]) {
+            parent = left;
+        }
+        if (right < heapSize && R[parent] < R[right]) {
+            parent = right;
+        }
+
+        if (parent != i) {
+            swap(R, i, parent);
+            heapify(R, heapSize, parent);
+        }
+    }
+
+
+    // 归并类排序：归并排序
+    // 归并排序，稳定，空间复杂度高为 O(n)
+
+
+
+    // 分布类排序：计数排序、桶排序、基数排序
+    // 计数排序：只能排序整数，空间换时间，稳定
+    // 桶排序：适合数据分布均匀，稳定排序
+    // 基数排序：按位比较，适合定长整数或字符串排序，稳定
+
+    // 混合类排序：Tim排序
+    // Tim排序：Java 和 Python 的默认排序算法，归并 + 插入优化，非常高效
+
+
+    // 其他特殊排序：外部排序（处理超大数据）、B 树排序（数据库中应用）、并行排序（多线程）
+
+}
+```
+
 排序算法按核心思想和技术实现，可以分为以下 **七大类**：
 
 🧠 1. **交换类排序（Exchange Sort）**

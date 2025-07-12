@@ -190,6 +190,7 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "系统部署流程完整版", link: "/软件/Linux/系统部署流程完整版"},
                 {text: "Atlassian家族软件部署安装指南", link: "/软件/Linux/Atlassian家族软件部署安装指南"},
                 {text: "使用Caddy作为反向代理的坑", link: "/软件/Linux/使用Caddy作为反向代理的坑"},
                 {text: "使用Docker安装OpenLDAP", link: "/软件/Linux/使用Docker安装OpenLDAP"},
