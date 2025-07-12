@@ -85,6 +85,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: 'LangChain4j大模型对话应用快速入门', link: '/开发/后端/LangChain4j大模型对话应用快速入门'},
                 {text: '使用ANSI编码控制终端日志颜色', link: '/开发/后端/使用ANSI编码控制终端日志颜色'},
                 {text: '字符串校验中isBlank、isEmpty、isNull怎么用', link: '/开发/后端/字符串校验中isBlank、isEmpty、isNull怎么用'},
                 {text: '商城系统经典问题分析', link: '/开发/后端/商城系统经典问题分析'},
@@ -190,7 +191,8 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
-                {text: "系统部署流程完整版", link: "/软件/Linux/系统部署流程完整版"},
+                {text: "Ubuntu上固定无线的IP地址", link: "/软件/Linux/Ubuntu上固定无线的IP地址"},
+                {text: "Ubuntu部署项目流程完整版", link: "/软件/Linux/Ubuntu部署项目流程完整版"},
                 {text: "Atlassian家族软件部署安装指南", link: "/软件/Linux/Atlassian家族软件部署安装指南"},
                 {text: "使用Caddy作为反向代理的坑", link: "/软件/Linux/使用Caddy作为反向代理的坑"},
                 {text: "使用Docker安装OpenLDAP", link: "/软件/Linux/使用Docker安装OpenLDAP"},
@@ -232,6 +234,7 @@ export default defineConfig({
               text: "Windows",
               collapsed: false,
               items: [
+                {text: "windows上重要的垃圾清理目录", link: "/软件/Windows/windows上重要的垃圾清理目录"},
                 {text: "windows上用nginx", link: "/软件/Windows/windows上用nginx"},
                 {text: "windows终端美化", link: "/软件/Windows/windows终端美化"},
                 {text: "VMware固定虚拟机ip", link: "/软件/Windows/VMware固定虚拟机ip"},

@@ -4,10 +4,11 @@
 
 ## 目录
 
-1. [windows上用nginx](./windows上用nginx.md)
-2. [windows终端美化](./windows终端美化.md)
-3. [VMware固定虚拟机ip](./VMware固定虚拟机ip.md)
-4. [更改固态硬盘磁盘为GPT格式](./更改固态硬盘磁盘为GPT格式.md)
-5. [批量删除特定格式开头的文件](./win批量删除特定格式开头的文件.md)
-6. [Windows上解决端口占用](./Windows上解决端口占用.md)
-7. [Win11安装卸载安卓软件](./win11安装卸载安卓软件.md)
+1. [windows上重要的垃圾清理目录](./windows上重要的垃圾清理目录.md)
+2. [windows上用nginx](./windows上用nginx.md)
+3. [windows终端美化](./windows终端美化.md)
+4. [VMware固定虚拟机ip](./VMware固定虚拟机ip.md)
+5. [更改固态硬盘磁盘为GPT格式](./更改固态硬盘磁盘为GPT格式.md)
+6. [批量删除特定格式开头的文件](./win批量删除特定格式开头的文件.md)
+7. [Windows上解决端口占用](./Windows上解决端口占用.md)
+8. [Win11安装卸载安卓软件](./win11安装卸载安卓软件.md)
