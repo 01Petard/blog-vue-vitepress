@@ -147,6 +147,8 @@ cat ~/.ssh/id_rsa.pub
 
 **重要的来了**：本地创建多个ssh key，如果想既连github的项目，也想连公司的gitlab的项目，可以照着下面这样做
 
+> 建议参考：[一机双身份：Mac 同时配置 GitHub 和 GitLab 的 SSH 密钥与 Git 身份隔离指南](./MacOS/一机双身份：Mac 同时配置 GitHub 和 GitLab 的 SSH 密钥与 Git 身份隔离指南.md)
+
 ```shell
 ssh-keygen -t ed25519 -b 4096 -C "1520394133@qq.com" -f ~/.ssh/id_rsa_github
 ```
