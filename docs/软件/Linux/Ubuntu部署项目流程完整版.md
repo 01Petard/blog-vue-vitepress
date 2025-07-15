@@ -1020,3 +1020,36 @@ log "默认用户名: admin"
 log "默认密码: 1panel"
 log "====================================="
 ```
+
+### 脚本3
+
+```shell
+# 安装 Docker（先装）
+# 更新基础组件
+sudo apt update && sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+
+# 添加 Docker GPG 密钥
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# 添加 Docker 源（确保版本匹配）
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+# 安装 Docker Engine
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+
+# 设置开机启动
+sudo systemctl enable docker
+sudo systemctl start docker
+
+# 验证安装
+docker --version
+
+
+# 安装1panel
+bash -c "$(curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh)"
+```
+
+
+
