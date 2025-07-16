@@ -1105,7 +1105,7 @@ docker update --restart=always nacos
 拉取镜像
 
 ```shell
-docker pull rabbitmq:3-management
+docker pull rabbitmq:4.1.2-management-alpine
 ```
 
 或本地加载
@@ -1116,24 +1116,113 @@ docker load -i mq.tar
 
 启动MQ
 
->  -e RABBITMQ_DEFAULT_USER=itcast \   后台管理界面的用户名、密码
->  -e RABBITMQ_DEFAULT_PASS=123321 \
+>  -e RABBITMQ_DEFAULT_USER=rabbitmq \   后台管理界面的用户名、密码
+>  -e RABBITMQ_DEFAULT_PASS=rabbitmq \
 >  -p 15672:15672 \    后台管理界面的端口
 >  -p 5672:5672 \      消息通信的端口
 
 ```shell
-docker run \
- -e RABBITMQ_DEFAULT_USER=admin \
- -e RABBITMQ_DEFAULT_PASS=a \
+sudo docker run \
+ -e RABBITMQ_DEFAULT_USER=mq \
+ -e RABBITMQ_DEFAULT_PASS=mq \
  --name mq \
- --hostname mq1 \
+ --hostname mq \
  -p 15672:15672 \
  -p 5672:5672 \
- -d \
- rabbitmq:3-management
+ -d rabbitmq:4.1.2-management-alpine
 ```
 
-## 部署elasticsearch
+## 部署RocketMQ
+
+以5.3.3版本为例，可根据需求更换版本
+
+```shell
+sudo docker pull rocketmqinc/rocketmq
+```
+
+拉取RocketMQ控制台镜像，用于可视化管理，可选
+
+```shell
+sudo docker pull styletang/rocketmq-console-ng
+```
+
+创建并启动 NameServer 容器
+
+> 上述命令解释：
+>
+> - `-d`：以后台运行模式启动容器。
+> - `--name rmqnamesrv`：为容器指定名称为`rmqnamesrv`。
+> - `-e "MAX_POSSIBLE_HEAP=100000000"`：设置 JVM 最大堆内存，可根据实际情况调整。
+> - `-p 9876:9876`：将容器内的 9876 端口映射到宿主机的 9876 端口，方便外部访问。
+> - `sh mqnamesrv`：在容器内执行启动 NameServer 的命令。
+
+```shell
+sudo docker run -d \
+--name rmqnamesrv \
+-e "MAX_POSSIBLE_HEAP=100000000" \
+-p 9876:9876 \
+rocketmqinc/rocketmq sh mqnamesrv
+```
+
+创建并启动 Broker 容器
+
+> 上述命令解释：
+>
+> - `--link rmqnamesrv:namesrv`：创建与`rmqnamesrv`容器的链接，并将其别名为`namesrv`，方便在 Broker 容器内通过别名访问 NameServer。
+> - `-e "NAMESRV_ADDR=namesrv:9876"`：设置 Broker 要连接的 NameServer 地址。
+> - `-p 10909:10909 -p 10911:10911`：分别映射 Broker 的快速监听端口和监听端口到宿主机。
+> - `sh mqbroker -n namesrv:9876`：在容器内执行启动 Broker 的命令，并指定 NameServer 地址。
+
+```shell
+sudo docker run -d \
+--name rmqbroker \
+--link rmqnamesrv:namesrv \
+-e "NAMESRV_ADDR=namesrv:9876" \
+-e "MAX_POSSIBLE_HEAP=200000000" \
+-p 10909:10909 \
+-p 10911:10911 \
+rocketmqinc/rocketmq sh mqbroker -n namesrv:9876
+```
+
+（可选）创建并启动 RocketMQ Dashboard 容器
+
+> 上述命令解释：
+>
+> - `-e "JAVA_OPTS=-Drocketmq.namesrv.addr=宿主机IP:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"`：设置控制台连接的 NameServer 地址，`宿主机IP`需替换为实际运行 Docker 的主机 IP。
+> - `-p 8080:8080`：将容器内的 8080 端口映射到宿主机的 8080 端口，通过浏览器访问`http://宿主机IP:8080`即可打开控制台。
+
+```shell
+sudo docker run -d \
+--name rmqconsole \
+-e "JAVA_OPTS=-Drocketmq.namesrv.addr=localhost:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false" \
+-p 8080:8080 \
+styletang/rocketmq-console-ng
+```
+
+验证 RocketMQ 运行
+
+- **发送消息**：进入 RocketMQ 镜像容器内部，执行发送消息命令。
+
+  ```shell
+  sudo docker exec -it rmqbroker sh
+  cd /opt/rocketmq/bin
+  ./tools.sh org.apache.rocketmq.example.quickstart.Producer
+  ```
+
+- **接收消息**：同样在容器内执行接收消息命令。
+
+  ```shell
+  ./tools.sh org.apache.rocketmq.example.quickstart.Consumer
+  ```
+
+关闭容器
+
+```shell
+docker stop rmqnamesrv rmqbroker rmqconsole  # 停止所有相关容器，根据实际情况调整容器名称
+docker rm rmqnamesrv rmqbroker rmqconsole  # 删除容器
+```
+
+## 部署Elasticsearch
 
 ### es与mysql的概念名词对比
 
