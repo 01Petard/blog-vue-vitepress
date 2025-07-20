@@ -1,27 +1,66 @@
-
+/*  图片放大功能 */
 .medium-zoom-overlay {
     z-index: 20;
+    background: rgba(0, 0, 0, 1.0); /* 遮罩层添加半透明黑色背景（默认可能透明，看不清） */
+    transition: opacity 0.3s ease; /* 遮罩层显示/隐藏的过渡 */
 }
-
 .medium-zoom-image {
-    z-index: 9999 !important;/* 给的值是21，但是实测盖不住，直接999 */
+    z-index: 9999 !important;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* 图片放大/缩小的过渡 */
 }
 
+
+/* 徽章 / 图标布局 */
 .badge-box a{
     display: inline-block;
 }
-
 .badge-box a:nth-child(n+2) ,.badge-box-center a:nth-child(n+2){
     margin-left: 5px;
 }
-
-.badge-box img .badge-box-center img{
-    /* margin-right:10px; */
-    cursor:pointer
+.badge-box a:hover,
+.badge-box-center a:hover {
+    transform: translateY(-2px); /* 轻微上浮 */
+    transition: transform 0.2s ease;
 }
-
+.badge-box img,
+.badge-box-center img {
+    cursor: pointer;
+    /* 确保图片大小一致（避免徽章忽大忽小） */
+    max-width: 100%;
+    height: auto;
+}
 .badge-box-center p{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+/* 屏幕宽度 < 768px 时（手机端） */
+@media (max-width: 767px) {
+    .badge-box a:nth-child(n+2),
+    .badge-box-center a:nth-child(n+2) {
+        margin-left: 3px; /* 缩小间距，适应窄屏 */
+        margin-top: 5px; /* 换行时添加顶部间距 */
+    }
+}
+/* 深色模式下的徽章图片调整（示例） */
+html.dark .badge-box img,
+html.dark .badge-box-center img {
+    filter: brightness(1.2); /* 深色背景下略微提亮图片 */
+}
+
+
+/* 自定义左侧边栏宽度 */
+:root {
+    --vp-sidebar-width: 284px; /* 默认是 272px，可根据需要调整 */
+    --vp-sidebar-shrink-width: 64px; /* 侧边栏收缩后的宽度（默认56px，可放大便于点击） */
+}
+/* 自定义左侧边栏宽度，针对较窄屏幕的响应式调整 */
+@media (min-width: 1024px) {
+    :root {
+        --vp-sidebar-width: 327px; /* 在宽屏上使用更大的宽度 */
+    }
+}
+/* 内容区容器（避开侧边栏的区域） */
+.VPContent {
+    padding-left: 16px; /* 与侧边栏之间留间距，避免内容太贴边 */
 }
