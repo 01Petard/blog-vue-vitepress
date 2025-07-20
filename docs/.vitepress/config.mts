@@ -13,8 +13,7 @@ export default defineConfig({
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
   head: [
-    // 网站的图标（显示在浏览器的 tab 上）
-    ["link", {rel: "icon", href: `../img/favicon.ico`}],
+    ["link", {rel: "icon", href: `../img/favicon.ico`}],  // 网站的图标（显示在浏览器的 tab 上）
   ],
   markdown: {
     lineNumbers: true, // 显示代码行号
@@ -29,6 +28,7 @@ export default defineConfig({
       dark: 'github-dark'
     },
   },
+  ignoreDeadLinks: false, // 开启死链接检查
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: 'https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412172202944.png',
@@ -194,6 +194,7 @@ export default defineConfig({
                 {text: "ps和grep命令的用法", link: "/软件/命令册/ps和grep命令的用法"},
                 {text: "zsh与bash的切换", link: "/软件/命令册/zsh与bash的切换"},
                 {text: "安装oh-my-zsh主题", link: "/软件/命令册/安装oh-my-zsh主题"},
+                {text: "安装oh-my-zsh", link: "/软件/命令册/安装oh-my-zsh"},
                 {text: "curl命令的用法", link: "/软件/命令册/curl命令的用法"},
                 {text: "Unix系统下的Shell命令", link: "/软件/命令册/Unix系统下的Shell命令"},
                 {text: "Linux常用命令", link: "/软件/命令册/Linux常用命令"},
@@ -219,7 +220,6 @@ export default defineConfig({
                 {text: "Ubuntu项目部署通用流程", link: "/软件/Linux/Ubuntu项目部署通用流程"},
                 {text: "用Shell命令提取路径信息", link: "/软件/Linux/用Shell命令提取路径信息"},
                 {text: "在服务器上部署hexo博客指南", link: "/软件/Linux/在服务器上部署hexo博客指南"},
-                {text: "安装oh-my-zsh", link: "/软件/Linux/安装oh-my-zsh"},
               ]
             },
             {
@@ -229,7 +229,6 @@ export default defineConfig({
                 {text: "一机双身份：Mac 同时配置 GitHub 和 GitLab 的 SSH 密钥与 Git 身份隔离指南", link: "/软件/MacOS/一机双身份：Mac 同时配置 GitHub 和 GitLab 的 SSH 密钥与 Git 身份隔离指南"},
                 {text: "Homebrew常用命令", link: "/软件/MacOS/Homebrew常用命令"},
                 {text: "安装sdkman", link: "/软件/MacOS/安装sdkman"},
-                {text: "zsh与bash的切换", link: "/软件/Linux/zsh与bash的切换"},
                 {text: "Mac调整docker栏", link: "/软件/MacOS/Mac调整docker栏"},
                 {text: "Mac查看固态使用情况", link: "/软件/MacOS/Mac查看固态使用情况"},
                 {text: "Mac删除OBS的虚拟摄像头", link: "/软件/MacOS/Mac删除OBS的虚拟摄像头"},

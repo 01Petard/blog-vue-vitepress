@@ -15,4 +15,3 @@ Linux对于开发者来说，是一个重要的平台。但真正关于Linux的�
 9. [简易的GitLab CICD实现思路](./简易的GitLab%20CICD实现思路.md)
 10. [解决MySQL和Redis远程连接问题](./解决MySQL和Redis远程连接问题.md)
 11. [Ubuntu项目部署通用流程](./Ubuntu项目部署通用流程.md)
-12. [安装oh-my-zsh](./安装oh-my-zsh.md)

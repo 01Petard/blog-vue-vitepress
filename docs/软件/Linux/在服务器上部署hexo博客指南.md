@@ -17,7 +17,7 @@ cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410311337887.we
 top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410311337777.png
 ---
 
-nodejs更多命令请看：[nodejs相关命令](../nodejs相关命令.md)
+nodejs更多命令请看：[nodejs相关命令](../命令册/nodejs相关命令.md)
 
 ## 安装nodejs环境
 
