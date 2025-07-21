@@ -10,9 +10,10 @@
 
 ## 目录
 
-1. [PostgreSQL vs MySQL](./PostgreSQL%20vs%20MySQL.md)
-2. [Intellij IDEA fileTemplates文件模板](./Intellij%20IDEA%20fileTemplates文件模板.md)
-3. [简单理解正向代理和反向代理](./简单理解正向代理和反向代理.md)
-4. [设计模式的荼毒体现在哪](./设计模式的荼毒体现在哪.md)
-5. [Nginx配置文件说明](Nginx配置文件说明.md)
-6. [Nginx的配置和使用命令](Nginx的配置和使用命令.md)
+1. [SSE的特点、场景与技术解析](./SSE的特点、场景与技术解析.md)
+2. [PostgreSQL vs MySQL](./PostgreSQL%20vs%20MySQL.md)
+3. [Intellij IDEA fileTemplates文件模板](./Intellij%20IDEA%20fileTemplates文件模板.md)
+4. [简单理解正向代理和反向代理](./简单理解正向代理和反向代理.md)
+5. [设计模式的荼毒体现在哪](./设计模式的荼毒体现在哪.md)
+6. [Nginx配置文件说明](Nginx配置文件说明.md)
+7. [Nginx的配置和使用命令](Nginx的配置和使用命令.md)
