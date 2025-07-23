@@ -82,19 +82,19 @@ export default defineConfig({
         {
           text: '开发',
           items: [
-            {text: "SSE的特点、场景与技术解析", link: "/软件/SSE的特点、场景与技术解析"},
-            {text: "PostgreSQL vs MySQL", link: "/软件/PostgreSQL vs MySQL"},
-            {text: "Intellij IDEA fileTemplates文件模板", link: "/软件/Intellij IDEA fileTemplates文件模板"},
-            {text: "简单理解正向代理和反向代理", link: "/杂谈/简单理解正向代理和反向代理"},
-            {text: "设计模式的荼毒体现在哪？", link: "/杂谈/设计模式的荼毒体现在哪"},
-            {text: 'Nginx配置文件说明', link: '/开发/后端/Nginx配置文件说明'},
-            {text: "Nginx的配置和使用命令", link: "/开发/后端/Nginx的配置和使用命令"},
+            {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
+            {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL vs MySQL"},
+            {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij IDEA fileTemplates文件模板"},
+            {text: "简单理解正向代理和反向代理", link: "/开发/简单理解正向代理和反向代理"},
+            {text: "设计模式的荼毒体现在哪", link: "/开发/设计模式的荼毒体现在哪"},
+            {text: 'Nginx配置文件说明', link: '/开发/Nginx配置文件说明'},
+            {text: "Nginx的配置和使用命令", link: "/开发/Nginx的配置和使用命令"},
             {
               text: "后端",
               collapsed: false,
               items: [
                 {text: 'LangChain4j大模型对话应用快速入门', link: '/开发/后端/LangChain4j大模型对话应用快速入门'},
-                {text: "如何微调大模型并暴露接口给后端调用", link: "/软件/如何微调大模型并暴露接口给后端调用"},
+                {text: "如何微调大模型并暴露接口给后端调用", link: "/开发/后端/如何微调大模型并暴露接口给后端调用"},
                 {text: '使用ANSI编码控制终端日志颜色', link: '/开发/后端/使用ANSI编码控制终端日志颜色'},
                 {text: '字符串校验中isBlank、isEmpty、isNull怎么用', link: '/开发/后端/字符串校验中isBlank、isEmpty、isNull怎么用'},
                 {text: '商城系统经典问题分析', link: '/开发/后端/商城系统经典问题分析'},
