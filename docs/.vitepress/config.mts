@@ -83,8 +83,8 @@ export default defineConfig({
           text: '开发',
           items: [
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
-            {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL vs MySQL"},
-            {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij IDEA fileTemplates文件模板"},
+            {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
+            {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij%20IDEA%20fileTemplates文件模板"},
             {text: "简单理解正向代理和反向代理", link: "/开发/简单理解正向代理和反向代理"},
             {text: "设计模式的荼毒体现在哪", link: "/开发/设计模式的荼毒体现在哪"},
             {text: 'Nginx配置文件说明', link: '/开发/Nginx配置文件说明'},

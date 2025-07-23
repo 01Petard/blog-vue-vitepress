@@ -48,7 +48,7 @@ SSE 聚焦于 “服务器到客户端” 的单向数据传输。这意味着�
 
 WebSocket 主打 “双向高频交互”，客户端和服务器可随时互发消息，像在线聊天、实时协作（多人文档编辑 ）这类场景，双方需要频繁收发指令和数据，WebSocket 更擅长。但 SSE 专注单向推送，实现更简单（基于 HTTP ，无需额外协议支持 ），对于只需服务器发数据给客户端的场景，SSE 轻量化优势明显，开发成本更低。
 
-## 五、SSE 的简单实现（以 JavaScript 为例 ）
+## 五、SSE 的简单实现（分别以 Js和Java 为例 ）
 
 ### （一）服务器端（Node.js + Express ）
 
@@ -77,29 +77,108 @@ app.listen(port, () => {
 });
 ```
 
+或
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+```java
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import java.io.IOException;
+import java.time.LocalTime;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+@RestController
+public class SseController {
+
+    // 模拟 SSE 推送间隔
+    private static final long SEND_INTERVAL = 2; // 秒
+
+    @GetMapping(value = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter handleSse() {
+        SseEmitter emitter = new SseEmitter(60_000L); // 设置超时时间
+
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+
+        try {
+            // 模拟每隔 2 秒推送一次数据
+            ScheduledFuture<?> future = executor.scheduleAtFixedRate(() -> {
+                try {
+                    String data = LocalTime.now().toString();
+                    emitter.send(data);
+                } catch (IOException e) {
+                    emitter.complete();
+                }
+            }, 0, SEND_INTERVAL, TimeUnit.SECONDS);
+
+            // 客户端断开连接时取消推送任务
+            emitter.onCompletion(() -> {
+                future.cancel(true);
+                executor.shutdown();
+            });
+
+            emitter.onTimeout(() -> {
+                future.cancel(true);
+                executor.shutdown();
+                emitter.complete();
+            });
+
+        } catch (Exception e) {
+            emitter.completeWithError(e);
+        }
+
+        return emitter;
+    }
+}
+```
+
 ### （二）客户端（浏览器 JavaScript ）
 
 ```html
 <!DOCTYPE html>
-<html lang="zh - CN">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF - 8">
+  <meta charset="UTF-8">
   <title>SSE Demo</title>
 </head>
 <body>
-  <div id="data"></div>
+  <div id="data">等待推送数据...</div>
+
   <script>
-    const eventSource = new EventSource('/sse');
+    const eventSource = new EventSource('/sse');  // Js
+    const eventSource = new EventSource('http://localhost:8080/sse'); // Java
+
     eventSource.onmessage = function (event) {
       document.getElementById('data').innerText = `最新推送数据：${event.data}`;
     };
-    // 连接出错时触发
+
     eventSource.onerror = function (error) {
       console.error('SSE 连接出错：', error);
+      document.getElementById('data').innerText = 'SSE 连接已断开或出错';
     };
   </script>
 </body>
 </html>
+```
+
+大概的效果：
+
+```
+最新推送数据：15:30:00
+最新推送数据：15:30:02
+最新推送数据：15:30:04
+...
 ```
 
 上述代码中，服务器端通过设置特定响应头开启 SSE 通信，定时推送当前时间；客户端用 `EventSource` 对象建立连接，监听 `onmessage` 事件接收数据并展示，简单实现了 SSE 单向推送功能。
