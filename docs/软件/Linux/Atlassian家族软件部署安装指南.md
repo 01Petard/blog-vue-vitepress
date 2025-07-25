@@ -1,4 +1,4 @@
-> 所有文件下载目录：[Jira和Confluence安装包](https://drive.google.com/drive/folders/18yQ4lqRZv1gHR6-bCyJjgLJMW1Ogch_W?usp=sharing)
+> 所有文件下载目录：https://drive.google.com/drive/folders/18yQ4lqRZv1gHR6-bCyJjgLJMW1Ogch_W
 
 # Atlassian家族软件部署安装指南
 
@@ -8,7 +8,7 @@
 
 ### PostgreSQL
 
-> **卸载旧版本PostgreSQL（以15为例）**
+> **卸载旧版本PostgreSQL**
 >
 > 1. 停止服务
 >
@@ -47,7 +47,7 @@
 >    sudo delgroup postgres
 >    ```
 >
-> 4. 然后就可以安装其他版本的 PostgreSQL
+> 4. 然后就可以安装 PostgreSQL 14
 
 **Docker部署**
 
@@ -397,7 +397,7 @@ sudo sh /var/www/jira/bin/start-jira.sh
 
 参考：
 
-![参考](https://pic1.zhimg.com/v2-33b2c250eeb5619d1bef6087da7cfe3a_r.jpg)
+<img src="https://pic1.zhimg.com/v2-33b2c250eeb5619d1bef6087da7cfe3a_r.jpg" alt="参考" style="zoom:60%;" />
 
 ## 安装并破解 Confluence 7.3.5
 
@@ -465,6 +465,42 @@ Jira命令目录：`/var/www/jira/bin`
 
 管理员用户名和密码：`jira` `abc123!`
 
+### 开启自启
+
+```shell
+sudo vim /etc/systemd/system/jira.service
+```
+
+```shell
+[Unit]
+Description=Jira Service
+
+[Service]
+User=jira
+Group=jira
+WorkingDirectory=/var/www/jira/bin
+ExecStart=sh /var/www/jira/bin/start-jira.sh
+Restart=on-failure
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```shell
+sudo systemctl daemon-reload
+sudo systemctl enable jira
+sudo systemctl start jira
+sudo systemctl restart jira
+```
+
+### 权限不足问题
+
+```shell
+sudo chown jira4:jira ./atlassian-extras-3.2.jar
+sudo chown jira4:jira ./atlassian-extras-api-3.2.jar
+```
+
 ### 运维命令
 
 查看Jira和Confluence进程
@@ -474,6 +510,14 @@ sudo ps aux | grep -E 'jira|confluence'
 ```
 
 Jira启动、关闭
+
+```shell
+sudo -u jira4 bash /var/www/jira/bin/start-jira.sh
+```
+
+```shell
+sudo -u jira4 bash /var/www/jira/bin/stop-jira.sh
+```
 
 ```shell
 sudo sh /var/www/jira/bin/start-jira.sh
