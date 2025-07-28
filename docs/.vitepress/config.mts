@@ -82,6 +82,7 @@ export default defineConfig({
         {
           text: '开发',
           items: [
+            {text: "Ubuntu部署Jenkins并实现前后端的自动化构建与部署", link: "/开发/Ubuntu部署Jenkins并实现前后端的自动化构建与部署"},
             {text: "开发信息备忘录", link: "/开发/开发信息备忘录"},
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
@@ -94,6 +95,8 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: '详解微信小程序的注册、登录和支付的实现', link: '/开发/后端/详解微信小程序的注册、登录和支付的实现'},
+                {text: '低、中、高并发情况下的库存扣减处理方案', link: '/开发/后端/低、中、高并发情况下的库存扣减处理方案'},
                 {text: 'LangChain4j大模型对话应用快速入门', link: '/开发/后端/LangChain4j大模型对话应用快速入门'},
                 {text: "如何微调大模型并暴露接口给后端调用", link: "/开发/后端/如何微调大模型并暴露接口给后端调用"},
                 {text: '使用ANSI编码控制终端日志颜色', link: '/开发/后端/使用ANSI编码控制终端日志颜色'},
