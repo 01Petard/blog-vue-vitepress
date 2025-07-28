@@ -82,6 +82,7 @@ export default defineConfig({
         {
           text: '开发',
           items: [
+            {text: "开发信息备忘录", link: "/开发/开发信息备忘录"},
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
             {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij%20IDEA%20fileTemplates文件模板"},
@@ -300,9 +301,9 @@ export default defineConfig({
         {
           text: "杂谈",
           items: [
+            {text: "被AI气笑了——浅谈奖励模型对AI的影响", link: "/杂谈/被AI气笑了——浅谈奖励模型对AI的影响"},
             {text: "鬼灭之刃衍生呼吸法设定+脑补", link: "/杂谈/鬼灭之刃衍生呼吸法设定+脑补"},
             // {text: "16形人格测试+政治倾向测试", link: "/杂谈/16形人格测试+政治倾向测试"},
-            {text: "开发信息备忘录", link: "/杂谈/开发信息备忘录"},
             {text: "对于大模型绘制UML图的调研", link: "/杂谈/对于大模型绘制UML图的调研"},
             {text: "2024年常见Ollama大模型对比", link: "/杂谈/2024年常见Ollama大模型对比"},
             {text: "软件工程圣经《人月神话》到底讲了什么", link: "/杂谈/软件工程圣经《人月神话》到底讲了什么"},
