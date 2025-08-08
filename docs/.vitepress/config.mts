@@ -83,7 +83,6 @@ export default defineConfig({
           text: '开发',
           items: [
             // {text: "开发信息备忘录", link: "/开发/开发信息备忘录"},
-            {text: "Ubuntu部署Jenkins并实现前后端的自动化构建与部署", link: "/开发/Ubuntu部署Jenkins并实现前后端的自动化构建与部署"},
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
             {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij%20IDEA%20fileTemplates文件模板"},
@@ -213,6 +212,7 @@ export default defineConfig({
               text: "Linux",
               collapsed: false,
               items: [
+                {text: "Ubuntu部署Jenkins并实现前后端的自动化构建与部署", link: "/软件/Linux/Ubuntu部署Jenkins并实现前后端的自动化构建与部署"},
                 {text: "Ubuntu上固定无线的IP地址", link: "/软件/Linux/Ubuntu上固定无线的IP地址"},
                 {text: "Ubuntu部署项目流程完整版", link: "/软件/Linux/Ubuntu部署项目流程完整版"},
                 {text: "Atlassian家族软件部署安装指南", link: "/软件/Linux/Atlassian家族软件部署安装指南"},
