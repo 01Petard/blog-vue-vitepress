@@ -1,7 +1,6 @@
 此文章收到了该教程的影响，在此先感谢前人的总结和实践
 
 > [SpringBoot打包部署-Docker + Dockerfile +Jenkins +Maven + Git流水线工作](https://wwvh.lanzouu.com/iW4h9321reud)
-
 # Ubuntu20.04.6部署Jenkins 2.516.1（推荐）
 
 > 对于前后端项目的自动化构建，我给出了两种理解，一种是对于小型单体项目，另一种是大型的微服务项目。小型项目可以用一种简单的方式来维护，但是大型项目则必须通过K8S、Rancher等等工具来维护。

@@ -82,8 +82,8 @@ export default defineConfig({
         {
           text: '开发',
           items: [
+            // {text: "开发信息备忘录", link: "/开发/开发信息备忘录"},
             {text: "Ubuntu部署Jenkins并实现前后端的自动化构建与部署", link: "/开发/Ubuntu部署Jenkins并实现前后端的自动化构建与部署"},
-            {text: "开发信息备忘录", link: "/开发/开发信息备忘录"},
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
             {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij%20IDEA%20fileTemplates文件模板"},
@@ -95,6 +95,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: '常见后端框架性能对比（纯主观）', link: '/开发/后端/常见后端框架性能对比（纯主观）'},
                 {text: '详解微信小程序的注册、登录和支付的实现', link: '/开发/后端/详解微信小程序的注册、登录和支付的实现'},
                 {text: '低、中、高并发情况下的库存扣减处理方案', link: '/开发/后端/低、中、高并发情况下的库存扣减处理方案'},
                 {text: 'LangChain4j大模型对话应用快速入门', link: '/开发/后端/LangChain4j大模型对话应用快速入门'},
