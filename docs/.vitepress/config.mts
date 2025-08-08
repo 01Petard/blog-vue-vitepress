@@ -20,7 +20,7 @@ export default defineConfig({
     config: (md) => {
       md.use(markdownItTaskList)        // ✅ 任务列表
       md.use(timeline)                  // ✅ 时间轴
-      md.use(container, "tip")   // ✅ 自定义容器（如提示框）
+      md.use(container, "tip")          // ✅ 自定义容器（如提示框）
       md.use(attrs)                     // ✅ 让 Markdown 支持 HTML 属性
     },
     theme: {
