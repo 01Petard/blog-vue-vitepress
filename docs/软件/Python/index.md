@@ -9,7 +9,7 @@
 
 ## 目录
 
-1. [uv简单上手指南](./uv简单上手指南.md)
+1. [uv使用指南](./uv使用指南.md)
 2. [人工智能十大算法](./人工智能十大算法.md)
 3. [conda创建虚拟环境，安装Pytorch](./conda创建虚拟环境，安装Pytorch.md)
 4. [解决Anaconda安装后命令行前出现(base)](./解决Anaconda安装后命令行前出现(base).md)

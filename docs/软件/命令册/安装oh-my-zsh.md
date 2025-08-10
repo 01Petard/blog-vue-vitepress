@@ -19,6 +19,8 @@ cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410212210367.pn
 top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202410212210587.png
 ---
 
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202508081908369.png" alt="PixPin_2025-08-08_08-19-55" style="zoom:40%;" />
+
 > 前提：安装好**Git**
 
 ## 1、安装zsh并更改默认终端

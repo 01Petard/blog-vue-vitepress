@@ -1,4 +1,4 @@
-# uv 简单上手指南
+# uv使用指南
 
 > `uv` 是近年来新兴的一款 **轻量级、高性能、现代化的 Python 包和虚拟环境管理工具**，它的目标是部分替代 `pip`、`virtualenv`、`pip-tools`、`poetry`、`pipenv` 这类工具，提升开发者的日常体验。
 >
@@ -8,7 +8,7 @@
 
 ## 一、uv 是什么？
 
-`uv` 是由 [Astral](https://astral.sh) 团队开发的，用 **Rust 编写**，具有超高的性能。主要功能包括：
+`uv` 是由 [Astral](https://astral.sh) 团队开发推出的超快 Python 包管理工具，支持环境隔离、依赖管理、锁文件生成，目标就是比 pip/conda 快几个数量级。uv采用用 **Rust 编写**，具有超高的性能。主要功能包括：
 
 - 安装依赖（替代 `pip`）
 - 管理虚拟环境（替代 `venv`、`virtualenv`）
@@ -27,9 +27,31 @@
 5. [poetry](https://python-poetry.org/)：主要用于管理 python 项目依赖、打包和发布的工具，旨在简化依赖管理，同时提供一个统一的工作流来创建和分发 Python 包。
 6. [pyenv](https://github.com/pyenv/pyenv)：用于管理多个 Python 版本的工具。相较于 `uv`，`pyenv` 最大的不同是以源码编译的方式安装 python。
 
-## 二、uv 的安装
+## 二、安装 uv
 
-推荐使用 pipx 安装 uv：
+`uv` 本身就是一个二进制工具，不需要 Python 先装好，直接装：
+
+**Mac/Linux:**
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows PowerShell:**
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+装完之后验证：
+
+```bash
+uv --version
+```
+
+![image-20250810140240277](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202508101402508.png)
+
+或使用 pipx 安装 uv：
 
 ```shell
 pipx install uv
@@ -51,7 +73,7 @@ uv --version
 
 ![image-20250611202932378](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112029417.png)
 
-## 三、快速搭建 python 项目环境
+## 三、管理项目环境
 
 ### 查看可用python版本
 
@@ -119,7 +141,7 @@ uv remove [module]
 
 ![image-20250611203939503](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112039541.png)
 
-## 四、管理和运行 python 项目
+## 四、管理和运行项目
 
 ### 运行项目或脚本
 
@@ -188,3 +210,91 @@ uv export
 ```
 
 ![image-20250611204343735](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112043775.png)
+
+## 五、用uv来替代conda和pip
+
+### 1. 创建 Python 环境（类似 `conda create`）
+
+`uv` 也能拉取指定版本的 Python 并创建隔离环境：
+
+```bash
+# 创建一个新的虚拟环境（会自动安装 python 解释器）
+uv venv --python 3.11 myenv
+```
+
+这会在当前目录生成 `myenv/`，自带干净的 Python。
+
+激活环境：
+
+```bash
+# Linux/Mac
+source myenv/bin/activate
+
+# Windows
+myenv\Scripts\activate
+```
+
+### 2. 全局 Python 版本管理（类似 conda 的全局 base）
+
+如果你想用 `uv` 像 `conda` 那样全局切换 Python 版本，可以：
+
+```bash
+uv python install 3.12
+uv python install 3.10
+
+# 查看已安装版本
+uv python list
+
+# 设置默认版本
+uv python pin 3.12
+```
+
+`uv` 会自己管理这些解释器，独立于系统 Python。
+
+### 3. 安装依赖（比 pip 快很多）
+
+在已激活的环境里：
+
+```bash
+uv pip install requests
+```
+
+或者直接用 `uv add`，还能帮你生成锁文件：
+
+```bash
+uv add requests
+```
+
+生成的 `uv.lock` 类似 `conda-lock`，跨平台可复现。
+
+### 4. 管理依赖（类似 `conda env update`）
+
+修改 `pyproject.toml` 或 `requirements.txt` 后，运行：
+
+```bash
+uv sync
+```
+
+会自动安装/更新所有依赖，且速度很快（比 pip + venv 快几十倍）。
+
+### 5. 运行脚本时临时创建环境（免激活）
+
+这是 `uv` 的杀手锏：
+
+```bash
+uv run python script.py
+```
+
+它会自动根据当前目录的依赖文件创建隔离环境并运行脚本，不污染全局。
+
+### 6. 删除环境（类似 `conda remove --name myenv --all`）
+
+```bash
+rm -rf myenv
+```
+
+或者如果是 `uv` 管理的全局 python：
+
+```bash
+uv python uninstall 3.10
+```
