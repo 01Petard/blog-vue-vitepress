@@ -269,15 +269,15 @@ sudo systemctl status mysql
 sudo mysql
 ```
 
-```mysql
+```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'm5Jwk.JR*Uxpbt^9f8jp';
 ```
 
-```mysql
+```sql
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
 ```
 
-```mysql
+```sql
 FLUSH PRIVILEGES;
 ```
 
@@ -300,15 +300,15 @@ sudo mysqld_safe --skip-grant-tables &
 sudo mysql
 ```
 
-```mysql
+```sql
 CREATE USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'm5Jwk.JR*Uxpbt^9f8jp';
 ```
 
-```mysql
+```sql
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 ```
 
-```mysql
+```sql
 FLUSH PRIVILEGES;
 ```
 
@@ -681,13 +681,13 @@ acbd@1234
 
 2. 将数据表部署到服务器上，运行以下sql脚本和alter语句，重置自增id
 
-```mysql
+```sql
 SELECT CONCAT('TRUNCATE TABLE `', table_name, '`;') AS reset_sql
 FROM information_schema.tables
 WHERE table_schema = DATABASE() AND AUTO_INCREMENT IS NOT NULL;
 ```
 
-```mysql
+```sql
 TRUNCATE TABLE ...;
 ....
 ```
@@ -696,7 +696,7 @@ TRUNCATE TABLE ...;
 
 4. **之后用Navicat打开数据库修改一下，结合实际情况修改 `工厂编号`、`工厂名称`、`工厂近经纬度`、`调度系统ip` 等信息**
 
-```mysql
+```sql
 START TRANSACTION;
 
 # 工厂和产线的配置

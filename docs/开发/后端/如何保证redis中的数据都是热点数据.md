@@ -22,7 +22,7 @@
   - `allkeys-lfu`（最不经常使用）：适用于访问次数差异较大的场景，能够更好地识别出稳定的热点数据。
 
 配置示例（在`redis.conf`中设置）：
-```conf
+```yaml
 maxmemory 20gb  # 根据实际需求调整
 maxmemory-policy allkeys-lru  # 或者使用allkeys-lfu
 ```

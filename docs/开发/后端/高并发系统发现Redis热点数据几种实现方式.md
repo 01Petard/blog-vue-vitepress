@@ -152,7 +152,7 @@ Redis 从 4.0 或 5.0 版本开始，就支持了 LFU（基于近似 LRU/Freq �
 1. **Redis 要启用 LFU 策略**
     在 `redis.conf` 里：
 
-   ```conf
+   ```yaml
    # maxmemory-policy 设置为 allkeys-lfu 或 volatile-lfu
    maxmemory-policy allkeys-lfu
    # LFU 初始化和增量策略
@@ -249,7 +249,7 @@ public class RedisLFUHotKeyScanner {
 
 在 `redis.conf` 或运行时配置：
 
-```conf
+```yaml
 # 打开 Keyspace 通知，通知类型 K（key 事件）、E（过期事件）都可以。这里我们主要关心写操作，所以 Kx（key 写入事件）
 notify-keyspace-events Kgx  # g: 泛型命令（包括写命令），x: 过期命令
 # 如果只想监控写操作，可配置成 "K$" 等，具体类型见官方文档
@@ -312,7 +312,7 @@ public class RedisKeyspaceSubscriber {
 
 ### 4.2 Redis 侧配置
 
-```conf
+```yaml
 # 在 redis.conf 里设置，单位 microseconds，记录大于 1000 微秒（1ms）的命令
 slowlog-log-slower-than 1000
 slowlog-max-len 1024
