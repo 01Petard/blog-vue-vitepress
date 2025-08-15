@@ -178,6 +178,7 @@ export default defineConfig({
         {
           text: "软件",
           items: [
+            {text: "软件项目全生命周期文档实施规范", link: "/软件/软件项目全生命周期文档实施规范"},
             {text: "自用常见系统环境配置文件", link: "/软件/自用常见系统环境配置文件"},
             {text: "缺陷管理工具的选择", link: "/软件/缺陷管理工具的选择"},
             {text: "容器化一键部署指南", link: "/软件/容器化一键部署指南"},
@@ -263,7 +264,8 @@ export default defineConfig({
               text: "Python",
               collapsed: false,
               items: [
-                {text: "My Python Guide", link: "/软件/Python/My Python Guide"},
+                // {text: "My Python Guide", link: "/软件/Python/My Python Guide"},
+                {text: "Pytest学习指南记录", link: "/软件/Python/Pytest学习指南记录"},
                 {text: "uv使用指南", link: "/软件/Python/uv使用指南"},
                 {text: "人工智能十大算法", link: "/软件/Python/人工智能十大算法"},
                 {text: "conda创建虚拟环境，安装Pytorch", link: "/软件/Python/conda创建虚拟环境，安装Pytorch"},
