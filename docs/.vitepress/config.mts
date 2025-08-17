@@ -265,7 +265,7 @@ export default defineConfig({
               collapsed: false,
               items: [
                 // {text: "My Python Guide", link: "/软件/Python/My Python Guide"},
-                {text: "Pytest学习指南记录", link: "/软件/Python/Pytest学习指南记录"},
+                {text: "Python软件测试从入门到入坟", link: "/软件/Python/Python软件测试从入门到入坟"},
                 {text: "uv使用指南", link: "/软件/Python/uv使用指南"},
                 {text: "人工智能十大算法", link: "/软件/Python/人工智能十大算法"},
                 {text: "conda创建虚拟环境，安装Pytorch", link: "/软件/Python/conda创建虚拟环境，安装Pytorch"},

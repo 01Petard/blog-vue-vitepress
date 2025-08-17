@@ -9,7 +9,7 @@
 
 ## 目录
 
-1. [Pytest学习指南记录](./Pytest学习指南记录.md)
+1. [Python软件测试从入门到入坟](Python软件测试从入门到入坟.md)
 2. [uv使用指南](./uv使用指南.md)
 3. [人工智能十大算法](./人工智能十大算法.md)
 4. [conda创建虚拟环境，安装Pytorch](./conda创建虚拟环境，安装Pytorch.md)
