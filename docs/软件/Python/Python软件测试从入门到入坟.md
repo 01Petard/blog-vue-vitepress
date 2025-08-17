@@ -1,4 +1,4 @@
-# 从测试入门到自动化测开
+# 对软件测试岗位的理解
 
 软件测试这东西，说简单也简单，说复杂也复杂。它的本质就是一句话：**验证软件是否按照预期工作，并在各种情况下都表现合理**。我给你梳理几个核心概念，帮你建立清晰的地图：
 
@@ -64,10 +64,10 @@
 其实，测试并不只是找 bug，更重要的是：**提升软件的可靠性、可维护性和用户体验**。这也是为什么现在测试和开发界限越来越模糊，单元测试、CI/CD、自动化测试已经成了标配。
 
 
-# Pytest学习与使用
+# Pytest 学习路图
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202508151922147.png" alt="img" style="zoom:40%;" />
 
-## 一、建立 Pytest 思维框架
+## 一、Pytest 是什么
 
 - **定位**：轻量、插件化的 Python 测试框架
   
@@ -88,105 +88,59 @@
 ## 二、基础用法
 
 1. **文件与函数命名**
-   
-    - 文件：`test_*.py` 或 `*_test.py`
-      
+    - 文件：`test_*.py` 或 `*_test.py`  
     - 函数：`test_xxx`
-    
 2. **断言**
-   
     - 直接用 `assert`，pytest 自动输出详细对比
-    
 3. **测试执行与分类**
-   
     - 基本执行：`pytest test_xxx.py`
-      
     - 按关键字：`-k`
-      
     - 按标记：`-m`
-    
 4. **Fixture**
-   
-    - `@pytest.fixture` 做 setup/teardown
-      
+    - `@pytest.fixture` 做 setup/teardown 
     - 作用域：function、class、module、session
-    
 5. **参数化**
-   
     - `@pytest.mark.parametrize` 支持数据驱动
-      
 
 **练习目标**：写一个用 `requests` 测试 GET/POST 接口的用例
 
 ## 三、进阶功能
 
 - **Mark 标记**：`@pytest.mark.smoke`、`skip`、`xfail`
-  
 - **conftest.py**：放公共 fixture，例如登录、数据库连接
-  
 - **Hook 函数**：动态处理用例执行，如 `pytest_runtest_setup`
-  
 - **pytest.ini**：统一管理运行参数与 mark
-  
 - **插件**
-  
     - `pytest-html`：生成 HTML 报告
-      
     - `allure-pytest`：生成可视化报告
-      
-    - `pytest-xdist`：并发执行测试
-      
+    - `pytest-xdist`：并发执行测试 
 
 **练习目标**：用 conftest + fixture + allure 搭建小型接口测试框架
-
 ## 四、结合项目场景
 
 - **接口测试**：`requests` + pytest + allure，支持 YAML/CSV/Excel 参数化
-  
 - **UI 自动化**（可选）：`selenium` / `playwright` + pytest
-  
 - **Mock 外部依赖**：`pytest-mock`
-  
 - **数据库校验**：`pymysql` / `sqlalchemy`
-  
-
 ## 五、工程化与 CI/CD
-
 - 将 pytest 嵌入 Jenkins / GitLab CI / GitHub Actions
-  
 - 测试报告归档
-  
 - 失败用例重跑：`pytest-rerunfailures` 插件
-  
-
 ## 六、两周学习路径
 
 **第一周：基础 + 简单实战**
-
 - Day1-2：pytest 基础（断言、执行、fixture、参数化）
-  
 - Day3：接口测试脚本（requests）
-  
 - Day4-5：conftest.py、pytest.ini、mark
-  
 - Day6：pytest-html 生成报告
-  
 - Day7：复盘 + 整理笔记
-  
-
 **第二周：进阶 + 工程化**
 
 - Day8-9：allure-pytest，美化报告
-  
 - Day10：hook、自定义命令行参数
-  
 - Day11-12：数据库验证、mock
-  
 - Day13：整合成小型测试框架
-  
 - Day14：在 CI/CD 上跑 pytest
-  
-
 ## 七、接口自动化骨架示例
 
 ### 目录结构
@@ -282,36 +236,296 @@ allure serve ./report/allure-results
 
 # 企业级测试框架——allure
 
+## @allure装饰器
+
 `@allure`是 **allure 测试报告框架** 中用于标记测试用例元数据的注解（通常在 Java、Python 等语言的测试框架如 pytest、TestNG 里配合使用 ），作用是给测试用例分类、分层、添加标题，让测试报告更清晰易读，用法核心区别和场景如下：
 
 **层级关系（从大到小）**：  
 `epic`（史诗）→ `feature`（功能）→ `story`（用户故事）→ `title`（用例标题），层层细化，让测试报告结构化，方便团队从不同维度（大模块→小场景）梳理测试覆盖情况，也能快速筛选、定位用例 。
-
-## 1. `@allure.epic`
+### `@allure.epic`
 
 - **作用**：标记**最顶层的需求 / 史诗级模块**，一般用于划分大的业务领域（比如一个产品的不同大板块）。
 - **场景**：  
     比如做电商系统，可定义 `@allure.epic("电商平台")`，把 “购物车”“订单”“商品详情” 等测试用例都归属到这个大 epic 下，方便从最高维度筛选、统计测试范围。
-
-## 2. `@allure.feature`
+### `@allure.feature`
 
 - **作用**：标记**功能模块**，比 `epic` 更细一层，聚焦单个大功能。
 - **场景**：  
     延续电商例子，“电商平台” epic 下，可用 `@allure.feature("购物车功能")` 标记购物车相关用例（如 “添加商品到购物车”“修改购物车数量” ），用来筛选、组织同一功能的测试用例。
-
-## 3. `@allure.story`
+### `@allure.story`
 
 - **作用**：标记**用户故事 / 业务场景**，是 `feature` 的细分，描述具体的用户交互流程。
 - **场景**：  
     在 “购物车功能” feature 下，用 `@allure.story("用户添加商品到购物车并结算")` 标记一条用例，说明这是一个完整的用户操作场景，报告里能清晰体现功能→场景的层级。
-
-## 4. `@allure.title`
+###  `@allure.title`
 
 - **作用**：**给测试用例设置标题**，让报告里的用例名称更直观（替代代码里默认的用例方法名）。
 - **场景**：  
     代码里测试方法叫 `test_add_to_cart()`，用 `@allure.title("验证商品成功加入购物车，库存扣减正确")` 后，报告里显示的标题更易懂，直接体现测试意图。
-  
 
-# Web自动化测试
+# 后端自动化测试示例
 
-selenium
+怎么用pytest写具体的测试用例呢？
+
+比如用户有两个故事：“用户希望将商品加入到购物车后，购物车内可以增加商品的数量”，以及“用户将商品下单后，商品的库存减少，如果库存不足，用户下单失败”
+
+以下为一套 **pytest + fixture + allure 报告** 的标准化结构，可以直接套上去就能在项目里跑。
+## 目录结构
+
+```
+tests/
+│
+├── conftest.py             # 全局 fixture 配置（pytest 的钩子）
+├── config.py               # 配置文件，比如 BASE_URL、测试账号
+├── data/                   # 测试数据
+│   └── testdata.yaml
+│
+├── fixtures/               # 存放 fixture
+│   ├── __init__.py
+│   ├── client.py               # 封装 requests 会话
+│   └── reset_db.py             # 测试前清理或初始化数据
+│
+├── test_cart.py            # 购物车相关用例
+├── test_order.py           # 订单相关用例
+└── utils/                  # 工具方法（日志、mock）
+    └── db_utils.py
+```
+
+## 关键文件内容示例
+
+### config.py
+
+```python
+BASE_URL = "http://localhost:8080"
+
+TEST_USER = {
+    "id": 1,
+    "name": "pytest_user"
+}
+```
+### fixtures/client.py
+
+```python
+import pytest
+import requests
+import config
+
+@pytest.fixture(scope="session")
+def api_client():
+    session = requests.Session()
+    session.headers.update({"Content-Type": "application/json"})
+    # 这里可以做鉴权，比如 session.headers["Authorization"] = "Bearer token"
+    return session
+
+@pytest.fixture
+def base_url():
+    return config.BASE_URL
+```
+### fixtures/reset_db.py
+
+```python
+import pytest
+
+@pytest.fixture(autouse=True)
+def reset_db():
+    """
+    每个用例前，清理或重置测试数据。
+    可以通过 SQL、HTTP 管理接口、mock 数据实现。
+    """
+    # reset logic, e.g., 清空购物车、恢复库存
+    yield
+    # teardown 可选
+```
+### test_cart.py
+
+```python
+import pytest
+import allure
+
+@allure.feature("购物车模块")
+@allure.story("用户将商品加入购物车")
+@pytest.mark.parametrize(
+	"user_id, product_id, qty", 
+	[(1, 101, 1), (1, 101, 2)]
+)
+def test_add_to_cart(api_client, base_url, product_id, qty):
+    with allure.step("调用接口：加入购物车"):
+        resp = api_client.post(f"{base_url}/cart/add", json={
+            "user_id": user_id,
+            "product_id": product_id,
+            "quantity": qty
+        })
+        allure.attach(str(resp.json()), "接口返回", allure.attachment_type.JSON)
+        assert resp.status_code == 200
+        assert resp.json()["success"]
+
+    with allure.step("调用接口：查询购物车"):
+        cart = api_client.get(f"{base_url}/cart/{user_id}").json()
+        allure.attach(str(cart), "购物车详情", allure.attachment_type.JSON)
+        item = next((i for i in cart["items"] if i["product_id"] == product_id), None)
+        assert item is not None
+        assert item["quantity"] >= qty
+```
+
+报告效果
+```yml
+购物车模块 > 用户将商品加入购物车 > test_add_to_cart[101, 1]
+   步骤 1: 调用接口：加入购物车   ✅
+       附件: 接口返回 (JSON)
+   步骤 2: 调用接口：查询购物车   ✅
+       附件: 购物车详情 (JSON)
+```
+
+### test_order.py
+
+```python
+import pytest
+import allure
+
+def get_stock(api_client, base_url, product_id):
+    resp = api_client.get(f"{base_url}/product/{product_id}")
+    return resp.json()["stock"]
+
+@allure.feature("订单模块")
+@allure.story("用户下单成功或失败")
+@pytest.mark.parametrize(
+	"user_id, product_id, qty", 
+	[(1, 101, 1), (1, 101, 9999)]
+)
+def test_order_stock(api_client, base_url, product_id, qty):
+    with allure.step("查询下单前库存"):
+        stock_before = get_stock(api_client, base_url, product_id)
+        allure.attach(str(stock_before), "下单前库存", allure.attachment_type.TEXT)
+
+    with allure.step("调用下单接口"):
+        resp = api_client.post(f"{base_url}/order/create", json={
+            "user_id": user_id,
+            "product_id": product_id,
+            "quantity": qty
+        })
+        data = resp.json()
+        allure.attach(str(data), "下单接口返回", allure.attachment_type.JSON)
+
+    if qty <= stock_before:
+        with allure.step("验证下单成功 & 库存减少"):
+            assert data["success"]
+            stock_after = get_stock(api_client, base_url, product_id)
+            allure.attach(str(stock_after), "下单后库存", allure.attachment_type.TEXT)
+            assert stock_after == stock_before - qty
+    else:
+        with allure.step("验证下单失败 & 库存不变"):
+            assert not data["success"]
+            assert "库存不足" in data["message"]
+            stock_after = get_stock(api_client, base_url, product_id)
+            allure.attach(str(stock_after), "下单后库存", allure.attachment_type.TEXT)
+            assert stock_after == stock_before
+```
+
+报告效果
+```yml
+订单模块 > 用户下单成功或失败 > test_order_stock[101, 9999]
+   步骤 1: 查询下单前库存 = 100
+   步骤 2: 调用下单接口
+       附件: 下单接口返回 (JSON)
+   步骤 3: 验证下单失败 & 库存不变   ❌
+       附件: 下单后库存 (TEXT)
+```
+## 运行与报告生成
+
+1. 运行测试（生成 allure 原始数据）
+
+```bash
+pytest --alluredir=./report/raw
+```
+
+2. 生成 HTML 报告
+
+```bash
+allure generate ./report/raw -o ./report/html --clean
+```
+
+3. 打开报告
+
+```bash
+allure open ./report/html
+```
+
+这样就有了一套：
+
+- **fixtures** 管理复用逻辑（客户端、数据清理）。
+- **用例文件** 对应业务模块（购物车 / 订单）。
+- **allure 装饰器** 让报告呈现为“用户故事”。
+
+报告里能清晰看到：功能 → 故事 → 测试步骤 → 成功/失败。
+
+---
+还原一下 **allure 报告的展示效果**，这样便于向在团队展示 demo 。
+### 报告首页（Dashboard）
+
+打开 `allure open ./report/html`，首页就是一个总览：
+
+- **Suites（测试套件总览）**：展示不同模块的测试情况，比如 `购物车模块`、`订单模块`。
+- **Statistics（统计）**：通过饼图/柱状图展示成功用例、失败用例、跳过用例的比例。
+- **Trend（趋势）**：每次跑的结果趋势，适合 CI/CD 场景。
+- **Environment（环境信息）**：展示你在 `conftest.py` 或配置里定义的测试环境（比如 `BASE_URL=http://localhost:8080`）。
+
+界面大概是这样的（ASCII 模拟）：
+
+```
+[ PASS: 8 | FAIL: 1 | SKIP: 0 ]   ✅❌➖
+-----------------------------------------
+购物车模块   |  5 用例   |  通过: 5
+订单模块     |  4 用例   |  通过: 3 | 失败: 1
+```
+### 模块层级（Feature → Story → Case）
+
+你在代码里加了：
+
+```python
+@allure.feature("购物车模块")
+@allure.story("用户将商品加入购物车")
+```
+
+那么在报告里会呈现成树状结构：
+
+```
+购物车模块
+ └── 用户将商品加入购物车
+      ├── test_add_to_cart[user_id=1, product_id=101, qty=1]
+      └── test_add_to_cart[user_id=1, product_id=101, qty=2]
+```
+
+再看订单模块：
+
+```
+订单模块
+ └── 用户下单成功或失败
+      ├── test_order_stock[product_id=101, qty=1]   ✅ 通过
+      └── test_order_stock[product_id=101, qty=9999] ❌ 失败（库存不足）
+```
+
+这样，产品经理或者领导打开报告时，会像在读一份“需求验证文档”，而不是生硬的接口断言。
+### 单个用例详情
+
+点击某个用例（比如 `test_order_stock[product_id=101, qty=9999]`），你会看到：
+
+- **基本信息**：用例名、参数化值、执行时长
+- **步骤（Steps）**：你在代码里写的 `allure.step("xxx")` 会按步骤展示，例如：
+    ```
+    步骤 1: 查询库存 stock_before=100
+    步骤 2: 调用下单接口 qty=9999
+    步骤 3: 验证接口返回 success=False, message="库存不足"
+    步骤 4: 验证库存未变化 stock_after=100
+    ```
+- **日志与附件**：
+    - 你可以在失败时 attach 请求/响应 JSON，报告里会有可下载的附件。
+    - 日志能和结果对照，方便 debug。
+### 可视化效果总结
+
+一句话：  
+**Allure 报告把 pytest 用例 → 用户故事 → 执行结果串联起来，像一份“需求验收报告”而不是枯燥的测试日志。**
+
+PM 看懂 “购物车能加东西了 ✅”，开发能看断言细节，QA 能看覆盖率，领导能看趋势和通过率，三方都舒服。
+# 前端自动化测试
+
+## selenium
