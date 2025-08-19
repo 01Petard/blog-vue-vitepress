@@ -83,6 +83,7 @@ export default defineConfig({
           text: '开发',
           items: [
             // {text: "开发信息备忘录", link: "/开发/开发信息备忘录"},
+            {text: "PHP框架与Java框架对比", link: "/开发/PHP框架与Java框架对比"},
             {text: "大量设备数据上报存储的简单方案设计", link: "/开发/大量设备数据上报存储的简单方案设计"},
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
