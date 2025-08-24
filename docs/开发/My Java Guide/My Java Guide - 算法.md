@@ -14,7 +14,6 @@ description: Java, all in one！
 cover: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121552721.png
 top_img: https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202502121546411.png
 ---
-
 # <div align="center">---------------线性表、栈---------------</div>
 
 # 线性表
@@ -242,6 +241,55 @@ public static void testList2Array(){
     }
 }
 ```
+
+## 找到链表的环起点
+
+**思路分析**
+
+1. **先用快慢指针判断是否有环**
+    
+    - slow 每次走 1 步，fast 每次走 2 步。
+    - 如果有环，它们最终会在环内某一点相遇。
+    
+2. **确定环的起点**
+    
+    - **相遇点到环起点的距离 = 链表头到环起点的距离。**
+    - 所以：让 slow 回到链表头，fast 保持在相遇点，两指针同时每次走 1 步，最终相遇的节点就是环起点。
+
+```java
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) { this.val = val; }
+}
+
+public ListNode detectCycle(ListNode head) {
+    if (head == null || head.next == null) return null;
+
+    ListNode slow = head;
+    ListNode fast = head;
+
+    // 1. 判断是否有环
+    while (fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow == fast) break; // 相遇，说明有环
+    }
+
+    if (fast == null || fast.next == null) return null; // 无环
+
+    // 2. 找环起点
+    slow = head; // slow回到头节点
+    while (slow != fast) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+
+    return slow; // 相遇点就是环起点
+}
+```
+
+
 
 # 栈、队列
 
