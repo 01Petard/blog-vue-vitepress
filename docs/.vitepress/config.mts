@@ -96,6 +96,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: 'Spring注解——缓存、定时任务、异步任务', link: '/开发/后端/Spring注解——缓存、定时任务、异步任务'},
                 {text: 'Function Call的实现与调用链分析', link: '/开发/后端/Function%20Call的实现与调用链分析'},
                 {text: '常见后端框架性能对比（纯主观）', link: '/开发/后端/常见后端框架性能对比（纯主观）'},
                 {text: '详解微信小程序的注册、登录和支付的实现', link: '/开发/后端/详解微信小程序的注册、登录和支付的实现'},
