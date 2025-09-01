@@ -1,8 +1,8 @@
-### 使用 IntelliJ IDEA 文件和代码模板的心得分享
-
-在日常开发中，我们经常需要创建大量的类、接口、枚举等文件。如果每次都要手动编写重复的代码结构（如包声明、注释、构造器等），不仅耗时耗力，还容易出错。幸运的是，IntelliJ IDEA 提供了强大的 **文件和代码模板** 功能，可以帮助我们快速生成标准化的代码结构，提高开发效率。
-
-在这篇博客中，我将分享我在使用 IntelliJ IDEA 文件和代码模板过程中的一些心得和技巧。
+> **使用 IntelliJ IDEA 文件和代码模板的心得分享**
+>
+> 在日常开发中，我们经常需要创建大量的类、接口、枚举等文件。如果每次都要手动编写重复的代码结构（如包声明、注释、构造器等），不仅耗时耗力，还容易出错。幸运的是，IntelliJ IDEA 提供了强大的 **文件和代码模板** 功能，可以帮助我们快速生成标准化的代码结构，提高开发效率。
+>
+> 在这篇博客中，我将分享我在使用 IntelliJ IDEA 文件和代码模板过程中的一些心得和技巧。
 
 # 如何配置文件模板？
 
@@ -51,26 +51,93 @@
 
 以下是几种常见的模板示例，覆盖了不同类型的代码需求。
 
-## 1. Class
+## AnnotationType.java
 
-类的使用广泛，不能写得太死，所以只需要提供毕业的头注释即可
+注解类，很有用的一个东西，但是用的更少，因为自定义的注解往往被团队认为是危险的东西，而且注解也需要切面类配合使用，这需要项目引入额外的依赖，在此稍微备注一下吧，实际使用的话还是建议配合AI
 
 ```java
-#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")
+package ${PACKAGE_NAME};
 
 #end
 #parse("File Header.java")
 /**
- * ${NAME}
+ * ${NAME} 注解
+ *
+ * 用于定义 [在此补充注解的用途说明]。
+ * 
+ * @author ${USER}
+ * @since ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}
+ */
+public @interface ${NAME} {
+
+    /**
+     * 核心值示例。
+     * 
+     * @return 默认值
+     */
+    String value() default "";
+
+    /**
+     * 描述信息。
+     * 
+     * @return 描述
+     */
+    String description() default "";
+
+    /**
+     * 是否启用功能。
+     * 
+     * @return true 表示启用，false 表示禁用
+     */
+    boolean enabled() default true;
+
+    /**
+     * 配置优先级。
+     * 
+     * @return 优先级，默认为 0
+     */
+    int priority() default 0;
+
+    /**
+     * 可选项列表。
+     * 
+     * @return 选项数组
+     */
+    String[] options() default {};
+}
+```
+
+## Class.java
+
+类的使用广泛，不能写得太死，所以只需要提供毕业的头注释即可
+
+```java
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")
+package ${PACKAGE_NAME};
+
+#end
+#parse("File Header.java")
+/**
+ * ${NAME} 类
+ *
+ * 用于 [在此处补充类的功能或用途说明]。
  * 
  * @author ${USER}
  * @since ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}
  */
 public class ${NAME} {
+
+    /**
+     * 默认构造方法。
+     */
+    public ${NAME}() {
+        // TODO 初始化逻辑
+    }
 }
 ```
 
-## 2. Interface
+## Interface.java
 
 接口的使用也广泛，虽然一般都是用于业务的接口，因此也不能写太死
 
@@ -90,7 +157,7 @@ public interface ${NAME} {
 }
 ```
 
-## 3. Enum
+## Enum.java
 
 枚举一般定义常量值，比如异常值、业务关键字、常量等等，用到时往往需要回想怎么样，这就成了一件苦恼的事，所以这就需要配置模板了
 
@@ -102,70 +169,60 @@ package ${PACKAGE_NAME};
 #parse("File Header.java")
 /**
  * ${NAME} 枚举类
+ *
+ * 用于定义一组固定常量。
  * 
  * @author ${USER}
  * @since ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}
  */
 public enum ${NAME} {
     
-    // 枚举常量定义示例
+    // 示例常量
     CONSTANT_ONE("Value1", "描述1"),
     CONSTANT_TWO("Value2", "描述2");
 
-    // 枚举字段
+    // 字段
     private final String value;
     private final String description;
 
     /**
-     * 构造函数
+     * 构造方法
      *
-     * @param value        枚举值
-     * @param description  描述信息
+     * @param value       枚举值
+     * @param description 描述
      */
     ${NAME}(String value, String description) {
         this.value = value;
         this.description = description;
     }
 
-    /**
-     * 获取枚举值
-     *
-     * @return 枚举值
-     */
+    /** 获取枚举值 */
     public String getValue() {
         return value;
     }
 
-    /**
-     * 获取描述信息
-     *
-     * @return 描述信息
-     */
+    /** 获取描述 */
     public String getDescription() {
         return description;
     }
 
     /**
-     * 根据值获取对应的枚举对象
+     * 根据枚举值查找对应常量
      *
      * @param value 枚举值
-     * @return 对应的枚举对象，如果未找到则返回 null
+     * @return 对应的枚举常量，未找到时返回 null
      */
     public static ${NAME} fromValue(String value) {
         for (${NAME} constant : values()) {
-            if (constant.getValue().equals(value)) {
+            if (constant.value.equals(value)) {
                 return constant;
             }
         }
-        // 或者抛出异常：throw new IllegalArgumentException("未知的枚举值: " + value);
+        // 也可选择抛出异常：throw new IllegalArgumentException("未知的枚举值: " + value);
         return null;
     }
 
-    /**
-     * 返回枚举的描述信息（重写 toString 方法）
-     *
-     * @return 描述信息
-     */
+    /** 返回枚举的描述（重写 toString） */
     @Override
     public String toString() {
         return this.description;
@@ -173,7 +230,78 @@ public enum ${NAME} {
 }
 ```
 
-## 4. Record
+## Exception.java
+
+```java
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")
+package ${PACKAGE_NAME};
+
+#end
+#parse("File Header.java")
+/**
+ * ${NAME} 自定义异常类
+ * <p>
+ * 该异常类用于 [在此处描述异常的用途]。
+ * 
+ * @author ${USER}
+ * @since ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}
+ */
+public class ${NAME} extends RuntimeException {
+
+    /**
+     * 构造一个新的 ${NAME} 异常，不包含详细消息。
+     */
+    public ${NAME}() {
+        super();
+    }
+
+    /**
+     * 构造一个新的 ${NAME} 异常，包含指定的详细消息。
+     *
+     * @param message 详细消息
+     */
+    public ${NAME}(String message) {
+        super(message);
+    }
+
+    /**
+     * 构造一个新的 ${NAME} 异常，包含指定的原因。
+     *
+     * @param cause 原因（可以为 null）
+     */
+    public ${NAME}(Throwable cause) {
+        super(cause);
+    }
+
+    /**
+     * 构造一个新的 ${NAME} 异常，包含指定的详细消息和原因。
+     *
+     * @param message 详细消息
+     * @param cause   原因（可以为 null）
+     */
+    public ${NAME}(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    /**
+     * 构造一个新的 ${NAME} 异常，包含指定的详细消息、原因、启用或禁用抑制标志以及可写堆栈跟踪标志。
+     *
+     * @param message            详细消息
+     * @param cause              原因（可以为 null）
+     * @param enableSuppression  是否启用抑制
+     * @param writableStackTrace 是否启用可写堆栈跟踪
+     */
+    protected ${NAME}(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+}
+```
+
+
+
+
+
+## Record.java
 
 > Record，记录，是在 Java 14 中引入的一种特殊的类，旨在简化不可变数据对象的创建。它本质上是一个**不可变的数据载体**，用于存储一组相关的字段值，并自动生成常见的方法（如构造器、`toString()`、`equals()` 和 `hashCode()` 等）。使用 `record` 可以显著减少样板代码，更多Record的使用：[什么是Record类](../开发/后端/record的使用说明.md)
 
@@ -188,6 +316,8 @@ package ${PACKAGE_NAME};
 #parse("File Header.java")
 /**
  * ${NAME} 数据载体类
+ *
+ * 基于 Java Record，用于定义不可变的数据对象。
  * 
  * @author ${USER}
  * @since ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}
@@ -202,11 +332,10 @@ public record ${NAME}(
 ) {
 
     /**
-     * 构造器示例。
-     * 如果需要对字段进行额外验证或初始化，可以在此处添加紧凑构造器。
+     * 紧凑构造器示例。
+     * 可在此对字段进行验证或额外初始化逻辑。
      */
     public ${NAME} {
-        // 示例：字段验证
         if (field1 == null || field1.isEmpty()) {
             throw new IllegalArgumentException("field1 不能为空");
         }
@@ -216,83 +345,23 @@ public record ${NAME}(
     }
 
     /**
-     * 示例方法：根据字段生成某种格式的字符串。
+     * 示例方法：返回格式化后的字符串。
      *
-     * @return 格式化后的字符串
+     * @return 格式化内容
      */
     public String toFormattedString() {
         return String.format("Field1: %s, Field2: %d", field1, field2);
     }
 
     /**
-     * 示例静态工厂方法：创建 ${NAME} 实例。
+     * 静态工厂方法示例：创建 ${NAME} 实例。
      *
      * @param field1 字段1
      * @param field2 字段2
-     * @return 新的 ${NAME} 实例
+     * @return ${NAME} 实例
      */
     public static ${NAME} of(String field1, int field2) {
         return new ${NAME}(field1, field2);
     }
-}
-```
-
-## 5. @Interface
-
-注解类，很有用的一个东西，但是用的更少，因为自定义的注解往往被团队认为是危险的东西，而且注解也需要切面类配合使用，这需要项目引入额外的依赖，在此稍微备注一下吧，实际使用的话还是建议配合AI
-
-```java
-#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")
-package ${PACKAGE_NAME};
-
-#end
-#parse("File Header.java")
-/**
- * ${NAME} 注解类
- * 
- * @author ${USER}
- * @since ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND}
- */
-public @interface ${NAME} {
-
-    /**
-     * 默认值示例。
-     * 如果注解需要支持默认值，可以在这里定义。
-     *
-     * @return 默认值
-     */
-    String value() default "";
-
-    /**
-     * 描述信息。
-     * 用于提供额外的说明或元数据。
-     *
-     * @return 描述信息
-     */
-    String description() default "";
-
-    /**
-     * 是否启用某个功能。
-     * 示例布尔类型的注解属性。
-     *
-     * @return 是否启用，默认为 true
-     */
-    boolean enabled() default true;
-
-    /**
-     * 配置优先级。
-     * 示例整数类型的注解属性。
-     *
-     * @return 优先级，默认为 0
-     */
-    int priority() default 0;
-
-    /**
-     * 允许的选项列表。
-     * 示例数组类型的注解属性。
-     *
-     * @return 选项列表
-     */
-    String[] options() default {};
 }
 ```

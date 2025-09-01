@@ -208,6 +208,109 @@ EhCache 支持本地缓存和分布式缓存，广泛应用于各种企业级应
 - **EhCache**：支持本地缓存和分布式缓存，适合需要分布式缓存支持的企业级应用。
 
 # <div align="center">---------------进程内缓存---------------</div>
+# 提前预热一下这些问题：
+```
+Redis是什么? Redis架构是怎么样的？怎么设计redis？
+RDB是什么，AOF是什么？RDB和AOF的区别是什么？
+Redis有什么作用？
+Redis为什么要单线程？
+Redis的持久化机制是怎么样的？
+Redis支持String，List，Set，Zset
+Redis支持哪些数据类型？
+Redis是单线程吗？
+Redis缓存过期策略
+Redis缓存淘汰策略
+缓存过期策略和缓存淘汰策略的区别是什么？
+LRU是什么？
+Redis-cli是什么？
+Redis通信协议是怎么样的？
+Redis的协议格式是怎么样的？
+为什么Redis不用HTTP？
+RedisJson是什么？
+RediSearch是什么？
+RediTImeSeries是什么？
+RedisGraph是什么？
+Redis的高可用，高性能怎么做？
+主从模式是什么？主从模式的具体实现细节？
+主从同步中有数据写入怎么办？
+经典主从模式有什么问题？
+哨兵是什么？
+哨兵模式是什么？
+哨兵集群是什么？
+Redis怎么提升高可用？
+什么是主观下线和客观下线
+Redis内存不足的解决方案
+Redis集群模式架构解析
+Redis数据切分方法详解
+Redis哈希槽工作原理
+Redis集群高可扩展性实现
+Redis单机崩溃服务不可用问题
+Redis集群节点扩容步骤
+Redis哈希槽迁移过程
+Redis读写重定向机制
+Redis CLUSTER SLOTS命令详解
+Redis数据迁移期间访问策略
+Redis集群主从故障切换流程
+Redis集群客户端连接实践
+Redis集群与主从复制区别
+Redis避免全量数据迁移方法
+Redis扩容后数据分布逻辑
+Redis哈希槽16384个原因
+Redis高可用高扩展实现
+Redis突破单机内存限制方案
+Redis集群模式数据分片原理
+Redis键值分片计算公式
+Redis节点增减数据迁移风险
+Redis哈希槽固定长度优势
+Redis集群节点间通信机制
+Redis重定向错误处理方法
+Redis集群客户端库推荐
+Redis迁移状态判断技巧
+Redis集群主节点选举过程
+Redis集群读写请求流程示例
+Redis集群三主节点配置案例
+Redis哈希槽范围分配规则
+Redis集群扩容数据迁移量
+Redis客户端slot缓存机制
+Redis集群节点宕机处理
+Redis集群数据持久化策略
+Redis集群性能优化技巧
+Redis集群监控关键指标
+Redis集群常见问题排查
+Redis集群槽位重新分配
+Redis集群数据一致性保障
+Redis集群慢查询优化
+Redis集群大Key处理方案
+Redis集群热Key解决方案
+Redis集群管道技术使用
+Redis集群事务支持情况
+Redis集群Lua脚本限制
+Redis集群如何分片数据
+Redis集群节点职责划分
+Redis集群数据重定向原理
+Redis集群为什么需要16384个槽
+Redis集群扩容时数据迁移量
+Redis集群客户端如何感知节点变化
+Redis集群主节点故障处理流程
+Redis集群从节点如何提升为主节点
+Redis集群如何保证高可用性
+Redis集群数据分布策略详解
+Redis键值对如何映射到哈希槽
+Redis集群跨槽操作支持情况
+Redis数据切分是什么
+Redis重定向机制是什么
+Redis CLUSTER SLOTS命令是什么
+Redis集群节点扩容是什么
+Redis哈希槽迁移是什么
+Redis主从故障切换是什么
+Redis集群高可扩展性是什么
+Redis集群高可用性是什么
+Redis键值分片计算是什么
+Redis集群节点通信是什么
+Redis集群跨槽操作是什么
+Redis槽位重新分配是什么
+Redis客户端Slot缓存是什么
+```
 
 # 缓存的使用场景
 

@@ -784,19 +784,43 @@ docker run -p 6379:6379 --name redis-vector --restart=unless-stopped \
 -d redislabs/redisearch
 ```
 
-## 部署nacos
+## 部署Nacos 2.x
 
-### Windows下启动nacos
+### MacOS部署nacos
+
+```shell
+docker run -d \
+  --name nacos-standalone \
+  -e MODE=standalone \
+  -p 8848:8848 \
+  nacos/nacos-server:v2.5.1
+```
+
+也可以去[nacos官网]()下载2.x的版本，然后用下面的命令使用
+
+```shell
+cd ./nacos-server-2.5.1
+# 启动
+sh ./bin/startup.sh -m standalone
+# 关闭
+sh ./bin/shutdown.sh
+```
+
+之所以不用3.x是因为，nacos 3.0以后需要用token了，比较费事，自己学习太麻烦了
+
+### Windows部署nacos
 
 下载nacos安装包：https://github.com/alibaba/nacos/releases
 
-解压，进入bin目录下创建一个.bat文件，以后启动就双击这个.bat文件
+进入bin目录下运行如下命令，前台启动：
 
-my_startup.bat：`目录路径\nacos\bin\startup.cmd -m standalone`
+```shell
+startup.cmd -m standalone
+```
 
-正常的启动命令是：`startup.cmd -m standalone`
+### Linux部署nacos
 
-### Linux下安装nacos（稍麻烦）
+Linux下使用nacos的其实和MacOS是一样的，用容器即可，但这里介绍一种外部存储配置的方式来部署。
 
 先远程连接服务器数据库，创建nacos数据库
 
