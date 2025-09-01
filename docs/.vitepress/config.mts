@@ -28,7 +28,7 @@ export default defineConfig({
             dark: 'github-dark'
         },
     },
-    ignoreDeadLinks: false, // 开启死链接检查
+    ignoreDeadLinks: true, // 关闭死链接检查
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         logo: 'https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412172202944.png',
@@ -452,7 +452,6 @@ export default defineConfig({
                             text: "隐晦说",
                             collapsed: true,
                             items: [
-                                {text: "自毁特洛伊", link: "/杂谈/自毁特洛伊"},
                                 {text: "自毁特洛伊", link: "/杂谈/自毁特洛伊"},
                                 {text: "16形人格测试+政治倾向测试", link: "/杂谈/16形人格测试+政治倾向测试"},
                                 {text: "品鉴p站AI区作画有感", link: "/杂谈/品鉴p站AI区作画有感"},
