@@ -103,10 +103,11 @@ git config --global init.defaultBranch main       # 设置默认分支名为main
 git config --global gui.encoding utf-8            # gui界面的编码方式改为utf-8
 git config --global i18n.commitencoding utf-8     # 将commit时信息转为urf-8，默认二进制
 git config --global i18n.logoutputencoding utf-8  # 显示日志时的转为utf-8，默认二进制
-git config --global core.quotepath false          # （推荐：false，不要转义）是否转义中文文件名或路径，默认转义
-git config --global core.autocrlf true            # （推荐：true，开启）是否开启crlf自动换行（项目涉及windows时建议开启）
-git config --global core.filemode true            # （推荐：true，忽略）是否忽略文件的权限改变
-git config --global core.safecrlf true            # （推荐：true，检查）是否检查行结束符在提交或检出时被正确转换
+git config --global core.quotepath false          # （推荐:false，不要转义）是否转义中文文件名或路径，默认转义
+git config --global core.autocrlf input           # （推荐:input，开启）是否开启crlf自动换行（项目涉及windows时建议开启）
+git config --global core.eol lf                   # （推荐:lf，开启）配合autocrlf一起食用
+git config --global core.filemode true            # （推荐:true，忽略）是否忽略文件的权限改变
+git config --global core.safecrlf true            # （推荐:true，检查）是否检查行结束符在提交或检出时被正确转换
 
 git config --global pull.rebase true              # git pull时，不合并，而是将本地更改rebase在最新的远程提交之上，默认false为merge合并
 ```
