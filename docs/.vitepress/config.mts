@@ -369,6 +369,7 @@ export default defineConfig({
               text: "隐晦说",
               collapsed: true,
               items: [
+                {text: "鹰瞳Airdoc第三方对接文档总结", link: "/开发/鹰瞳Airdoc第三方对接文档总结"},
                 {text: "开发信息备忘录_鹰瞳", link: "/开发/开发信息备忘录_鹰瞳"},
                 {text: "开发信息备忘录_贝尔", link: "/开发/开发信息备忘录_贝尔"},
                 {text: "自毁特洛伊", link: "/杂谈/自毁特洛伊"},
