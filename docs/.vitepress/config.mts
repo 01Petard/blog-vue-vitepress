@@ -369,8 +369,8 @@ export default defineConfig({
               text: "隐晦说",
               collapsed: true,
               items: [
-                {text: "开发信息备忘录_贝尔", link: "/开发/开发信息备忘录_贝尔"},
                 {text: "开发信息备忘录_鹰瞳", link: "/开发/开发信息备忘录_鹰瞳"},
+                {text: "开发信息备忘录_贝尔", link: "/开发/开发信息备忘录_贝尔"},
                 {text: "自毁特洛伊", link: "/杂谈/自毁特洛伊"},
                 {text: "16形人格测试+政治倾向测试", link: "/杂谈/16形人格测试+政治倾向测试"},
                 {text: "品鉴p站AI区作画有感", link: "/杂谈/品鉴p站AI区作画有感"},
