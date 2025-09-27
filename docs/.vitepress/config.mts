@@ -5,15 +5,15 @@ import container from "markdown-it-container";
 import attrs from "markdown-it-attrs";
 
 export default defineConfig({
-  base: "/blog-vue-vitepress/",
+  base: "/",
   build: {
-    outDir: 'docs/.vitepress/dist'   //构建产物输出目录
+    outDir: 'docs'   //构建产物输出目录
   },
   lang: 'zh-cn',
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
   head: [
-    ["link", {rel: "icon", href: `../img/favicon.ico`}],  // 网站的图标（显示在浏览器的 tab 上）
+    ["link", {rel: "icon", href: `/img/favicon.ico`}],  // 网站的图标（显示在浏览器的 tab 上）
   ],
   markdown: {
     lineNumbers: true, // 显示代码行号
