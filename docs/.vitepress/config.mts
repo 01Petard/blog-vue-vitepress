@@ -82,20 +82,19 @@ export default defineConfig({
         {
           text: '开发',
           items: [
-            {text: "配置PHP和Composer环境", link: "/开发/配置PHP和Composer环境"},
-            {text: "PHP框架与Java框架对比", link: "/开发/PHP框架与Java框架对比"},
             {text: "大量设备数据上报存储的简单方案设计", link: "/开发/大量设备数据上报存储的简单方案设计"},
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
             {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij%20IDEA%20fileTemplates文件模板"},
             {text: "简单理解正向代理和反向代理", link: "/开发/简单理解正向代理和反向代理"},
-            {text: "设计模式的荼毒体现在哪", link: "/开发/设计模式的荼毒体现在哪"},
             {text: 'Nginx配置文件说明', link: '/开发/Nginx配置文件说明'},
             {text: "Nginx的配置和使用命令", link: "/开发/Nginx的配置和使用命令"},
             {
               text: "后端",
               collapsed: false,
               items: [
+                {text: "配置PHP和Composer环境", link: "/开发/后端/配置PHP和Composer环境"},
+                {text: "PHP框架与Java框架对比", link: "/开发/后端/PHP框架与Java框架对比"},
                 {text: 'PHP和JAVA的语法对比', link: '/开发/后端/PHP和JAVA的语法对比'},
                 {text: 'Spring注解——缓存、定时任务、异步任务', link: '/开发/后端/Spring注解——缓存、定时任务、异步任务'},
                 {text: 'Function Call的实现与调用链分析', link: '/开发/后端/Function%20Call的实现与调用链分析'},
