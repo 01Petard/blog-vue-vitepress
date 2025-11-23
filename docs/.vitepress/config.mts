@@ -93,6 +93,7 @@ export default defineConfig({
               text: "后端",
               collapsed: false,
               items: [
+                {text: "将Java项目打包为Docker镜像", link: "/开发/后端/将Java项目打包为Docker镜像"},
                 {text: "配置PHP和Composer环境", link: "/开发/后端/配置PHP和Composer环境"},
                 {text: "PHP框架与Java框架对比", link: "/开发/后端/PHP框架与Java框架对比"},
                 {text: 'PHP和JAVA的语法对比', link: '/开发/后端/PHP和JAVA的语法对比'},
