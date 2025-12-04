@@ -34,7 +34,7 @@ ENTRYPOINT ["sh","-c","java -server -Xmx500m -Xms500m -XX:MetaspaceSize=256m -XX
 
 ### 打包镜像
 
-```sheel
+```shell
 docker build -t demo:1.0.0 .
 ```
 
