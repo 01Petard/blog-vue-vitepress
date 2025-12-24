@@ -82,6 +82,8 @@ export default defineConfig({
         {
           text: '开发',
           items: [
+            {text: "抽象SQL之按类别分组统计排名数据", link: "/开发/抽象SQL之按类别分组统计排名数据"},
+            {text: "PHP框架与Java框架对比", link: "/开发/PHP框架与Java框架对比"},
             {text: "大量设备数据上报存储的简单方案设计", link: "/开发/大量设备数据上报存储的简单方案设计"},
             {text: "SSE的特点、场景与技术解析", link: "/开发/SSE的特点、场景与技术解析"},
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
@@ -316,6 +318,7 @@ export default defineConfig({
         {
           text: "杂谈",
           items: [
+            {text: "班级微型政权架构图", link: "/杂谈/班级微型政权架构图"},
             {text: "被AI气笑了——浅谈奖励模型对AI的影响", link: "/杂谈/被AI气笑了——浅谈奖励模型对AI的影响"},
             {text: "鬼灭之刃衍生呼吸法设定+脑补", link: "/杂谈/鬼灭之刃衍生呼吸法设定+脑补"},
             {text: "对于大模型绘制UML图的调研", link: "/杂谈/对于大模型绘制UML图的调研"},
@@ -344,7 +347,8 @@ export default defineConfig({
               text: "后日谈",
               collapsed: true,
               items: [
-                {text: "2025年鹰瞳工作总结", link: "/杂谈/后日谈/2025年鹰瞳工作总结"},
+                {text: "鹰瞳-每日工作总结", link: "/杂谈/后日谈/鹰瞳-每日工作总结"},
+                {text: "鹰瞳-每月工作总结", link: "/杂谈/后日谈/鹰瞳-每月工作总结"},
                 {text: "2025年年初总结", link: "/杂谈/后日谈/2025年年初总结"},
                 {text: "2024年年度总结", link: "/杂谈/后日谈/2024年年度总结"},
                 {text: "2024年秋招总结", link: "/杂谈/后日谈/2024年秋招总结"},
