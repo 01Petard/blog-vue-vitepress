@@ -1,6 +1,82 @@
+# 打印眼底报告完整报告
+
+**鹰瞳医疗视网膜检查报告**
+
+检查号：25838277
+
+体检号：8991424304354
+
+```shell
+{
+    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104809-complete.pdf", 
+    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104809-complete.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.8'", 
+    "strlen": 1140937, 
+    "file_exist": true
+}
+```
+
+https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?language=zh_CN%27%20%27/data/ikang/pdf_medical%27%20%2725838277-8991424304354-251119104809-complete.pdf
+
+**风险评估报告**
+
+检查号：25838277
+
+体检号：8991424304354
+
+```shell
+{
+    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104809-complete-health.pdf", 
+    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104809-complete-health.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.88'", 
+    "strlen": 1140937, 
+    "strlen_health": 220946, 
+    "file_exist": true, 
+    "file_exist_health": true
+}
+```
+
+https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&language=zh_CN
+
+# 打印眼底报告完整报告
+
+**鹰瞳医疗视网膜检查报告**
+
+检查号：25838277
+
+体检号：8991424304354
+
+```shell
+{
+    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104826-simple.pdf", 
+    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?simple=true&language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104826-simple.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.8'", 
+    "strlen": 458176, 
+    "file_exist": true
+}
+```
+
+https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?simple=true&language=zh_CN
+
+**风险评估报告**
+
+检查号：25838277
+
+体检号：8991424304354
+
+```shell
+{
+    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104826-simple-health.pdf", 
+    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&simple=true&language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104826-simple-health.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.88'", 
+    "strlen": 458176, 
+    "strlen_health": 220946, 
+    "file_exist": true, 
+    "file_exist_health": true
+}
+```
+
+https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&simple=true&language=zh_CN
+
 # 钉钉推送阳性警示单
 
-## 准备
+## 环境准备
 
 获取`node`路径
 
@@ -20,7 +96,7 @@ npm list puppeteer
 npm install puppeteer
 ```
 
-## 配置
+## json配置
 
 > OSS链接：`oss://airdoc-ada/fundus/positive-case/`
 >
@@ -37,7 +113,7 @@ npm install puppeteer
 > 7 => 'prod/config_nxdx.json'
 > ```
 
-### [开发](http://ada-res.airdoc.com/fundus/positive-case/dev/config_nmgrz.json)
+[开发](http://ada-res.airdoc.com/fundus/positive-case/dev/config_nmgrz.json)
 
 ```json
 {
@@ -51,7 +127,7 @@ npm install puppeteer
 }
 ```
 
-### [测试](http://ada-res.airdoc.com/fundus/positive-case/test/config_nmgrz.json)
+[测试](http://ada-res.airdoc.com/fundus/positive-case/test/config_nmgrz.json)
 
 ```json
 {
@@ -66,7 +142,7 @@ npm install puppeteer
 }
 ```
 
-### [生产](http://ada-res.airdoc.com/fundus/positive-case/prod/config_nmgrz.json)
+[生产](http://ada-res.airdoc.com/fundus/positive-case/prod/config_nmgrz.json)
 
 ```json
 {
@@ -89,7 +165,7 @@ rm -f /tmp/alarm_20250
 
 ## 手动推送
 
-### 开发
+开发
 
 ```shell
 NODE_PATH=/Users/huangzexiao/project/node_modules
@@ -101,13 +177,13 @@ php ~/project/eye-ak/public/script.php PushDingtalkPositiveAlarmMsg taskId 1
 
 > 其中`GetPositiveCaseAlarmInfo`接口的配置是走的`dev`环境，但是`PushDingtalkPositiveAlarmMsg`中下载的pdf的配置是来自`test`环境的
 
-### 测试
+测试
 
 ```shell
 php /var/www/test-eye/public/script.php PushDingtalkPositiveAlarmMsg taskId 1
 ```
 
-### 生产
+生产
 
 ```shell
 php /var/www/eye/public/script.php PushDingtalkPositiveAlarmMsg taskId 1
@@ -115,14 +191,14 @@ php /var/www/eye/public/script.php PushDingtalkPositiveAlarmMsg taskId 1
 
 ## 定时任务脚本
 
-### 开发
+开发
 
 ```shell
 # v2.4
 */1 * * * *  /opt/homebrew/opt/php@7.4/bin/php ~/project/eye-ak/public/script.php PushDingtalkPositiveAlarmMsg taskId 1 >> /tmp/alarm_cron_test.log 2>&1
 ```
 
-### 测试
+测试
 
 ```shell
 crontab -e
@@ -140,7 +216,7 @@ crontab -e
 00 18 * * * flock -xn /tmp/PushDingtalkPositiveAlarmMsg_taskId-6.lock -c "/usr/bin/php /var/www/eye/public/script.php PushDingtalkPositiveAlarmMsg taskId 6" >> /tmp/alarm_cron_daily_taskId-6.log 2>&1
 ```
 
-### 生产
+生产
 
 ```shell
 crontab -e -l hailong
@@ -194,35 +270,12 @@ node ~/project/eye-ak/misc/pdf_generator/print-v3.js \
 
 `GetPositiveCaseAlarmInfo`还是按域名读的，应该按env参数读
 
-# 打印抗压报告
-
-```shell
-node ~/project/eye-ak/misc/pdf_generator/print-v3.js \
-  --url "https://mpd.babyeye.com/hrvreport?language=zh_CN&reportId=1982955593823948802" \
-  --path "/tmp/alarm_$(date +%Y%m%d)" \
-  --fileName "alarm_$(date +%Y%m%d_%H%M%S).pdf" \
-  --zoom 0.9
-```
-
-# 打印网页图片（带cookie）
-
-### 参数说明
-
-| 参数位置             | 值                                                           | 说明                                                         |
-| :------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| args[1] - URL        | https://staging-admin.airdoc.com/admin/WarningTicket?status=1&checkId=3446836&language=en | 要截图的警示单页面 URL<br>- checkId=3446836：检查单ID<br>- status=1：状态<br>- language=en：语言（英文） |
-| args[2] - 路径       | /var/log/airlog/alarm_autopush_print/202511/07               | 保存文件的目录路径（年月/日）                                |
-| args[3] - 文件名     | alarm_3446836_251107214600.png                               | 输出文件名<br>- alarm_：前缀<br>- 3446836：check_id<br>- 251107214600：日期时间（25年11月07日21:46:00）<br>- .png：图片格式 |
-| args[4] - 超时时间   | ''（空字符串）                                               | 超时时间（脚本中已固定为 60000ms，此参数未使用）             |
-| args[5] - Cookie名称 | fantastic                                                    | Session cookie 名称（用于身份认证）                          |
-| args[6] - Cookie值   | 783569961320c56167147ffc892bd0f7                             | Session cookie 值（用于身份认证）                            |
-
-### 下载图片命令
+# 推送国内和海外警示单图片
 
 本地打印测试：
 
 ```shell
-node /Users/hzx/project/eye-ak/misc/pdf_generator/print-alarm-report.js \
+node /Users/hzx/project/print-reactive-cookie-image.js \
   "https://staging-admin.airdoc.com/admin/WarningTicket?status=1&checkId=3431373&language=en" \
   "/tmp/alarm" \
   "alarm_test_333.png" \
@@ -234,13 +287,13 @@ node /Users/hzx/project/eye-ak/misc/pdf_generator/print-alarm-report.js \
 本地打印线上：
 
 ```shell
-node /Users/hzx/project/eye-ak/misc/pdf_generator/print-alarm-report.js \
+node /Users/hzx/project/print-reactive-cookie-image.js \
   "https://ikang-admin.airdoc.com/admin/WarningTicket?checkId=22624037&status=1" \
-  "/tmp/alarm" \
-  "alarm_1.png" \
+  "/Users/hzx/Downloads" \
+  "alarm_1.pdf" \
   "" \
   "fantastic" \
-  "7b241db5bf4aab491f6b195086da846e"
+  "bb80072549c768d974d14e1ee31f5b42"
 ```
 
 线上打印：
@@ -252,96 +305,44 @@ node /Users/hzx/project/eye-ak/misc/pdf_generator/print-alarm-report.js \
   'alarm_3446836_251107214600.png' \
   '' \
   'fantastic' \
-  '783569961320c56167147ffc892bd0f7'
+  'bb80072549c768d974d14e1ee31f5b42'
 ```
 
-# 眼底报告打印日志（仅了解）
+# 无cookie下载pdf
 
-## 打印完整报告
-
-### 鹰瞳医疗视网膜检查报告
-
-检查号：25838277
-
-体检号：8991424304354
+打印HRV报告
 
 ```shell
-{
-    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104809-complete.pdf", 
-    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104809-complete.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.8'", 
-    "strlen": 1140937, 
-    "file_exist": true
-}
+node ~/project/eye-ak/misc/pdf_generator/print-v3.js \
+  --url "https://mpd.babyeye.com/hrvreport?language=zh_CN&reportId=1982955593823948802" \
+  --path "/Users/hzx/Downloads/alarm_$(date +%Y%m%d)" \
+  --fileName "alarm_$(date +%Y%m%d_%H%M%S).pdf" \
+  --zoom 0.9
 ```
-
-https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?language=zh_CN%27%20%27/data/ikang/pdf_medical%27%20%2725838277-8991424304354-251119104809-complete.pdf
-
-### 风险评估报告
-
-检查号：25838277
-
-体检号：8991424304354
-
-```shell
-{
-    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104809-complete-health.pdf", 
-    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104809-complete-health.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.88'", 
-    "strlen": 1140937, 
-    "strlen_health": 220946, 
-    "file_exist": true, 
-    "file_exist_health": true
-}
-```
-
-https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&language=zh_CN
-
-## 打印简化报告
-
-### 鹰瞳医疗视网膜检查报告
-
-检查号：25838277
-
-体检号：8991424304354
-
-```shell
-{
-    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104826-simple.pdf", 
-    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?simple=true&language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104826-simple.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.8'", 
-    "strlen": 458176, 
-    "file_exist": true
-}
-```
-
-https://pe.airdoc.com/pc-v2/print-ytmedical/a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe?simple=true&language=zh_CN
-
-### 风险评估报告
-
-检查号：25838277
-
-体检号：8991424304354
-
-```shell
-{
-    "0": "/data/ikang/pdf_medical/25838277-8991424304354-251119104826-simple-health.pdf", 
-    "command": "/opt/phantomjs /opt/print.js 'https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&simple=true&language=zh_CN' '/data/ikang/pdf_medical' '25838277-8991424304354-251119104826-simple-health.pdf' 'Airdoc鹰瞳' '%E9%BB%84%E6%B3%BD%E6%A0%A1 8991424304354' '报告咨询: 400-100-3999' '0.88'", 
-    "strlen": 458176, 
-    "strlen_health": 220946, 
-    "file_exist": true, 
-    "file_exist_health": true
-}
-```
-
-https://pe.airdoc.com/pc-v2/ytHeathyPdfPE?en_check_id=a2V5LWJqajY4ZDUzNzVjajQ4b3owdXI0Zy1qMTEzbGF0dDd0HJQ%2FlLD252wJGEObCHR0lRlddvWTUjJS9adzx6sPSJ59BHpe&simple=true&language=zh_CN
-
-## 抗压报告
 
 本地运行命令：
 
+北师大版
+
 ```shell
-node ~/project/print-hrv.js --url 'https://test-mpd.babyeye.com/hrvreport?language=zh-CN&reportId=1996474764382801921' --path '/tmp/ikang/pdf_hrv' --fileName '{$filename}'  --zoom '0.9'
+node ~/project/print-realstyle-nocookie-pdf.js \
+  --url 'https://test-neuro-ai.airdoc.com/hrvreport?language=zh-CN&reportId=1996474764382801921' \
+  --path '/Users/hzx/Downloads' \
+  --fileName '{$filename}' \
+  --zoom '0.9'
 ```
 
-### Linux 机器上的运行情况
+V2版：
+
+```shell
+node ~/project/print-realstyle-nocookie-pdf.js \
+  --url 'https://neuro-ai.airdoc.com/hrvreport?language=zh-CN&reportId=2004000887084683265' \
+  --path '/Users/hzx/Downloads' \
+  --fileName '{$filename}' \
+  --zoom '0.9'
+```
+
+**Linux 机器上的运行情况**
 
 1. **如果 Linux 机器已安装 Puppeteer 和 Chrome/Chromium：**
 
@@ -385,3 +386,166 @@ node ~/project/print-hrv.js --url 'https://test-mpd.babyeye.com/hrvreport?langua
 
    - 保留了 `--no-sandbox` 参数（在非 root 用户或容器环境中通常必需）。
    - 保留了 `--disable-dev-shm-usage` 参数（防止因 `/dev/shm` 内存不足导致崩溃，尤其在 Docker 中常见）。
+
+# 带cookie下载pdf（原汁原味的网页）
+
+```shell
+# 默认PC版，缩放1.00
+node ~/project/print-realstyle-cookie-pdf.js \
+  "https://ikang-admin.airdoc.com/admin/WarningTicket?checkId=25710228&status=1" \
+  "/tmp" \
+  "25710228.pdf" \
+  "bb80072549c768d974d14e1ee31f5b42" \
+  "ikang-admin.airdoc.com"
+
+# 指定PC版，缩放0.8
+node ~/project/print-realstyle-cookie-pdf.js \
+  "https://ikang-admin.airdoc.com/admin/WarningTicket?checkId=25710228&status=1" \
+  "/tmp" \
+  "25710228.pdf" \
+  "bb80072549c768d974d14e1ee31f5b42" \
+  "ikang-admin.airdoc.com" \
+  "pc" \
+  "0.7"
+
+# 指定移动版，缩放1.00
+node ~/project/print-realstyle-cookie-pdf.js \
+  "https://ikang-admin.airdoc.com/admin/WarningTicket?checkId=25710228&status=1" \
+  "/tmp" \
+  "25710228.pdf" \
+  "bb80072549c768d974d14e1ee31f5b42" \
+  "ikang-admin.airdoc.com" \
+  "mobile"
+```
+
+# 带cookie打印pdf
+
+打印眼底警示单
+
+```shell
+node /Users/hzx/project/print-style-cookie-pdf.js \
+  --url "https://ikang-admin.airdoc.com/admin/WarningTicket?checkId=25710228&status=1" \
+  --fold "/Users/hzx/Downloads" \
+  --file "25710228.pdf" \
+  --cookie "bb80072549c768d974d14e1ee31f5b42" \
+  --zoom "0.70"
+```
+
+打印抗压报告
+
+```shell
+node /Users/hzx/project/print-style-cookie-pdf.js \
+  --url "https://neuro-ai.airdoc.com/hrvreport?language=zh-CN&reportId=2004000887084683265" \
+  --fold "/Users/hzx/Downloads" \
+  --file "123.pdf" \
+  --cookie "bb80072549c768d974d14e1ee31f5b42" \
+  --zoom "0.95"
+```
+
+```shell
+node /Users/hzx/project/print-style-cookie-pdf.js \
+  --url "https://neuro-ai.airdoc.com/hrvreport?language=zh-CN&reportId=2004000887084683265" \
+  --fold "/Users/hzx/Downloads"
+```
+
+# 部署PDF生成Docker服务
+
+### 停止并删除旧容器
+
+```shell
+docker stop print-service && docker rm print-service
+```
+
+### 构建 Docker 镜像
+
+方案 1：使用 ARM64 平台
+
+```shell
+docker build --platform linux/arm64 -t print-service .
+```
+
+方案 2：使用 AMD64 平台
+
+```
+docker build --platform linux/amd64 -t print-service .
+```
+
+### 启动容器
+
+```shell
+docker run -d -p 3050:3050 --name print-service print-service
+```
+
+```shell
+docker run -d -p 3050:3050 -v /tmp/report:/tmp/report --name print-service print-service
+```
+
+### 进入容器测试网络
+
+```shell
+docker exec -it print-service bash
+```
+
+测试网络连接
+
+```shell
+curl -I https://www.baidu.com
+```
+
+```shell
+curl -I https://neuro-ai.airdoc.com
+```
+
+### 查看日志
+
+```shell
+docker logs -f print-service
+```
+
+# 部署HRV算法服务
+
+### 运行容器
+
+```shell
+docker stop mpd_analyse && docker rm mpd_analyse
+```
+
+```shell
+docker build -t mpd_analyse:2.1 .
+```
+
+```shell
+docker run -d -p 127.0.0.1:8723:8723 --name mpd_analyse mpd_analyse:2.1
+```
+
+### 打包镜像
+
+```shell
+docker save -o mpd_analyse.tar mpd_analyse:2.1
+```
+
+### 加载镜像
+
+```shell
+docker load -i mpd_analyse.tar
+```
+
+### *使用 Docker Hub*
+
+```shell
+docker tag mpd_analyse:latest your-username/mpd_analyse:latest
+```
+
+```shell
+docker push your-username/mpd_analyse:latest
+```
+
+### *使用私有仓库*
+
+```shell
+docker tag mpd_analyse:latest registry.example.com/mpd_analyse:latest
+```
+
+```shell
+docker push registry.example.com/mpd_analyse:latest
+```
