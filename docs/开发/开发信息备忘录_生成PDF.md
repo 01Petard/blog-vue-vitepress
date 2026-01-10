@@ -450,27 +450,23 @@ node /Users/hzx/project/print-style-cookie-pdf.js \
 
 # 部署PDF生成Docker服务
 
-### 停止并删除旧容器
+**停止并删除旧容器**
 
 ```shell
 docker stop print-service && docker rm print-service
 ```
 
-### 构建 Docker 镜像
-
-方案 1：使用 ARM64 平台
+构建镜像
 
 ```shell
 docker build --platform linux/arm64 -t print-service .
 ```
 
-方案 2：使用 AMD64 平台
-
 ```
 docker build --platform linux/amd64 -t print-service .
 ```
 
-### 启动容器
+启动容器
 
 ```shell
 docker run -d -p 3050:3050 --name print-service print-service
@@ -480,13 +476,11 @@ docker run -d -p 3050:3050 --name print-service print-service
 docker run -d -p 3050:3050 -v /tmp/report:/tmp/report --name print-service print-service
 ```
 
-### 进入容器测试网络
+测试网络连接
 
 ```shell
 docker exec -it print-service bash
 ```
-
-测试网络连接
 
 ```shell
 curl -I https://www.baidu.com
@@ -496,41 +490,47 @@ curl -I https://www.baidu.com
 curl -I https://neuro-ai.airdoc.com
 ```
 
-### 查看日志
+# 抗压mpd_analyse算法服务
+
+打包、上传
 
 ```shell
-docker logs -f print-service
+docker build -t mpd_analyse:2.11-amd64 .
 ```
 
-# 部署HRV算法服务
+```shell
+./build.sh amd64 2.11-amd64
+```
 
-### 运行容器
+```shell
+docker save -o mpd_analyse.tar mpd_analyse:2.11-amd64
+```
+
+```shell
+./build.sh amd64 2.11-amd64 save
+```
+
+加载镜像
+
+```shell
+curl -o mpd_analyse.tar https://airdoc-ada.oss-cn-beijing.aliyuncs.com/tmp/mpd_analyse_amd64_2.11-amd64.tar
+```
+
+```shell
+docker load -i mpd_analyse.tar
+```
+
+服务器停止旧镜像，并加载、运行新镜像
 
 ```shell
 docker stop mpd_analyse && docker rm mpd_analyse
 ```
 
 ```shell
-docker build -t mpd_analyse:2.1 .
+docker run -d -p 0.0.0.0:8722:8722 -v /data/logs/mpd_analyse:/data/logs/mpd_analyse --name mpd_analyse mpd_analyse:2.11-amd64
 ```
 
-```shell
-docker run -d -p 127.0.0.1:8723:8723 --name mpd_analyse mpd_analyse:2.1
-```
-
-### 打包镜像
-
-```shell
-docker save -o mpd_analyse.tar mpd_analyse:2.1
-```
-
-### 加载镜像
-
-```shell
-docker load -i mpd_analyse.tar
-```
-
-### *使用 Docker Hub*
+~~*使用 Docker Hub*~~
 
 ```shell
 docker tag mpd_analyse:latest your-username/mpd_analyse:latest
@@ -540,7 +540,7 @@ docker tag mpd_analyse:latest your-username/mpd_analyse:latest
 docker push your-username/mpd_analyse:latest
 ```
 
-### *使用私有仓库*
+~~*使用私有仓库*~~
 
 ```shell
 docker tag mpd_analyse:latest registry.example.com/mpd_analyse:latest
@@ -549,3 +549,137 @@ docker tag mpd_analyse:latest registry.example.com/mpd_analyse:latest
 ```shell
 docker push registry.example.com/mpd_analyse:latest
 ```
+
+# 抗压pdf-service打印PDF服务
+
+打包、上传
+
+```shell
+./build.sh amd64 1.1-amd64 save
+```
+
+服务器停止旧镜像，并加载、运行新镜像
+
+```shell
+docker stop print-service && docker rm print-service
+```
+
+```shell
+curl -o print-service.tar https://airdoc-ada.oss-cn-beijing.aliyuncs.com/tmp/print-service_amd64_1.1-amd64.tar
+```
+
+```shell
+docker load -i print-service.tar
+```
+
+```shell
+docker run -d -p 0.0.0.0:3050:3050 -v /tmp/report:/tmp/report --name print-service print-service:1.1-amd64
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+# 其他
+
+## 已完成的重构内容
+
+### 1. **核心架构组件**
+
+- **`TaskTypeEnum`** - 任务类型枚举，支持多种任务类型（ASSESSMENT, PDF_GENERATE, PUSH_REPORT, ASSESSMENT_FLOW）
+- **`AsyncTask`** - 异步任务抽象基类，包含 `traceId`（追踪ID）和 `businessId`（业务对象ID）
+- **`AbstractRedissonBlockingQueueConsumer`** - 抽象消费者基类，提供统一消费框架
+
+### 2. **重构的现有组件**
+
+- **`AssessmentTask`** - 继承 `AsyncTask`，实现 `taskType()` 方法，自动同步 `businessId` 和 `assessmentId`
+- **`AssessmentTaskConsumer`** - 继承抽象基类，保持向后兼容，同时支持延迟队列
+- **`TaskProducer`** - 统一任务投递器，根据任务类型自动路由到对应队列
+
+### 3. **保持向后兼容**
+
+- **`AssessmentTaskProducer`** - 保留为 `@Deprecated`，现有代码可继续使用
+- 队列名称保持不变（`assessmentTaskQueue`），确保现有任务正常消费
+- 延迟队列机制保持原有实现
+
+### 4. **扩展能力**
+
+架构已支持以下扩展：
+
+1. 新增任务类型：在 `TaskTypeEnum` 中添加新类型
+2. 创建新任务类：继承 `AsyncTask` 并实现 `taskType()`
+3. 创建新消费者：继承 `AbstractRedissonBlockingQueueConsumer`
+4. 创建新处理器：实现业务逻辑处理
+
+## 使用示例
+
+### 发送评估任务（使用新方式）
+```java
+AssessmentTask task = AssessmentTask.builder()
+    .assessmentId(reportId)
+    .needAnalyze(true)
+    .needPush(true)
+    .build();
+taskProducer.send(task); // 使用新的统一生产者
+```
+
+### 未来扩展示例：创建PDF生成任务
+```java
+// 1. 在TaskTypeEnum中添加PDF_GENERATE（已完成）
+
+// 2. 创建PdfGenerateTask
+public class PdfGenerateTask extends AsyncTask {
+    private Long reportId;
+    
+    @Override
+    public TaskTypeEnum taskType() {
+        return TaskTypeEnum.PDF_GENERATE;
+    }
+}
+
+// 3. 创建PdfGenerateTaskConsumer
+@Component
+public class PdfGenerateTaskConsumer extends AbstractRedissonBlockingQueueConsumer<PdfGenerateTask> {
+    @Override
+    protected String queueKey() {
+        return BizConstants.PDF_GENERATE_TASK_QUEUE_KEY;
+    }
+    // ... 实现handle方法
+}
+
+// 4. 发送任务
+PdfGenerateTask task = new PdfGenerateTask(reportId);
+taskProducer.send(task);
+```
+
+## 架构特点
+
+1. 类型安全：通过枚举和泛型确保类型安全
+2. 易于扩展：新增任务类型只需实现对应接口
+3. 状态管理：通过 `businessId` 追踪业务对象状态
+4. 追踪能力：每个任务有唯一 `traceId` 用于日志追踪
+5. 向后兼容：现有功能不受影响
+
+架构已支持未来的扩展需求，如 pipeline 流程、"生成PDF"、"推送第三方接口" 等任务类型。
