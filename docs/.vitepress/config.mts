@@ -201,6 +201,8 @@ export default defineConfig({
               text: "命令册",
               collapsed: false,
               items: [
+                {text: "ClaudeCode安装MCP教程", link: "/软件/命令册/ClaudeCode安装MCP教程"},
+                {text: "获取IP出口的一万种方法", link: "/软件/命令册/获取IP出口的一万种方法"},
                 {text: "Ollama常用命令", link: "/软件/命令册/Ollama常用命令"},
                 {text: "命令行系统信息工具", link: "/软件/命令册/命令行系统信息工具"},
                 {text: "Git的配置和使用命令", link: "/软件/命令册/Git的配置和使用命令"},

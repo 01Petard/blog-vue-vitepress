@@ -25,6 +25,8 @@ top: 998
 ## （Mac强烈推荐）安装orbstack
 
 > orbstack是一个在MacOS上新起的Docker方案，它采用了与docker-linux不同的上下文，安装使用linux虚拟机非常方便
+>
+> 但缺点在于dockerhub与docker desktop强绑定，如果需要将镜像上传到dockerhub上，还是使用docker desktop吧。
 
 ## 安装CentOS
 
@@ -390,6 +392,34 @@ uri_dockerfile目录下必须包含"DockerFile"和"Dockerfile中需要的文件"
 
 ```shell
 docker-compose up -d
+```
+
+## 镜像仓库
+
+我这里用阿里云演示一下，在云服务里搜索`ACR`、启用个人版实例、创建仓库
+
+接下来跟着官方的操作指南走：
+
+**1. 终端登录阿里云 Container Registry**
+
+```shell
+docker login --username=01Peatd crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com
+```
+
+**2. 将镜像推送到Registry**
+
+```shell
+docker tag [ImageId] crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com/01petard/print-service:1.1-arm64
+```
+
+```shell
+docker push crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com/01petard/print-service:1.1-arm64
+```
+
+**3. 从Registry中拉取镜像**
+
+```shell
+$ docker pull crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com/01petard/print-service:[镜像版本号]
 ```
 
 ## 部署Portainer
@@ -1336,7 +1366,7 @@ unzip elasticsearch-analysis-ik-7.4.0.zip
 
 ### 安装IK分词器
 
-#### 在线安装
+**在线安装**
 
 ```shell
 # 进入容器内部
@@ -1351,7 +1381,7 @@ exit
 docker restart elasticsearch
 ```
 
-#### 离线安装
+**离线安装**
 
 查看elasticsearch的数据卷目录
 
@@ -1389,7 +1419,7 @@ docker restart es
 docker logs -f es
 ```
 
-#### 测试IK分词器
+### 测试IK分词器
 
 * `ik_smart`：最少切分
 * `ik_max_word`：最细切分
@@ -1402,7 +1432,7 @@ GET /_analyze
 }
 ```
 
-#### 扩展词词典 && 停用词词典
+### 扩展词词典 && 停用词词典
 
 前往`/var/lib/docker/volumes/es-plugins/_data/ik/config`目录下，编辑`IKAnalyzer.cfg.xml`文件，添加扩展词词典`ext.dic`和停用词词典`stop.dic`
 
