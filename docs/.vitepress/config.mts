@@ -13,7 +13,7 @@ export default defineConfig({
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
   head: [
-    ["link", {rel: "icon", href: `/img/favicon.ico`}],  // 网站的图标（显示在浏览器的 tab 上）
+    ["link", {rel: "icon", href: `/favicon.ico`}],  // 网站的图标（显示在浏览器的 tab 上）
   ],
   markdown: {
     lineNumbers: true, // 显示代码行号
