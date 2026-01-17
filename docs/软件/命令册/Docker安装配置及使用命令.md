@@ -604,6 +604,23 @@ docker run --name mysql \
 -d mysql
 ```
 
+## 部署PostGreSQL
+
+```shell
+docker pull postgres:17
+```
+
+```shell
+docker run -d \
+  --name postgres-17 \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=app_password \
+  -e POSTGRES_DB=init_db \
+  -p 5432:5432 \
+  -v pgdata17:/var/lib/postgresql/data \
+  postgres:17
+```
+
 ## 部署PGVector
 
 > PGVector是一款基于PostgreSQL的扩展插件，虽然在连接作为数据库时与PostgreSQL、MySQL看起来一样，但它和PostgreSQL其实并不是同一个东西，在开发时所采用的ORM框架也不同，因此可以将其单独作为一种数据库列出来。
@@ -625,6 +642,35 @@ docker run -d \
   --health-retries=10 \
   registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
 ```
+
+## 部署MongoDB
+
+```shell
+docker pull mongo:8.0
+```
+
+```shell
+docker run -d \
+  --name mongo-8 \
+  -e MONGO_INITDB_ROOT_USERNAME=admin \
+  -e MONGO_INITDB_ROOT_PASSWORD=app_password \
+  -p 27017:27017 \
+  -v mongodata:/data/db \
+  --restart unless-stopped \
+  mongo:8.0
+```
+
+Mongo的GUI工具可以用官方的[MongoDB Compass](https://www.mongodb.com/try/download/shell)
+
+- `Project`是投影，用于指定返回哪些字段；
+- `Sort`是排序字段，`-1` 是降序，`1` 是升序；
+- `Collation`用于处理多语言排序（如中文拼音排序），一般不需要修改
+- `Skip` / `Limit` 是分页，**Skip**: 跳过前 N 条记录（类似 offset），**Limit**: 返回最多 N 条记录（类似 limit）；
+- `Index Hint` 是索引提示，指定用哪个索引执行查询
+
+具体界面如下：
+
+![image-20260118003754323](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202601180037707.png)
 
 ## 部署Redis
 
