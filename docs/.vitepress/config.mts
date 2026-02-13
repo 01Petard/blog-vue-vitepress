@@ -176,8 +176,8 @@ export default defineConfig({
                 {text: "My Java Guide - 分布式", link: "/开发/My Java Guide/My Java Guide - 分布式"},
                 {text: "My Java Guide - 算法", link: "/开发/My Java Guide/My Java Guide - 算法"},
                 {text: "My Java Guide - 项目", link: "/开发/My Java Guide/My Java Guide - 项目"},
-                {text: "My Java Guide - 项目", link: "/开发/二进制与十进制、八进制、十六进制互转"},
-                {text: "My Java Guide - 项目", link: "/开发/力扣刷题常用数据结构和方法（Java版）"},
+                {text: "二、十、八、十六进制互转", link: "/开发/My Java Guide/二进制与十进制、八进制、十六进制互转"},
+                {text: "力扣刷题（Java版）", link: "/开发/My Java Guide/力扣刷题常用数据结构和方法（Java版）"},
               ]
             },
           ]
@@ -380,6 +380,7 @@ export default defineConfig({
               text: "隐晦说",
               collapsed: true,
               items: [
+                {text: "开发信息备忘录_鹰瞳", link: "/开发/开发信息备忘录_鹰瞳"},
                 {text: "鹰瞳Airdoc第三方对接文档总结", link: "/开发/鹰瞳Airdoc第三方对接文档总结"},
                 {text: "开发信息备忘录_鹰瞳", link: "/开发/开发信息备忘录_鹰瞳"},
                 {text: "开发信息备忘录_贝尔", link: "/开发/开发信息备忘录_贝尔"},
