@@ -77,9 +77,8 @@ type: "about"
 🏠 Address: Ningbo, Zhejiang, China
 📮 Email: 1520394133@qq.com
 🐱 Github: https://github.com/01Petard
-🛳 Blog: https://01petard.github.io/blog-vue-vitepress
 🛳 Blog(Legacy): https://01petard.github.io
-🛳 Blog(Temporary): http://www.codebox.icu
+🛳 Blog(Current): https://www.bugstack.icu
 😋️ Hobbies: Nijigen Doujinverse, Browsing and Gadgets
 ```
 
