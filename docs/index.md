@@ -266,7 +266,7 @@ features:
 
 旧博客：[花火の红玉宫](https://01petard.github.io/)
 
-国内访问：[代码港湾](http://1.94.147.176/)
+国内访问：[代码港湾](https://www.bugstack.icu/)
 
 ---
 <div class="tip custom-block" style="max-width:1152px;margin:20px auto">

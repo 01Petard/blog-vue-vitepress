@@ -352,9 +352,9 @@ export default defineConfig({
               text: "后日谈",
               collapsed: true,
               items: [
-                {text: "airdoc-每日工作总结", link: "/杂谈/后日谈/airdoc-每日工作总结"},
-                {text: "airdoc-每月工作总结", link: "/杂谈/后日谈/airdoc-每月工作总结"},
-                {text: "2025年年初总结", link: "/杂谈/后日谈/2025年年初总结"},
+                // {text: "airdoc-每日工作总结", link: "/杂谈/后日谈/airdoc-每日工作总结"},
+                // {text: "airdoc-每月工作总结", link: "/杂谈/后日谈/airdoc-每月工作总结"},
+                // {text: "2025年年初总结", link: "/杂谈/后日谈/2025年年初总结"},
                 {text: "2024年年度总结", link: "/杂谈/后日谈/2024年年度总结"},
                 {text: "2024年秋招总结", link: "/杂谈/后日谈/2024年秋招总结"},
                 {text: "2024年9月记录", link: "/杂谈/后日谈/2024年9月记录"},
@@ -375,7 +375,6 @@ export default defineConfig({
                 {text: "2022年12月记录", link: "/杂谈/后日谈/2022年12月记录"},
                 {text: "2022年11月记录", link: "/杂谈/后日谈/2022年11月记录"},
               ]
-
             },
             {
               text: "隐晦说",
