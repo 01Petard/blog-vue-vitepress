@@ -82,6 +82,7 @@ export default defineConfig({
         {
           text: '开发',
           items: [
+            {text: "互联网开发最常用、最实用的黑话简称", link: "/开发/互联网开发最常用、最实用的黑话简称"},
             {text: "抽象SQL之按类别分组统计排名数据", link: "/开发/抽象SQL之按类别分组统计排名数据"},
             {text: "PHP框架与Java框架对比", link: "/开发/PHP框架与Java框架对比"},
             {text: "大量设备数据上报存储的简单方案设计", link: "/开发/大量设备数据上报存储的简单方案设计"},
@@ -89,8 +90,6 @@ export default defineConfig({
             {text: "PostgreSQL vs MySQL", link: "/开发/PostgreSQL%20vs%20MySQL"},
             {text: "Intellij IDEA fileTemplates文件模板", link: "/开发/Intellij%20IDEA%20fileTemplates文件模板"},
             {text: "简单理解正向代理和反向代理", link: "/开发/简单理解正向代理和反向代理"},
-            {text: 'Nginx配置文件说明', link: '/开发/Nginx配置文件说明'},
-            {text: "Nginx的配置和使用命令", link: "/开发/Nginx的配置和使用命令"},
             {
               text: "后端",
               collapsed: false,
@@ -156,7 +155,7 @@ export default defineConfig({
               items: [
                 {text: '学习Vue3有感', link: '/开发/前端/学习Vue3有感'},
                 {text: 'ElementUI组件教程', link: '/开发/前端/ElementUI组件教程'},
-                {text: 'Electron开发学习', link: '/开发/前端/electron'},
+                {text: 'Electron开发学习', link: '/开发/前端/Electron开发学习'},
                 {text: 'Vue的事件修饰符', link: '/开发/前端/Vue的事件修饰符'},
                 {text: '几个免版权图片网站', link: '/开发/前端/几个免版权图片网站'},
                 {text: 'CSS知识重点划注', link: '/开发/前端/CSS知识重点划注'},
@@ -202,6 +201,7 @@ export default defineConfig({
               text: "命令册",
               collapsed: false,
               items: [
+                {text: "常用coding_prompt", link: "/软件/命令册/常用coding_prompt"},
                 {text: "ClaudeCode安装MCP教程", link: "/软件/命令册/ClaudeCode安装MCP教程"},
                 {text: "获取IP出口的一万种方法", link: "/软件/命令册/获取IP出口的一万种方法"},
                 {text: "Ollama常用命令", link: "/软件/命令册/Ollama常用命令"},
@@ -239,6 +239,8 @@ export default defineConfig({
                 {text: "Ubuntu项目部署通用流程", link: "/软件/Linux/Ubuntu项目部署通用流程"},
                 {text: "用Shell命令提取路径信息", link: "/软件/Linux/用Shell命令提取路径信息"},
                 {text: "在服务器上部署hexo博客指南", link: "/软件/Linux/在服务器上部署hexo博客指南"},
+                {text: 'Nginx配置文件说明', link: '/开发/Nginx配置文件说明'},
+                {text: "Nginx的配置和使用命令", link: "/开发/Nginx的配置和使用命令"},
               ]
             },
             {
