@@ -1,16 +1,18 @@
-# 公司
+# 基建
 
-## 基础设施
+### 账号
 
-[动态密码](Wciw8EVPjNX)
+```
+huangzexiao
+Wciw8EVPjNX
+```
 
-### 公司邮箱
+### 邮箱
 
 ```
 huangzexiao@shinemo.com
+zSSJhrTVzeBsh7Zg
 ```
-
-客户端密码：`zSSJhrTVzeBsh7Zg`，密码用途：`办公PC`
 
 日报：`日&周报接收人：组长-部门经理-HRBP-事业部负责人-HRD-CEO`
 
@@ -28,31 +30,16 @@ https://jira.shinemo.com
 https://wiki.shinemo.com
 ```
 
-### ci
+### 发布
 
 ```
 https://ci.uban360.com
 ```
 
-### IM（OA）
+### OA
 
 ```
 https://saas.uban360.com/portal/#/portal/web-im
-```
-
-### tokenpony
-
-```
-4u4DhSY4a8g1kcbw  李强
-6pgdSTao0pxtKTGo  张苏波
-3FiWX92PJBLm0lyi  苏林
-7PISaNT9ZV8nHcbm  黄泽校
-3OcjOWSAy1qvxVV7  田博文
-3M41iSdA52cfikRa  陆佳豪
-VQdwPAo2NkGZHMhq  秦延宾
-529ylFOFH0kz6pWl  易鹏
-6dpe6eIn5Bq2C8O1  刘俊杰
-1GfUEkGS2m8z8X6E  黄志磊
 ```
 
 # 研发
