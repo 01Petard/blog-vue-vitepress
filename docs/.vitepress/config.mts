@@ -186,6 +186,7 @@ export default defineConfig({
         {
           text: "软件",
           items: [
+            {text: "常用coding_prompt", link: "/软件/常用coding_prompt"},
             {text: "ClaudeCode的一些使用技巧和命令", link: "/软件/ClaudeCode的一些使用技巧和命令"},
             {text: "软件项目全生命周期文档实施规范", link: "/软件/软件项目全生命周期文档实施规范"},
             {text: "自用常见系统环境配置文件", link: "/软件/自用常见系统环境配置文件"},
