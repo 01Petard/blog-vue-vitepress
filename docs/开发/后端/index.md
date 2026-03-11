@@ -4,7 +4,7 @@
 
 ## 目录
 
-1. [将Java项目打包为Docker镜像](将Java项目打包为Docker镜像.md.md)
+1. [将Java项目打包为Docker镜像](将Java项目打包为Docker镜像.md)
 2. [配置PHP和Composer环境](配置PHP和Composer环境.md)
 3. [PHP和JAVA的语法对比](PHP和JAVA的语法对比.md)
 4. [Spring注解——缓存、定时任务、异步任务](Spring注解——缓存、定时任务、异步任务.md)

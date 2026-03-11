@@ -1,4 +1,4 @@
-## 将Java项目打包为Docker镜像
+# 将Java项目打包为Docker镜像
 
 > 参考项目：https://github.com/01Petard/demo_springboot4
 
