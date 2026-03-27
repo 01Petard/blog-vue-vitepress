@@ -652,7 +652,7 @@ SET SESSION sort_buffer_size = value;  -- `value` 是以字节为单位的大小
 
 - **查 (Search)**：从根节点开始二分查找，B+树中使用二分查找可能在一个节点中找不到对应的结点，所以需要根据键值去子节点的孩子节点中遍历查找，直到找到叶子节点中对应的key和整行数据。
 
-  <img src="https://pic.code-nav.cn/mianshiya/question_picture/1772087337535152129/BrfHAAlY_image_mianshiya.png" alt="img" style="zoom: 50%;" />
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202603131543963.png" alt="img" style="zoom: 50%;" />
 
 - **改 (Update)**：先去查询，如果键已存在，更新其值；如果键不存在，则修改失败。
 
