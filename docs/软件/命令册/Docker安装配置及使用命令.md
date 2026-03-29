@@ -625,7 +625,11 @@ docker run -d \
 
 > PGVector是一款基于PostgreSQL的扩展插件，虽然在连接作为数据库时与PostgreSQL、MySQL看起来一样，但它和PostgreSQL其实并不是同一个东西，在开发时所采用的ORM框架也不同，因此可以将其单独作为一种数据库列出来。
 
+```shell
+docker pull registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
 ```
+
+```shell
 docker run -d \
   --name vector_db \
   -e POSTGRES_USER=root \
@@ -635,8 +639,26 @@ docker run -d \
   -v $(pwd)/pgvector/sql/init.sql:/docker-entrypoint-initdb.d/init.sql \
   --log-opt max-size=10m \
   --log-opt max-file=3 \
-  -p 15432:5432 \
+  -p 5432:5432 \
   --health-cmd="pg_isready -U root -d ai-rag-knowledge" \
+  --health-interval=2s \
+  --health-timeout=20s \
+  --health-retries=10 \
+  registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
+```
+
+```shell
+docker run -d \
+  --name vector_db \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=app_password \
+  -e POSTGRES_DB=ai-rag-knowledge \
+  -e PGPASSWORD=app_password \
+  -v $(pwd)/pgvector/sql/init.sql:/docker-entrypoint-initdb.d/init.sql \
+  -p 5432:5432 \
+  --log-opt max-size=10m \
+  --log-opt max-file=3 \
+  --health-cmd "pg_isready -U postgres -d ai-rag-knowledge" \
   --health-interval=2s \
   --health-timeout=20s \
   --health-retries=10 \
