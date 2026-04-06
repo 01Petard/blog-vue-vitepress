@@ -32,7 +32,7 @@
 
 ## 访问我的博客
 
-欢迎访问我的博客：[新的VitePress博客](https://01petard.github.io/blog-vue-vitepress/) | [老的Hexo博客](https://01petard.github.io/) | [国内的Hexo镜像博客](http://www.huangzexiao.top/)
+欢迎访问我的博客：[当前博客地址](https://01petard.github.io/blog-vue-vitepress/) | [老博客地址](https://01petard.github.io/) | [当前博客国内-镜像访问地址](https://www.bugstack.icu)
 
 ## 贡献
 
