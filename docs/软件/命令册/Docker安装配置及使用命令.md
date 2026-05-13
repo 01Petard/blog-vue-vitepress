@@ -528,15 +528,15 @@ flush privileges;
 
 ```shell
 docker run \
--p 3306:3306 \
---privileged=true \
---name mysql8 \
---restart=always \
--v ~/mydata/mysql8/conf:/etc/mysql/conf.d \
--v ~/mydata/mysql8/data:/var/lib/mysql \
--v ~/mydata/mysql8/log:/var/log/mysql \
--e MYSQL_ROOT_PASSWORD=root \
--d mysql:latest
+  -p 3306:3306 \
+  --privileged=true \
+  --name mysql8 \
+  --restart=always \
+  -v ~/mydata/mysql8/conf:/etc/mysql/conf.d \
+  -v ~/mydata/mysql8/data:/var/lib/mysql \
+  -v ~/mydata/mysql8/log:/var/log/mysql \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -d mysql:latest
 ```
 
 
@@ -663,6 +663,20 @@ docker run -d \
   --health-timeout=20s \
   --health-retries=10 \
   registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
+```
+
+简易版
+
+```shell
+docker run -d \
+  --name pgvector \
+  --restart=unless-stopped \
+  -p 5432:5432 \
+  -v pgvector-data:/var/lib/postgresql/data \
+  -e POSTGRES_USER=root \
+  -e POSTGRES_PASSWORD=app_password \
+  -e POSTGRES_DB=app_db \
+  ankane/pgvector:latest
 ```
 
 ## 部署MongoDB
@@ -873,13 +887,39 @@ slave来申请增量同步，带着replid和offset，然后master根据获取off
 
 - 此时会出现一个问题，当slave下限太久时，master中存储的数据已经超过了这个repl_baklog的上线，因此就需要重新进行全量同步。
 
-## 部署Redisearch
+## 部署Redisearch（已过时）
 
-> Redis-search是一款可以存储向量化数据的内存型数据库，基于Redis而来
+> Redisearch是一款基于Redis的向量化内存型数据库
 
 ```shell
-docker run -p 6379:6379 --name redis-vector --restart=unless-stopped \
--d redislabs/redisearch
+docker run -d \
+  -p 6379:6379 \
+  --name redissearch \
+  --restart=unless-stopped \
+  redislabs/redisearch
+```
+
+## 部署Redis-stack
+
+> redis-stack是redissearch的继任者
+
+```shell
+docker pull redis/redis-stack:7.4.0-v8-arm64
+```
+
+```shell
+docker run -d \
+  --name redis-stack \
+  --restart=unless-stopped \
+  -p 6379:6379 \
+  -v redis-stack-data:/data \
+  -e REDIS_PASSWORD="app_password" \
+  -e REDIS_ARGS="--appendonly yes --requirepass app_password" \
+  redis/redis-stack:7.4.0-v8-arm64
+```
+
+```shell
+docker exec -it redis-stack redis-cli
 ```
 
 ## 部署Nacos 2.x
