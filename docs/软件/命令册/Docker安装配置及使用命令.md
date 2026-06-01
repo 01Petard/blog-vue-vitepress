@@ -1835,7 +1835,7 @@ docker run --rm -it -p 8501:8501 xijinping615/xi-jinping-tts
 
 然后在浏览器中打开：`http://192.168.113.132:8501/`
 
-## 部署zookeeper、kafka
+## 部署Kafka（依赖Zookeeper，已过时）
 
 拉取`zookeeper`镜像
 
@@ -1868,6 +1868,100 @@ docker run -d --name kafka \
 ```
 
 如果是云主机，需要把`--net=host`改成`-p 9092:9092`（个人未验证过）
+
+## 部署Kafka（单节点，无ZooKeeper）
+
+```shell
+cat > kafka_server_jaas.conf <<EOF
+KafkaServer {
+  org.apache.kafka.common.security.plain.PlainLoginModule required
+  username="admin"
+  password="admin123"
+  user_admin="admin123";
+};
+EOF
+```
+
+```shell
+docker run -d \
+  --name kafka \
+  -p 9092:9092 \
+  -v $(pwd)/kafka_server_jaas.conf:/etc/kafka/kafka_server_jaas.conf \
+  -e KAFKA_NODE_ID=1 \
+  -e KAFKA_PROCESS_ROLES=broker,controller \
+  -e KAFKA_LISTENERS=SASL_PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093 \
+  -e KAFKA_ADVERTISED_LISTENERS=SASL_PLAINTEXT://115.29.215.180:9092 \
+  -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,SASL_PLAINTEXT:SASL_PLAINTEXT \
+  -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER \
+  -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@127.0.0.1:9093 \
+  -e KAFKA_INTER_BROKER_LISTENER_NAME=SASL_PLAINTEXT \
+  -e KAFKA_SASL_ENABLED_MECHANISMS=PLAIN \
+  -e KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL=PLAIN \
+  -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true \
+  -e KAFKA_OPTS="-Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf" \
+  -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \
+  -e KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1 \
+  -e KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1 \
+  apache/kafka:4.0.0
+```
+
+**手动管理 Topic（生产环境）**
+
+进入容器：
+
+```
+docker exec -it kafka bash
+```
+
+创建认证配置：
+
+```
+cat > /tmp/client.properties <<EOF
+security.protocol=SASL_PLAINTEXT
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin123";
+EOF
+```
+
+查看所有 topic：
+
+```shell
+sh /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --command-config /tmp/client.properties --list
+```
+
+查看某个 topic 详情：（输出会包含：分区数、副本数、leader、ISR 状态）
+
+```shell
+sh /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --command-config /tmp/client.properties --describe --topic dev_test
+```
+
+创建 topic：
+
+```
+sh /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --command-config /tmp/client.properties --create --partitions 1 --replication-factor 1 --topic dev_test
+```
+
+删除命令：
+
+```shell
+sh /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --command-config /tmp/client.properties --delete --topic dev_test
+```
+
+topic 命名规范
+
+```
+业务域.事件
+```
+
+例如：
+
+```
+order.create
+order.pay
+order.cancel
+user.register
+sms.send
+```
 
 ## 部署MongoDB
 
