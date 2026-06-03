@@ -17,12 +17,9 @@
     "vitepress": "^1.6.4"
   },
   "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search",
-        "search-insights"
-      ]
-    }
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   },
   "dependencies": {
     "markdown-it-attrs": "^4.3.1",
