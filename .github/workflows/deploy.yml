@@ -54,13 +54,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # 使用 最新的 PNPM
-      # 你也可以指定为具体的版本
+      # 使用 PNPM 11，避免 latest 自动升级到新大版本导致 CI 行为突变
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         with:
-          version: latest
-          # version: 9
+          version: 11
           run_install: false
 
         # 安装依赖
