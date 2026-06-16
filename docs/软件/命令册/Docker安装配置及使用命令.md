@@ -621,9 +621,9 @@ docker run -d \
   postgres:17
 ```
 
-## 部署PGVector
+## 部署PgVector
 
-> PGVector是一款基于PostgreSQL的扩展插件，虽然在连接作为数据库时与PostgreSQL、MySQL看起来一样，但它和PostgreSQL其实并不是同一个东西，在开发时所采用的ORM框架也不同，因此可以将其单独作为一种数据库列出来。
+> PgVector是一款基于PostgreSQL的扩展插件，虽然在连接作为数据库时与PostgreSQL、MySQL看起来一样，但它和PostgreSQL其实并不是同一个东西，在开发时所采用的ORM框架也不同，因此可以将其单独作为一种数据库列出来。
 
 ```shell
 docker pull registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
@@ -665,18 +665,33 @@ docker run -d \
   registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
 ```
 
-简易版
+简易版：`pg16 + pgvector 0.8.2，自动适配linux/amd64 / linux/arm64`
 
 ```shell
 docker run -d \
   --name pgvector \
-  --restart=unless-stopped \
-  -p 5432:5432 \
-  -v pgvector-data:/var/lib/postgresql/data \
-  -e POSTGRES_USER=root \
-  -e POSTGRES_PASSWORD=app_password \
-  -e POSTGRES_DB=app_db \
-  ankane/pgvector:latest
+  -p 5532:5432 \
+  -e POSTGRES_DB=axiom_platform_suite \
+  -e POSTGRES_USER=pguser_H2o2D1 \
+  -e POSTGRES_PASSWORD=PgVector_9sK27pR2 \
+  -v ./pgvector-data:/var/lib/postgresql/data \
+  pgvector/pgvector:pg16
+
+docker run -d \
+  --name pgvector-test \
+  -p 15532:5432 \
+  -e POSTGRES_DB=axiom_platform_suite \
+  -e POSTGRES_USER=pguser_O9sM2c \
+  -e POSTGRES_PASSWORD=PgVector_Lk7Rt92 \
+  -v ./pgvector-test-data:/var/lib/postgresql/data \
+  pgvector/pgvector:pg16
+```
+
+验证扩展
+
+```sql
+CREATE EXTENSION IF NOT EXISTS vector;
+SELECT extname, extversion FROM pg_extension WHERE extname='vector';
 ```
 
 ## 部署MongoDB
@@ -811,7 +826,7 @@ Redis持久化的RDB和AOF对比
 | 系统资源占用   | 高，大量CPU和内存消耗                        | 低，主要占用磁盘IO资源，且重写时会占用大量CPU资源和内存资源 |
 | 使用场景       | 可以容忍数分钟的数据丢失，追求更快的启动速度 | 对数据安全性要求较高                                        |
 
-### 配置Redis主从集群
+## 配置Redis主从集群
 
 **1、用Docker部署好三台Redis**
 
@@ -903,6 +918,8 @@ docker run -d \
 
 > redis-stack是redissearch的继任者
 
+arm版
+
 ```shell
 docker pull redis/redis-stack:7.4.0-v8-arm64
 ```
@@ -912,8 +929,8 @@ docker run -d \
   --name redis-stack \
   --restart=unless-stopped \
   -p 6379:6379 \
+  -p 8001:8001 \
   -v redis-stack-data:/data \
-  -e REDIS_PASSWORD="app_password" \
   -e REDIS_ARGS="--appendonly yes --requirepass app_password" \
   redis/redis-stack:7.4.0-v8-arm64
 ```
@@ -922,9 +939,63 @@ docker run -d \
 docker exec -it redis-stack redis-cli
 ```
 
+x86版
+
+```shell
+docker pull redis/redis-stack:7.4.0-v8-x86_64
+```
+
+```shell
+docker run -d \
+  --name redis-stack \
+  --restart=unless-stopped \
+  -p 6379:6379 \
+  -p 8001:8001 \
+  -v redis-stack-data:/data \
+  -e REDIS_ARGS="--appendonly yes --requirepass app_password" \
+  redis/redis-stack:7.4.0-v8-x86_64
+```
+
+也可以用不带`RedisInsight`的版本：
+
+```shell
+docker pull redis/redis-stack-server:7.4.0-v8-x86_64
+```
+
+```shell
+docker run -d \
+  --name redis-stack \
+  --restart=unless-stopped \
+  -p 6379:6379 \
+  -v redis-stack-data:/data \
+  -e REDIS_ARGS="--appendonly yes --requirepass app_password" \
+  redis/redis-stack-server:7.4.0-v8-x86_64
+```
+
+进入容器
+
+```shell
+docker exec -it redis-stack redis-cli
+AUTH app_password
+
+或
+
+docker exec -it redis-stack redis-cli -a app_password
+```
+
+验证 Redis Stack 模块
+
+```shell
+MODULE LIST
+```
+
+
+
 ## 部署Nacos 2.x
 
-### MacOS部署nacos
+> 2.x的nacos不需要身份验证，所以比较适合学习，但是生产应该用最新的3.x及以后。
+
+**MacOS部署nacos**
 
 ```shell
 docker run -d \
@@ -946,7 +1017,7 @@ sh ./bin/shutdown.sh
 
 之所以不用3.x是因为，nacos 3.0以后需要用token了，比较费事，自己学习太麻烦了
 
-### Windows部署nacos
+**Windows部署nacos**
 
 下载nacos安装包：https://github.com/alibaba/nacos/releases
 
@@ -956,7 +1027,7 @@ sh ./bin/shutdown.sh
 startup.cmd -m standalone
 ```
 
-### Linux部署nacos
+**Linux部署nacos**
 
 Linux下使用nacos的其实和MacOS是一样的，用容器即可，但这里介绍一种外部存储配置的方式来部署。
 
@@ -1386,15 +1457,17 @@ docker rm rmqnamesrv rmqbroker rmqconsole  # 删除容器
 
 ## 部署Elasticsearch
 
-### es与mysql的概念名词对比
+**es与mysql的概念名词对比**
 
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/es%E4%B8%8Emysql%E5%AF%B9%E6%AF%94.jpg" alt="es与mysql对比" style="zoom: 33%;" />
 
-### es的mapping属性解析
+**es的mapping属性解析**
 
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/es%E7%9A%84mapping%E5%B1%9E%E6%80%A7%E8%A7%A3%E6%9E%90.jpg" alt="es的mapping属性解析" style="zoom:33%;" />
 
-### 本地安装es
+### 安装es（本地+在线）
+
+**本地安装**
 
 拉取/加载镜像
 
@@ -1435,7 +1508,7 @@ elasticsearch:7.12.1
 
 在浏览器中输入：http://192.168.113.132:9200 即可看到elasticsearch的响应结果
 
-### 在线安装es
+**在线安装**
 
 拉取镜像
 
@@ -1472,7 +1545,7 @@ cd /usr/share/elasticsearch/plugins/analysis-ik
 unzip elasticsearch-analysis-ik-7.4.0.zip
 ```
 
-### 安装IK分词器
+### 安装IK分词器（本地+在线）
 
 **在线安装**
 
@@ -1527,7 +1600,7 @@ docker restart es
 docker logs -f es
 ```
 
-### 测试IK分词器
+**测试IK分词器**
 
 * `ik_smart`：最少切分
 * `ik_max_word`：最细切分
@@ -1594,7 +1667,7 @@ kibana:7.12.1
 
 ## 部署nginx
 
-### nginx命令
+**nginx基本命令**
 
 > 开启服务：`start nginx`
 > 直接点击Nginx目录下的nginx.exe
@@ -1615,19 +1688,19 @@ kibana:7.12.1
 >
 > 平滑重启nginx：`kill -HUP 主进程号`
 
-### 拉取镜像
+拉取镜像
 
 ```
 docker pull nginx
 ```
 
-### 简单上手
+简单上手
 
 ```shell
 docker run --restart=always --name=nginx -p 80:80 -d nginx
 ```
 
-### 创建数据卷文件
+创建数据卷文件
 
 ```shell
 mkdir /mydata/nginx/conf/
@@ -1651,7 +1724,7 @@ mkdir /mydata/nginx/html/
 mkdir /mydata/nginx/conf/leadnews/
 ```
 
-### 创建容器
+创建容器
 
 ```shell
 docker run \
@@ -1835,7 +1908,7 @@ docker run --rm -it -p 8501:8501 xijinping615/xi-jinping-tts
 
 然后在浏览器中打开：`http://192.168.113.132:8501/`
 
-## 部署Kafka（依赖Zookeeper，已过时）
+## 部署Kafka（已过时）
 
 拉取`zookeeper`镜像
 
@@ -1869,7 +1942,7 @@ docker run -d --name kafka \
 
 如果是云主机，需要把`--net=host`改成`-p 9092:9092`（个人未验证过）
 
-## 部署Kafka（单节点，无ZooKeeper）
+## 部署Kafka（单节点）
 
 ```shell
 cat > kafka_server_jaas.conf <<EOF
