@@ -25,11 +25,14 @@ hero:
       text: 👨‍💻 关于我
       link: /about
     - theme: sponsor
-      text: 🚪 我的GitHub
+      text: 🚪 My GitHub
       link: https://github.com/01Petard
     - theme: sponsor
-      text: ⛩ 我的Bilibili
+      text: ⛩  僕のビリビリ
       link: https://space.bilibili.com/12764212
+    - theme: sponsor
+      text: 📕 我的小红书
+      link: https://www.xiaohongshu.com/user/profile/5f13ee3400000000010073c3
 features:
   - title: 光速构建，无限知识
     details: 如闪电般的加载速度，快速访问到丰富的知识宝库。多端设备都能享受流畅的阅读体验。
