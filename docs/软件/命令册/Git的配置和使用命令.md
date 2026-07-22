@@ -586,3 +586,175 @@ git diff <issue1-commit-sha> <issue2-commit-sha>
 而且这两个版本相隔太久，差别很大，在这里无法真正体现出区别。
 
 ![image-20230529154317054](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/image-20230529154317054.png)
+
+# 五、标签、版本发布
+
+`git tag` 用于给某个 **Commit** 打上标签，相当于给某个版本建立永久的快照标记。很多 CI/CD 都会以 Tag 作为发布触发条件。
+
+## Tag 与 Branch 的区别
+
+> **一句话：** Branch 用于**开发**，Tag 用于**发布**和**版本定位**。
+
+| Branch             | Tag            |
+| ------------------ | -------------- |
+| 持续开发           | 标记版本       |
+| 会随着 Commit 移动 | 一般不会移动   |
+| 可继续提交         | 通常不用于开发 |
+
+------
+
+## 一、查看 Tag
+
+查看所有 Tag：
+
+```bash
+git tag
+```
+
+按名称过滤：
+
+```bash
+git tag -l "v1.*"
+```
+
+查看 Tag 详情：
+
+```bash
+git show v1.0.0
+```
+
+查看远程 Tag：
+
+```bash
+git ls-remote --tags origin
+```
+
+------
+
+## 二、创建 Tag
+
+### 轻量标签
+
+仅作为 Commit 的引用。
+
+```bash
+git tag v1.0.0
+```
+
+### 附注标签（推荐）
+
+包含作者、时间、描述等信息，适用于正式版本。
+
+```bash
+git tag -a v1.0.0 -m "发布正式版本"
+```
+
+给历史 Commit 打 Tag：
+
+```bash
+git tag -a v0.9.0 <commit-id> -m "历史版本"
+```
+
+------
+
+## 三、推送 Tag
+
+普通 `git push` 不会推送 Tag。
+
+推送指定 Tag：
+
+```bash
+git push origin v1.0.0
+```
+
+推送所有 Tag：
+
+```bash
+git push origin --tags
+```
+
+------
+
+## 四、删除 Tag
+
+删除本地：
+
+```bash
+git tag -d v1.0.0
+```
+
+删除远程：
+
+```bash
+git push origin --delete v1.0.0
+```
+
+------
+
+## 五、切换到 Tag
+
+切换到 Tag：
+
+```bash
+git checkout v1.0.0
+```
+
+或（Git 2.23+）：
+
+```bash
+git switch --detach v1.0.0
+```
+
+此时处于 **Detached HEAD** 状态。
+
+如果需要继续开发，建议创建新分支：
+
+```bash
+git checkout -b fix-v1.0.0 v1.0.0
+```
+
+------
+
+## 常用命令
+
+```bash
+# 查看 Tag
+git tag
+git tag -l "v1.*"
+git show v1.0.0
+git ls-remote --tags origin
+
+# 创建 Tag
+git tag v1.0.0
+git tag -a v1.0.0 -m "正式发布"
+git tag -a v0.9.0 <commit-id> -m "历史版本"
+
+# 推送 Tag
+git push origin v1.0.0
+git push origin --tags
+
+# 删除 Tag
+git tag -d v1.0.0
+git push origin --delete v1.0.0
+
+# 切换 Tag
+git checkout v1.0.0
+git checkout -b fix-v1.0.0 v1.0.0
+```
+
+# 六、Git commit常用标签
+
+```git
+feat      新功能
+fix       修复
+revert    回滚
+refactor  重构
+test      测试
+perf      性能优化
+docs      文档
+style     格式
+build     构建
+ci        CI/CD
+chore     杂项
+```
+

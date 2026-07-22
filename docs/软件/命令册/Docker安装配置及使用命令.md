@@ -18,11 +18,9 @@ top_img: https://www.docker.com/wp-content/uploads/2023/06/meta-image-what-is-a-
 top: 998
 ---
 
-# 自用的docker-compose文件
+# 前置知识
 
-[docker-compose.yml](./docker-compose.yml)
-
-## （Mac强烈推荐）安装orbstack
+## 安装orbstack
 
 > orbstack是一个在MacOS上新起的Docker方案，它采用了与docker-linux不同的上下文，安装使用linux虚拟机非常方便
 >
@@ -83,6 +81,34 @@ netstat -ano | findstr '被占用的端口号'
 ```shell
 taskkill /F /PID '进程号'
 ```
+
+## Docker 端口暴露安全防护规范
+
+Docker 绝大多数安全风险源于配置不规范。
+
+Docker 安全核心：**零公网裸曝、权限最小化、资源可信化**。严格执行即可覆盖绝大多数生产安全风险。
+
+本文总结三条生产环境核心防护标准，规避未授权访问、容器逃逸、服务器沦陷风险。
+
+### 禁止端口裸曝公网
+
+命令中最好不要写 `-H tcp://0.0.0.0:2375`
+
+**最佳实践**：常规环境仅保留本地 Socket 访问，关闭外网监听。特殊运维需开放端口时，**强制配置 IP 白名单 \+ TLS 认证**。
+
+### 最小权限运行，禁用特权容器
+
+命令中最好不要写 `--privileged` ，特权模式会击穿容器隔离，造成高危逃逸漏洞。
+
+**最佳实践**：统一以 `--user` 低权限用户启动容器，生产环境严禁使用特权参数。
+
+### 版本与镜像可信管控
+
+旧版 Docker 存在已知漏洞，非可信镜像普遍携带后门、木马程序。
+
+**最佳实践**：保持 Docker 为最新稳定版；业务镜像仅使用官方及权威厂商源，杜绝不明镜像。
+
+# Docker运行相关命令
 
 ## 安装Docker
 
@@ -378,6 +404,62 @@ docker volume rm [volume]
 docker volume prune [volume] 
 ```
 
+## Docker Compose命令
+
+**后台启动**
+
+```shell
+docker compose -f docker-compose.yml up -d
+```
+
+`up`：创建并启动 compose 文件里的服务
+
+`-d`：后台运行，detached mode
+
+**重新构建后启动**
+
+```shell
+docker compose up -d --build
+```
+
+适合改了 `Dockerfile` 或源码镜像需要重新构建的时候
+
+**停止容器**
+
+```shell
+docker compose -f docker-compose.yml stop
+```
+
+**停止并删除容器、网络**
+
+```shell
+docker compose -f docker-compose.yml down
+```
+
+**停止并删除容器、网络、数据卷（慎用）**
+
+```shell
+docker compose -f docker-compose.yml down -v
+```
+
+**重启服务**
+
+```shell
+docker compose -f docker-compose.yml restart (服务名)
+```
+
+**查看服务状态**
+
+```shell
+docker compose -f docker-compose.yml ps
+```
+
+**查看日志**
+
+```shell
+docker compose -f docker-compose.yml log --tail=100 -f (服务名)
+```
+
 ## 构建镜像
 
 ```shell
@@ -396,7 +478,11 @@ docker-compose up -d
 
 ## 镜像仓库
 
-我这里用阿里云演示一下，在云服务里搜索`ACR`、启用个人版实例、创建仓库
+这里用阿里云演示一下：
+
+- 在云服务里搜索`ACR`
+- 启用个人版实例
+- 创建仓库
 
 接下来跟着官方的操作指南走：
 
@@ -421,6 +507,8 @@ docker push crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com/01petard/
 ```shell
 $ docker pull crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com/01petard/print-service:[镜像版本号]
 ```
+
+# 容器快速部署命令速查
 
 ## 部署Portainer
 
@@ -968,7 +1056,7 @@ docker run -d \
   --restart=unless-stopped \
   -p 6379:6379 \
   -v redis-stack-data:/data \
-  -e REDIS_ARGS="--appendonly yes --requirepass app_password" \
+  -e REDIS_ARGS='--appendonly yes --requirepass app_password' \
   redis/redis-stack-server:7.4.0-v8-x86_64
 ```
 
@@ -1333,6 +1421,26 @@ https://192.168.113.132:8848/nacos
 docker update --restart=always nacos
 ```
 
+## 部署Nacos 3.2.2
+
+```shell
+docker run --name nacos-standalone \
+ -e MODE=standalone \
+ -e NACOS_AUTH_TOKEN=ZmxhZ3N5c3RlbTkyOWhhbmRzaG91NzQzN2RzODk0c2Y1Njc4OWRz \
+ -e NACOS_AUTH_IDENTITY_KEY=nacos-2026-admin-inner-key \
+ -e NACOS_AUTH_IDENTITY_VALUE=9sD7fG2pR5bN8vC3xJ6mT0kL1zQ4aS7dF2hJ5gN8bP0vC3xZ6mT1rS9 \
+ -p 28080:8080 \
+ -p 28848:8848 \
+ -p 29848:9848 \
+ -d nacos/nacos-server:v3.2.2
+```
+
+> 8080：Nacos 浏览器访问控制台
+>
+> 8848：Nacos HTTP 接口调试
+>
+> 9848：Nacos 微服务客户端 gRPC 通信
+
 ## 部署RabbitMQ
 
 拉取镜像
@@ -1665,9 +1773,9 @@ kibana:7.12.1
 
 此时，在浏览器输入地址访问：http://192.168.113.132:5601，即可看到结果
 
-## 部署nginx
+## 部署Nginx
 
-**nginx基本命令**
+**Nginx基本命令**
 
 > 开启服务：`start nginx`
 > 直接点击Nginx目录下的nginx.exe
@@ -1849,7 +1957,7 @@ server {
 }
 ```
 
-## 部署minio
+## 部署MinIO
 
 拉取镜像
 
@@ -1863,15 +1971,15 @@ docker pull minio/minio
 
 ```shell
 docker run -d \
---name minio \
--p 9100:9000  \
--p 9001:9001  \
--d --restart=always \
--e "MINIO_ROOT_USER=minio" \
--e "MINIO_ROOT_PASSWORD=12345678" \
--v /mydata/minio/data:/data \
--v /mydata/minio/config:/root/.minio \
-minio/minio server  /data --console-address ":9001"
+  --name minio \
+  --restart always \
+  -p 9100:9000 \
+  -p 9001:9001 \
+  -e MINIO_ROOT_USER=admin \
+  -e MINIO_ROOT_PASSWORD=minio_admin66668888 \
+  -v ./minio-data:/data \
+  minio/minio:RELEASE.2025-07-23T15-54-02Z \
+  server /data --console-address ":9001"
 ```
 
 web管理地址：`http://192.168.113.132:9001/`
@@ -1908,7 +2016,7 @@ docker run --rm -it -p 8501:8501 xijinping615/xi-jinping-tts
 
 然后在浏览器中打开：`http://192.168.113.132:8501/`
 
-## 部署Kafka（已过时）
+## ~~部署Kafka~~（已过时）
 
 拉取`zookeeper`镜像
 
