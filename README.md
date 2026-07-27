@@ -32,7 +32,9 @@
 
 ## 访问我的博客
 
-欢迎访问我的博客：[当前博客地址](https://01petard.github.io/blog-vue-vitepress/) | [老博客地址](https://01petard.github.io/) | [当前博客国内-镜像访问地址](https://www.bugstack.icu)
+欢迎访问我的博客：[永久地址](https://01petard.github.io/blog-vue-vitepress/) | [备用地址](https://doc.bugstack.icu/) | [老博客地址](https://01petard.github.io/)
+
+RSS 订阅：[代码港湾 RSS](https://01petard.github.io/blog-vue-vitepress/feed.xml)
 
 ## 贡献
 

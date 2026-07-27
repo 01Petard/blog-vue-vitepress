@@ -5,6 +5,7 @@ import timeline from "vitepress-markdown-timeline";
 import container from "markdown-it-container";
 import attrs from "markdown-it-attrs";
 import {generateSidebar} from './utils';
+import {CURRENT_SITE_URL, generateRss, RSS_URL} from './rss.mts';
 
 export default defineConfig({
   base: "/",
@@ -15,8 +16,23 @@ export default defineConfig({
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
   head: [
-    ["link", {rel: "icon", href: `/favicon.ico`}],  // 网站的图标（显示在浏览器的 tab 上）
+    ["link", {
+      rel: "icon",
+      href: `/favicon.ico`
+    }],
+    ["link", {
+      rel: "alternate",
+      type: "application/rss+xml",
+      title: "代码港湾 RSS",
+      href: RSS_URL
+    }],
   ],
+  sitemap: {
+    hostname: CURRENT_SITE_URL
+  },
+  async buildEnd(siteConfig) {
+    await generateRss(siteConfig);
+  },
   markdown: {
     lineNumbers: true, // 显示代码行号
     config: (md) => {
@@ -79,6 +95,7 @@ export default defineConfig({
       {text: '硬件', link: '/硬件/index'},
       {text: '杂谈', link: '/杂谈/index'},
       {text: '关于我', link: '/about'},
+      {text: 'RSS', link: RSS_URL, target: '_blank'},
     ],
     // 侧边栏
     sidebar: {
