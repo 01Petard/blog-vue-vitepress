@@ -692,6 +692,15 @@ docker run --name mysql \
 -d mysql
 ```
 
+```shell
+docker run \
+  --name mysql \
+  --restart unless-stopped \
+  -v my_mysql_data:/var/lib/mysql \
+  -p 3306:3306 \
+  -d mysql:8.0.32
+```
+
 ## 部署PostGreSQL
 
 ```shell
@@ -811,7 +820,7 @@ Mongo的GUI工具可以用官方的[MongoDB Compass](https://www.mongodb.com/try
 
 ![image-20260118003754323](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202601180037707.png)
 
-## 部署Redis
+## 部署Redis（新手）
 
 下载最新的镜像
 
@@ -913,6 +922,22 @@ Redis持久化的RDB和AOF对比
 | 数据恢复优先级 | 低，因为数据完整性不如AOF                    | 高，因为数据完整性更高                                      |
 | 系统资源占用   | 高，大量CPU和内存消耗                        | 低，主要占用磁盘IO资源，且重写时会占用大量CPU资源和内存资源 |
 | 使用场景       | 可以容忍数分钟的数据丢失，追求更快的启动速度 | 对数据安全性要求较高                                        |
+
+## 配置Redis（通用）
+
+最小化部署，采用精简镜像
+
+```shell
+docker run \
+  --name redis \
+  --restart unless-stopped \
+  -v my_redis_data:/data \
+  -p 6379:6379 \
+  -d redis:8.4.4-alpine \
+  redis-server \
+  --appendonly yes \
+  --requirepass app_password
+```
 
 ## 配置Redis主从集群
 
