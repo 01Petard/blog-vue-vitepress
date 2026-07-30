@@ -9,22 +9,23 @@
 
 ## 目录
 
-1. [Python中GIL对性能的影响](Python中GIL对性能的影响.md)
-2. [Python软件测试从入门到入坟](Python软件测试从入门到入坟.md)
-3. [uv入门使用指南](./uv入门使用指南.md)
-4. [uv项目使用指南](./uv向上使用指南.md)
-5. [人工智能十大算法](./人工智能十大算法.md)
-6. [conda创建虚拟环境，安装Pytorch](./conda创建虚拟环境，安装Pytorch.md)
-7. [解决Anaconda安装后命令行前出现(base)](./解决Anaconda安装后命令行前出现(base).md)
-8. jupyter相关
+1. [Python数据分析与机器学习常用模块学习点梳理](Python数据分析与机器学习常用模块学习点梳理.md)
+2. [Python中GIL对性能的影响](Python中GIL对性能的影响.md)
+3. [Python软件测试从入门到入坟](Python软件测试从入门到入坟.md)
+4. [uv入门使用指南](./uv入门使用指南.md)
+5. [uv项目使用指南](./uv向上使用指南.md)
+6. [人工智能十大算法](./人工智能十大算法.md)
+7. [conda创建虚拟环境，安装Pytorch](./conda创建虚拟环境，安装Pytorch.md)
+8. [解决Anaconda安装后命令行前出现(base)](./解决Anaconda安装后命令行前出现(base).md)
+9. jupyter相关
    1. [jupyter 常用操作和命令](./jupyter常用操作和命令.md)
    2. [jupyter 增加、删除内核](./jupyter增加、删除内核.md)
    3. <a href="jupyter notebook快捷键">jupyter notebook快捷键</a>
    4. [jupyter 更换主题](./jupyter更换主题.md)
-9. [Pytorch下载配置，Anaconda创建虚拟环境](./Pytorch下载配置，Anaconda创建虚拟环境.md)
-10. [torch常用命令](./torch常用命令.md)
-11. [YOLOv5的使用](./YOLOv5的使用.md)
-12. [图像处理模块封装函数](./图像处理模块封装函数.md)
+10. [Pytorch下载配置，Anaconda创建虚拟环境](./Pytorch下载配置，Anaconda创建虚拟环境.md)
+11. [torch常用命令](./torch常用命令.md)
+12. [YOLOv5的使用](./YOLOv5的使用.md)
+13. [图像处理模块封装函数](./图像处理模块封装函数.md)
 
 
 
