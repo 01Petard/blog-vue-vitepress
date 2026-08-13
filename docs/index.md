@@ -50,6 +50,16 @@ features:
 ---
 
 <style>
+@keyframes hero-name-rainbow-flow {
+  0% {
+    background-position: 0% 100%;
+  }
+
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
 /* 定义根样式 */
 :root {
   /* 定义基础颜色 */
@@ -116,54 +126,22 @@ features:
   --vp-gradient-angle: 120deg;
   --vp-image-gradient-angle: -45deg;
 
-  /* 定义主题渐变效果 */
+  /* 定义主页标题五彩渐变 */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: 
-    -webkit-linear-gradient(
-      var(--vp-gradient-angle),
-
-      /*!* 主题二：AI智能 *!*/
-      var(--vp-color-yellow),
-      var(--vp-color-orange-yellow),
-      var(--vp-color-orange),
-      var(--vp-color-pink-orange),
-      var(--vp-color-pink),
-      var(--vp-color-pink-red),
-      var(--vp-color-purple-white),
-      var(--vp-color-purple-grey),
-      var(--vp-color-purple-lite),
-      var(--vp-color-purple-blue),
-      var(--vp-color-blue-white),
-      var(--vp-color-blue-sky),
-      var(--vp-color-blue-lite)
-
-      /* 主题一：五彩 */
-      /*var(--vp-color-purple-blue-1),*/
-      /*var(--vp-color-purple-blue-2),*/
-      /*var(--vp-color-purple-blue-3),*/
-      /*var(--vp-color-purple-blue-4),*/
-      /*var(--vp-color-purple-blue-5),*/
-      /*var(--vp-color-blue-cyan-1),*/
-      /*var(--vp-color-blue-cyan-2),*/
-      /*var(--vp-color-blue-cyan-3),*/
-      /*var(--vp-color-blue-cyan-4),*/
-      /*var(--vp-color-blue-cyan-5),*/
-      /*var(--vp-color-cyan-gold-1),*/
-      /*var(--vp-color-cyan-gold-2),*/
-      /*var(--vp-color-cyan-gold-3),*/
-      /*var(--vp-color-cyan-gold-4),*/
-      /*var(--vp-color-cyan-gold-5),*/
-      /*var(--vp-color-gold-red-1),*/
-      /*var(--vp-color-gold-red-2),*/
-      /*var(--vp-color-gold-red-3),*/
-      /*var(--vp-color-gold-red-4),*/
-      /*var(--vp-color-gold-red-5),*/
-      /*var(--vp-color-red-purple-1),*/
-      /*var(--vp-color-red-purple-2),*/
-      /*var(--vp-color-red-purple-3),*/
-      /*var(--vp-color-red-purple-4),*/
-      /*var(--vp-color-red-purple-5)*/
-
+  --vp-home-hero-name-background:
+    linear-gradient(
+      45deg,
+      #7657ff 0%,
+      #ef5da8 12.5%,
+      #ffae35 25%,
+      #20c6b7 37.5%,
+      #3b82f6 47%,
+      #7657ff 50%,
+      #ef5da8 62.5%,
+      #ffae35 75%,
+      #20c6b7 87.5%,
+      #3b82f6 97%,
+      #7657ff 100%
     );
 
   /* 定义副标题渐变效果 */
@@ -215,11 +193,13 @@ features:
 /* 文本渐变效果 */
 .VPHero .name {
   background: var(--vp-home-hero-name-background);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   /* 浏览器兼容性处理 */
   -webkit-text-fill-color: transparent;
+  animation: hero-name-rainbow-flow 8s linear infinite;
 }
 .VPHero .text {
   background: var(--vp-home-hero-text-background);
@@ -237,6 +217,12 @@ features:
 
 @media (min-width: 960px) {
   :root { --vp-home-hero-image-filter: blur(68px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPHero .name {
+    animation: none;
+  }
 }
 
 </style>

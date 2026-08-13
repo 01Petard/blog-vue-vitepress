@@ -4,7 +4,7 @@ date: 2022-08-02 16:08:07
 type: "about"
 ---
 
-
+[//]: # (方案一)
 <style>
   /* 定义背景闪耀动画 */
   @keyframes shine {
@@ -61,13 +61,78 @@ type: "about"
 
 </style>
 
-<div class="shiny-div">
+<div class="shiny-div" v-if="false">
   <p>
     Wish you to become your own sun, no need to rely on whose light.
   </p>
   <p>
     —— 愿你成为自己的太阳，无需凭借谁的光芒。
   </p>
+</div>
+
+[//]: # (方案二)
+<style>
+    .rainbow-box {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .rainbow-box p {
+      /* 防止渐变背景铺满整行 */
+      width: fit-content;
+      margin: 12px auto;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.8;
+
+      /* 彩虹渐变 */
+      background: linear-gradient(
+        115deg,
+        #7657ff 0%,
+        #ef5da8 26%,
+        #ffae35 51%,
+        #20c6b7 76%,
+        #3b82f6 100%
+      );
+
+      /* 放大背景，为渐变移动预留空间 */
+      background-size: 200% 200%;
+
+      /* 将背景裁剪到文字形状 */
+      background-clip: text;
+      -webkit-background-clip: text;
+
+      /* 隐藏原始文字颜色 */
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+
+      /* 彩虹流动动画 */
+      animation: rainbow-flow 8s ease infinite;
+    }
+
+    @keyframes rainbow-flow {
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* 用户关闭动画时停止流动 */
+    @media (prefers-reduced-motion: reduce) {
+      .rainbow-box p {
+        animation: none;
+      }
+    }
+</style>
+<div class="rainbow-box" v-if="true">
+    <p>
+      Wish you to become your own sun, no need to rely on whose light.
+      <br>—— 愿你成为自己的太阳，无需凭借谁的光芒。
+    </p>
 </div>
 
 ## 👲 基本信息
@@ -121,27 +186,27 @@ MyBatisPlus咒语 Fastjson禁术 Thymeleaf模版占卜
 ```yaml
 💥 超频版技能树加载完毕 💥
 
-🔧 后端狂魔
+  🔧 后端狂魔
 RESTful接口魔术师: 花式设计/调试不在话下。
 接口圣手+调包仙人究极进化版: 看到不规范的行为会暴走。
 代码洁癖晚期，文档强迫症晚期: 发病时能肝出万字技术手册。
 
-🌌 前端半仙
+  🌌 前端半仙
 0.25个宇宙级前端战力: AI辅助时能短暂突破次元壁。
 Vue+Element混吃等死: 只会搭出眨眨眼的交互界面。
 与后端接口达成灵魂伴侣级联动: 删代码比写代码更熟练。
 
-🤖 Python赛博格
+  🤖 Python赛博格
 爬虫界蜘蛛侠Pro Max版: 自动化脚本多到能组成变形金刚。
 LLM炼丹大师，端侧小模型驯兽师: 正在偷偷调教AI管家。
 左手AI右手API: 一键注入现有系统的电子鸦片。
 
-⚡ 硬件皮卡丘
+  ⚡ 硬件皮卡丘
 开发板点歪科技树的民间科学家: 点亮RGB就算成功。
 软路由/NAS骨灰级发烧友: 家里的板子多到能烤披萨。
 潜伏在开源硬件社区的赛博仓鼠: 折腾各种新奇板子。
 
-（技能增幅器已过热，需要投喂冰阔落降温❄️🥤）
+  （技能增幅器已过热，需要投喂冰阔落降温❄️🥤）
 ```
 
 ## 💘 关于本站
