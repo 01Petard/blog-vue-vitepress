@@ -5,8 +5,10 @@
     transition: opacity 0.3s ease; /* 遮罩层显示/隐藏的过渡 */
 }
 .medium-zoom-image {
-    z-index: 9999 !important;
     transition: transform 0.3s ease, opacity 0.3s ease; /* 图片放大/缩小的过渡 */
+}
+.medium-zoom-image--opened {
+    z-index: 9999 !important;
 }
 
 
@@ -70,6 +72,7 @@ html.dark .badge-box-center img {
 :root {
     --leaf-mask-rgb: 255, 255, 255;
     --leaf-surface: rgba(255, 255, 255, .1);
+    --vp-sidebar-bg-color: var(--leaf-surface);
 }
 
 html.dark {
