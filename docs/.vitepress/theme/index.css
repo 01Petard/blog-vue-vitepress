@@ -5,8 +5,10 @@
     transition: opacity 0.3s ease; /* 遮罩层显示/隐藏的过渡 */
 }
 .medium-zoom-image {
-    z-index: 9999 !important;
     transition: transform 0.3s ease, opacity 0.3s ease; /* 图片放大/缩小的过渡 */
+}
+.medium-zoom-image--opened {
+    z-index: 9999 !important;
 }
 
 
@@ -63,4 +65,64 @@ html.dark .badge-box-center img {
 /* 内容区容器（避开侧边栏的区域） */
 .VPContent {
     padding-left: 16px; /* 与侧边栏之间留间距，避免内容太贴边 */
+}
+
+
+/* 全站叶片背景 */
+:root {
+    --leaf-mask-rgb: 255, 255, 255;
+    --leaf-surface: rgba(255, 255, 255, .1);
+    --vp-sidebar-bg-color: var(--leaf-surface);
+}
+
+html.dark {
+    --leaf-mask-rgb: 20, 20, 20;
+    --leaf-surface: rgba(20, 20, 20, .7);
+}
+
+html,
+body,
+#app,
+.Layout {
+    min-height: 100%;
+    background: transparent;
+}
+
+body::before,
+body::after {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    content: "";
+    pointer-events: none;
+}
+
+body::before {
+    background-image: url(./assets/leaf-background.png);
+    background-repeat: repeat;
+}
+
+body::after {
+    z-index: -1;
+    background: radial-gradient(
+        ellipse,
+        rgba(var(--leaf-mask-rgb), 1) 0%,
+        rgba(var(--leaf-mask-rgb), 0) 700%
+    );
+}
+
+.VPNav,
+.VPSidebar,
+.VPDoc .content-container,
+.VPHome .VPFeature,
+.VPHome .VPButton,
+.VPHome .VPHomeFeatures .item {
+    background-color: var(--leaf-surface);
+}
+
+@media print {
+    body::before,
+    body::after {
+        display: none;
+    }
 }
