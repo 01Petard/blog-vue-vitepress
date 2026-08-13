@@ -6,5 +6,7 @@ cache
 .idea
 .obsidian
 .claude
+.pnpm-store
+docs/superpowers
 .superpowers
 .worktrees/

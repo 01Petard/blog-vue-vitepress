@@ -60,6 +60,33 @@ features:
   }
 }
 
+@keyframes hero-image-jellyfish-drift {
+  0%,
+  100% {
+    border-radius: 40% 60% 55% 45% / 58% 42% 58% 42%;
+    opacity: 0.62;
+    transform: translate(-56%, -47%) scale(0.96, 1.06) rotate(-7deg);
+  }
+
+  33% {
+    border-radius: 58% 42% 38% 62% / 44% 58% 42% 56%;
+    opacity: 0.84;
+    transform: translate(-47%, -55%) scale(1.12, 0.94) rotate(4deg);
+  }
+
+  66% {
+    border-radius: 48% 52% 62% 38% / 38% 48% 52% 62%;
+    opacity: 0.72;
+    transform: translate(-44%, -46%) scale(0.94, 1.12) rotate(8deg);
+  }
+}
+
+@keyframes hero-image-color-cycle {
+  to {
+    filter: var(--vp-home-hero-image-filter) hue-rotate(360deg);
+  }
+}
+
 /* 定义根样式 */
 :root {
   /* 定义基础颜色 */
@@ -180,10 +207,13 @@ features:
 
   /* 定义背景图片效果 */
   --vp-home-hero-image-background-image: 
-    linear-gradient(
-      var(--vp-image-gradient-angle),
-      var(--vp-color-pink-red) 50%,
-      var(--vp-color-blue-lite) 50%
+    conic-gradient(
+      from 20deg,
+      var(--vp-color-blue-lite),
+      var(--vp-color-purple-blue),
+      var(--vp-color-pink),
+      var(--vp-color-gold-red-1),
+      var(--vp-color-blue-lite)
     );
   
   /* 定义初始模糊度 */
@@ -210,17 +240,70 @@ features:
   -webkit-text-fill-color: transparent;
 }
 
+.VPHero .image-bg {
+  opacity: 0.72;
+  animation:
+    hero-image-jellyfish-drift 10s ease-in-out infinite,
+    hero-image-color-cycle 28s linear infinite;
+  will-change: transform, border-radius, filter, opacity;
+}
+
+.VPHero .image-src {
+  border-radius: 24px;
+}
+
+.VPHero .image-container::after {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: 192px;
+  height: 192px;
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      ellipse at 24% 12%,
+      rgb(255 255 255 / 48%),
+      rgb(255 255 255 / 12%) 24%,
+      transparent 48%
+    ),
+    linear-gradient(
+      135deg,
+      rgb(255 255 255 / 26%) 0%,
+      rgb(255 255 255 / 4%) 36%,
+      transparent 50%,
+      rgb(0 0 0 / 13%) 100%
+    );
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 30%),
+    inset 0 -12px 26px rgb(0 0 0 / 10%);
+  content: "";
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
 /* 响应式调整 */
 @media (min-width: 640px) {
   :root { --vp-home-hero-image-filter: blur(56px); }
+
+  .VPHero .image-container::after {
+    width: 256px;
+    height: 256px;
+  }
 }
 
 @media (min-width: 960px) {
   :root { --vp-home-hero-image-filter: blur(68px); }
+
+  .VPHero .image-container::after {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .VPHero .name {
+  .VPHero .name,
+  .VPHero .image-bg {
     animation: none;
   }
 }
