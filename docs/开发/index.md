@@ -10,7 +10,7 @@
 
 ## 目录
 
-1. [从 Function Calling 到 MCP：AI Agent 工具调用全链路解析](./从 Function Calling 到 MCP：AI Agent 工具调用全链路解析.md)
+1. [AI Agent 到底是怎么调用工具的](./AI Agent 到底是怎么调用工具的.md)
 2. [Jenkins流水线与Docker容器化部署](./Jenkins流水线与Docker容器化部署.md)
 3. [标准化系统对接功能实现](./标准化系统对接功能实现.md)
 4. [互联网开发最常用、最实用的黑话简称](./互联网开发最常用、最实用的黑话简称.md)
