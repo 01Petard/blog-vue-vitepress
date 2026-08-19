@@ -12,7 +12,7 @@ export default defineConfig({
   build: {
     outDir: 'docs'   //构建产物输出目录
   },
-  lang: 'zh-cn',
+  lang: 'zh-CN',
   title: "代码港湾",
   description: "个人技术知识体系矩阵",
   head: [
@@ -47,6 +47,20 @@ export default defineConfig({
     },
   },
   ignoreDeadLinks: true, // 关闭死链接检查
+  vite: {
+    optimizeDeps: {
+      exclude: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities/client',
+        '@nolebase/vitepress-plugin-highlight-targeted-heading/client',
+      ],
+    },
+    ssr: {
+      noExternal: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities',
+        '@nolebase/vitepress-plugin-highlight-targeted-heading',
+      ],
+    },
+  },
   themeConfig: {
     // 参考：https://vitepress.dev/reference/default-theme-config
     logo: 'https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202412172202944.png',
