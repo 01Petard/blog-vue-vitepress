@@ -8,6 +8,7 @@ import "vitepress-markdown-timeline/dist/theme/index.css";
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
 import '@nolebase/vitepress-plugin-highlight-targeted-heading/client/style.css'
 import mediumZoom from 'medium-zoom';
+import WordCloud from './components/WordCloud.vue';
 import './index.css';
 
 function pictureZoom() {
@@ -30,6 +31,10 @@ function pictureZoom() {
 export default {
   extends: DefaultTheme,
   Layout,
+  enhanceApp({ app }) {
+    // 全局注册，供 about.md 等 Markdown 页面直接使用 <WordCloud />
+    app.component('WordCloud', WordCloud)
+  },
   setup() {
     pictureZoom()
   },

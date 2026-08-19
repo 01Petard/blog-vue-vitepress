@@ -143,71 +143,23 @@ type: "about"
 📮 Email: 1520394133@qq.com
 🐱 Github: https://github.com/01Petard
 🛳 Blog(Legacy): https://01petard.github.io
-🛳 Blog(Current): https://www.bugstack.icu
+🛳 Blog(Current): https://www.bugstack.top
 😋️ Hobbies: Nijigen Doujinverse, Browsing and Gadgets
 ```
 
-## ☁️ 博文词云(util 2024-11)
+## ☁️ 文章词云
 
-```D
-▀▄▀▄▀          赛博风暴生成中👁          ▀▄▀▄▀
+基于本站全部文章正文实时统计生成：
 
-研究生 深度学习 项目管理
-炎孕 魔法师 Anime 游戏 本子 2200w
+<WordCloud type="content" />
 
-⚡ 硬 核 区 ⚡
-C++ STL库 PyTorch SpringBoot 分布式 Redis缓存
-JVM调优 Docker全家桶 Kafka消息队列 Netty服务器
-RocketMQ ARM嵌入式 树莓派改装 OpenCV图像处理
+[//]: # (## 🔨 技术栈)
 
-🌸 宅 力 场 🌸
-莉可丽丝 StableDiffusion炼丹 AI绘画 NovelAI
-虚拟摄像头 OBS推流 Anime图片压缩算法 Pixiv
+[//]: # ()
+[//]: # (基于博客内容实时统计技术分布：)
 
-🛠️ 工 具 侠 🛠️
-JetBrains究极体 VSCode魔改版 OhMyZsh炫彩终端
-Homebrew调酒师 Windows/Linux双修 VMware套娃大师
-
-☁️ 云 上 漂 ☁️
-阿里云OSS Quarkus云原生 Nginx反向代理
-RabbitMQ消息洪流 CasaOS私有云 CrossOver葡萄酒魔法
-
-💥 玄 学 技 💥
-MyBatisPlus咒语 Fastjson禁术 Thymeleaf模版占卜
-多态の奥义 Git分支时空管理 JDBC连接池通灵
-
-▀▄▀▄▀        词间距已注入随机函数🔀       ▀▄▀▄▀
-▀▄▀▄▀        字体采用量子涨落原理✨       ▀▄▀▄▀
-▀▄▀▄▀    排版最终解释权归赛博台风眼所有🌪️   ▀▄▀▄▀
-```
-
-## 🔨 技术栈
-
-```yaml
-💥 超频版技能树加载完毕 💥
-
-  🔧 后端狂魔
-RESTful接口魔术师: 花式设计/调试不在话下。
-接口圣手+调包仙人究极进化版: 看到不规范的行为会暴走。
-代码洁癖晚期，文档强迫症晚期: 发病时能肝出万字技术手册。
-
-  🌌 前端半仙
-0.25个宇宙级前端战力: AI辅助时能短暂突破次元壁。
-Vue+Element混吃等死: 只会搭出眨眨眼的交互界面。
-与后端接口达成灵魂伴侣级联动: 删代码比写代码更熟练。
-
-  🤖 Python赛博格
-爬虫界蜘蛛侠Pro Max版: 自动化脚本多到能组成变形金刚。
-LLM炼丹大师，端侧小模型驯兽师: 正在偷偷调教AI管家。
-左手AI右手API: 一键注入现有系统的电子鸦片。
-
-  ⚡ 硬件皮卡丘
-开发板点歪科技树的民间科学家: 点亮RGB就算成功。
-软路由/NAS骨灰级发烧友: 家里的板子多到能烤披萨。
-潜伏在开源硬件社区的赛博仓鼠: 折腾各种新奇板子。
-
-  （技能增幅器已过热，需要投喂冰阔落降温❄️🥤）
-```
+[//]: # ()
+[//]: # (<WordCloud type="tech" />)
 
 ## 💘 关于本站
 
@@ -219,5 +171,5 @@ LLM炼丹大师，端侧小模型驯兽师: 正在偷偷调教AI管家。
 本站以分享经验、知识还有我的个人爱好为为目的，所有文章所涉及使用的工具、资源均源自互联网，本人不对因浏览网站内容而产生的实际问题负责。
 本网站仅进行搬运和分享以供学习和研究使用，版权归作者所有，如果无意之中侵犯了您的版权，请右下角私信与我取得联系，我将在第一时间删除！另外， 本站内的文章仅供学习交流之用，不参与商业用途。
 
-**Last Update：2025-03-10**
+**Last Update：2026-08-19**
 

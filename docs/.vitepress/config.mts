@@ -6,6 +6,7 @@ import container from "markdown-it-container";
 import attrs from "markdown-it-attrs";
 import {generateSidebar} from './utils';
 import {CURRENT_SITE_URL, generateRss, RSS_URL} from './rss.mts';
+import {createBlogStatsPlugin} from './plugins/blog-stats';
 
 export default defineConfig({
   base: "/",
@@ -48,6 +49,7 @@ export default defineConfig({
   },
   ignoreDeadLinks: true, // 关闭死链接检查
   vite: {
+    plugins: [createBlogStatsPlugin()],
     optimizeDeps: {
       exclude: [
         '@nolebase/vitepress-plugin-enhanced-readabilities/client',
