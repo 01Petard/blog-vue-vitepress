@@ -1,12 +1,8 @@
 // .vitepress/theme/index.ts
 import DefaultTheme from "vitepress/theme"
-import { h, onMounted, watch, nextTick } from 'vue';
+import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
-import {
-  NolebaseEnhancedReadabilitiesMenu,
-  NolebaseEnhancedReadabilitiesScreenMenu
-} from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
-import { NolebaseHighlightTargetedHeading } from '@nolebase/vitepress-plugin-highlight-targeted-heading/client'
+import Layout from './Layout.vue';
 
 import "vitepress-markdown-timeline/dist/theme/index.css";
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
@@ -33,12 +29,7 @@ function pictureZoom() {
 
 export default {
   extends: DefaultTheme,
-  Layout: () =>
-    h(DefaultTheme.Layout, null, {
-      'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu),
-      'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu),
-      'layout-top': () => h(NolebaseHighlightTargetedHeading),
-    }),
+  Layout,
   setup() {
     pictureZoom()
   },

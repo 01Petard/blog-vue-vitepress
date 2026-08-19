@@ -80,35 +80,30 @@ html.dark {
     --leaf-surface: rgba(20, 20, 20, .7);
 }
 
+html {
+    background-color: rgb(var(--leaf-mask-rgb));
+    background-image:
+        radial-gradient(
+            ellipse,
+            rgba(var(--leaf-mask-rgb), 1) 0%,
+            rgba(var(--leaf-mask-rgb), 0) 700%
+        ),
+        url(./assets/leaf-background.png);
+    background-repeat: no-repeat, repeat;
+    background-size: 100% 100%, auto;
+}
+
 html,
 body,
 #app,
 .Layout {
     min-height: 100%;
+}
+
+body,
+#app,
+.Layout {
     background: transparent;
-}
-
-body::before,
-body::after {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    content: "";
-    pointer-events: none;
-}
-
-body::before {
-    background-image: url(./assets/leaf-background.png);
-    background-repeat: repeat;
-}
-
-body::after {
-    z-index: -1;
-    background: radial-gradient(
-        ellipse,
-        rgba(var(--leaf-mask-rgb), 1) 0%,
-        rgba(var(--leaf-mask-rgb), 0) 700%
-    );
 }
 
 .VPNav,
@@ -121,8 +116,22 @@ body::after {
 }
 
 @media print {
-    body::before,
-    body::after {
-        display: none;
+    html {
+        background: none;
     }
+}
+
+/* 浅色/深色模式圆形扩散过渡 */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
 }
