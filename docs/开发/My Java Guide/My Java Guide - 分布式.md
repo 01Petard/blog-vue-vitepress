@@ -1969,7 +1969,47 @@ AMQP 消息通常包含以下几个部分：
 
 - 幂等方案：redis分布式锁、数据库锁（悲观锁、乐观锁）
 
-# 解决消息堆积问题
+# 解决消息积压问题
+
+产生的原因：
+
+- **代码bug（比如消费逻辑处理有误）**
+- 生产者的生产速度大于消费者的消费速度（如大促、抢购等活动期间导致消息数量激增，**或者消费者处理速度极慢**）
+
+解决措施：
+
+- 先排查是不是bug，如果是，要快速修复
+
+  ```java
+  // 比如消费者未正确提交偏移量，消费者在处理完消息后未提交偏移量，导致重复消费或消费停滞。进而形成大量消息积压。
+  while (true) {
+      ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+      for (ConsumerRecord<String, String> record : records) {
+          process(record);
+      }
+      // 提交偏移量，这一步可能很多情况下忘做了
+      consumer.commitSync();
+  }
+  ```
+
+- 优化消费者代码逻辑
+
+  ```java
+  // 可能是消费者速度不给力，导致的消息积压。我们可以优化一下消费者代码逻辑。
+  使用多线程处理，减少每条消息的处理时间（比如减少不必要的计算），从而提高消息处理速度。
+  ```
+
+- 临时紧急扩容，新建临时topic
+
+  ```java
+  业务紧急的话，我们可以临时紧急扩容，新建临时topic。
+  
+  比如原来的topic 只有两个partition分区，因为消费者处理很耗时等操作，导致了百万消息积压，这时候需要紧急快速处理。
+  
+  这时候可以调整消费者的代码，就是不再处理其他业务操作，而是新建临时的topic，把消息转发到临时的topic，并且partition分区增加到原来的10倍，然后我们原来消费者业务逻辑处理的代码，放在新的临时消息那里处理。等快速消费完积压数据之后，得恢复原先部署的架构，下掉临时消费者，重新用原先的 consumer 机器来消费消息。
+  ```
+
+这一切的手段是为了如下目的：
 
 - 增加**更多消费者**，提高消费速度
 
@@ -1982,9 +2022,17 @@ AMQP 消息通常包含以下几个部分：
   - 惰性队列性能比较稳定，但基于磁盘存储，受限于磁盘IO，时效性会降低
   - RabbitMQ代码实现：
 
-  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202404122119871.png" alt="image-20240412211926837" style="zoom:70%;" />
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202404122119871.png" alt="image-20240412211926837" style="zoom:55%;" />
 
-  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202404122119934.png" alt="image-20240412211935887" style="zoom:66%;" />
+  <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202404122119934.png" alt="image-20240412211935887" style="zoom:50%;" />
+
+# 如何预防消息积压
+
+对于线上kafka 消息大量积压的问题，要做到以下几点：
+
+- 要做好**监控**和**告警**，**当消息积压到一定程度的时候，就要告警，通知负责人**，提前处理。
+- **先排查是不是bug，优化消费者的代码**。再考虑新建临时topic，去快速处理大量积压问题。
+- 如果消息设置了超时时间，因为积压**没来得及处理就被过期清理了，可以设置定时任务拉起来重发**。
 
 # 保证消费的有序性
 

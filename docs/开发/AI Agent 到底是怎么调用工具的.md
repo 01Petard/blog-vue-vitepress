@@ -1,5 +1,7 @@
 # AI Agent 工具调用全链路解析
 
+> 参考：[10分钟讲清楚 Prompt, Agent, MCP 是什么](https://www.bilibili.com/video/BV15mMVzTEor)
+
 ## 核心思路
 
 大模型可以理解用户的问题，也可以判断“下一步应该调用什么工具”，但它**不会直接执行方法函数、查询数据库或者访问外部系统**。
