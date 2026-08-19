@@ -12,7 +12,7 @@ export const PERMANENT_SITE_URL = 'https://01petard.github.io/blog-vue-vitepress
 /**
  * 当前对外域名仅用于 sitemap；更换自定义域名时只需要修改这里。
  */
-export const CURRENT_SITE_URL = 'https://doc.bugstack.icu/';
+export const CURRENT_SITE_URL = 'https://doc.bugstack.top/';
 export const RSS_PATH = 'feed.xml';
 export const RSS_URL = new URL(RSS_PATH, PERMANENT_SITE_URL).href;
 
