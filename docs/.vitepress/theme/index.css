@@ -67,6 +67,28 @@ html.dark .badge-box-center img {
     padding-left: 16px; /* 与侧边栏之间留间距，避免内容太贴边 */
 }
 
+/* 侧边栏按层级显示图标（一级 folder / 二级 folder-open / 三级 file-text / 四级 bookmark） */
+.VPSidebarItem.level-0 { --sidebar-icon: url(/sidebar-icons/level-1.svg); }
+.VPSidebarItem.level-1 { --sidebar-icon: url(/sidebar-icons/level-2.svg); }
+.VPSidebarItem.level-2 { --sidebar-icon: url(/sidebar-icons/level-3.svg); }
+.VPSidebarItem.level-3 { --sidebar-icon: url(/sidebar-icons/level-3.svg); }
+
+.VPSidebarItem > .item .text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.VPSidebarItem > .item .text::before {
+    content: "";
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--vp-c-text-2);
+    -webkit-mask: var(--sidebar-icon) no-repeat center / contain;
+    mask: var(--sidebar-icon) no-repeat center / contain;
+}
+
 
 /* 全站叶片背景 */
 :root {
