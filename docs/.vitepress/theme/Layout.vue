@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import DefaultTheme from "vitepress/theme";
-import { useData } from "vitepress";
+import { useData, useRoute } from "vitepress";
 import { nextTick, provide } from "vue";
+import GiscusComments from "./components/GiscusComments.vue";
 import {
   NolebaseEnhancedReadabilitiesMenu,
   NolebaseEnhancedReadabilitiesScreenMenu,
@@ -9,6 +10,7 @@ import {
 import { NolebaseHighlightTargetedHeading } from "@nolebase/vitepress-plugin-highlight-targeted-heading/client";
 
 const { isDark } = useData();
+const route = useRoute();
 
 const enableTransitions = () =>
   "startViewTransition" in document &&
@@ -55,6 +57,9 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
     </template>
     <template #layout-top>
       <NolebaseHighlightTargetedHeading />
+    </template>
+    <template #doc-after>
+      <GiscusComments :key="route.path" />
     </template>
   </DefaultTheme.Layout>
 </template>
