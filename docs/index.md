@@ -6,7 +6,7 @@ hero:
   text: 
   tagline: "个人技术知识体系矩阵\nPersonal Technical Knowledge System Matrix"
   image:
-    src: /01petard.jpg
+    src: /main-icons/01petard.jpg
     alt: it's me
   actions:
     - theme: brand
@@ -37,15 +37,15 @@ features:
   - title: 光速构建，无限知识
     details: 如闪电般的加载速度，快速访问到丰富的知识宝库。多端设备都能享受流畅的阅读体验。
     icon:
-      src: /闪电.png
+      src: /main-icons/闪电.png
   - title: 简约不简单，高效传播智慧
     details: 功能直观，轻松创建专业的博客和文档。专注于内容创作，快速发布高质量的文章。
     icon:
-      src: /安全高效.png
+      src: /main-icons/安全高效.png
   - title: 代码与文字的交响，编织未来
     details: 完美展示了前端工具链的最佳实践，从HMR到TS支持，每一个特性都是为了提升文档开发体验。
     icon:
-      src: /拥抱未来.png
+      src: /main-icons/拥抱未来.png
 
 ---
 
