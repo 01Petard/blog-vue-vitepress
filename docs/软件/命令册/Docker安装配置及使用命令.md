@@ -2239,3 +2239,92 @@ arch -x86_64 brew install oracle-jdk
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112139106.png" alt="image-20250611213931043" style="zoom:50%;" />
 
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202506112139196.png" alt="image-20250611213902146" style="zoom:40%;" />
+
+## 部署kkfileview
+
+这个是第三方构建，如果后续需要部署并投入实际生产了，最好再确认一下最新的版本
+
+```shell
+docker run -d \
+  --name kkfileview \
+  --restart unless-stopped \
+  -p 8012:8012 \
+  ghcr.io/zhuyifeiruichuang/kkfileview:5.0.2
+```
+
+官方从 4.4.0 起默认拒绝未配置的外部来源，以防止 SSRF。[官方安全配置说明](https://github.com/kekingcn/kkFileView/blob/master/SECURITY_CONFIG.md)
+
+需要给容器增加：
+
+```
+environment:
+  KK_TRUST_HOST: "115.29.215.180,zjubjyjy.oss-cn-hangzhou.aliyuncs.com"
+  KK_NOT_TRUST_HOST: "localhost,127.0.0.1,169.254.*"
+```
+
+```shell
+docker run -d \
+  --name kkfileview \
+  --restart unless-stopped \
+  -p 8012:8012 \
+  -e KK_TRUST_HOST="115.29.215.180,zjubjyjy.oss-cn-hangzhou.aliyuncs.com" \
+  ghcr.io/zhuyifeiruichuang/kkfileview:5.0.2
+```
+
+如果服务器拉去镜像很慢，可以用下面这招：
+
+本地导出镜像
+
+```shell
+docker pull \
+  --platform linux/amd64 \
+  ghcr.io/zhuyifeiruichuang/kkfileview:5.0.2
+```
+
+```shell
+docker image inspect \
+  ghcr.io/zhuyifeiruichuang/kkfileview:5.0.2 \
+  --format 'Architecture={{.Architecture}} OS={{.Os}} Size={{.Size}}'
+```
+
+```shell
+docker tag \
+  ghcr.io/zhuyifeiruichuang/kkfileview:5.0.2 \
+  kkfileview-offline:5.0.2-amd64
+```
+
+服务器上建好文件夹
+
+```shell
+mkdir -p /opt/docker-images
+```
+
+本地上传
+
+```shell
+scp -i ~/.ssh/id_ed25519b ./kkfileview-5.0.2-amd64.tar root@115.29.215.180:/opt/docker-images/
+```
+
+服务器加载镜像并创建容器
+
+```shell
+docker load -i kkfileview-5.0.2-amd64.tar.gz
+```
+
+```shell
+docker image inspect \
+  kkfileview-offline:5.0.2-amd64 \
+  --format 'Architecture={{.Architecture}} OS={{.Os}} Size={{.Size}}'
+```
+
+```shell
+docker run -d \
+  --name kkfileview \
+  --restart unless-stopped \
+  -p 127.0.0.1:8012:8012 \
+  -e KK_BASE_URL="http://115.29.215.180/preview/" \
+  -e KK_TRUST_HOST="115.29.215.180,zjubjyjy.oss-cn-hangzhou.aliyuncs.com" \
+  -e KK_NOT_TRUST_HOST="localhost,127.0.0.1" \
+  ghcr.io/zhuyifeiruichuang/kkfileview:5.0.2
+```
+
