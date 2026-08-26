@@ -108,7 +108,7 @@ Docker 安全核心：**零公网裸曝、权限最小化、资源可信化**。
 
 **最佳实践**：保持 Docker 为最新稳定版；业务镜像仅使用官方及权威厂商源，杜绝不明镜像。
 
-# Docker运行相关命令
+# Docker使用相关命令
 
 ## 安装Docker
 
@@ -213,7 +213,7 @@ Docker 安全核心：**零公网裸曝、权限最小化、资源可信化**。
    >
    > [docker中文文档 （菜鸟笔记）](https://www.coonote.com/docker/docker-tutorial.html)
 
-## Docker常用命令
+## 常用命令
 
 ### 镜像
 
@@ -223,19 +223,25 @@ Docker 安全核心：**零公网裸曝、权限最小化、资源可信化**。
 docker pull [image]:[version]
 ```
 
-查看下载的镜像
+查看已下载的镜像
 
 ```shell
 docker images
 ```
 
-查看镜像详细信息
+查看镜像详情
 
 ```shell
 docker inspect [IMAGE_ID]
 ```
 
-本地加载镜像压缩包
+删除镜像
+
+```shell
+docker rmi [image]
+```
+
+加载镜像
 
 ```shell
 docker load -i [saved_image].tar
@@ -256,13 +262,60 @@ docker push
 构建镜像
 
 ```shell
-docker build
+docker build -f Dockerfile --platform linux/arm64 -t axiom-ml:1.0.0 .
 ```
 
-删除镜像
+```shell
+docker build -f Dockerfile --platform linux/amd64 -t axiom-ml:1.0.0 .
+```
 
 ```shell
-docker rmi [image]
+
+```
+
+```shell
+docker build \
+  -t axiom-ml:1.0.0 \
+  -f Dockerfile \
+  --build-arg ENVIRONMENT=prod \
+  --platform linux/amd64 \
+  --progress=plain \
+  --no-cache \
+  .
+```
+
+| 参数               | 作用                                       |
+| ------------------ | ------------------------------------------ |
+| `-t, --tag`        | 指定镜像名和版本，例如 `my-app:1.0.0`      |
+| `-f, --file`       | 指定 Dockerfile，例如 `-f Dockerfile.prod` |
+| `--build-arg`      | 给 Dockerfile 的 `ARG` 传参                |
+| `--no-cache`       | 不使用构建缓存，全部重建                   |
+| `--pull`           | 构建前尝试拉取最新基础镜像                 |
+| `--platform`       | 指定目标平台，如 `linux/amd64`             |
+| `--target`         | 多阶段构建时指定目标阶段                   |
+| `--progress=plain` | 输出完整构建日志，排错很好用               |
+| `-q, --quiet`      | 静默构建，只输出最终结果                   |
+| `--network`        | 指定构建阶段的网络模式                     |
+
+清理构建的缓存：
+
+查看当前构建缓存占用
+
+```shell
+docker system df
+docker system df -v
+```
+
+清理无用的构建缓存
+
+```shell
+docker builder prune
+```
+
+清理所有未使用的构建缓存，不仅删除 dangling cache，还删除**所有当前没有被使用的构建缓存**
+
+```shell
+docker builder prune -a
 ```
 
 ### 容器
@@ -322,13 +375,13 @@ docker pause [container]
 docker unpause [container]
 ```
 
-查看容器的详细信息
+查看容器的详情
 
 ```shell
 docker inspect [container]
 ```
 
-查看docker中正在运行的容器
+查看正在运行的（所有）容器
 
 ```shell
 docker ps (-a)
@@ -386,7 +439,7 @@ docker volume create [volume]
 docker volume ls
 ```
 
-查看数据卷的详细信息
+查看数据卷的详情
 
 ```shell
 docker volume inspect [volume] 
@@ -404,7 +457,7 @@ docker volume rm [volume]
 docker volume prune [volume] 
 ```
 
-## Docker Compose命令
+## Compose命令
 
 **后台启动**
 
@@ -460,7 +513,7 @@ docker compose -f docker-compose.yml ps
 docker compose -f docker-compose.yml log --tail=100 -f (服务名)
 ```
 
-## 构建镜像
+## 构建自定义镜像
 
 ```shell
 docker build -t [image]:[version] ./[uri_dockerfile]
@@ -476,7 +529,9 @@ uri_dockerfile目录下必须包含"DockerFile"和"Dockerfile中需要的文件"
 docker-compose up -d
 ```
 
-## 镜像仓库
+## 管理镜像
+
+### 云服务
 
 这里用阿里云演示一下：
 
@@ -507,6 +562,10 @@ docker push crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com/01petard/
 ```shell
 $ docker pull crpi-a6ogksurcntjl4t0.cn-hangzhou.personal.cr.aliyuncs.com/01petard/print-service:[镜像版本号]
 ```
+
+### 本地化部署
+
+TODO
 
 # 容器快速部署命令速查
 
@@ -714,13 +773,15 @@ docker run -d \
   -e POSTGRES_PASSWORD=app_password \
   -e POSTGRES_DB=init_db \
   -p 5432:5432 \
-  -v pgdata17:/var/lib/postgresql/data \
+  -v pg-data:/var/lib/postgresql/data \
   postgres:17
 ```
 
 ## 部署PgVector
 
 > PgVector是一款基于PostgreSQL的扩展插件，虽然在连接作为数据库时与PostgreSQL、MySQL看起来一样，但它和PostgreSQL其实并不是同一个东西，在开发时所采用的ORM框架也不同，因此可以将其单独作为一种数据库列出来。
+
+xfg版：
 
 ```shell
 docker pull registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
@@ -762,7 +823,11 @@ docker run -d \
   registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
 ```
 
-简易版：`pg16 + pgvector 0.8.2，自动适配linux/amd64 / linux/arm64`
+> 这个有点复杂了，我不太建议
+
+---
+
+“舒适”版：`pg16 + pgvector 0.8.2`（之所以舒适，是因为这个镜像自动适配linux/amd64 / linux/arm64）
 
 ```shell
 docker run -d \
@@ -771,7 +836,7 @@ docker run -d \
   -e POSTGRES_DB=axiom_platform_suite \
   -e POSTGRES_USER=pguser_H2o2D1 \
   -e POSTGRES_PASSWORD=PgVector_9sK27pR2 \
-  -v ./pgvector-data:/var/lib/postgresql/data \
+  -v pgvector-data:/var/lib/postgresql/data \
   pgvector/pgvector:pg16
 
 docker run -d \
@@ -780,11 +845,24 @@ docker run -d \
   -e POSTGRES_DB=axiom_platform_suite \
   -e POSTGRES_USER=pguser_O9sM2c \
   -e POSTGRES_PASSWORD=PgVector_Lk7Rt92 \
-  -v ./pgvector-test-data:/var/lib/postgresql/data \
+  -v pgvector-test-data:/var/lib/postgresql/data \
   pgvector/pgvector:pg16
 ```
 
-验证扩展
+官方版（推荐）：
+
+```shell
+docker run -d \
+  --name postgres \
+  --restart unless-stopped \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=app_password \
+  -p 5432:5432 \
+  -v pgvector-data:/var/lib/postgresql/data \
+  pgvector/pgvector:0.8.6-pg17
+```
+
+扩展验证
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS vector;
@@ -1069,7 +1147,23 @@ docker run -d \
   redis/redis-stack:7.4.0-v8-x86_64
 ```
 
+---
+
 也可以用不带`RedisInsight`的版本：
+
+```shell
+docker pull redis/redis-stack-server:7.4.0-v8-arm64
+```
+
+```shell
+docker run -d \
+  --name redis-stack \
+  --restart=unless-stopped \
+  -p 6379:6379 \
+  -v redis-stack-data:/data \
+  -e REDIS_ARGS='--appendonly yes --requirepass app_password' \
+  redis/redis-stack-server:7.4.0-v8-arm64
+```
 
 ```shell
 docker pull redis/redis-stack-server:7.4.0-v8-x86_64
@@ -2328,3 +2422,92 @@ docker run -d \
   ghcr.io/zhuyifeiruichuang/kkfileview:5.0.2
 ```
 
+## 部署Jenkins
+
+TODO
+
+## 容器化部署的 Jenkins 如何配置 Maven 镜像源加速
+
+问题的根源是Jenkins读不到宿主机的`.m2`里配置
+
+```
+宿主机
+│
+├── ~/.m2/settings.xml        # Jenkins 根本看不到，除非挂载
+│
+└── Jenkins Container
+    │
+    ├── /var/jenkins_home
+    │
+    ├── Maven
+    │   └── bin/mvn
+    │
+    └── ~/.m2/settings.xml    # Maven真正读取这个
+```
+
+所以解决思路是进入容器配置镜像源加速
+
+1. 先进入容器
+
+```shell
+docker exec -it jenkins bash
+```
+
+2. 找到`jenkins_home`，一般容器都不是以root用户运行的，因此需要进入一个特殊的目录
+
+```shell
+cd /var/jenkins_home
+```
+
+3. 里面大概率是没有`.m2`文件的，但是可以读到，所以就手动创建一个
+
+```shell
+mkdir -p /var/jenkins_home/.m2
+```
+
+```shell
+cd .m2
+```
+
+```shell
+touch settings.xml
+```
+
+```shell
+cat > settings.xml <<'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <mirrors>
+        <mirror>
+            <id>aliyun</id>
+            <name>Aliyun Maven Mirror</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
+
+</settings>
+EOF
+```
+
+4. 验证是否已经配置成功，先找一下`mvn`的位置
+
+```shell
+find /var/jenkins_home/tools -type f -name mvn 2>/dev/null
+```
+
+输出类似：`/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Maven-3.9/bin/mvn`
+
+5. 看一下是否成功
+
+```shell
+/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Maven-3.9/bin/mvn \
+	help:effective-settings
+```
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202608252210082.png" alt="image-20260825221016888" style="zoom:33%;" />
