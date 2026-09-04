@@ -862,6 +862,17 @@ docker run -d \
   pgvector/pgvector:0.8.6-pg17
 ```
 
+```shell
+docker run -d \
+  --name postgres-fabric \
+  --restart unless-stopped \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=app_password \
+  -p 35432:5432 \
+  -v pgvector-fabric:/var/lib/postgresql/data \
+  pgvector/pgvector:0.8.6-pg17
+```
+
 扩展验证
 
 ```sql

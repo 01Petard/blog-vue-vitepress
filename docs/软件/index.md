@@ -12,7 +12,7 @@
 
 ## 目录
 
-1. [监控系统HertzBeat实战体验.md](./监控系统HertzBeat实战体验.md)
+1. [监控系统HertzBeat实战体验](./监控系统HertzBeat实战体验.md)
 2. [macOS接入Headscale](./macOS接入Headscale.md)
 3. [常用coding_prompt](./常用coding_prompt.md)
 4. [ClaudeCode的一些使用技巧和命令](./ClaudeCode的一些使用技巧和命令.md)
