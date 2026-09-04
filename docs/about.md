@@ -155,21 +155,17 @@ type: "about"
 
 [//]: # (## 🔨 技术栈)
 
-[//]: # ()
 [//]: # (基于博客内容实时统计技术分布：)
 
-[//]: # ()
 [//]: # (<WordCloud type="tech" />)
 
 ## 💘 关于本站
 
-采用 <a href="https://vitejs.cn/vitepress/">VitePress</a> 框架搭建。博客中的图片均由 <a href="https://github.com/Molunerfinn/PicGo">PicGo</a>
-管理，并上传至我的Github图床。本博客文章采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议，转载请注明出处。
+采用 <a href="https://vitejs.cn/vitepress/">VitePress</a> 框架搭建。博客中的图片均由 <a href="https://github.com/Molunerfinn/PicGo">PicGo</a>管理，并上传至我的Github图床。本博客文章采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 协议，转载请注明出处。
 
 ## 🙋 免责声明
 
-本站以分享经验、知识还有我的个人爱好为为目的，所有文章所涉及使用的工具、资源均源自互联网，本人不对因浏览网站内容而产生的实际问题负责。
-本网站仅进行搬运和分享以供学习和研究使用，版权归作者所有，如果无意之中侵犯了您的版权，请右下角私信与我取得联系，我将在第一时间删除！另外， 本站内的文章仅供学习交流之用，不参与商业用途。
+本站以分享经验、知识还有我的个人爱好为为目的，所有文章所涉及使用的工具、资源“可能”源自互联网，本人不对因浏览网站内容而产生的实际问题负责。本网站仅进行搬运和分享以供学习和研究使用，如果无意之中侵犯了您的版权，请通过邮箱与我取得联系，我将在第一时间删除！另外， 本站内的文章仅供学习交流之用，不参与商业用途。
 
 **Last Update：2026-08-19**
 

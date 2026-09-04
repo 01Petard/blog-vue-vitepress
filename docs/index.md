@@ -328,7 +328,7 @@ features:
 
 1. 构建速度：随着博客文章的增多，Hexo 的构建速度变慢，尤其是在多次修改和发布时，这影响了我的开发体验
 2. 灵活性：我希望使用更现代的技术栈，如 Vue 3，以便更轻松地自定义博客功能，Hexo 在这方面的支持相对有限。
-3. 开发体验：VitePress 使用 Vite 作为开发服务器，提供了更快的热更新和流畅的开发体验，这正是我所追求的。
+3. 开发体验：VitePress 使用 Vite 作为开发引擎，提供了更快的热更新和流畅的开发体验，这正是我所追求的。
 
 因此，我选择将博客迁移到 VitePress，一个以 Vue 3 为基础的现代文档生成器，不仅能更高效地管理内容，还能提升整体性能和可扩展性。
 
@@ -338,7 +338,7 @@ features:
 
 旧博客：[花火の红玉宫](https://01petard.github.io/)
 
-国内访问：[代码港湾](https://www.bugstack.icu/)
+国内访问：[代码港湾](https://doc.bugstack.top/)、[博客主页](https://www.bugstack.top/)
 
 ---
 <div class="tip custom-block" style="max-width:1152px;margin:20px auto">
