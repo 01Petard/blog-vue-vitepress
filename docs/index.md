@@ -89,7 +89,15 @@ features:
 
 /* 定义根样式 */
 :root {
-  /* 定义基础颜色 */
+  /* 取色板 */
+
+  /* 主题色一：五彩 */
+  /* 原始颜色 */
+  --vp-color-purple: #bd34fe;
+  --vp-color-blue: #47caff;
+  --vp-color-cyan: #2dd4bf;
+  --vp-color-gold: #facc15;
+  --vp-color-red: #ff4d4d;
 
   /* 主题色二：AI智能 */
   --vp-color-yellow: #F0927B;
@@ -106,13 +114,7 @@ features:
   --vp-color-blue-sky: #65A6FD;
   --vp-color-blue-lite: #58B1FF;
 
-  /* 主题色一：五彩 */
-  /* 原始颜色 */
-  --vp-color-purple: #bd34fe;
-  --vp-color-blue: #47caff;
-  --vp-color-cyan: #2dd4bf;
-  --vp-color-gold: #facc15;
-  --vp-color-red: #ff4d4d;
+
   
   /* 紫色 → 蓝色 的中间色 */
   --vp-color-purple-blue-1: #a53bfe;
@@ -149,13 +151,8 @@ features:
   --vp-color-red-purple-4: #ba34ca;
   --vp-color-red-purple-5: #a334e9;
 
-  /* 定义渐变角度 */
-  --vp-gradient-angle: 120deg;
-  --vp-image-gradient-angle: -45deg;
-
-  /* 定义主页标题五彩渐变 */
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background:
+  /* 定义主标题渐变效果 */
+  --vp-home-hero-name-background-1-1:
     linear-gradient(
       45deg,
       #7657ff 0%,
@@ -171,41 +168,91 @@ features:
       #7657ff 100%
     );
 
-  /* 定义副标题渐变效果 */
-  --vp-home-hero-text-background: 
-    -webkit-linear-gradient(
-      var(--vp-gradient-angle),
-
-      /*!* 主题二：AI智能 *!*/
-      /*var(--vp-color-pink-red),*/
-      /*var(--vp-color-purple-white),*/
-      /*var(--vp-color-purple-grey),*/
-      /*var(--vp-color-purple-lite),*/
-      /*var(--vp-color-purple-blue),*/
-      /*var(--vp-color-blue-white),*/
-      /*var(--vp-color-blue-sky),*/
-      /*var(--vp-color-blue-lite)*/
-
-      /* 主题一：五彩 */
-      var(--vp-color-purple-blue-1),
-      var(--vp-color-purple-blue-2),
-      var(--vp-color-purple-blue-3),
-      var(--vp-color-purple-blue-4),
-      var(--vp-color-purple-blue-5),
-      var(--vp-color-blue-cyan-1),
-      var(--vp-color-blue-cyan-2),
-      var(--vp-color-blue-cyan-3),
-      var(--vp-color-blue-cyan-4),
-      var(--vp-color-blue-cyan-5),
-      var(--vp-color-cyan-gold-1),
-      var(--vp-color-cyan-gold-2),
-      var(--vp-color-cyan-gold-3),
-      var(--vp-color-cyan-gold-4),
-      var(--vp-color-cyan-gold-5),
-      var(--vp-color-gold-red-1)
+  --vp-home-hero-name-background-1-2:
+    linear-gradient(
+      45deg,
+      #8670E6 0%,
+      #D973A7 12.5%,
+      #E1A853 25%,
+      #39ADA3 37.5%,
+      #5789DA 47%,
+      #8670E6 50%,
+      #D973A7 62.5%,
+      #E1A853 75%,
+      #39ADA3 87.5%,
+      #5789DA 97%,
+      #8670E6 100%
     );
 
-  /* 定义背景图片效果 */
+  --vp-home-hero-name-background-1-3:
+    linear-gradient(
+      45deg,
+      #A293E2 0%,
+      #D893B6 12.5%,
+      #DBB378 25%,
+      #4EB6AD 37.5%,
+      #7A9DD5 47%,
+      #A293E2 50%,
+      #D893B6 62.5%,
+      #DBB378 75%,
+      #4EB6AD 87.5%,
+      #7A9DD5 97%,
+      #A293E2 100%
+    );
+
+  --vp-home-hero-name-background-2-1:
+    linear-gradient(
+      45deg,
+      #FEF3E2 0%,
+      #E4A1C4 10%,
+      #9691FE 20%,
+      #69ABFF 30%,
+      #A7DFFE 40%,
+      #FEF3E2 50%,
+      #E4A1C4 60%,
+      #9691FE 70%,
+      #69ABFF 80%,
+      #A7DFFE 90%,
+      #FEF3E2 100%
+    );
+
+  --vp-home-hero-name-background-2-2:
+    linear-gradient(
+      45deg,
+      #FFE7C2 0%,
+      #E383B5 10%,
+      #7871FF 20%,
+      #4A9AFF 30%,
+      #87D4FF 40%,
+      #FFE7C2 50%,
+      #E383B5 60%,
+      #7871FF 70%,
+      #4A9AFF 80%,
+      #87D4FF 90%,
+      #FFE7C2 100%
+    );
+
+  --vp-home-hero-name-background-2-3:
+    linear-gradient(
+      45deg,
+      #FFD38F 0%,
+      #EB5CA6 10%,
+      #5A52FF 20%,
+      #2987FF 30%,
+      #5CC5FF 40%,
+      #FFD38F 50%,
+      #EB5CA6 60%,
+      #5A52FF 70%,
+      #2987FF 80%,
+      #5CC5FF 90%,
+      #FFD38F 100%
+    );
+
+  /* 定义渐变角度 */
+  --vp-gradient-angle: 120deg;
+  --vp-image-gradient-angle: -45deg;
+
+  /* 定义头像背景的效果 */
   --vp-home-hero-image-background-image: 
     conic-gradient(
       from 20deg,
@@ -216,13 +263,13 @@ features:
       var(--vp-color-blue-lite)
     );
   
-  /* 定义初始模糊度 */
+  /* 定义头像模糊度 */
   --vp-home-hero-image-filter: blur(44px);
 }
 
 /* 文本渐变效果 */
 .VPHero .name {
-  background: var(--vp-home-hero-name-background);
+  background: var(--vp-home-hero-name-background-2-3);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -231,15 +278,6 @@ features:
   -webkit-text-fill-color: transparent;
   animation: hero-name-rainbow-flow 8s linear infinite;
 }
-.VPHero .text {
-  background: var(--vp-home-hero-text-background);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  /* 浏览器兼容性处理 */
-  -webkit-text-fill-color: transparent;
-}
-
 .VPHero .image-bg {
   opacity: 0.72;
   animation:
@@ -247,11 +285,9 @@ features:
     hero-image-color-cycle 28s linear infinite;
   will-change: transform, border-radius, filter, opacity;
 }
-
 .VPHero .image-src {
   border-radius: 24px;
 }
-
 .VPHero .image-container::after {
   position: absolute;
   z-index: 3;
@@ -285,22 +321,18 @@ features:
 /* 响应式调整 */
 @media (min-width: 640px) {
   :root { --vp-home-hero-image-filter: blur(56px); }
-
   .VPHero .image-container::after {
     width: 256px;
     height: 256px;
   }
 }
-
 @media (min-width: 960px) {
   :root { --vp-home-hero-image-filter: blur(68px); }
-
   .VPHero .image-container::after {
     width: 320px;
     height: 320px;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .VPHero .name,
   .VPHero .image-bg {
@@ -315,30 +347,32 @@ features:
 ----
 <div style="text-align:center;font-size: x-large">
 
-\-- **放在开头说的话** --
+-- **放在开头说的话** --
 </div>
 
 # 欢迎来到我的博客！
 
-感谢大家一直以来的支持和关注！这个博客是基于 [VitePress](https://vitejs.cn/vitepress/) 构建的，旨在提供更高效的内容创作和管理体验。尽管我的旧博客曾承载了许多宝贵的学习记录与分享，但为了追求更好的技术体验，我决定将其迁移至新的平台。
+感谢你做客光临，在这里你可以放松一下了。这个博客是基于 [VitePress](https://vitejs.cn/vitepress/) 构建的，旨在提供更高效的内容创作和管理体验。尽管我的 [旧博客](https://01petard.github.io/) 曾承载了许多宝贵的学习记录与分享，但为了追求更好的技术体验和构建速度，我决定将其迁移到了现在新的平台。
 
 # 为什么选择迁移？
 
-随着时间的推移，我希望能在博客上进行更高效的内容创作和管理。虽然 [Hexo](https://hexo.io/zh-cn/) 是一个非常优秀的静态博客框架，提供了快速生成页面和丰富的主题支持，但在持续使用中，我遇到了以下一些问题：
+随着时间的推移，我希望能在博客上进行更高效的内容创作和管理。虽然 [Hexo](https://hexo.io/zh-cn/)（我之前的博客框架） 是一个非常优秀的静态博客框架，提供了快速生成页面和丰富的主题和插件支持，但在持续使用中，我遇到了以下一些问题：
 
-1. 构建速度：随着博客文章的增多，Hexo 的构建速度变慢，尤其是在多次修改和发布时，这影响了我的开发体验
-2. 灵活性：我希望使用更现代的技术栈，如 Vue 3，以便更轻松地自定义博客功能，Hexo 在这方面的支持相对有限。
-3. 开发体验：VitePress 使用 Vite 作为开发引擎，提供了更快的热更新和流畅的开发体验，这正是我所追求的。
+1. 构建速度：随着博客文章的增多，Hexo 的构建速度变慢，尤其是在多次修改和发布时需要较长时间的编译，这影响了我的开发体验；
+2. 灵活性：我希望使用更现代的前端技术栈，比如老牌的 [Vue](https://vuejs.org/)、[React](https://react.dev/)，或是新兴的 [Svelte](https://svelte.dev/)、[Astro](https://astro.build/)，以便更轻松地自定义博客功能，Hexo 在这方面的提升相对有限；
+3. 开发体验：VitePress 使用 [Vite](https://vite.dev/) 作为开发引擎，提供了更快的热更新和流畅的开发体验，这样的效率正是我所追求的，而且我比较熟悉上手零门槛。
 
-因此，我选择将博客迁移到 VitePress，一个以 Vue 3 为基础的现代文档生成器，不仅能更高效地管理内容，还能提升整体性能和可扩展性。
+因此，我最终进行一场“大迁徙”（大概是在2024年底），最终我还是拥抱一个以更加现代化技术栈为基础的现代文档生成器，为将来的运营和建设打下良好的基础，还能提升整体性能和可扩展性。
 
-# 访问我的旧博客
+# 访问我的其他站点
 
-如果你喜欢我的技术分享，或者希望了解更新、更丰富的内容，欢迎访问我的新博客：
+如果你喜欢我的“技术审美”（笑），或者希望了解更新、更丰富的内容，欢迎访问我的其他站点：
+
+导航页：[热爱可抵岁月漫长](https://www.bugstack.top/)
+
+新博客：[代码港湾](https://doc.bugstack.top/)
 
 旧博客：[花火の红玉宫](https://01petard.github.io/)
-
-国内访问：[代码港湾](https://doc.bugstack.top/)、[博客主页](https://www.bugstack.top/)
 
 ---
 <div class="tip custom-block" style="max-width:1152px;margin:20px auto">
