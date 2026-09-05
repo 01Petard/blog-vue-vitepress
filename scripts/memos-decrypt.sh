@@ -20,7 +20,7 @@ if [ $# -gt 0 ]; then
 else
   # 批量模式：还原 _private/ 下全部文件
   for f in airdoc shinemo sunnybaer zju; do
-    age -d -i "$KEY" -o "$ROOT/_private/开发信息备忘录_$f.md" "$ROOT/_private/开发信息备忘录_$f.md.age"
+    age -d -i "$KEY" -o "$ROOT/docs/_private/开发信息备忘录_$f.md" "$ROOT/docs/_private/开发信息备忘录_$f.md.age"
   done
   echo "✅ 已还原全部文件到 _private/"
 fi

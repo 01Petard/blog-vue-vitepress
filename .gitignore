@@ -15,4 +15,4 @@ docs/superpowers
 docs/开发/开发信息备忘录_*.md
 
 # _private/ 下的明文备忘录只存本地，仅 .age 密文提交
-_private/*.md
+*/_private/*.md

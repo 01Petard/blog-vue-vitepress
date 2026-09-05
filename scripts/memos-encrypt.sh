@@ -19,7 +19,7 @@ if [ $# -gt 0 ]; then
 else
   # 批量模式：加密 _private/ 下全部文件
   for f in airdoc shinemo sunnybaer zju; do
-    age -r "$PUBKEY" -o "$ROOT/_private/开发信息备忘录_$f.md.age" "$ROOT/_private/开发信息备忘录_$f.md"
+    age -r "$PUBKEY" -o "$ROOT/docs/_private/开发信息备忘录_$f.md.age" "$ROOT/docs/_private/开发信息备忘录_$f.md"
   done
   echo "✅ 已加密全部文件到 _private/"
 fi
