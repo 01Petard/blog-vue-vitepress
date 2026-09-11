@@ -247,12 +247,12 @@ public static void testList2Array(){
 **思路分析**
 
 1. **先用快慢指针判断是否有环**
-    
+   
     - slow 每次走 1 步，fast 每次走 2 步。
     - 如果有环，它们最终会在环内某一点相遇。
     
 2. **确定环的起点**
-    
+   
     - **相遇点到环起点的距离 = 链表头到环起点的距离。**
     - 所以：让 slow 回到链表头，fast 保持在相遇点，两指针同时每次走 1 步，最终相遇的节点就是环起点。
 
@@ -839,7 +839,31 @@ public static double calculateCompressionRate(int originalSize, int encodedSize)
 
 # 排序算法
 
-## 极速版
+## 总述
+
+### 算法分类
+
+十种常见排序算法可以分为两大类：
+
+- **比较类排序**：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。
+- **非比较类排序**：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100941546.png" style="zoom:75%;" />
+
+### 算法复杂度
+
+![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/933ab3cfb5206580e753e2bd75082e91.png)
+
+### 相关术语
+
+- **稳定**：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。
+- **不稳定**：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。
+- **时间复杂度**：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。
+- **空间复杂度**：是指算法在计算机内执行时所需存储空间的度量，它也是数据规模n的函数。
+- **in-place**： 占用常数内存，不占用额外内存
+- **out-place**： 占用额外内存
+
+## 代码速览
 
 ```java
 public class TestJava {
@@ -1214,6 +1238,8 @@ public static void InsertSort(int[] R) {
 }
 ```
 
+![插入排序](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100945580.gif)
+
 ## 选择类排序
 
 ```java
@@ -1244,8 +1270,9 @@ public static void SelectSort(int[] R) {
         swap(R, i, k);  //交换当前值的下标i和最小值的下标k
     }
 }
-
 ```
+
+![选择排序](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100944493.gif)
 
 ```java
 /**
@@ -1316,6 +1343,8 @@ public static void pushHeap(List<Integer> maxHeap, int insertElem) {
 }
 ```
 
+![堆排序](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100946067.gif)
+
 ## 交换类排序
 
 ```java
@@ -1349,6 +1378,8 @@ public void bubbleSort(int[] R) {
     }
 }
 ```
+
+![冒泡排序](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100944154.gif)
 
 ```java
 //快速排序：先选择一个基准（哨兵值）然后分成两部分递归，如此往复
@@ -1423,6 +1454,8 @@ private static int partition(int[] arr, int low, int high) {
 }
 ```
 
+![快速排序](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100946474.gif)
+
 ## 归并类排序
 
 ```java
@@ -1484,6 +1517,8 @@ private void merge(int[] array, int left, int middle, int right) {
 }
 ```
 
+![归并排序](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100945314.gif)
+
 ## 分布类排序
 
 ```java
@@ -1534,6 +1569,8 @@ private static void countingSort(int[] arr, int exp) {
     System.arraycopy(output, 0, arr, 0, n);
 }
 ```
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609100947256.gif" alt="基数排序" style="zoom:80%;" />
 
 ## 二分查找
 

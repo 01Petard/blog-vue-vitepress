@@ -333,6 +333,346 @@ Redis客户端Slot缓存是什么
 - GEO（3.2 版新增）：存储地理位置信息的场景，比如滴滴叫车；
 - Stream（5.0 版新增）：消息队列，相比于基于 List 类型实现的消息队列，有这两个特有的特性：自动生成全局唯一消息ID，支持以消费组形式消费数据。
 
+# 应用场景
+
+## String字符串
+
+### 缓存
+
+String通常用于缓存，可用于存储字符、JSON字符串或序列化对象。
+
+```bash
+SET k1 v1
+GET k1
+```
+
+下面是一个JSON示例，使用`:`可以分组显示:
+
+```bash
+SET user:1 "{\"id\":1,\"name\":\"user1\",\"age\":20}"
+SET user:2 "{\"id\":2,\"name\":\"user2\",\"age\":25}"
+```
+
+`XX`表示exsits。如果键存在，则更新值，返回`OK`，如果不存在，则返回`nil`，表示key不存在。
+
+```bash
+SET user:3 "xxx" XX
+```
+
+`NX`表示not exsits，与`XX`相反。
+
+```bash
+SET user:1 "xxx" NX
+```
+
+注意：不同语言中，SET NX返回值类型不同。
+
+### 分布式锁
+
+分布式锁可以通过`SET NX`指令实现。
+
+当多个客户端同时尝试获取锁时，只有第一个成功获取锁的客户端会成功，其他会失败。
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1701325987140-63b91ba5-5a2f-4cd7-ba02-09ab232b051d.png" alt="img" style="zoom: 50%;" />
+
+```bash
+SET mylock client-1 NX
+SET mylock client-2 NX
+```
+
+### 过期时间
+
+Redis可以给key设置过期时间，防止数据长时间放在内存中。
+
+在分布式锁的场景中，如果某一程序中途异常退出，就会造成死锁。
+
+因此，获取锁后，需要设置一个过期时间。即使程序异常退出，超时后会自动释放锁，别的客户端可以重新获取这个锁。
+
+如果程序执行完毕，则使用`DEL`删除键，释放锁。
+
+```bash
+#设置过期时间
+EXPIRE mylock 1800
+#查看过期时间
+TTL mylock
+#删除key
+DEL mylock
+```
+
+### 设置Token
+
+过期时间用于设置token，比如单点登录(SSO).
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1701223511211-b96690e5-d39c-4ee4-b44b-951d2e46676e.png" alt="img" style="zoom: 100%;" />
+
+用户登录时，生成一个token保存到redis中，过期时间为30分钟。
+
+```bash
+#设置值和过期时间
+SET token:7BAF51EF-2D60-4773-AD28-67936D391876 "{\"id\":1,\"name\":\"jeff\"}" EX 900
+```
+
+每次请求时，验证一下token是否存在。
+
+```bash
+EXISTS token:7BAF51EF-2D60-4773-AD28-67936D391876
+```
+
+如果这个值不存在，返回值为0，则token已过期，被自动删除了，需要重新登录。
+
+如果存在，则将这个值延期30分钟。
+
+```bash
+EXPIRE token:7BAF51EF-2D60-4773-AD28-67936D391876 900
+```
+
+### 计数器
+
+计数器可用统计网页访问量(PV)、独立用户数(UV)等。
+
+```bash
+# 设置多个值
+MSET mysite.com:uv 0 mysite.com:pv 0
+# 计数器+1
+INCR mysite.com:uv
+# 计数器+3
+INCRBY mysite.com:pv 3
+# 查看多个值
+MGET mysite.com:uv mysite.com:pv
+```
+
+`INCR`命令将字符串值解析为整数，将其增加一，并将得到的值设置为新值。
+
+`INCR`操作是原子的，不会出现多个请求重复计数的问题。
+
+`MSET`也是原子的，多个值会被同时设置。
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1701425815700-340119c7-084f-4a1b-b55b-31e39ce95880.png" alt="img" style="zoom:100%;" />其他类似的命令还有
+
+- **DECR**
+- **DECRBY**
+- **INCRBYFLOAT**
+
+## Set集合
+
+### 去重
+
+Set集合中的元素是唯一的，因此用于简单的去重操作、判断元素是否存在、以及统计去重后的数量。
+
+```bash
+# 加入成员
+SADD user:1:subscriber 200 201 200 300
+# 查看集合
+SMEMBERS user:1:subscriber
+# 集合大小
+SCARD user:1:subscriber
+# 是否存在集合中
+SISMEMBER user:1:subscriber 300
+```
+
+当然，Set不适合操作大型数据集，会占用大量内存。大型数据集判断元素是否存在，统计不重复的数量，可以使用布隆过滤器和`HyperLogLog`。
+
+### 共同关注
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1701227420383-88fc4f29-4cf0-4c6d-977e-23bc8c492522.png" alt="img" style="zoom:100%;" />
+
+Redis支持对多个集合进行交集、并集、差集等操作。
+
+比如新浪微博，通过redis集合的交集操作，实现共同关注的功能。
+
+```bash
+SADD user:2:subscriber 100 200 300
+SADD user:3:subscriber 200 400
+# 共同关注
+SINTER user:1:subscriber user:2:subscriber
+# 将共同关注放到新的集合中
+SINTERSTORE new_set user:1:subscriber user:2:subscriber user:3:subscriber
+```
+
+可以使用差集推荐好友，比如关注了他的人还关注了谁。
+
+```bash
+SDIFF user:2:subscriber user:3:subscriber
+```
+
+## List列表
+
+Redis 列表是通过链表(Linked List)实现的。
+
+通过不同的指令组合可以用作栈(Stack)和队列(Queue)。
+
+#### 队列
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1701235390199-499bc32d-9cce-408b-8d4d-fa618b98f0f0.png" alt="img" style="zoom:100%;" />
+
+```ruby
+LPUSH my_queue task:1
+LPUSH my_queue task:2
+RPOP my_queue
+RPOP my_queue
+```
+
+#### 栈
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1701235441737-3a52cca9-5074-422c-8cb1-56e06d01d97a.png" alt="img" style="zoom:100%;" />
+
+利用这个特性，查看最新发布的3条动态。
+
+```ruby
+LPUSH unread_msg msg:1 msg:2 msg:3 msg:4 msg:5
+LPOP unread_msg 3
+```
+
+为了防止列表过长，我们可以截取固定大小的列表，比如不超过10条。
+
+```ruby
+# 截取列表
+LTRIM unread_msg 0 9
+# 查看列表
+LRANGE my_list 0 -1
+```
+
+#### 阻塞
+
+列表支持阻塞操作。如果列表为空，`BLPOP`、`BRPOP`等命令会处于阻塞状态，当新的元素加入时，才会返回结果。
+
+#### 索引操作
+
+我们可以通过索引去操作List中的元素。由于底层使用了链表，随着数据量增大，索引操作效率会降低。
+
+```bash
+LPUSH my_list a b c d
+# 查看数据
+LRANGE my_list 0 -1
+# 下标为0的数据
+LINDEX my_list 0
+# 查询元素a的位置
+LPOS my_list "a"
+# 在元素a前后插入数据
+LINSERT my_list BEFORE "a" "xx"
+LINSERT my_list AFTER "a" yy
+# 操作第1个元素
+LSET my_list 1 AA
+# 操作倒数第1个元素
+LSET my_list -2 BB
+```
+
+## Hash哈希表
+
+Redis中的Hash相当于HashMap，可以用于表示对象。
+
+```shell
+HSET user:101 name jeff tall 180cm weight 60kg
+HGET user:101 name
+# 获取所有键值对
+HGETALL user:101
+# 获取所有key
+HKEYS user:101
+# 获取所有value
+HVALS user:101
+# 获取size
+HLEN user:101
+```
+
+## ZSet 有序集合
+
+有序集合中，每个元素都关联了一个Score(评分或权重)，用于来集合中的元素进行排序。
+
+Set是二维的，由于有序集合比Set多了一个纬度，因此也叫Zset。Set的所有操作，Zset也都支持。
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/28915315/1701241031555-34bab13c-2587-428e-9c17-2165671c9395.png)     ![img](https://cdn.nlark.com/yuque/0/2023/png/28915315/1701241382964-a5778dee-a8ff-49c4-ac3a-f5f76f593c75.png)
+
+Zset可用于实现热搜、排行榜等功能。
+
+```bash
+ZADD hot_news  300 "科目三"
+ZADD hot_news  65.2 "汪峰" 99 "鸡你太美" 73.9 "夹你夹你夹你" 
+# 按评分从低到高排序
+ZRANGE hot_news 0 -1
+ZRANGE hot_news 0 -1 WITHSCORES
+# 热搜top10
+ZRANGE hot_news 0 9 REV WITHSCORES
+# 送汪峰上头条
+ZINCRBY hot_news 100 "汪峰"
+
+# 0<score<100的元素
+ZRANGE hot_news 0 (100 BYSCORE WITHSCORES
+# score>=100的元素
+ZRANGE hot_news +inf 100 REV BYSCORE WITHSCORES
+```
+
+## Bitmap位图
+
+Bitmap可以看作是二进制位(bit)组成的一个数组，他可以对位进行操作。
+
+#### 统计在线用户数
+
+例如Bitmap常用于统计在线人数，每个bit表示用户是否在线。如果有1亿个用户，仅需占用12.5M的内存。
+
+用户上线，将用户id对应的bit设置为1，离线设置为0.
+
+```ruby
+setbit online_users 101 1
+setbit online_users 109 1
+setbit online_users 299 1
+bitcount online_users
+# 109用户下线
+setbit online_users 109 0
+bitcount online_users
+```
+
+#### 精确去重
+
+大型数据集的去重，使用Set不适合，可以使用Bitmap。
+
+比如：根据基站数据统计某个区域内某日的游客数量
+
+**手机标识，基站id，连接时间**
+
+**10001，1，2023-10-01 08:01:01**
+
+**10052，1，2023-10-01 08:02:05**
+
+**10099，2，2023-10-01 09:21:07**
+
+**10001，2，2023-10-01 10:05:09**
+
+**10001，3，2023-10-01 11:51:49**
+
+**10052，4，2023-10-01 12:35:09**
+
+**10008，2，2023-10-01 05:20:06**
+
+**10099，3，2023-10-01 11:11:55**
+
+------
+
+统计某个区域人数：
+
+```bash
+setbit area:1:20231001 10001 1
+setbit area:1:20231001 10052 1
+setbit area:1:20231001 10099 1
+setbit area:1:20231001 10001 1
+setbit area:1:20231001 10001 1
+setbit area:1:20231001 10052 1
+setbit area:1:20231001 10008 1
+setbit area:1:20231001 10099 1
+bitcount area:1:20231001
+```
+
+## HyperLogLog 基数估算
+
+`HyperLogLog`是一种概率性数据结构，用于估算集合中不重复元素的数量，相当于Distinct Count。
+
+HyperLogLog牺牲了一部分精度，换来了更高效的内存利用。这个算法的神奇之处在于，计数项与内存使用量不成正比。Redis的HyperLogLog实现使用最多12 KB的空间，误差不超过1%。
+
+```bash
+PFADD hllog a b c d e f g
+PFADD hllog a a b b
+PFCOUNT hllog
+```
+
 # Redis 的I/O多路复用模型
 
 简单来说有以下几个原因：

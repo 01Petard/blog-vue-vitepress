@@ -733,7 +733,7 @@ grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option
 flush privileges;
 ```
 
-## 部署MySQL（通用）
+## 部署MySQL 8（通用）
 
 ```shell
 docker pull mysql
@@ -857,7 +857,7 @@ docker run -d \
   --restart unless-stopped \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=app_password \
-  -p 5432:5432 \
+  -p 35432:5432 \
   -v pgvector-data:/var/lib/postgresql/data \
   pgvector/pgvector:0.8.6-pg17
 ```
@@ -909,7 +909,7 @@ Mongo的GUI工具可以用官方的[MongoDB Compass](https://www.mongodb.com/try
 
 ![image-20260118003754323](https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202601180037707.png)
 
-## 部署Redis（新手）
+## 部署Redis（入门）
 
 下载最新的镜像
 
@@ -1028,7 +1028,7 @@ docker run \
   --requirepass app_password
 ```
 
-## 配置Redis主从集群
+## 配置Redis主从集群（2节点，1主1从）
 
 **1、用Docker部署好三台Redis**
 
@@ -1104,7 +1104,352 @@ slave来申请增量同步，带着replid和offset，然后master根据获取off
 
 - 此时会出现一个问题，当slave下限太久时，master中存储的数据已经超过了这个repl_baklog的上线，因此就需要重新进行全量同步。
 
-## 部署Redisearch（已过时）
+## 配置Redis主从集群（6节点，3主3从）
+
+### 创建redis集群
+
+在Docker下安装单节点的Redis很简单，如果要创建redis cluster，并且要从外部访问，大概率会遇到一些麻烦。
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1678172351652-770b18d0-848e-4f3f-85ca-c38d3c28da8a.png" alt="img" style="zoom:80%;" />
+
+Bitnami提供了一个[redis-cluster镜像](https://hub.docker.com/r/bitnami/redis-cluster)[1]，我们可以使用下面的文件来创建一个3主3从的redis集群。
+
+```yaml
+name: cluster
+services:
+  redis-node-0:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-0:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7000
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7000:7000
+      # redis cluster bus port，默认使用 redis port + 10000
+      - 17000:17000 
+
+  redis-node-1:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-1:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7001
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7001:7001
+      - 17001:17001
+
+  redis-node-2:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-2:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7002
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7002:7002
+      - 17002:17002
+
+  redis-node-3:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-3:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7003
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7003:7003
+      - 17003:17003
+
+  redis-node-4:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-4:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7004
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7004:7004
+      - 17004:17004
+
+  redis-node-5:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-5:/bitnami/redis/data
+    depends_on:
+      - redis-node-0
+      - redis-node-1
+      - redis-node-2
+      - redis-node-3
+      - redis-node-4
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7005
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+      - REDIS_CLUSTER_REPLICAS=1
+      - REDIS_CLUSTER_CREATOR=yes
+    ports:
+      - 7005:7005
+      - 17005:17005
+      
+volumes:
+  redis-cluster_data-0:
+  redis-cluster_data-1:
+  redis-cluster_data-2:
+  redis-cluster_data-3:
+  redis-cluster_data-4:
+  redis-cluster_data-5:
+```
+
+### 问题
+
+这样创建的集群有一个问题，只能在容器内访问，无法在本机或者外部访问。
+
+容器内访问：
+
+```bash
+docker run -it --rm --network=cluster_default redis \
+           redis-cli -h cluster-redis-node-0-1 -p 7000 -c
+```
+
+从本机访问会出错：
+
+```python
+# pip3 install redis-py-cluster -i https://mirrors.aliyun.com/pypi/simple/
+from rediscluster import RedisCluster as Redis
+rc = Redis(host='localhost', port=7000, decode_responses=True, socket_timeout=1)
+rc.set("a", "b") 
+print(rc.get("a")) 
+```
+
+错误提示：
+
+rediscluster.exceptions.RedisClusterException: ERROR sending 'config get cluster-require-full-coverage' command to redis server: {'host': '172.21.0.5', 'port': 7000, 'name': '172.21.0.5:7000', 'server_type': 'master'}
+
+我们可以看到，返回给客户端的IP地址是`172.21.0.5`，这个是容器的内部IP，本机无法访问。
+
+<img src="https://cdn.nlark.com/yuque/0/2023/png/28915315/1678159788154-eb60ac9c-b819-47eb-8502-4a5b1555347d.png" alt="img" style="zoom:100%;" />
+
+### 原因
+
+Redis会自动探测IP，由于无法探测到宿主机的IP，因此返回给客户端是docker的内部IP。
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/28915315/1678160111776-249c5269-5224-4729-846a-20ccc07f67e3.png)
+
+在Redis的官网文档中给出了解释[2]：Redis Cluster不支持NAT(网络地址转发)，也就无法使用Docker进行端口映射。如果要使用Docker，需要使用`host`网络模式，这种模式直接使用主机的网络命名空间，不需要转发。
+
+很不幸，host模式只能在linux下使用，在windows下和Mac使用Docker Desktop是不支持`host`网络的[3]。
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/28915315/1678160459657-b33c2151-94b8-4fe8-a068-0db0cc325d03.png)
+
+### 解决方案
+
+从Redis 4.0[4]开始,加入的对NAT和Docker的支持。
+
+在redis.conf文件中，通过配置`cluster-announce-ip`、`cluster-announce-port`和`cluster-announce-bus-port`这三个属性来公布可以外部访问的IP(例如主机IP或公网IP)和端口。
+
+这种方式类似于kafka中的`advertised.listeners`。
+
+这样子，redis返回给客户端的IP地址就是`cluster-announce-ip` ，而不再是自动探测到的容器内部IP。
+
+```plain
+########################## CLUSTER DOCKER/NAT support  ########################
+
+# In certain deployments, Redis Cluster nodes address discovery fails, because
+# addresses are NAT-ted or because ports are forwarded (the typical case is
+# Docker and other containers).
+#
+# In order to make Redis Cluster working in such environments, a static
+# configuration where each node knows its public address is needed. The
+# following four options are used for this scope, and are:
+#
+# * cluster-announce-ip
+# * cluster-announce-port
+# * cluster-announce-tls-port
+# * cluster-announce-bus-port
+#
+# Each instructs the node about its address, client ports (for connections
+# without and with TLS) and cluster message bus port. The information is then
+# published in the header of the bus packets so that other nodes will be able to
+# correctly map the address of the node publishing the information.
+#
+# If cluster-tls is set to yes and cluster-announce-tls-port is omitted or set
+# to zero, then cluster-announce-port refers to the TLS port. Note also that
+# cluster-announce-tls-port has no effect if cluster-tls is set to no.
+#
+# If the above options are not used, the normal Redis Cluster auto-detection
+# will be used instead.
+#
+# Note that when remapped, the bus port may not be at the fixed offset of
+# clients port + 10000, so you can specify any port and bus-port depending
+# on how they get remapped. If the bus-port is not set, a fixed offset of
+# 10000 will be used as usual.
+#
+# Example:
+#
+# cluster-announce-ip 10.1.1.5
+# cluster-announce-tls-port 6379
+# cluster-announce-port 0
+# cluster-announce-bus-port 6380
+```
+
+按照这个思路，修改后的`docker-compose.yaml`文件如下：
+
+```yaml
+name: cluster
+services:
+  redis-node-0:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-0:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7000
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7000
+      - REDIS_CLUSTER_ANNOUNCE_IP=10.150.36.72 # 主机IP或公网IP，不要使用127.0.0.1或localhost
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17000
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7000:7000
+      - 17000:17000
+
+  redis-node-1:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-1:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7001
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7001
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17001
+      - REDIS_CLUSTER_ANNOUNCE_IP=10.150.36.72
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7001:7001
+      - 17001:17001
+
+  redis-node-2:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-2:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7002
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7002
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17002
+      - REDIS_CLUSTER_ANNOUNCE_IP=10.150.36.72
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7002:7002
+      - 17002:17002
+
+  redis-node-3:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-3:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7003
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7003
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17003
+      - REDIS_CLUSTER_ANNOUNCE_IP=10.150.36.72
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7003:7003
+      - 17003:17003
+
+  redis-node-4:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-4:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=7004
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7004
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17004
+      - REDIS_CLUSTER_ANNOUNCE_IP=10.150.36.72
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+    ports:
+      - 7004:7004
+      - 17004:17004
+
+  redis-node-5:
+    image: docker.io/bitnami/redis-cluster:7.0
+    volumes:
+      - redis-cluster_data-5:/bitnami/redis/data
+    depends_on:
+      - redis-node-0
+      - redis-node-1
+      - redis-node-2
+      - redis-node-3
+      - redis-node-4
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_CLUSTER_REPLICAS=1
+      - REDIS_PORT_NUMBER=7005
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7005
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17005
+      - REDIS_CLUSTER_ANNOUNCE_IP=10.150.36.72
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003 redis-node-4:7004 redis-node-5:7005
+      - REDIS_CLUSTER_CREATOR=yes
+    ports:
+      - 7005:7005
+      - 17005:17005
+
+volumes:
+  redis-cluster_data-0:
+  redis-cluster_data-1:
+  redis-cluster_data-2:
+  redis-cluster_data-3:
+  redis-cluster_data-4:
+  redis-cluster_data-5:
+```
+
+注意：
+
+1. `REDIS_CLUSTER_ANNOUNCE_IP`不能使用`127.0.0.1`和`localhost`
+2. `REDIS_CLUSTER_DYNAMIC_IPS`必须设置为`no`[5],否则`REDIS_CLUSTER_ANNOUNCE_IP`不会生效
+
+重新创建容器前，需要删除之前的卷(volumn)，否则启动会报错。
+
+```bash
+docker compose down && docker volume prune -f
+docker compose up -d
+```
+
+这样，就可以从外部和本机访问redis cluster了。
+
+----
+
+参考文档：
+
+[1] https://hub.docker.com/r/bitnami/redis-cluster
+
+[2] https://redis.io/docs/management/scaling/
+
+[3] https://docs.docker.com/network/host/
+
+[4] https://raw.githubusercontent.com/antirez/redis/4.0/00-RELEASENOTES
+
+[5] https://github.com/bitnami/containers/blob/main/bitnami/redis-cluster/7.0/debian-11/rootfs/opt/bitnami/scripts/librediscluster.sh#L83
+
+[6] https://redis-py.readthedocs.io/en/stable/clustering.html
+
+[7] https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster
+
+## ~~部署Redisearch（已过时）~~
 
 > Redisearch是一款基于Redis的向量化内存型数据库
 
@@ -2437,7 +2782,7 @@ docker run -d \
 
 TODO
 
-## 容器化部署的 Jenkins 如何配置 Maven 镜像源加速
+### 容器化部署的 Jenkins 如何配置 Maven 镜像源加速
 
 问题的根源是Jenkins读不到宿主机的`.m2`里配置
 
@@ -2522,3 +2867,188 @@ find /var/jenkins_home/tools -type f -name mvn 2>/dev/null
 ```
 
 <img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202608252210082.png" alt="image-20260825221016888" style="zoom:33%;" />
+
+### 安装其他版本JDK
+
+> 以安装JDK25为例
+
+思路是：
+
+> **当前 Jenkins 本身跑在 Docker 容器里 → 进入 Jenkins 容器 → 在容器内部安装 JDK 25 → 在 Jenkins「Tools」里把这个 JDK 25 配进去 → Jenkinsfile 使用它。**
+
+1. **先找到 Jenkins 容器，进入容器，并切 root：**
+
+```
+docker exec -u root -it jenkins bash
+```
+
+先确认环境，Jenkins 官方镜像通常是 Debian 系：
+
+```
+cat /etc/os-release
+uname -m
+```
+
+2. **在 Jenkins 容器里安装 Temurin JDK 25**
+
+先安装添加软件源需要的工具：
+
+```
+apt-get update
+
+apt-get install -y \
+  wget \
+  gpg \
+  ca-certificates \
+  apt-transport-https
+```
+
+添加 Eclipse Adoptium 软件源：
+
+```
+wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public \
+  | gpg --dearmor \
+  > /etc/apt/trusted.gpg.d/adoptium.gpg
+```
+
+获取当前 Debian codename：
+
+```
+. /etc/os-release
+echo "$VERSION_CODENAME"
+```
+
+然后添加源：
+
+```
+echo "deb https://packages.adoptium.net/artifactory/deb ${VERSION_CODENAME} main" \
+  > /etc/apt/sources.list.d/adoptium.list
+```
+
+更新：
+
+```
+apt-get update
+```
+
+安装：
+
+```
+apt-get install -y temurin-25-jdk
+```
+
+3. **找到 JDK 25 的 JAVA_HOME**
+
+执行：
+
+```
+ls -al /usr/lib/jvm/
+```
+
+通常会看到：
+
+```
+temurin-25-jdk-amd64
+```
+
+所以路径大概率是：
+
+```
+/usr/lib/jvm/temurin-25-jdk-amd64
+```
+
+你可以直接验证：
+
+```
+/usr/lib/jvm/temurin-25-jdk-amd64/bin/java -version
+```
+
+如果路径名称和我这里不同，就执行：
+
+```
+find /usr/lib/jvm -maxdepth 2 -type f -name java
+```
+
+或者：
+
+```
+dpkg -L temurin-25-jdk | grep '/bin/java$'
+```
+
+即可找到准确位置。
+
+4. **Jenkins 页面配置 JDK 25**
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609090904706.png" alt="image-20260909090420520" style="zoom: 50%;" />
+
+安装完成后，浏览器打开 Jenkins：
+
+```
+Manage Jenkins
+→ Tools
+→ JDK installations
+```
+
+添加一个 JDK：
+
+<img src="https://cdn.jsdelivr.net/gh/01Petard/imageURL@main/img/202609090904687.png" alt="image-20260909090448557" style="zoom:50%;" />
+
+```
+Name:
+JDK-25
+
+JAVA_HOME:
+/usr/lib/jvm/temurin-25-jdk-amd64
+```
+
+6. **Jenkinsfile 加上 JDK**
+
+你当前 Jenkinsfile 是：
+
+```
+tools {
+    maven 'Maven-3.9'
+}
+```
+
+改成：
+
+```
+tools {
+    jdk 'JDK-25'
+    maven 'Maven-3.9'
+}
+```
+
+当前  Jenkinsfile 确实只声明了 Maven，没有声明 JDK。
+
+7. 不需要改 Jenkins 自己正在使用的 Java 21
+
+最终应该是：
+
+```
+/opt/java/openjdk
+└── Java 21
+    └── Jenkins 自己运行
+
+/usr/lib/jvm/temurin-25-jdk-amd64
+└── Java 25
+    └── Maven 构建项目
+```
+
+不需要执行：
+
+```
+update-alternatives --config java
+```
+
+也不用改容器全局 `JAVA_HOME`。
+
+## 部署fetcher-mcp
+
+> 开源项目，仓库地址：https://github.com/jae-jae/fetcher-mcp
+
+```shell
+docker run -d --name fetcher-mcp -p 13000:3000 ghcr.io/jae-jae/fetcher-mcp:latest
+```
+
