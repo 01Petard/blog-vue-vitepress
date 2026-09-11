@@ -152,100 +152,82 @@ features:
   --vp-color-red-purple-5: #a334e9;
 
   /* 定义主标题渐变效果 */
-  --vp-home-hero-name-background-1-1:
+  --vp-home-hero-name-background-1:
     linear-gradient(
       45deg,
-      #7657ff 0%,
-      #ef5da8 12.5%,
-      #ffae35 25%,
-      #20c6b7 37.5%,
-      #3b82f6 47%,
-      #7657ff 50%,
-      #ef5da8 62.5%,
-      #ffae35 75%,
-      #20c6b7 87.5%,
-      #3b82f6 97%,
-      #7657ff 100%
+      #7657FF 0%,
+      #CC5BC1 5%,
+      #F1698A 10%,
+      #F6815C 15%,
+      #FDA73C 20%,
+      #BABD4A 25%,
+      #6CC871 30%,
+      #2DC6AB 35%,
+      #2EA4D6 40%,
+      #457BF8 45%,
+      #7657FF 50%,
+      #CC5BC1 55%,
+      #F1698A 60%,
+      #F6815C 65%,
+      #FDA73C 70%,
+      #BABD4A 75%,
+      #6CC871 80%,
+      #2DC6AB 85%,
+      #2EA4D6 90%,
+      #457BF8 95%,
+      #7657FF 100%
     );
-
-  --vp-home-hero-name-background-1-2:
-    linear-gradient(
-      45deg,
-      #8670E6 0%,
-      #D973A7 12.5%,
-      #E1A853 25%,
-      #39ADA3 37.5%,
-      #5789DA 47%,
-      #8670E6 50%,
-      #D973A7 62.5%,
-      #E1A853 75%,
-      #39ADA3 87.5%,
-      #5789DA 97%,
-      #8670E6 100%
-    );
-
-  --vp-home-hero-name-background-1-3:
-    linear-gradient(
-      45deg,
-      #A293E2 0%,
-      #D893B6 12.5%,
-      #DBB378 25%,
-      #4EB6AD 37.5%,
-      #7A9DD5 47%,
-      #A293E2 50%,
-      #D893B6 62.5%,
-      #DBB378 75%,
-      #4EB6AD 87.5%,
-      #7A9DD5 97%,
-      #A293E2 100%
-    );
-
-  --vp-home-hero-name-background-2-1:
-    linear-gradient(
-      45deg,
-      #FEF3E2 0%,
-      #E4A1C4 10%,
-      #9691FE 20%,
-      #69ABFF 30%,
-      #A7DFFE 40%,
-      #FEF3E2 50%,
-      #E4A1C4 60%,
-      #9691FE 70%,
-      #69ABFF 80%,
-      #A7DFFE 90%,
-      #FEF3E2 100%
-    );
-
-  --vp-home-hero-name-background-2-2:
-    linear-gradient(
-      45deg,
-      #FFE7C2 0%,
-      #E383B5 10%,
-      #7871FF 20%,
-      #4A9AFF 30%,
-      #87D4FF 40%,
-      #FFE7C2 50%,
-      #E383B5 60%,
-      #7871FF 70%,
-      #4A9AFF 80%,
-      #87D4FF 90%,
-      #FFE7C2 100%
-    );
-
-  --vp-home-hero-name-background-2-3:
+  
+  --vp-home-hero-name-background-2:
     linear-gradient(
       45deg,
       #FFD38F 0%,
-      #EB5CA6 10%,
-      #5A52FF 20%,
-      #2987FF 30%,
-      #5CC5FF 40%,
+      #F6AA86 5%,
+      #F07F92 10%,
+      #DC5BAF 15%,
+      #8F59DF 20%,
+      #6875DF 25%,
+      #4C94CF 30%,
+      #32AAB9 35%,
+      #56B482 40%,
+      #94BC59 45%,
       #FFD38F 50%,
-      #EB5CA6 60%,
-      #5A52FF 70%,
-      #2987FF 80%,
-      #5CC5FF 90%,
+      #F6AA86 55%,
+      #F07F92 60%,
+      #DC5BAF 65%,
+      #8F59DF 70%,
+      #6875DF 75%,
+      #4C94CF 80%,
+      #32AAB9 85%,
+      #56B482 90%,
+      #94BC59 95%,
       #FFD38F 100%
+    );
+
+  --vp-home-hero-name-background-3:
+    linear-gradient(
+      45deg,
+      #767CCF 0%,
+      #876FD2 5%,
+      #9865CF 10%,
+      #AA60C8 15%,
+      #BD5EBB 20%,
+      #CE63AA 25%,
+      #D46D91 30%,
+      #CF7C70 35%,
+      #B0874F 40%,
+      #78914F 45%,
+      #767CCF 50%,
+      #876FD2 55%,
+      #9865CF 60%,
+      #AA60C8 65%,
+      #BD5EBB 70%,
+      #CE63AA 75%,
+      #D46D91 80%,
+      #CF7C70 85%,
+      #B0874F 90%,
+      #78914F 95%,
+      #767CCF 100%
     );
 
   /* 定义渐变角度 */
@@ -267,17 +249,30 @@ features:
   --vp-home-hero-image-filter: blur(44px);
 }
 
-/* 文本渐变效果 */
+/* 文本效果：流体渐变 + 玻璃高光 + 灯箱背光 */
 .VPHero .name {
-  background: var(--vp-home-hero-name-background-2-3);
+  background: var(--vp-home-hero-name-background-2);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /* 浏览器兼容性处理 */
   -webkit-text-fill-color: transparent;
-  animation: hero-name-rainbow-flow 8s linear infinite;
+
+  /* 流动字体 */
+  animation: hero-name-rainbow-flow 10s linear infinite;
+
+  /* 边缘高光 */
+  -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.22);
+
+  /* 灯箱背光 */
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.18))
+    drop-shadow(0 0 6px rgba(118, 87, 255, 0.22))
+    drop-shadow(0 0 14px rgba(239, 93, 168, 0.14))
+    drop-shadow(0 0 28px rgba(59, 130, 246, 0.10));
 }
+
+/* 头像效果：透明玻璃 + 后背霓虹呼吸灯 */
 .VPHero .image-bg {
   opacity: 0.72;
   animation:
