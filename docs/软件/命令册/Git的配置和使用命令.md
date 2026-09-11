@@ -744,7 +744,7 @@ git checkout -b fix-v1.0.0 v1.0.0
 
 # 六、Git commit常用标签
 
-```git
+```
 feat      新功能
 fix       修复
 revert    回滚
