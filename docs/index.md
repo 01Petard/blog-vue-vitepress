@@ -2,7 +2,8 @@
 layout: home
 
 hero:
-  name: "A Station for Tech,\nA Harbor for Code,\nA Space for Innov."
+  name: "A Station for Tech,\nA Harbor for Code,\nA Garden for Ideas."
+#  name: "Where Tech Evolves,\nWhere Code Lives,\nWhere Ideas Bloom."
   text: 
   tagline: "个人技术知识体系矩阵\nPersonal Technical Knowledge System Matrix"
   image:
