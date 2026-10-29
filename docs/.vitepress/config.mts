@@ -72,7 +72,7 @@ export default defineConfig({
     },
     // 修改侧边栏导航的标题
     outline: {
-      level: [1, 2, 3, 4],
+      level: [1, 3],
       label: "目录导航"
     },
     // 文档页脚的文字
