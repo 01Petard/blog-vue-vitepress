@@ -10,6 +10,7 @@ cache
 docs/superpowers
 .superpowers
 .worktrees/
+.openidea
 
 # 包含公司敏感凭据（密码/API Key/服务器信息），禁止提交明文
 docs/开发/开发信息备忘录_*.md
